@@ -6,7 +6,7 @@ export default function Home({ blog }) {
       <ul>
         {blog.map(blog => (
           <li key={blog.id}>
-            <Link href={`blog/${blog.id}`}>
+            <Link href={`/blog/${blog.id}`}>
               <a>{blog.title}</a>
             </Link>
           </li>
