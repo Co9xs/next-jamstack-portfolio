@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import Twemoji from 'react-twemoji';
-import { CustomLink } from '../components/CustomLink'
+import { ArticleList } from '../components/ArticleList'
 
-export default function Home({blog}) {
+export default function Home({articles}) {
   return (
     <div>
       <ContentSection style={{ background: '#E6F2FF'}}>
@@ -15,7 +15,7 @@ export default function Home({blog}) {
         <p>Wantedly：<a href={"https://www.wantedly.com/id/ryou_fujishima_a"}>プロフィール</a></p>
         <p>雑記ブログ：<a href={"https://shimablogs.com/"}>しまぶろぐ</a></p>
       </ContentSection>
-      <ContentSection style={{background: '#F1F5F9'}}>
+      <ContentSection>
         <Heading2><Twemoji tag="span">🏢</Twemoji>活動経歴</Heading2>
         <p>2021/02 Wantedly Webフロントエンドインターン(React)</p>
         <p>2020/08〜現在 都内企業でフロントエンド開発アルバイト(Angular, TypeScript, rxjs, storybook)</p>
@@ -23,15 +23,9 @@ export default function Home({blog}) {
         <p>2020/03 Webアプリ開発の学習開始</p>
         <p>2019/12 Webサイト制作の学習開始</p>
       </ContentSection>
-      <ContentSection>
-      <Heading2><Twemoji tag="span">🖊️</Twemoji>最近の投稿</Heading2>
-      <ul>
-        {blog.map((blog) => (
-          <li key={blog.id}>
-            <CustomLink href={`/blog/${blog.id}`} label={blog.title} />
-          </li>
-        ))}
-      </ul>
+      <ContentSection style={{background: '#F1F5F9'}}>
+        <Heading2><Twemoji tag="span">🖊️</Twemoji>最近の投稿</Heading2>
+        <ArticleList articles={ articles} />
     </ContentSection>
     </div>
   )
@@ -46,7 +40,7 @@ export const getStaticProps = async () => {
     .catch(() => null);
   return {
     props: {
-      blog: data.contents,
+      articles: data.contents,
     },
   };
 };

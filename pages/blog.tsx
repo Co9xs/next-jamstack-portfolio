@@ -1,21 +1,14 @@
 import { CustomLink } from '../components/CustomLink'
 import styled from 'styled-components'
 import Twemoji from 'react-twemoji';
+import { ArticleList } from '../components/ArticleList'
 
-export default function Blog({ blog, categories }) {
+export default function Blog({ articles }) {
   return (
-    <div>
-      <ContentSection>
-        <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</Heading2>
-        <ul>
-          {blog.map((blog) => (
-            <li key={blog.id}>
-              <CustomLink href={`/blog/${blog.id}`} label={blog.title} />
-            </li>
-          ))}
-        </ul>
-      </ContentSection>
-    </div>
+    <ContentSection style={{background: '#F1F5F9'}}>
+      <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</Heading2>
+      <ArticleList articles={articles}/>
+    </ContentSection>
   )
 }
 
@@ -28,7 +21,7 @@ export const getStaticProps = async ({ context }) => {
     .catch(() => null);
   return {
     props: {
-      blog: data.contents,
+      articles: data.contents,
     },
   };
 };

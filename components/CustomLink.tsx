@@ -4,15 +4,16 @@ import { useRouter } from 'next/router'
 
 type Props = {
   href: string,
-  label: string,
+  label?: string,
+  children?: any,
 }
 
-export const CustomLink: React.FC<Props> = ({ href, label }) => { 
+export const CustomLink: React.FC<Props> = ({ href, label, children }) => { 
   const router = useRouter()
 
   return (
     <Link href={href}>
-      <a aria-current={ router.pathname === href ? 'page' : null}>{label}</a>
+      {label ? <a aria-current={ router.pathname === href ? 'page' : null}>{label}</a> : children}
     </Link>
   )
 }

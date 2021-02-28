@@ -7,7 +7,7 @@ export const WorksList = () => {
       title: 'Next Portfolio',
       date: '2021/3',
       url: '',
-      languages: ['Next.js', 'microCMS', 'styled-component', 'vercel'],
+      languages: ['Next.js', 'TypeScript', 'microCMS', 'styled-component', 'vercel'],
       description: '現在見ているポートフォリオサイトです。microCMSを使ったJamstackなブログ機能を実装しました。'
     },
     {
