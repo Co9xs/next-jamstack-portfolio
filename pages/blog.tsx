@@ -32,7 +32,7 @@ export const getStaticProps = async () => {
 };
 
 const Heading2 = styled.h2`
-  margin: 0;
+  margin: 1rem 0;
   padding: 0;
 `
 
