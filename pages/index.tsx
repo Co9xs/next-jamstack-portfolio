@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { CustomLink } from '../components/CustomLink'
+import { Header } from '../components/Header'
 
 export default function Home({ blog }) {
   return (
     <div>
+      <Header/>
       <ul>
         {blog.map(blog => (
           <li key={blog.id}>
