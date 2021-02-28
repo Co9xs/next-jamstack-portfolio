@@ -16,8 +16,6 @@ export const BasicLayout = ({children}) => {
 }
 
 const BasicLayoutBase = styled.div`
-  margin: 0;
-  padding: 0 2.5rem; 
 `
 
 const FixedHeader = styled.div`
@@ -32,5 +30,5 @@ const FixedHeader = styled.div`
 
 // headerの高さ
 const PageContent = styled.div`
-  padding-top: 53px;
+  margin-top: 107px;
 `
