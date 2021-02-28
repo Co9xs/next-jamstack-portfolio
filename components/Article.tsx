@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export const Article = ({ article }) => { 
   const convertToDate = (dt: Date) => {
     const year = dt.getFullYear();
@@ -15,7 +14,7 @@ export const Article = ({ article }) => {
         <ArticleTitle>{ article.title }</ArticleTitle>
       </ArticleHeader>
       <ArticleFooter>
-        <ArticleDate><FontAwesomeIcon className="w-5 mr-2 mb-1 inline" icon={["fas", "coffee"]}/>{ publishedAt }</ArticleDate>
+        <ArticleDate>{ publishedAt }</ArticleDate>
         {article.category && <ArticleCategory>#{ article.category.name }</ArticleCategory>}
       </ArticleFooter>
     </ArticleBase>
