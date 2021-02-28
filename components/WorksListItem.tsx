@@ -22,6 +22,7 @@ const WorksListItemBase = styled.div`
   border-radius: 5px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  background: #f8f8ff;
 `
 
 const WorksListItemHeader = styled.div`

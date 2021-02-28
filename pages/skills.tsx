@@ -5,7 +5,7 @@ import { Icon } from '../components/SvgIcon'
 export default function Skills() {
   return (
     <div>
-      <ContentSection>
+      <ContentSection style={{ background: '#E6F2FF'}} >
         <Heading2>言語</Heading2>
         <SvgImageList>
           <Icon name={'JavaScript'}/>
@@ -13,7 +13,7 @@ export default function Skills() {
           <Icon name={'PHP'}/>
         </SvgImageList>
       </ContentSection>
-      <ContentSection>
+      <ContentSection style={{ background: '#E6F2FF'}} >
         <Heading2>フレームワーク・ライブラリ</Heading2>
         <SvgImageList>
           <Icon name={'Angular'}/>
@@ -26,7 +26,7 @@ export default function Skills() {
           <Icon name={'Laravel'}/>
         </SvgImageList>
       </ContentSection>
-      <ContentSection>
+      <ContentSection style={{ background: '#E6F2FF'}} >
         <Heading2>ツール・その他</Heading2>
         <SvgImageList>
           <Icon name={'Slack'}/>

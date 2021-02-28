@@ -1,10 +1,12 @@
 import { CustomLink } from '../components/CustomLink'
 import styled from 'styled-components'
+import Twemoji from 'react-twemoji';
+
 export default function Blog({ blog }) {
   return (
     <div>
       <ContentSection>
-        <Heading2>最近の記事</Heading2>
+        <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>技術記事一覧</Heading2>
         <ul>
           {blog.map((blog) => (
             <li key={blog.id}>
@@ -34,6 +36,14 @@ export const getStaticProps = async () => {
 const Heading2 = styled.h2`
   margin: 1rem 0;
   padding: 0;
+  span {
+  text-align:center;
+  display: inline-block;
+  img {
+    height: 28px;
+    vertical-align: bottom;
+    margin-right: .5rem;
+  }
 `
 
 const ContentSection = styled.section`
