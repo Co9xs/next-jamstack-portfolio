@@ -8,7 +8,8 @@ type Props = {
 }
 
 export const CustomLink: React.FC<Props> = ({ href, label }) => { 
-  const router = useRouter();
+  const router = useRouter()
+
   return (
     <Link href={href}>
       <a aria-current={ router.pathname === href ? 'page' : null}>{label}</a>

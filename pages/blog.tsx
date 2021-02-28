@@ -2,11 +2,11 @@ import { CustomLink } from '../components/CustomLink'
 import styled from 'styled-components'
 import Twemoji from 'react-twemoji';
 
-export default function Blog({ blog }) {
+export default function Blog({ blog, categories }) {
   return (
     <div>
       <ContentSection>
-        <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>技術記事一覧</Heading2>
+        <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</Heading2>
         <ul>
           {blog.map((blog) => (
             <li key={blog.id}>
@@ -19,7 +19,7 @@ export default function Blog({ blog }) {
   )
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ context }) => {
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   };
