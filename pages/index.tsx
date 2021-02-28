@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { CustomLink } from '../components/CustomLink'
 
 export default function Home({ blog }) {
   return (
@@ -6,9 +7,7 @@ export default function Home({ blog }) {
       <ul>
         {blog.map(blog => (
           <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
-            </Link>
+            <CustomLink href={`/blog/${blog.id}`} label={blog.title} />
           </li>
         ))}
       </ul>
