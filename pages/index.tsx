@@ -60,4 +60,8 @@ const Heading2 = styled.h2`
 
 const ContentSection = styled.section`
   padding: 1rem 5rem;
+  a {
+    text-decoration: underline;
+    color: #60A5FA;
+  }
 `

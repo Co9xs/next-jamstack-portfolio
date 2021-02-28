@@ -13,7 +13,7 @@ export default function Skills() {
           <Icon name={'PHP'}/>
         </SvgImageList>
       </ContentSection>
-      <ContentSection style={{ background: '#E6F2FF'}} >
+      <ContentSection>
         <Heading2>フレームワーク・ライブラリ</Heading2>
         <SvgImageList>
           <Icon name={'Angular'}/>
@@ -26,7 +26,7 @@ export default function Skills() {
           <Icon name={'Laravel'}/>
         </SvgImageList>
       </ContentSection>
-      <ContentSection style={{ background: '#E6F2FF'}} >
+      <ContentSection style={{background: '#F1F5F9'}} >
         <Heading2>ツール・その他</Heading2>
         <SvgImageList>
           <Icon name={'Slack'}/>

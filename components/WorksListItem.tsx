@@ -41,6 +41,7 @@ const WorksListItemUrl = styled.a`
   text-decoration: underline;
   margin: 0;
   padding: 0;
+  color: #60A5FA;
 `
 
 const WorksListItemDescription = styled.div`
