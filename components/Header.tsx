@@ -32,22 +32,24 @@ export const Header: React.FC = () => {
 }
 const HeaderNav = styled.nav`
   a {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: .5rem 0;
     &[aria-current] {
       border-bottom: 2px solid #333;
+      color: #333;
     }
   }
 `
 
 const HeaderLinkList = styled.ul`
-  color: #333;
+  padding: 0;
   display: flex;
   justify-content: flex-start;
 `
 
 const HeaderLinkItem = styled.li`
-  font-weight: bold;
+  color: #93A5B1;
+  font-weight: 600;
+  font-size: 18px;
   list-style: none;
-  margin-right: 18px;
+  margin-right: 1.7rem;
 `
