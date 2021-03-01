@@ -27,7 +27,7 @@ const ArticleBase = styled.article`
   border-radius: 5px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  background: #f8f8ff;
+  background: #FFF;
   cursor: pointer;
 `
 

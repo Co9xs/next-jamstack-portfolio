@@ -24,7 +24,7 @@ const headerLinkItems = [
 export const Header: React.FC = () => { 
   return (
     <HeaderNav>
-      <h1>Ryo Fujishima - Web Frontend Developer</h1>
+      <h1>Ryo Fujishima - Web Dev</h1>
       <HeaderLinkList>
         {headerLinkItems.map(item => (
           <HeaderLinkItem key={item.label}>

@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/styled';
+import { media } from '../../styles/utils/helper';
 
 export default function BlogId({ blog }) {
   const convertToDate = (dt: Date) => {
@@ -10,18 +12,22 @@ export default function BlogId({ blog }) {
   }
   const publishedAt = convertToDate(new Date(blog.publishedAt));
   return (
-    <ContentSection>
-      <DetailPageHeader>
-        <DetailPageDate>{ publishedAt }</DetailPageDate>
-        <DetailPageHeading>{blog.title}</DetailPageHeading>
-        <DetailPageCategory>{blog.category && `#${blog.category.name}`}</DetailPageCategory>
-      </DetailPageHeader>
-      <DetailPageBody
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-      />
-    </ContentSection>
+    <PageBase>
+      <ContentSection>
+        <ContentSectionInner>
+          <DetailPageHeader>
+            <DetailPageDate>{ publishedAt }</DetailPageDate>
+            <DetailPageHeading>{blog.title}</DetailPageHeading>
+            <DetailPageCategory>{blog.category && `#${blog.category.name}`}</DetailPageCategory>
+          </DetailPageHeader>
+          <DetailPageBody
+            dangerouslySetInnerHTML={{
+              __html: `${blog.body}`,
+            }}
+          />
+        </ContentSectionInner>
+      </ContentSection>
+    </PageBase>
   );
 }
 
@@ -54,10 +60,6 @@ export const getStaticProps = async context => {
   };
 };
 
-const ContentSection = styled.section`
-  padding: 1rem 5rem;
-`
-
 const DetailPageHeader = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,27 +84,57 @@ const DetailPageCategory = styled.div`
 
 const DetailPageBody= styled.div`
   h2 {
-    font-size: 32px;
     font-weight: bold;
     margin: 40px 0 20px;
     background-color: #eee;
-    padding: 10px 20px;
     border-left: 3px solid #333;
+    ${media.desktop`
+      padding: 10px 20px;
+      font-size: 32px;
+    `}
+    ${media.tablet`
+      padding: 10px 20px;
+      font-size: 30px;
+    `}
+    ${media.phone`
+      padding: 8px 16px;
+      font-size: 28px;
+    `}
   }
 
   h3 {
-    font-size: 26px;
     font-weight: bold;
     margin: 40px 0 20px;
-    padding: 10px 20px;
     border-left: 3px solid #333;
+    ${media.desktop`
+      padding: 10px 20px;
+      font-size: 26px;
+    `}
+    ${media.tablet`
+      padding: 10px 20px;
+      font-size: 24px;
+    `}
+    ${media.phone`
+      padding: 8px 16px;
+      font-size: 22px;
+    `}
   }
 
   h4 {
-    font-size: 24px;
     margin: 40px 0 20px;
-    padding: 10px 20px;
     border-bottom: 3px solid #E5E4E6;
+    ${media.desktop`
+      padding: 10px 20px;
+      font-size: 24px;
+    `}
+    ${media.tablet`
+      padding: 10px 20px;
+      font-size: 22px;
+    `}
+    ${media.phone`
+      padding: 8px 16px;
+      font-size: 20px;
+    `}
   }
 
   p {

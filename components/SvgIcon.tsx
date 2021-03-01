@@ -12,8 +12,7 @@ import IconSlack from '../public/slack.svg'
 import IconGithub from '../public/github.svg'
 import IconGitlab from '../public/gitlab.svg'
 import IconNext from '../public/nextjs.svg'
-import IconNuxt from '../public/nuxt.svg'
-import IconStorybook from '../public/storybook.svg'
+import IconVercel from '../public/vercel.svg'
 
 export const Icon = ({name}) => { 
   switch (name) {
@@ -45,10 +44,8 @@ export const Icon = ({name}) => {
     return <IconGitlab />
   case 'Next':
     return <IconNext />
-  case 'Nuxt':
-    return <IconNuxt />
-  case 'Storybook':
-    return <IconStorybook />
+  case 'Vercel':
+    return <IconVercel />
   default:
     console.log(`Sorry, we are out of ${name}.`);
 }

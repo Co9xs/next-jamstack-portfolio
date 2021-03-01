@@ -17,8 +17,12 @@ const SvgImageListBase = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap; 
 `
 
 const SvgImageListItem = styled.div`
-  margin-right: 1.7rem;
+  margin-top: .75rem;
+  margin-bottom: .75rem;
+  margin-right: 1.25rem;
+  margin-left: 0;
 `
