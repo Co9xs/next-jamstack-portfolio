@@ -25,5 +25,8 @@
 , "pages/_app.js"  ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "files": [
+    "svg.d.ts"
+  ],
 }
