@@ -95,7 +95,7 @@ const DetailPageBody= styled.div`
     border-left: 3px solid #333;
     ${media.desktop`
       padding: 10px 20px;
-      font-size: 32px;
+      font-size: 30px;
     `}
     ${media.tablet`
       padding: 10px 20px;
