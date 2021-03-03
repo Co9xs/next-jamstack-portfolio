@@ -142,6 +142,11 @@ const DetailPageBody= styled.div`
     `}
   }
 
+  img {
+    width: 100%;
+    height: auto;
+  }
+
   p {
     line-height: 1.8;
     letter-spacing: 0.2px;
