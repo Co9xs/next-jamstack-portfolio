@@ -1,9 +1,18 @@
 import Twemoji from 'react-twemoji';
+import { GetStaticProps } from 'next';
 import { Meta } from '../components/common/Meta';
+import { getArticles } from '../lib/api';
+import { Article } from '../types';
 import { ArticleList } from '../components/ArticleList';
-import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
+import { ARTICLES_IN_TOP } from '../utils';
 
-export default function Home({articles}) {
+type Props = {
+  articles: Article[],
+  totalCount: number
+}
+
+export default function Home({articles, totalCount}: Props) {
   return (
     <PageBase>
       <Meta
@@ -12,7 +21,7 @@ export default function Home({articles}) {
       />
       <ContentSection style={{ background: '#E6F2FF' }}>
         <ContentSectionInner>
-          <Heading2><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</Heading2>
+          <SectionTitle><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</SectionTitle>
           <p>現在はWebアプリ開発を中心に学習中で、Webフロントエンドが得意領域です。</p>
           <p>所属：東北大学 経済学部 経済学科</p>
           <p>生年月日：2000/02/03</p>
@@ -24,7 +33,7 @@ export default function Home({articles}) {
       </ContentSection>
       <ContentSection>
         <ContentSectionInner>
-          <Heading2><Twemoji tag="span">🏢</Twemoji>活動経歴</Heading2>
+          <SectionTitle><Twemoji tag="span">🏢</Twemoji>活動経歴</SectionTitle>
           <p>2021/02 Wantedly Webフロントエンドインターン(React)</p>
           <p>2020/08〜現在 都内企業でフロントエンド開発アルバイト(Angular, TypeScript, rxjs, storybook)</p>
           <p>2020/08 CyberAgent WebFrontendChanllenge(Vue, Netlify)</p>
@@ -34,7 +43,7 @@ export default function Home({articles}) {
       </ContentSection>
       <ContentSection style={{ background: '#F1F5F9' }}>
         <ContentSectionInner>
-          <Heading2><Twemoji tag="span">🖊️</Twemoji>最近の投稿</Heading2>
+          <SectionTitle><Twemoji tag="span">🖊️</Twemoji>最近の投稿</SectionTitle>
           <ArticleList articles={articles} />
         </ContentSectionInner>
       </ContentSection>
@@ -42,16 +51,15 @@ export default function Home({articles}) {
   )
 }
 
-export const getStaticProps = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  };
-  const data = await fetch('https://shima.microcms.io/api/v1/blog?offset=0&limit=3', key)
-    .then(res => res.json())
-    .catch(() => null);
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const data: {
+    contents: Article[],
+    totalCount: number
+  } = await getArticles({ offset: 0, limit: ARTICLES_IN_TOP})
   return {
     props: {
       articles: data.contents,
+      totalCount: data.totalCount
     },
   };
 };

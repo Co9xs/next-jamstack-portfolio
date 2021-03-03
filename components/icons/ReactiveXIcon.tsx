@@ -8,24 +8,24 @@ export const ReactiveXIcon: React.FC<Props> = (props) => {
         <svg width="60px" height="60px" viewBox="0 0 256 253" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
             <defs>
                 <linearGradient x1="11.9470805%" y1="90.149298%" x2="62.893221%" y2="37.1238547%" id="linearGradient-1">
-                    <stop stop-color="#EC0B8E" offset="0%"></stop>
-                    <stop stop-color="#EB0B8E" offset="40.06%"></stop>
-                    <stop stop-color="#A11D8B" offset="70.36%"></stop>
-                    <stop stop-color="#5C2E88" offset="100%"></stop>
+                    <stop stopColor="#EC0B8E" offset="0%"></stop>
+                    <stop stopColor="#EB0B8E" offset="40.06%"></stop>
+                    <stop stopColor="#A11D8B" offset="70.36%"></stop>
+                    <stop stopColor="#5C2E88" offset="100%"></stop>
                 </linearGradient>
                 <radialGradient cx="77.5729158%" cy="33.2452329%" fx="77.5729158%" fy="33.2452329%" r="77.2598002%" gradientTransform="translate(0.775729,0.332452),scale(0.734603,1.000000),rotate(0.136826),translate(-0.775729,-0.332452)" id="radialGradient-2">
-                    <stop stop-color="#EC0B8E" offset="0%"></stop>
-                    <stop stop-color="#E80C8E" offset="15.99%"></stop>
-                    <stop stop-color="#DB0F8D" offset="32.77%"></stop>
-                    <stop stop-color="#C6148C" offset="49.9%"></stop>
-                    <stop stop-color="#A91B8B" offset="67.29%"></stop>
-                    <stop stop-color="#83248A" offset="84.69%"></stop>
-                    <stop stop-color="#5C2E88" offset="100%"></stop>
+                    <stop stopColor="#EC0B8E" offset="0%"></stop>
+                    <stop stopColor="#E80C8E" offset="15.99%"></stop>
+                    <stop stopColor="#DB0F8D" offset="32.77%"></stop>
+                    <stop stopColor="#C6148C" offset="49.9%"></stop>
+                    <stop stopColor="#A91B8B" offset="67.29%"></stop>
+                    <stop stopColor="#83248A" offset="84.69%"></stop>
+                    <stop stopColor="#5C2E88" offset="100%"></stop>
                 </radialGradient>
                 <linearGradient x1="-0.0915649178%" y1="50.1327144%" x2="100%" y2="50.1327144%" id="linearGradient-3">
-                    <stop stop-color="#EC0B8E" offset="0%"></stop>
-                    <stop stop-color="#E10E8F" offset="36.78%"></stop>
-                    <stop stop-color="#C41693" offset="99.93%"></stop>
+                    <stop stopColor="#EC0B8E" offset="0%"></stop>
+                    <stop stopColor="#E10E8F" offset="36.78%"></stop>
+                    <stop stopColor="#C41693" offset="99.93%"></stop>
                 </linearGradient>
             </defs>
             <g>

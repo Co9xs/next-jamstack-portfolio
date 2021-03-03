@@ -2,8 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { Header } from '../common/Header'
 import { media } from '../../styles/utils/helper';
+import { DEAFULT_HEADER_HEIGHT } from '../../utils'
 
-export const BasicLayout = ({children}) => {
+type Props = {
+  children: React.ReactNode
+}
+
+export const BasicLayout: React.FC<Props> = (props) => {
+  const { children } = props;
   return (
     <BasicLayoutBase>
       <FixedHeader>
@@ -42,10 +48,8 @@ const FixedHeader = styled.div`
     padding: 0 1.5rem; 
   `}
 `
-
-// headerの高さ
 const PageContent = styled.div`
-  padding-top: 107px;
+  padding-top: ${DEAFULT_HEADER_HEIGHT}px;
   height: 100%;
   min-height: 100%;
 `

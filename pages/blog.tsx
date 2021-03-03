@@ -1,13 +1,17 @@
 import Twemoji from 'react-twemoji';
+import { GetStaticProps } from "next";
 import { Meta } from '../components/common/Meta';
 import { ArticleList } from '../components/ArticleList';
-import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
+import { Article } from '../types';
+import { getArticles } from '../lib/api';
 
 type Props = {
-  articles: Article[]
+  articles: Article[],
+  totalCount
 }
 
-export default function Blog({ articles }) {
+export default function Blog({ articles, totalCount }: Props) {
   return (
     <PageBase>
       <Meta
@@ -16,7 +20,7 @@ export default function Blog({ articles }) {
       />
       <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
         <ContentSectionInner>
-          <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</Heading2>
+          <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
           <ArticleList articles={articles}/>
         </ContentSectionInner>
       </ContentSection>
@@ -24,16 +28,16 @@ export default function Blog({ articles }) {
   )
 }
 
-export const getStaticProps = async ({ context }) => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  };
-  const data = await fetch('https://shima.microcms.io/api/v1/blog', key)
-    .then(res => res.json())
-    .catch(() => null);
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const data: {
+    contents: Article[],
+    totalCount: number
+  } = await getArticles();
+  // TODO: ページネーション実装時にoffsetとlimitを指定する
   return {
     props: {
       articles: data.contents,
+      totalCount: data.totalCount,
     },
   };
 };

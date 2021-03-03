@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 type Props = {
   href: string,
   label?: string,
-  children?: any,
+  children?: React.ReactNode,
 }
 
 export const CustomLink: React.FC<Props> = ({ href, label, children }) => { 

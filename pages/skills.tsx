@@ -1,7 +1,7 @@
 import { SkillIconList } from '../components/SkillIconList';
 import { Meta } from '../components/common/Meta';
 import { SkillIcon } from '../components/SkillIcon';
-import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
 
 export default function Skills() {
   return (
@@ -12,7 +12,7 @@ export default function Skills() {
       />
       <ContentSection style={{ background: '#E6F2FF' }} >
         <ContentSectionInner>
-          <Heading2>言語</Heading2>
+          <SectionTitle>言語</SectionTitle>
           <SkillIconList>
             <SkillIcon name={'JavaScript'}/>
             <SkillIcon name={'TypeScript'}/>
@@ -22,7 +22,7 @@ export default function Skills() {
       </ContentSection>
       <ContentSection>
         <ContentSectionInner>
-          <Heading2>フレームワーク等</Heading2>
+          <SectionTitle>フレームワーク等</SectionTitle>
           <SkillIconList>
             <SkillIcon name={'Angular'}/>
             <SkillIcon name={'ReactiveX'}/>
@@ -37,14 +37,14 @@ export default function Skills() {
       </ContentSection>
       <ContentSection style={{ background: '#F1F5F9', flexGrow: '1' }}>
         <ContentSectionInner>
-          <Heading2>ツール・その他</Heading2>
+          <SectionTitle>ツール・その他</SectionTitle>
           <SkillIconList>
             <SkillIcon name={'Slack'}/>
             <SkillIcon name={'Webpack'}/>
             <SkillIcon name={'Storybook'}/>
             <SkillIcon name={'Vercel'}/>
             <SkillIcon name={'GitHub'}/>
-            <SkillIcon name={'Gitlab'}/>
+            <SkillIcon name={'GitLab'}/>
           </SkillIconList>
         </ContentSectionInner>
       </ContentSection>

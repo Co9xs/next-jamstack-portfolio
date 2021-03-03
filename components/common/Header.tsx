@@ -1,32 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { CustomLink } from '../CustomLink'
-
-const headerLinkItems = [
-  {
-    label: 'Home',
-    href: '/'
-  },
-  {
-    label: 'Works',
-    href: '/works'
-  },
-  {
-    label: 'Skills',
-    href: '/skills'
-  },
-  {
-    label: 'Blog',
-    href: '/blog'
-  },
-]
+import { LinkItems } from '../../utils'
 
 export const Header: React.FC = () => { 
   return (
     <HeaderNav>
       <h1>Ryo Fujishima - Web Dev</h1>
       <HeaderLinkList>
-        {headerLinkItems.map(item => (
+        {LinkItems.map(item => (
           <HeaderLinkItem key={item.label}>
             <CustomLink href={item.href} label={item.label} />
           </HeaderLinkItem>

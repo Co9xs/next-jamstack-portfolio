@@ -7,7 +7,7 @@ export const PageBase = styled.div`
   flex-direction: column;
 `
 
-export const Heading2 = styled.h2`
+export const SectionTitle = styled.h2`
   margin: 1rem 0;
   span {
     text-align:center;

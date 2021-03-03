@@ -17,8 +17,12 @@ import {
   VueIcon,
   WebpackIcon
 } from './icons'
+import { skills } from '../utils'
 
-export const SkillIcon = ({name}) => { 
+type Props = typeof skills[number]
+
+export const SkillIcon: React.FC<Props> = (props) => {
+  const { name } = props;
   switch (name) {
   case 'JavaScript':
     return <JavaScriptIcon/>
@@ -44,7 +48,7 @@ export const SkillIcon = ({name}) => {
     return <SlackIcon />
   case 'GitHub':
     return <GitHubIcon />
-  case 'Gitlab':
+  case 'GitLab':
     return <GitLabIcon />
   case 'Next':
     return <NextIcon />
@@ -55,6 +59,6 @@ export const SkillIcon = ({name}) => {
   case 'Storybook':
     return <StorybookIcon />
   default:
-    console.log(`Sorry, we are out of ${name}.`);
+    return null;
 }
 } 

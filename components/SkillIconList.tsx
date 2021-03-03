@@ -1,26 +1,33 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const SkillIconList = ({ children }) => { 
+type Props = {
+  children: React.ReactNode
+};
+
+export const SkillIconList: React.FC<Props> = (props) => {
+  const { children } = props;
   return (
-    <SvgImageListBase>
-      {children.map(child => (
-        <SvgImageListItem key={child.props.name}>
+    <SkillIconListBase>
+      {React.Children.map(
+        children,
+        child => (
+        <SkillIconListItem>
           {child}
-        </SvgImageListItem>
+        </SkillIconListItem>
       ))}
-    </SvgImageListBase>
+    </SkillIconListBase>
   )
 }
 
-const SvgImageListBase = styled.div`
+const SkillIconListBase = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap; 
 `
 
-const SvgImageListItem = styled.div`
+const SkillIconListItem = styled.div`
   margin-top: .75rem;
   margin-bottom: .75rem;
   margin-right: 1.25rem;

@@ -1,5 +1,12 @@
 import styled from 'styled-components'
-export const WorksListItem = ({work}) => { 
+import { Work } from '../types';
+
+type Props = {
+  work: Work
+};
+
+export const WorksListItem: React.FC<Props> = (props) => {
+  const { work } = props;
   return (
     <WorksListItemBase>
       <WorksListItemHeader>
