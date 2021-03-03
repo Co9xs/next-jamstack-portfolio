@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header } from '../components/Header'
-import { media } from '../styles/utils/helper';
+import { Header } from '../common/Header'
+import { media } from '../../styles/utils/helper';
 
 export const BasicLayout = ({children}) => {
   return (

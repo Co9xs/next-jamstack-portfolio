@@ -1,7 +1,11 @@
 import Twemoji from 'react-twemoji';
-import { Meta } from '../components/Meta';
+import { Meta } from '../components/common/Meta';
 import { ArticleList } from '../components/ArticleList';
-import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/styled';
+import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/common';
+
+type Props = {
+  articles: Article[]
+}
 
 export default function Blog({ articles }) {
   return (

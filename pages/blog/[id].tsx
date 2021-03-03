@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Meta } from '../../components/Meta';
-import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/styled';
+import { Meta } from '../../components/common/Meta';
+import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
 import { media } from '../../styles/utils/helper';
 
 export default function BlogId({ blog }) {

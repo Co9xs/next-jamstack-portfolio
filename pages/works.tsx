@@ -1,7 +1,7 @@
 import Twemoji from 'react-twemoji';
-import { Meta } from '../components/Meta';
+import { Meta } from '../components/common/Meta';
 import { WorksList } from '../components/WorksList';
-import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/styled';
+import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/common';
 
 
 export default function Works() {

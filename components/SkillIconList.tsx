@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const SvgImageList = ({ children }) => { 
+export const SkillIconList = ({ children }) => { 
   return (
     <SvgImageListBase>
       {children.map(child => (
