@@ -1,10 +1,15 @@
 import Twemoji from 'react-twemoji';
+import { Meta } from '../components/Meta';
 import { ArticleList } from '../components/ArticleList';
 import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/styled';
 
 export default function Home({articles}) {
   return (
     <PageBase>
+      <Meta
+        title={'Home'}
+        description={'Home画面'}
+      />
       <ContentSection style={{ background: '#E6F2FF' }}>
         <ContentSectionInner>
           <Heading2><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</Heading2>

@@ -1,10 +1,15 @@
 import Twemoji from 'react-twemoji';
+import { Meta } from '../components/Meta';
 import { ArticleList } from '../components/ArticleList';
 import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/styled';
 
 export default function Blog({ articles }) {
   return (
     <PageBase>
+      <Meta
+        title={'Blog'}
+        description={'ブログ記事一覧'}
+      />
       <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
         <ContentSectionInner>
           <Heading2><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</Heading2>

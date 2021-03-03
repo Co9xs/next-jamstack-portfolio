@@ -1,4 +1,5 @@
 import { SvgImageList } from '../components/SvgIconList';
+import { Meta } from '../components/Meta';
 import { Icon } from '../components/SvgIcon';
 import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styles/utils/styled';
 
@@ -6,6 +7,10 @@ import { PageBase, ContentSection, ContentSectionInner, Heading2 } from '../styl
 export default function Skills() {
   return (
     <PageBase>
+      <Meta
+        title={'Skills'}
+        description={'現在のスキル一覧'}
+      />
       <ContentSection style={{ background: '#E6F2FF' }} >
         <ContentSectionInner>
           <Heading2>言語</Heading2>

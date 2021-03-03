@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Meta } from '../../components/Meta';
 import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/styled';
 import { media } from '../../styles/utils/helper';
 
@@ -13,6 +14,10 @@ export default function BlogId({ blog }) {
   const publishedAt = convertToDate(new Date(blog.publishedAt));
   return (
     <PageBase>
+      <Meta
+        title={blog.title}
+        description={blog.description}
+      />
       <ContentSection>
         <ContentSectionInner>
           <DetailPageHeader>
