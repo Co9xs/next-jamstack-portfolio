@@ -15,6 +15,7 @@ export type Work = {
   title: string,
   date: string,
   url: string,
+  githubUrl: string,
   languages: string[],
   description: string
 }

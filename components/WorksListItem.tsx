@@ -11,7 +11,8 @@ export const WorksListItem: React.FC<Props> = (props) => {
     <WorksListItemBase>
       <WorksListItemHeader>
         <WorksListItemTitle>{work.title}</WorksListItemTitle>
-        <WorksListItemUrl href={work.url}>{work.url}</WorksListItemUrl>
+        { work.url && <WorksListItemUrl href={work.url}>{work.url}</WorksListItemUrl>}
+        { work.githubUrl && <WorksListItemUrl href={work.githubUrl}>{work.githubUrl}</WorksListItemUrl>}
       </WorksListItemHeader>
       <WorksListItemDescription>{work.description}</WorksListItemDescription>
       <WorksListItemHeading>使用技術</WorksListItemHeading>
@@ -40,11 +41,12 @@ const WorksListItemHeader = styled.div`
 
 const WorksListItemTitle = styled.h3`
   margin: 0;
-  padding: 0;
+  padding: 5px 0;
   font-size: 22px;
 `
 
 const WorksListItemUrl = styled.a`
+  display: block;
   text-decoration: underline;
   margin: 0;
   padding: 0;
