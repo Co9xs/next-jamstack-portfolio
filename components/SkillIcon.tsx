@@ -15,7 +15,8 @@ import {
   TypeScriptIcon,
   VercelIcon,
   VueIcon,
-  WebpackIcon
+  WebpackIcon,
+  DockerIcon
 } from './icons'
 import { skills } from '../utils'
 
@@ -58,6 +59,8 @@ export const SkillIcon: React.FC<Props> = (props) => {
     return <NuxtIcon />
   case 'Storybook':
     return <StorybookIcon />
+  case 'Docker':
+    return <DockerIcon />
   default:
     return null;
 }

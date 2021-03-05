@@ -16,4 +16,5 @@ export const skills = [
   { name: "GitLab" },
   { name: "Vercel" },
   { name: "Storybook" },
+  { name: "Docker" },
 ] as const;

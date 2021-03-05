@@ -41,6 +41,7 @@ export default function Skills() {
           <SkillIconList>
             <SkillIcon name={'Slack'}/>
             <SkillIcon name={'Webpack'}/>
+            <SkillIcon name={'Docker'}/>
             <SkillIcon name={'Storybook'}/>
             <SkillIcon name={'Vercel'}/>
             <SkillIcon name={'GitHub'}/>
