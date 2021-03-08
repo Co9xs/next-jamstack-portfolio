@@ -22,7 +22,7 @@ export default function Home({articles, totalCount}: Props) {
       <ContentSection style={{ background: '#E6F2FF' }}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</SectionTitle>
-          <p>現在はWebアプリ開発を中心に学習中で、Webフロントエンドが得意領域です。</p>
+          <p>Webアプリ開発を中心に学習中で、Webフロントエンドが得意領域です。最近はアルゴリズム力に課題を感じAtCoderに挑戦中。</p>
           <p>所属：東北大学 経済学部 経済学科</p>
           <p>生年月日：2000/02/03</p>
           <p>好きな言語：JavaScript, TypeScript</p>
