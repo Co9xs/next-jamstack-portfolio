@@ -14,3 +14,13 @@ export const getArticles = async (args?: { offset: number; limit: number }) => {
     console.error(error)
   }
 };
+
+export const getArticle = async (id: string) => {
+  try {
+    return await fetch(`${BLOG_API_ENDPOINT}/${id}`, key)
+      .then((res) => res.json())
+      .catch(() => null)
+  } catch (error) {
+    console.error(error)
+  }
+};

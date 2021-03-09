@@ -1,20 +1,16 @@
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import 'highlight.js/styles/night-owl.css';
 import styled from 'styled-components';
 import { Meta } from '../../components/common/Meta';
 import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
+import { Article } from '../../types';
+import { getArticle, getArticles } from '../../lib/api';
+import { convertDateToString } from '../../utils';
 import { media } from '../../styles/utils/helper';
+import 'highlight.js/styles/night-owl.css';
 
 export default function BlogId({ blog, highlightedBody }) {
-  const convertToDate = (dt: Date) => {
-    const year = dt.getFullYear();
-    const month = ("00" + (dt.getMonth()+1)).slice(-2);
-    const date = ("00" + dt.getDate()).slice(-2);
-    const result = `${year}/${month}/${date}`
-    return result;
-  }
-  const publishedAt = convertToDate(new Date(blog.publishedAt));
+  const publishedAt = convertDateToString(new Date(blog.publishedAt));
   return (
     <PageBase>
       <Meta
@@ -40,37 +36,25 @@ export default function BlogId({ blog, highlightedBody }) {
 }
 
 export const getStaticPaths = async () => {
-  const key = {
-    headers: {'X-API-KEY': process.env.API_KEY},
-  };
-  const data = await fetch('https://shima.microcms.io/api/v1/blog', key)
-    .then(res => res.json())
-    .catch(() => null);
+  const data: {
+    contents: Article[],
+    totalCount: number
+  } = await getArticles();
   const paths = data.contents.map(content => `/blog/${content.id}`);
   return {paths, fallback: false};
 };
 
 export const getStaticProps = async context => {
-  const id = context.params.id;
-  const key = {
-    headers: {'X-API-KEY': process.env.API_KEY},
-  };
-  const data = await fetch(
-    'https://shima.microcms.io/api/v1/blog/' + id,
-    key,
-  )
-    .then(res => res.json())
-    .catch(() => null);
-  
+  const id = context.params?.id;
+  const data = await getArticle(id);
+
+  // cheerioとhighlight.jsで事前にハイライトを適用
   const $ = cheerio.load(data.body);
   $('pre code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text())
     $(elm).html(result.value)
     $(elm).addClass('hljs')
   })
-
-  console.log('hight')
-
   return {
     props: {
       blog: data,
