@@ -1,9 +1,11 @@
+import cheerio from 'cheerio';
+import hljs from 'highlight.js'
 import styled from 'styled-components';
 import { Meta } from '../../components/common/Meta';
 import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
 import { media } from '../../styles/utils/helper';
 
-export default function BlogId({ blog }) {
+export default function BlogId({ blog, highlightedBody }) {
   const convertToDate = (dt: Date) => {
     const year = dt.getFullYear();
     const month = ("00" + (dt.getMonth()+1)).slice(-2);
@@ -27,7 +29,7 @@ export default function BlogId({ blog }) {
           </DetailPageHeader>
           <DetailPageBody
             dangerouslySetInnerHTML={{
-              __html: `${blog.body}`,
+              __html: `${highlightedBody}`,
             }}
           />
         </ContentSectionInner>
@@ -58,9 +60,20 @@ export const getStaticProps = async context => {
   )
     .then(res => res.json())
     .catch(() => null);
+  
+  const $ = cheerio.load(data.body);
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
+
+  console.log('hight')
+
   return {
     props: {
       blog: data,
+      highlightedBody:$.html()
     },
   };
 };
