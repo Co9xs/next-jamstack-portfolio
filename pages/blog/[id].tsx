@@ -1,5 +1,6 @@
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
+import 'highlight.js/styles/night-owl.css';
 import styled from 'styled-components';
 import { Meta } from '../../components/common/Meta';
 import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
@@ -168,6 +169,10 @@ const DetailPageBody= styled.div`
   ol {
     list-style-type: decimal;
     list-style-position: inside;
+  }
+
+  a {
+    word-wrap:break-word;
   }
 
   ul {
