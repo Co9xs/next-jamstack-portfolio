@@ -13,7 +13,7 @@ export const Meta: React.FC<Props> = (props) => {
   const { title, description, image_src, type, children } = props;
   return (
     <Head>
-      <title>{title ? `${title} - fujishima.dev` : `fujishima.dev`}</title>
+      <title>{title ? `${title} - fujishima.dev` : `Ryo Fujishima's Portfolio`}</title>
       <meta
         name="description"
         content={description ? `${description}` : "藤嶋稜のポートフォリオサイトです"}

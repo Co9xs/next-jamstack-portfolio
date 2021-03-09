@@ -44,3 +44,6 @@ export const ContentSectionInner = styled.div`
     padding: 1.25rem 1.5rem;
   `}
 `
+
+export const PlainText = styled.p`
+`
