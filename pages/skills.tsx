@@ -35,7 +35,7 @@ export default function Skills() {
           </SkillIconList>
         </ContentSectionInner>
       </ContentSection>
-      <ContentSection style={{ background: '#F1F5F9', flexGrow: '1' }}>
+      <ContentSection style={{ background: '#F1F5F9', flexGrow: '1'}}>
         <ContentSectionInner>
           <SectionTitle>ツール・その他</SectionTitle>
           <SkillIconList>

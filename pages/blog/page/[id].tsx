@@ -21,7 +21,7 @@ export default function BlogPageId({ articles, totalCount, currentPage }: Props)
         title={'Blog'}
         description={`ブログ記事一覧 - ${currentPage}ページ目`}
       />
-      <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
+      <ContentSection style={{ background: '#F1F5F9', flexGrow: '1'}}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
           <ArticleList articles={articles} />

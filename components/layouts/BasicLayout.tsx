@@ -24,7 +24,6 @@ export const BasicLayout: React.FC<Props> = (props) => {
 
 const BasicLayoutBase = styled.div`
   height: 100%;
-  min-height: 100%;
   position: relative;
 `
 
@@ -51,5 +50,4 @@ const FixedHeader = styled.div`
 const PageContent = styled.div`
   padding-top: ${DEAFULT_HEADER_HEIGHT}px;
   height: 100%;
-  min-height: 100%;
 `

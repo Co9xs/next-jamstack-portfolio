@@ -20,7 +20,7 @@ export default function Blog({ articles, totalCount }: Props) {
         title={'Blog'}
         description={'ブログ記事一覧'}
       />
-      <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
+      <ContentSection style={{ background: '#F1F5F9', height: '100%'}}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
           <ArticleList articles={articles} />
