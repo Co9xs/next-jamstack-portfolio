@@ -10,7 +10,6 @@ type Props = {
 
 export const CustomLink: React.FC<Props> = ({ href, label, children }) => { 
   const router = useRouter()
-
   return (
     <Link href={href}>
       {label ? <a aria-current={ router.pathname === href ? 'page' : null}>{label}</a> : children}
