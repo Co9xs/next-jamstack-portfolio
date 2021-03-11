@@ -16,3 +16,4 @@ export * from "./VueIcon";
 export * from "./WebpackIcon";
 export * from "./StorybookIcon";
 export * from "./DockerIcon";
+export * from "./MoonIcon";

@@ -36,7 +36,7 @@ const FixedHeader = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  border-bottom: solid 1px #E4EDF4;
+  border-bottom: solid 1px #EFEFEF;
   ${media.desktop`
     padding: 0 2.5rem; 
   `}

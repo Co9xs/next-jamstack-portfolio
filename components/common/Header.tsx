@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { CustomLink } from '../CustomLink'
+import { ToggleSwitch } from '../ToggleSwitch'
 import { LinkItems } from '../../utils'
 
-export const Header: React.FC = () => { 
+export const Header: React.FC = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+  }
+
   return (
     <HeaderNav>
-      <h1>Ryo Fujishima - Web Dev</h1>
+      <HeaderTop>
+        <HeaderLogo>Ryo Fujishima - Web Dev</HeaderLogo>
+        <ToggleSwitch toggle={toggleDarkMode} value={darkMode}/>
+      </HeaderTop>
       <HeaderLinkList>
         {LinkItems.map(item => (
           <HeaderLinkItem key={item.label}>
@@ -26,6 +36,15 @@ const HeaderNav = styled.nav`
       color: #333;
     }
   }
+`
+
+const HeaderTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
+const HeaderLogo = styled.h1`
 `
 
 const HeaderLinkList = styled.ul`
