@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { CustomLink } from '../CustomLink'
 import { ToggleSwitch } from '../ToggleSwitch'
 import { LinkItems } from '../../utils'
+import { MoonIcon } from '../icons';
 
 export const Header: React.FC = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -15,7 +16,7 @@ export const Header: React.FC = () => {
     <HeaderNav>
       <HeaderTop>
         <HeaderLogo>Ryo Fujishima - Web Dev</HeaderLogo>
-        <ToggleSwitch toggle={toggleDarkMode} value={darkMode}/>
+        <ToggleSwitch toggle={toggleDarkMode} value={darkMode} icon={<MoonIcon/>}/>
       </HeaderTop>
       <HeaderLinkList>
         {LinkItems.map(item => (

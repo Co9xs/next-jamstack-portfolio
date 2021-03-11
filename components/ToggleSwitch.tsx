@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { MoonIcon } from './icons';
 
 type Props = {
   toggle: () => void,
-  value: boolean
+  value: boolean,
+  icon: any
 }
 
 export const ToggleSwitch: React.VFC<Props> = (props) => {
-  const { toggle, value } = props;
+  const { toggle, value, icon } = props;
   return (
-    <ToggleSwitchFrame onClick={toggle} role={'switch'} aria-checked={value} aria-label={'ダークモードへ切り替え'}>
+    <ToggleSwitchFrame onClick={toggle} role={'switch'} aria-checked={value} aria-label={'ダークモード切り替え'}>
       <ToggleSwitchButton aria-checked={value}>
-        <MoonIcon/>
+        { icon}
       </ToggleSwitchButton>
     </ToggleSwitchFrame>
   )
@@ -24,8 +24,9 @@ const ToggleSwitchFrame = styled.div`
   border-radius: 20px;
   border: 3px solid #ECECEC;
   position: relative;
-  transition: all .5s;
+  transition: all .4s;
   cursor: pointer;
+  user-select: none;
   &[aria-checked="true"] {
     background-color: #2A2A2A;
     border: 3px solid #444;
@@ -40,10 +41,12 @@ const ToggleSwitchButton = styled.div`
   justify-content: center;
   background-color: #666;
   border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
   position: absolute;
   top: -4px;
   left: -3px;
-  transition: all .5s;
+  transition: all .4s;
   box-shadow: rgb(0 0 0 / 4%) 0px 4px 4px, rgb(0 0 0 / 2%) 0px 4px 8px;
   &[aria-checked="true"] {
     margin-left: 40%;
