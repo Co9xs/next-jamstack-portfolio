@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
     <HeaderBase>
       <HeaderNav>
         <HeaderTop>
-          <HeaderLogo>Ryo Fujishima - Web Dev</HeaderLogo>
+          <HeaderLogo>Ryo Fujishima - WebDev</HeaderLogo>
           <ToggleSwitch
             toggle={value.toggleDarkMode}
             value={value.isDarkMode}
@@ -85,6 +85,7 @@ const HeaderTop = styled.div`
 `
 
 const HeaderLogo = styled.h1`
+  font-size: 23px;
 `
 
 const HeaderLinkList = styled.ul`
