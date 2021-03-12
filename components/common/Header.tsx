@@ -44,7 +44,7 @@ const HeaderBase = styled.div`
   //DarkMode
   color: ${({ theme }) => theme.white};
   background-color: ${({ theme }) => theme.black};
-  border-color: ${({ theme }) => theme.smoke};
+  border-color: ${({ theme }) => theme.woodSmoke};
 `
 
 const HeaderNav = styled.nav`
@@ -56,8 +56,6 @@ const HeaderNav = styled.nav`
     &[aria-current] {
       border-bottom: 2px solid #333;
       color: #333;
-      border-color: ${({ theme }) => theme.white};
-      color: ${({ theme }) => theme.white};
     }
   }
   ${media.desktop`
@@ -69,6 +67,15 @@ const HeaderNav = styled.nav`
   ${media.phone`
     padding: 0 1.5rem; 
   `}
+
+  //DarkMode
+  a, a:visited {
+    color: ${({ theme }) => theme.lightGray};
+    &[aria-current] {
+      border-color: ${({ theme }) => theme.yellow};
+      color: ${({ theme }) => theme.yellow};
+    }
+  }
 `
 
 const HeaderTop = styled.div`

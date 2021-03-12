@@ -53,9 +53,9 @@ const PaginationItem = styled.li`
   }
 
   //DarkMode
-  background: ${({ theme }) => theme.lightGray};
+  background: ${({ theme }) => theme.black};
   &[data-current="true"] {
-    background: ${({ theme }) => theme.woodSmoke};
+    background: ${({ theme }) => theme.yellow};
   }
 `
 
@@ -73,8 +73,8 @@ const PaginationLink = styled.a`
   }
 
   //DarkMode
-  color: ${({ theme }) => theme.black};
+  color: ${({ theme }) => theme.white};
   &[data-current="true"] {
-    color: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.black};
   }
 `

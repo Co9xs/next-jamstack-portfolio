@@ -17,7 +17,7 @@ export default function BlogId({ blog, highlightedBody }) {
         title={blog.title}
         description={blog.description}
       />
-      <ContentSection>
+      <ContentSection background={'#F1F5F9'}>
         <ContentSectionInner>
           <DetailPageHeader>
             <DetailPageDate>{ publishedAt }</DetailPageDate>
@@ -73,6 +73,9 @@ const DetailPageHeader = styled.div`
 
 const DetailPageDate = styled.span`
   color: #6B7280;
+
+  //DarkMode
+  color: ${({ theme }) => theme.lightGray};
 `
 
 const DetailPageHeading = styled.div`
@@ -103,6 +106,11 @@ const DetailPageBody= styled.div`
       padding: 8px 16px;
       font-size: 28px;
     `}
+
+    //DarkMode
+    color: ${({ theme }) => theme.white};
+    background-color: ${({ theme }) => theme.woodSmoke};
+    border-color: ${({ theme }) => theme.smoke};
   }
 
   h3 {

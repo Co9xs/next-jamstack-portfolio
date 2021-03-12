@@ -6,5 +6,6 @@ export const darkTheme = {
   white: '#FFF',
   black: '#111',
   woodSmoke: '#111',
-  smoke: '#CFCFCF'
+  smoke: '#CFCFCF',
+  yellow: '#FFD95B'
 }
