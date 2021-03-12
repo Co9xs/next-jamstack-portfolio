@@ -51,6 +51,12 @@ const PaginationItem = styled.li`
   &[data-current="true"] {
     background: #2C5DB0;
   }
+
+  //DarkMode
+  background: ${({ theme }) => theme.lightGray};
+  &[data-current="true"] {
+    background: ${({ theme }) => theme.woodSmoke};
+  }
 `
 
 const PaginationLink = styled.a`
@@ -60,11 +66,15 @@ const PaginationLink = styled.a`
   height: 100%;
   color: #2C5DB0;
   line-height: 40px;
-  :hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
   &[data-current="true"] {
     font-weight: bold;
     color: #FFFFFF;
+  }
+
+  //DarkMode
+  color: ${({ theme }) => theme.black};
+  &[data-current="true"] {
+    color: ${({ theme }) => theme.white};
   }
 `
