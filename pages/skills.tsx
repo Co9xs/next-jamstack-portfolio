@@ -10,7 +10,7 @@ export default function Skills() {
         title={'Skills'}
         description={'現在のスキル一覧'}
       />
-      <ContentSection style={{ background: '#E6F2FF' }} >
+      <ContentSection background={'#E6F2FF'} >
         <ContentSectionInner>
           <SectionTitle>言語</SectionTitle>
           <SkillIconList>
@@ -20,7 +20,7 @@ export default function Skills() {
           </SkillIconList>
         </ContentSectionInner>
       </ContentSection>
-      <ContentSection>
+      <ContentSection background={'#FFF'}>
         <ContentSectionInner>
           <SectionTitle>フレームワーク等</SectionTitle>
           <SkillIconList>
@@ -35,7 +35,7 @@ export default function Skills() {
           </SkillIconList>
         </ContentSectionInner>
       </ContentSection>
-      <ContentSection style={{ background: '#F1F5F9', flexGrow: '1'}}>
+      <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
         <ContentSectionInner>
           <SectionTitle>ツール・その他</SectionTitle>
           <SkillIconList>

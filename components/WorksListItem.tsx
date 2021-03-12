@@ -11,8 +11,8 @@ export const WorksListItem: React.FC<Props> = (props) => {
     <WorksListItemBase>
       <WorksListItemHeader>
         <WorksListItemTitle>{work.title}</WorksListItemTitle>
-        { work.url && <WorksListItemUrl href={work.url}>{work.url}</WorksListItemUrl>}
-        { work.githubUrl && <WorksListItemUrl href={work.githubUrl}>{work.githubUrl}</WorksListItemUrl>}
+        { work.url && <WorksListItemUrl href={work.url} target={'_blank'} rel={'noopener'}>{work.url}</WorksListItemUrl>}
+        { work.githubUrl && <WorksListItemUrl href={work.githubUrl} target={'_blank'} rel={'noopener'}>{work.githubUrl}</WorksListItemUrl>}
       </WorksListItemHeader>
       <WorksListItemDescription>{work.description}</WorksListItemDescription>
       <WorksListItemHeading>使用技術</WorksListItemHeading>
@@ -26,11 +26,15 @@ export const WorksListItem: React.FC<Props> = (props) => {
 }
 
 const WorksListItemBase = styled.div`
-  border: 1px solid #EFEFEF;
+  border: 2px solid #EFEFEF;
   border-radius: 5px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   background: #FFF;
+
+  // DarkMode
+  background: ${({ theme }) => theme.woodSmoke};
+  border-color: ${({ theme }) => theme.smoke};
 `
 
 const WorksListItemHeader = styled.div`
@@ -47,10 +51,8 @@ const WorksListItemTitle = styled.h3`
 
 const WorksListItemUrl = styled.a`
   display: block;
-  text-decoration: underline;
   margin: 0;
   padding: 0;
-  color: #60A5FA;
 `
 
 const WorksListItemDescription = styled.div`

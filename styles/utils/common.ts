@@ -21,13 +21,21 @@ export const SectionTitle = styled.h2`
   ${media.phone`
     font-size: 22px;
   `}
+
+  // DarkMode
+  color: ${({ theme }) => theme.white};
 `
 
 export const ContentSection = styled.section`
-  a {
-    text-decoration: underline;
-    color: #60A5FA;
-  }
+  background: ${({ background }) => background};
+
+  // DarkMode
+  color: ${({ theme }) => theme.white};
+  background: ${({ theme, background }) => {
+    if (background === '#E6F2FF') return theme.gray
+    if (background === '#FFF') return theme.black
+    if (background === '#F1F5F9') return theme.gray
+  }};
 `
 
 export const ContentSectionInner = styled.div`

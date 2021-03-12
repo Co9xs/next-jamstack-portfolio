@@ -11,7 +11,7 @@ export default function Works() {
         title={'Works'}
         description={'主な制作物'}
       />
-      <ContentSection style={{ background: '#F1F5F9' }}>
+      <ContentSection background={'#F1F5F9'}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">💻</Twemoji>主な制作物</SectionTitle>
           <WorksList works={ works }/>

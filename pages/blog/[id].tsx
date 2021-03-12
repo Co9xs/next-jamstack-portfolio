@@ -69,7 +69,7 @@ const DetailPageHeader = styled.div`
   align-items: center;
   border-bottom: solid 1px #E4EDF4;
   padding: 1rem 0;
-  `
+`
 
 const DetailPageDate = styled.span`
   color: #6B7280;

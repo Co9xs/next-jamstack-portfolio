@@ -18,7 +18,7 @@ export default function Home({articles, totalCount}: Props) {
       <Meta
         title={'Home'}
       />
-      <ContentSection style={{ background: '#E6F2FF' }}>
+      <ContentSection background={'#E6F2FF'}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</SectionTitle>
           <PlainText>Webアプリ開発を中心に学習中で、Webフロントエンドが得意領域です。<br/>最近はアルゴリズムやデータ構造の理解に課題を感じAtCoderに挑戦中。</PlainText>
@@ -26,11 +26,11 @@ export default function Home({articles, totalCount}: Props) {
           <PlainText>生年月日：2000/02/03</PlainText>
           <PlainText>好きな言語：JavaScript, TypeScript</PlainText>
           <PlainText>好きなモノ：ゲーム、猫、ガジェット、サウナ</PlainText>
-          <PlainText>Wantedly：<a href={"https://www.wantedly.com/id/ryou_fujishima_a"}>プロフィール</a></PlainText>
-          <PlainText>雑記ブログ：<a href={"https://shimablogs.com/"}>しまぶろぐ</a></PlainText>
+          <PlainText>Wantedly：<a href={"https://www.wantedly.com/id/ryou_fujishima_a"} target={'_blank'} rel={'noopener'}>プロフィール</a></PlainText>
+          <PlainText>雑記ブログ：<a href={"https://shimablogs.com/"} target={'_blank'} rel={'noopener'}>しまぶろぐ</a></PlainText>
         </ContentSectionInner>
       </ContentSection>
-      <ContentSection>
+      <ContentSection background={'#FFF'}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🏢</Twemoji>活動経歴</SectionTitle>
           <PlainText>2021/02 Wantedly Webフロントエンドインターン(React)</PlainText>
@@ -40,7 +40,7 @@ export default function Home({articles, totalCount}: Props) {
           <PlainText>2019/12 Webサイト制作の学習開始</PlainText>
         </ContentSectionInner>
       </ContentSection>
-      <ContentSection style={{ background: '#F1F5F9' }}>
+      <ContentSection background={'#F1F5F9'}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🖊️</Twemoji>最近の投稿</SectionTitle>
           <ArticleList articles={articles} />

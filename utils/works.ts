@@ -5,7 +5,7 @@ export const works = [
     url: 'https://fujishima.dev/',
     githubUrl: 'https://github.com/Co9xs/next-jamstack-portfolio',
     languages: ['Next.js', 'TypeScript', 'microCMS', 'styled-component', 'vercel'],
-    description: '現在見ているポートフォリオサイトです。microCMSを使ったJamstackなブログ機能を実装しました。'
+    description: '現在見ているポートフォリオサイトです。microCMSを使ったJamstackなブログ機能を実装しました。styled-componentsのThemeProviderを使ってダークモードを実装しました。'
   },
   {
     title: 'ITインターン.com',

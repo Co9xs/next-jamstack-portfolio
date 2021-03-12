@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
 type Props = {
-  toggle: () => void,
+  toggle: ()=>void,
   value: boolean,
-  icon: any
+  icon: any,
+  ariaLabel: string
 }
 
 export const ToggleSwitch: React.VFC<Props> = (props) => {
-  const { toggle, value, icon } = props;
+  const { toggle, value, icon, ariaLabel } = props;
   return (
-    <ToggleSwitchFrame onClick={toggle} role={'switch'} aria-checked={value} aria-label={'ダークモード切り替え'}>
+    <ToggleSwitchFrame onClick={toggle} role={'switch'} aria-checked={value} aria-label={ariaLabel}>
       <ToggleSwitchButton aria-checked={value}>
-        { icon}
+        {icon}
       </ToggleSwitchButton>
     </ToggleSwitchFrame>
   )

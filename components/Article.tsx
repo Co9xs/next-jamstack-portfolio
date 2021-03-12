@@ -23,12 +23,17 @@ export const Article = ({ article }) => {
 
 const ArticleBase = styled.article`
   padding: 0.75rem;
-  border: 1px solid #EFEFEF;
+  border: 2px solid #EFEFEF;
   border-radius: 5px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   background: #FFF;
   cursor: pointer;
+
+  //DarkMode
+  color: ${({ theme }) => theme.white};
+  background: ${({ theme }) => theme.woodSmoke};
+  border-color: ${({ theme }) => theme.smoke};
 `
 
 const ArticleHeader = styled.div`
@@ -47,4 +52,6 @@ const ArticleCategory = styled.span`
 const ArticleDate = styled.span`
   color: #6B7280;
   margin-right: 1rem;
+
+  color: ${({ theme }) => theme.smoke};
 `

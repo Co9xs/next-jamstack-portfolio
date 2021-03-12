@@ -54,6 +54,7 @@ const PaginationItem = styled.li`
 `
 
 const PaginationLink = styled.a`
+  user-select: none;
   text-decoration: none!important;
   display: block;
   height: 100%;
