@@ -33,7 +33,7 @@ const WorksListItemBase = styled.div`
   background: #FFF;
 
   // DarkMode
-  background: ${({ theme }) => theme.woodSmoke};
+  background: ${({ theme }) => theme.black};
   border-color: ${({ theme }) => theme.smoke};
 `
 

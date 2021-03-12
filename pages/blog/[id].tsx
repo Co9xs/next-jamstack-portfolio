@@ -109,7 +109,7 @@ const DetailPageBody= styled.div`
 
     //DarkMode
     color: ${({ theme }) => theme.white};
-    background-color: ${({ theme }) => theme.woodSmoke};
+    background-color: ${({ theme }) => theme.black};
     border-color: ${({ theme }) => theme.smoke};
   }
 

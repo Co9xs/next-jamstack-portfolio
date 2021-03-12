@@ -32,7 +32,7 @@ const ArticleBase = styled.article`
 
   //DarkMode
   color: ${({ theme }) => theme.white};
-  background: ${({ theme }) => theme.woodSmoke};
+  background: ${({ theme }) => theme.black};
   border-color: ${({ theme }) => theme.smoke};
 `
 

@@ -15,5 +15,10 @@ export const media = {
     @media (max-width: 568px) {
       ${ css(...args)}
     }
+  `,
+  darkMode: (...args) => css`
+    @media (prefers-color-scheme: dark) {
+      ${ css(...args)}
+    }
   `
 }

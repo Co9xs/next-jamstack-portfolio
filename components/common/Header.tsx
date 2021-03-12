@@ -48,6 +48,8 @@ const HeaderBase = styled.div`
 `
 
 const HeaderNav = styled.nav`
+  max-width: 1000px;
+  margin: auto;
   a, a:visited {
     text-decoration: none;
     color: #93A5B1;

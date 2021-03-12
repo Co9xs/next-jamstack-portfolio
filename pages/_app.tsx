@@ -11,7 +11,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)
   }
-  console.log(isDarkMode)
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle/>
