@@ -15,11 +15,13 @@ type Props = {
 }
 
 export default function BlogPageId({ articles, totalCount, currentPage }: Props) {
+  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
   return (
     <PageBase>
       <Meta
         title={'Blog'}
-        description={`ブログ記事一覧 - ${currentPage}ページ目`}
+        description={'Ryo Fujishima - Web Dev'}
+        image={encodeURI(image)}
       />
       <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
         <ContentSectionInner>

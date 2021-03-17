@@ -5,11 +5,13 @@ import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../
 import { works } from '../utils';
 
 export default function Works() {
+  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
   return (
     <PageBase>
       <Meta
         title={'Works'}
-        description={'主な制作物'}
+        description={'Ryo Fujishima - Web Dev'}
+        image={encodeURI(image)}
       />
       <ContentSection background={'#F1F5F9'}>
         <ContentSectionInner>

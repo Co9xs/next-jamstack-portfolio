@@ -4,11 +4,13 @@ import { SkillIcon } from '../components/SkillIcon';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
 
 export default function Skills() {
+  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
   return (
     <PageBase>
       <Meta
         title={'Skills'}
-        description={'現在のスキル一覧'}
+        description={'Ryo Fujishima - Web Dev'}
+        image={encodeURI(image)}
       />
       <ContentSection background={'#E6F2FF'} >
         <ContentSectionInner>

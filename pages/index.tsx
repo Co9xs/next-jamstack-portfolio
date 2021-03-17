@@ -13,10 +13,13 @@ type Props = {
 }
 
 export default function Home({articles, totalCount}: Props) {
+  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
   return (
     <PageBase>
       <Meta
         title={'Home'}
+        description={'Ryo Fujishima - Web Dev'}
+        image={encodeURI(image)}
       />
       <ContentSection background={'#E6F2FF'}>
         <ContentSectionInner>
