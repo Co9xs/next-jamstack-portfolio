@@ -5,12 +5,12 @@ type Props = {
   children?: React.ReactNode;
   title?: string;
   description?: string;
-  image_src?: string;
+  image?: string;
   type?: string;
 };
 
 export const Meta: React.FC<Props> = (props) => { 
-  const { title, description, image_src, type, children } = props;
+  const { title, description, image, type, children } = props;
   return (
     <Head>
       <title>{title ? `${title} - fujishima.dev` : `Ryo Fujishima's Portfolio`}</title>
@@ -23,8 +23,8 @@ export const Meta: React.FC<Props> = (props) => {
       <meta
         name="twitter:image"
         content={
-          image_src
-          ? image_src
+          image
+          ? image
           : "/logo.png"
         }
       />
@@ -35,8 +35,8 @@ export const Meta: React.FC<Props> = (props) => {
       <meta
         name="og:image"
         content={
-          image_src
-          ? image_src
+          image
+          ? image
           : "/logo.png"
         }
       />
