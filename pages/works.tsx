@@ -5,7 +5,7 @@ import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../
 import { works } from '../utils';
 
 export default function Works() {
-  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
+  const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
       <Meta

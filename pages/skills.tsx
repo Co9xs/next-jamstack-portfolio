@@ -4,7 +4,7 @@ import { SkillIcon } from '../components/SkillIcon';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
 
 export default function Skills() {
-  const image = "https://og-image-co9xs.vercel.app/Ryo%20Fujishima%20-%20Web%20Dev.png"
+  const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
       <Meta
