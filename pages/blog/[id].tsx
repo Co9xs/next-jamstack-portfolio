@@ -11,7 +11,7 @@ import 'highlight.js/styles/night-owl.css';
 
 export default function BlogId({ blog, highlightedBody }) {
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
-  const image = `https://og-image-psi.vercel.app/${blog.title}.png`
+  const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
   return (
     <PageBase>
       <Meta
