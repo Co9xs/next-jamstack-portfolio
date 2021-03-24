@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
-import {ServerStyleSheet} from 'styled-components';
+import { ServerStyleSheet } from 'styled-components';
 
 type Props = {};
 
