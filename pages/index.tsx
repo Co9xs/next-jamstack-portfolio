@@ -31,6 +31,7 @@ export default function Home({articles, totalCount}: Props) {
           <PlainText>好きなモノ：ゲーム、猫、ガジェット、サウナ</PlainText>
           <PlainText>Twitter：<a href={"https://twitter.com/Co9xsR"} target={'_blank'} rel={'noopener'}>しま</a></PlainText>
           <PlainText>Github：<a href={"https://github.com/Co9xs"} target={'_blank'} rel={'noopener'}>Co9xs</a></PlainText>
+          <PlainText>SpeakerDeck：<a href={"https://speakerdeck.com/co9xs"} target={'_blank'} rel={'noopener'}>発表資料一覧</a></PlainText>
           <PlainText>Wantedly：<a href={"https://www.wantedly.com/id/ryou_fujishima_a"} target={'_blank'} rel={'noopener'}>プロフィール</a></PlainText>
           <PlainText>雑記ブログ：<a href={"https://shimablogs.com/"} target={'_blank'} rel={'noopener'}>しまぶろぐ</a></PlainText>
         </ContentSectionInner>
