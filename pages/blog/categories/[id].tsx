@@ -5,7 +5,7 @@ import { Pagination } from '../../../components/Pagination';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
 import { Article, Category } from '../../../types';
 import { getArticles, getCategories, getCategory } from '../../../lib/api';
-import { ARTICLES_PER_PAGE, CATEGORIES_PER_PAGE } from '../../../utils';
+import { ARTICLES_PER_PAGE } from '../../../utils';
 import React from 'react';
 import { ArticleList } from '../../../components/ArticleList';
 

@@ -13,6 +13,6 @@ export const LinkItems = [
   },
   {
     label: 'Blog',
-    href: '/blog'
+    href: '/blog/page/1'
   },
 ]

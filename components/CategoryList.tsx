@@ -5,7 +5,7 @@ export const CategoryList = ({ categories }) => {
   return (
     <CategoryListBase>
       {categories.map(category => (
-        <CustomLink href={`/blog/categories/${category.id}`} key={ category.id }>
+        <CustomLink href={`/blog/categories/${category.id}/page/1`} key={ category.id }>
           <CategoryListItem>{ category.name }</CategoryListItem>
         </CustomLink>
       ))}
