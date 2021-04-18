@@ -55,7 +55,7 @@ const HeaderNav = styled.nav`
     color: #93A5B1;
     padding: .5rem 0;
     display: block;
-    &[aria-current] {
+    &[aria-current="true"] {
       border-bottom: 2px solid #333;
       color: #333;
     }

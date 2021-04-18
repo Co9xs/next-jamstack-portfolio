@@ -1,18 +1,23 @@
 import React from 'react'
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 
-type Props = {
-  href: string,
+type Props = React.PropsWithChildren<LinkProps> & {
   label?: string,
-  children?: React.ReactNode,
+  children?: React.ReactNode
 }
 
 export const CustomLink: React.FC<Props> = ({ href, label, children }) => { 
   const router = useRouter()
+  const handleAriaCurrent = (label: string): boolean => {
+    if (label === 'Home') {
+      return router.asPath === '/'
+    }
+    return router.asPath.slice(1).startsWith(label.toLowerCase())
+  }
   return (
     <Link href={href}>
-      {label ? <a aria-current={ router.pathname === href ? 'page' : null}>{label}</a> : children}
+      {label ? <a aria-current={handleAriaCurrent(label)}>{label}</a> : children}
     </Link>
   )
 }
