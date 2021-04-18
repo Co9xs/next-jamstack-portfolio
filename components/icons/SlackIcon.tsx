@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const SlackIcon: React.FC<Props> = (props) => { 
+export const SlackIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

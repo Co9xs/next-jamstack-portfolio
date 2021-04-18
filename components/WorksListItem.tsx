@@ -5,7 +5,7 @@ type Props = {
   work: Work
 };
 
-export const WorksListItem: React.FC<Props> = (props) => {
+export const WorksListItem: React.VFC<Props> = (props) => {
   const { work } = props;
   return (
     <WorksListItemBase>

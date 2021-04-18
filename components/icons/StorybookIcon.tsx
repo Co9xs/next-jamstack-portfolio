@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const StorybookIcon: React.FC<Props> = (props) => {
+export const StorybookIcon: React.VFC<Props> = (props) => {
     const { } = props;
     return (
         <SvgBase>

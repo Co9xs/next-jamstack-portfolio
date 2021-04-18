@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import { Article } from './Article'
 import { CustomLink } from './CustomLink'
 
-export const ArticleList = ({ articles }) => {
+type Props = {
+  articles: any[]
+}
+
+export const ArticleList: React.VFC<Props> = ({ articles }) => {
   return (
     <ArticleListBase>
       {articles.map(article => (

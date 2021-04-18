@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const JQueryIcon: React.FC<Props> = (props) => { 
+export const JQueryIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

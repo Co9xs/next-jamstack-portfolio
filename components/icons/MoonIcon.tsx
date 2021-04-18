@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const MoonIcon: React.FC<Props> = (props) => { 
+export const MoonIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

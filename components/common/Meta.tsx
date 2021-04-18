@@ -9,7 +9,7 @@ type Props = {
   type?: string;
 };
 
-export const Meta: React.FC<Props> = (props) => { 
+export const Meta: React.VFC<Props> = (props) => { 
   const { title, description, image, type, children } = props;
   return (
     <Head>

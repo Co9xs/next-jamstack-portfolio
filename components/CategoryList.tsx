@@ -1,7 +1,12 @@
 import styled from 'styled-components'
+import { Category } from '../types'
 import { CustomLink } from './CustomLink'
 
-export const CategoryList = ({ categories }) => {
+type Props = {
+  categories: Category[]
+}
+
+export const CategoryList: React.VFC<Props> = ({ categories }) => {
   return (
     <CategoryListBase>
       {categories.map(category => (

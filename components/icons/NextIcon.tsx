@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const NextIcon: React.FC<Props> = (props) => { 
+export const NextIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

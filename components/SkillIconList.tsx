@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode
 };
 
-export const SkillIconList: React.FC<Props> = (props) => {
+export const SkillIconList: React.VFC<Props> = (props) => {
   const { children } = props;
   return (
     <SkillIconListBase>

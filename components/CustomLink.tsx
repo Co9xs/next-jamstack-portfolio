@@ -7,7 +7,7 @@ type Props = React.PropsWithChildren<LinkProps> & {
   children?: React.ReactNode
 }
 
-export const CustomLink: React.FC<Props> = ({ href, label, children }) => { 
+export const CustomLink: React.VFC<Props> = ({ href, label, children }) => { 
   const router = useRouter()
   const handleAriaCurrent = (label: string): boolean => {
     if (label === 'Home') {

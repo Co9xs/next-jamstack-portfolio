@@ -2,7 +2,7 @@ import React from 'react';
 
 type Props = {};
 
-export const ReactIcon: React.FC<Props> = (props) => { 
+export const ReactIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <svg width="60px" height="60px" viewBox="0 0 256 228" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">

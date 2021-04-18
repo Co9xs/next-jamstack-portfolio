@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const VercelIcon: React.FC<Props> = (props) => { 
+export const VercelIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

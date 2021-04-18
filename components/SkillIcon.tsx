@@ -22,7 +22,7 @@ import { skills } from '../utils'
 
 type Props = typeof skills[number]
 
-export const SkillIcon: React.FC<Props> = (props) => {
+export const SkillIcon: React.VFC<Props> = (props) => {
   const { name } = props;
   switch (name) {
   case 'JavaScript':

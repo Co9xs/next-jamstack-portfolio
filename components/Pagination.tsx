@@ -9,7 +9,7 @@ type Props = {
 }
 
 // TODO: ページ数が多くなったときの省略処理を実装する
-export const Pagination: React.FC<Props> = ({ totalCount, currentPage, perPage = 5 }) => {
+export const Pagination: React.VFC<Props> = ({ totalCount, currentPage, perPage = 5 }) => {
   if (totalCount <= perPage) return null
   const maxPage = Math.ceil(totalCount / perPage)
   return (

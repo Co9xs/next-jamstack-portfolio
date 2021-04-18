@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Props = {};
 
-export const GitHubIcon: React.FC<Props> = (props) => { 
+export const GitHubIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

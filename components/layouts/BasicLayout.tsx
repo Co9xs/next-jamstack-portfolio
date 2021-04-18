@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode
 }
 
-export const BasicLayout: React.FC<Props> = (props) => {
+export const BasicLayout: React.VFC<Props> = (props) => {
   const { children } = props;
   return (
     <BasicLayoutBase>

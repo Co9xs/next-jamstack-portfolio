@@ -7,7 +7,7 @@ import { MoonIcon } from '../icons';
 import { DarkModeContext } from '../../pages/_app';
 import { media } from '../../styles/utils/helper';
 
-export const Header: React.FC = () => {
+export const Header: React.VFC = () => {
   const value: {
     toggleDarkMode: () => void,
     isDarkMode: boolean
