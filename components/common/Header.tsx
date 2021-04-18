@@ -39,7 +39,7 @@ export const Header: React.FC = () => {
 const HeaderBase = styled.div`
   width: 100%;
   background: #fff;
-  border-bottom: solid 1.5px #EFEFEF;
+  border-bottom: solid 2px #EFEFEF;
 
   //DarkMode
   color: ${({ theme }) => theme.white};
