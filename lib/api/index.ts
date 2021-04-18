@@ -37,7 +37,7 @@ export const getCategories = async (args?: { offset: number; limit: number }) =>
   }
 };
 
-export const getCategory = async (id: string) => {
+export const getCategory = async (id: any) => {
   try {
     return await fetch(`${CATEGORY_API_ENDPOINT}/${id}`, key)
       .then((res) => res.json())

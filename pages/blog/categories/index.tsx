@@ -39,7 +39,6 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     contents: Category[],
     totalCount: number
   } = await getCategories({ offset: 0, limit: CATEGORIES_PER_PAGE });
-  console.log(data)
   return {
     props: {
       categories: data.contents,
