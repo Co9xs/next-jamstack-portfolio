@@ -3,17 +3,19 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Meta } from '../../../components/common/Meta';
 import { Pagination } from '../../../components/Pagination';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
-import { Category } from '../../../types';
-import { getCategories, getCategory } from '../../../lib/api';
-import { CATEGORIES_PER_PAGE } from '../../../utils';
+import { Article, Category } from '../../../types';
+import { getArticles, getCategories, getCategory } from '../../../lib/api';
+import { ARTICLES_PER_PAGE, CATEGORIES_PER_PAGE } from '../../../utils';
 import React from 'react';
-import { CategoryList } from '../../../components/CategoryList';
+import { ArticleList } from '../../../components/ArticleList';
 
 type Props = {
   category: Category,
+  articles: Article[],
+  totalCount: number
 }
 
-export default function CategoryId({ category }: Props) {
+export default function CategoryId({ category, articles, totalCount }: Props) {
   const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
   return (
     <PageBase>
@@ -25,14 +27,14 @@ export default function CategoryId({ category }: Props) {
       <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🐱</Twemoji>{ category.name }カテゴリの記事一覧</SectionTitle>
-          <p>{ category.name }</p>
-        </ContentSectionInner>
+          <ArticleList articles={articles} />
+          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1}/>        </ContentSectionInner>
       </ContentSection>
     </PageBase>
   )
 }
 
-export const getStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths = async (context) => {
   const categories = await getCategories();
   return {
     paths: categories.contents.map(caetgory => {
@@ -43,11 +45,17 @@ export const getStaticPaths = async (context) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const id = context.params.id
+  const id: string = context.params?.id as string
   const category: Category = await getCategory(id);
+  const data: {
+    contents: Article[],
+    totalCount: number
+  } = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE }, category);
   return {
     props: {
       category,
+      articles: data.contents,
+      totalCount: data.totalCount,
     },
   };
 };
