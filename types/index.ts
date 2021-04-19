@@ -1,6 +1,7 @@
 export type Category = {
   id: string,
-  name: string
+  name: string,
+  articleCount?: number
 }
 
 export type Article = {

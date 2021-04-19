@@ -11,7 +11,7 @@ export const CategoryList: React.VFC<Props> = ({ categories }) => {
     <CategoryListBase>
       {categories.map(category => (
         <CustomLink href={`/blog/categories/${category.id}/page/1`} key={ category.id }>
-          <CategoryListItem>{ category.name }</CategoryListItem>
+          <CategoryListItem key={category.id}>{category.name}{ `(${category.articleCount}) ` }</CategoryListItem>
         </CustomLink>
       ))}
     </CategoryListBase>

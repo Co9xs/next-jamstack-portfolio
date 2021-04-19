@@ -2,8 +2,8 @@ import Twemoji from 'react-twemoji';
 import { GetStaticProps } from "next";
 import { Meta } from '../../../components/common/Meta';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
-import { Category } from '../../../types';
-import { getCategories } from '../../../lib/api';
+import { Article, Category } from '../../../types';
+import { getArticles, getCategories } from '../../../lib/api';
 import { CATEGORIES_PER_PAGE } from '../../../utils';
 import React from 'react';
 import { CategoryList } from '../../../components/CategoryList';
@@ -33,14 +33,23 @@ export default function Categories({ categories }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  console.log('カテゴリ一覧')
   const data: {
     contents: Category[],
     totalCount: number
   } = await getCategories({ offset: 0, limit: CATEGORIES_PER_PAGE });
+  const categories = await Promise.all(data.contents.map(async (category) => {
+    const data: {
+      contents: Article[],
+      totalCount: number
+    } = await getArticles({ offset: 0, limit: CATEGORIES_PER_PAGE, category })
+    return {
+      ...category,
+      articleCount: data.totalCount
+    }
+  }))
   return {
     props: {
-      categories: data.contents,
+      categories,
       totalCount: data.totalCount,
     },
   };
