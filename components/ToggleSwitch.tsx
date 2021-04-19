@@ -3,7 +3,7 @@ import styled from 'styled-components';
 type Props = {
   toggle: ()=>void,
   value: boolean,
-  icon: any,
+  icon: React.SVGProps<SVGSVGElement>,
   ariaLabel: string
 }
 

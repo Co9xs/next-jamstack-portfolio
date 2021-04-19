@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-type Props = {};
+type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const MoonIcon: React.VFC<Props> = (props) => { 
   const { } = props;
