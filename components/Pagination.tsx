@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import { range } from '../utils';
 
 type Props = {
+  pageHref: string
   totalCount: number
   currentPage: number
   perPage?: number
 }
 
 // TODO: ページ数が多くなったときの省略処理を実装する
-export const Pagination: React.VFC<Props> = ({ totalCount, currentPage, perPage = 5 }) => {
+export const Pagination: React.VFC<Props> = ({ pageHref, totalCount, currentPage, perPage = 5 }) => {
   if (totalCount <= perPage) return null
   const maxPage = Math.ceil(totalCount / perPage)
   return (
@@ -18,7 +19,7 @@ export const Pagination: React.VFC<Props> = ({ totalCount, currentPage, perPage 
         const isCurrent = currentPage === number
         return (
           <PaginationItem key={index} data-current={isCurrent}>
-            <Link href={`/blog/page/${number}`}>
+            <Link href={`${pageHref}${number}`}>
               <PaginationLink data-current={isCurrent}>
                 {number}
               </PaginationLink>

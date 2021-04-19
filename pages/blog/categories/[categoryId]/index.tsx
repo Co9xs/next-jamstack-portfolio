@@ -28,7 +28,7 @@ export default function CategoryId({ category, articles, totalCount }: Props) {
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🐱</Twemoji>{ category.name }カテゴリの記事一覧</SectionTitle>
           <ArticleList articles={articles} />
-          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1} />
+          <Pagination pageHref={`/blog/categories/${category.id}/page/`} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1} />
         </ContentSectionInner>
       </ContentSection>
     </PageBase>
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const data: {
     contents: Article[],
     totalCount: number
-  } = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE }, category);
+  } = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category });
   return {
     props: {
       category,

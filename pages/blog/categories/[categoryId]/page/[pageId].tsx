@@ -29,7 +29,7 @@ export default function CategoryPageId({ category, articles, totalCount, current
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🐱</Twemoji>{ category.name }カテゴリの記事一覧</SectionTitle>
           <ArticleList articles={articles} />
-          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
+          <Pagination pageHref={`/blog/categories/${category.id}/page/`} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
         </ContentSectionInner>
       </ContentSection>
     </PageBase>
