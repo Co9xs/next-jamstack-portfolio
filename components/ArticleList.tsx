@@ -1,9 +1,10 @@
 import styled from 'styled-components'
-import { Article } from './Article'
+import { Article } from '../types'
+import { ArticleCard } from './Article'
 import { CustomLink } from './CustomLink'
 
 type Props = {
-  articles: any[]
+  articles: Article[]
 }
 
 export const ArticleList: React.VFC<Props> = ({ articles }) => {
@@ -12,7 +13,7 @@ export const ArticleList: React.VFC<Props> = ({ articles }) => {
       {articles.map(article => (
           <CustomLink href={`/blog/${article.id}`} key={ article.id }>
             <ArticleListItem>
-              <Article article={ article }/>
+              <ArticleCard article={ article }/>
             </ArticleListItem>
           </CustomLink>
       ))}

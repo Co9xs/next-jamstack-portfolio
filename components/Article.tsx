@@ -1,10 +1,11 @@
 import styled from 'styled-components'
+import { Article } from '../types';
 
 type Props = {
-  article: any
+  article: Article
 }
 
-export const Article: React.VFC<Props> = ({ article }) => { 
+export const ArticleCard: React.VFC<Props> = ({ article }) => { 
   const convertToDate = (dt: Date) => {
     const year = dt.getFullYear();
     const month = ("00" + (dt.getMonth()+1)).slice(-2);
