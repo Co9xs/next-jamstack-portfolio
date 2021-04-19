@@ -1,13 +1,13 @@
 import Twemoji from 'react-twemoji';
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Meta } from '../../../components/common/Meta';
-import { Pagination } from '../../../components/Pagination';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
-import { Article, Category } from '../../../types';
-import { getArticles, getCategories, getCategory } from '../../../lib/api';
-import { ARTICLES_PER_PAGE } from '../../../utils';
+import { Meta } from '../../../../components/common/Meta';
+import { Pagination } from '../../../../components/Pagination';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../../styles/utils/common';
+import { Article, Category } from '../../../../types';
+import { getArticles, getCategories, getCategory } from '../../../../lib/api';
+import { ARTICLES_PER_PAGE } from '../../../../utils';
 import React from 'react';
-import { ArticleList } from '../../../components/ArticleList';
+import { ArticleList } from '../../../../components/ArticleList';
 
 type Props = {
   category: Category,
@@ -28,7 +28,8 @@ export default function CategoryId({ category, articles, totalCount }: Props) {
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🐱</Twemoji>{ category.name }カテゴリの記事一覧</SectionTitle>
           <ArticleList articles={articles} />
-          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1}/>        </ContentSectionInner>
+          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1} />
+        </ContentSectionInner>
       </ContentSection>
     </PageBase>
   )
@@ -36,16 +37,17 @@ export default function CategoryId({ category, articles, totalCount }: Props) {
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
   const categories = await getCategories();
+  const paths = categories.contents.map(content => {
+    return {params: {categoryId: content.id }}
+  })
   return {
-    paths: categories.contents.map(caetgory => {
-      return {params: {id: caetgory.id }}
-    }),
+    paths,
     fallback: false
   }
 };
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const id: string = context.params?.id as string
+  const id = context.params?.categoryId as string
   const category: Category = await getCategory(id);
   const data: {
     contents: Article[],

@@ -6,9 +6,9 @@ const key = {
   headers: { 'X-API-KEY': process.env.API_KEY },
 };
 
-export const getArticles = async (args?: { offset: number; limit: number}, category?: Category) => {
+export const getArticles = async (args?: { offset: number; limit: number, category?: Category}) => {
   const base_params = args ? `?offset=${args.offset}&limit=${args.limit}` : ""
-  const category_params = category ? `&filters=category[equals]${category.id}` : ""
+  const category_params = args?.category ? `&filters=category[equals]${args.category.id}` : ""
   const params = base_params + category_params
   try {
     return await fetch(`${BLOG_API_ENDPOINT}${params}`, key)

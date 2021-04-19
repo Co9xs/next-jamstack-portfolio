@@ -35,6 +35,7 @@ export default function Categories({ categories, totalCount }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  console.log('カテゴリ一覧')
   const data: {
     contents: Category[],
     totalCount: number
