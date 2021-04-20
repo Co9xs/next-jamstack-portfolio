@@ -1,11 +1,8 @@
 import React from 'react';
 import { GetStaticProps, NextPage } from 'next';
-import { Meta } from '@/components/common/Meta';
-import { ArticleList } from '@/components/ArticleList';
-import { Pagination } from '@/components/Pagination';
-import { CategoryMappedTwemoji } from '@/components/CategoryMappedTwemoji';
+import { Meta, ArticleList, Pagination, CategoryMappedTwemoji } from '@/components';
 import { Article, Category } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { getArticles, getCategories, getCategory } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 

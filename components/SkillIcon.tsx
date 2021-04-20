@@ -17,7 +17,7 @@ import {
   VueIcon,
   WebpackIcon,
   DockerIcon
-} from './icons'
+} from '@/components'
 import { skills } from '@/utils'
 
 type Props = typeof skills[number]

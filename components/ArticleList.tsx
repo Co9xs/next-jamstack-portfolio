@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { ArticleCard } from './Article'
-import { CustomLink } from './CustomLink'
+import { ArticleCard, CustomLink } from '@/components'
 import { Article } from '@/types'
 
 type Props = {

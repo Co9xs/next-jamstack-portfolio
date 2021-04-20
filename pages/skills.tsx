@@ -1,8 +1,6 @@
 import { NextPage } from 'next';
-import { Meta } from '@/components/common/Meta';
-import { SkillIcon } from '@/components/SkillIcon';
-import { SkillIconList } from '@/components/SkillIconList';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { Meta, SkillIcon, SkillIconList} from '@/components';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 
 type Props = {}
 

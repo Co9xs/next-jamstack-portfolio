@@ -4,11 +4,10 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import { Meta } from '@/components/common/Meta';
+import { Meta } from '@/components';
 import { Article } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner } from '@/styles/utils/common';
-import { media } from '@/styles/utils/helper';
-import { getArticle, getArticles } from '@/lib/api';
+import { PageBase, ContentSection, ContentSectionInner, media } from '@/styles';
+import { getArticle, getArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 

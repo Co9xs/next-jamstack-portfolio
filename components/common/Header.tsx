@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CustomLink } from '@/components/CustomLink'
-import { ToggleSwitch } from '@/components/ToggleSwitch'
-import { MoonIcon } from '@/components/icons';
-import { DarkModeContext } from '@/pages/_app';
-import { media } from '@/styles/utils/helper';
+import { CustomLink, ToggleSwitch, MoonIcon, } from '@/components'
+import { media } from '@/styles';
 import { LinkItems } from '@/utils'
+import { DarkModeContext } from '@/pages/_app';
 
-export const Header: React.VFC = () => {
+type Props = {}
+
+export const Header: React.VFC<Props> = () => {
   const value: {
     toggleDarkMode: () => void,
     isDarkMode: boolean

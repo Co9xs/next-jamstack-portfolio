@@ -1,10 +1,8 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components/common/Meta';
-import { ArticleList } from '@/components/ArticleList';
-import { Pagination } from '@/components/Pagination';
+import { Meta, ArticleList, Pagination } from '@/components';
 import { Article } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { getArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 

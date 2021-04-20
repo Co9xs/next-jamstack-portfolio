@@ -1,11 +1,10 @@
 import React from 'react';
 import { GetStaticProps, NextPage } from "next";
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components/common/Meta';
-import { CategoryList } from '@/components/CategoryList';
+import { Meta, CategoryList } from '@/components';
 import { Article, Category } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
-import { getArticles, getCategories } from '@/lib/api';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
+import { getArticles, getCategories } from '@/lib';
 import { CATEGORIES_PER_PAGE } from '@/utils';
 
 type Props = {

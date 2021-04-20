@@ -1,8 +1,7 @@
 import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components/common/Meta';
-import { WorksList } from '@/components/WorksList';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { Meta, WorksList } from '@/components';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { works } from '@/utils';
 
 type Props = {}

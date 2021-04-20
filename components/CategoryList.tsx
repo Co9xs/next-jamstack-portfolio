@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { CustomLink } from './CustomLink'
-import { CategoryMappedTwemoji } from './CategoryMappedTwemoji'
+import { CustomLink, CategoryMappedTwemoji } from '@/components'
 import { Category } from '@/types'
 
 type Props = {

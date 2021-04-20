@@ -1,10 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components/common/Meta';
-import { ArticleList } from '@/components/ArticleList';
+import { Meta, ArticleList } from '@/components';
 import { Article } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles/utils/common';
-import { getArticles } from '@/lib/api';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
+import { getArticles } from '@/lib';
 import { ARTICLES_IN_TOP } from '@/utils';
 
 type Props = {

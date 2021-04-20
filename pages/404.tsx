@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components/common/Meta';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles/utils/common';
+import { Meta } from '@/components';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
 
 type Props = {}
 
