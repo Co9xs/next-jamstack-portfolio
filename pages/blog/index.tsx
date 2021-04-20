@@ -1,19 +1,19 @@
+import { GetStaticProps, NextPage } from "next";
 import Twemoji from 'react-twemoji';
-import { GetStaticProps } from "next";
-import { Meta } from '../../components/common/Meta';
-import { ArticleList } from '../../components/ArticleList';
-import { Pagination } from '../../components/Pagination';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../styles/utils/common';
-import { Article } from '../../types';
-import { getArticles } from '../../lib/api';
-import { ARTICLES_PER_PAGE } from '../../utils';
+import { Meta } from '@/components/common/Meta';
+import { ArticleList } from '@/components/ArticleList';
+import { Pagination } from '@/components/Pagination';
+import { Article } from '@/types';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { getArticles } from '@/lib';
+import { ARTICLES_PER_PAGE } from '@/utils';
 
 type Props = {
   articles: Article[],
-  totalCount
+  totalCount: number
 }
 
-export default function Blog({ articles, totalCount }: Props) {
+const Blog: NextPage<Props> = ({ articles, totalCount }) => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -45,3 +45,5 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     },
   };
 };
+
+export default Blog

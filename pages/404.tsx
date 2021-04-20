@@ -1,8 +1,11 @@
+import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '../components/common/Meta';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '../styles/utils/common';
+import { Meta } from '@/components/common/Meta';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles/utils/common';
 
-export default function Page404() {
+type Props = {}
+
+const Page404: NextPage<Props> = () => {
   return (
     <PageBase>
       <Meta
@@ -18,3 +21,5 @@ export default function Page404() {
     </PageBase>
   );
 }
+
+export default Page404

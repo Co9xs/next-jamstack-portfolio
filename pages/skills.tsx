@@ -1,9 +1,12 @@
-import { SkillIconList } from '../components/SkillIconList';
-import { Meta } from '../components/common/Meta';
-import { SkillIcon } from '../components/SkillIcon';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
+import { NextPage } from 'next';
+import { Meta } from '@/components/common/Meta';
+import { SkillIcon } from '@/components/SkillIcon';
+import { SkillIconList } from '@/components/SkillIconList';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
 
-export default function Skills() {
+type Props = {}
+
+const Skills: NextPage<Props> = () => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -54,3 +57,5 @@ export default function Skills() {
     </PageBase>
   )
 }
+
+export default Skills

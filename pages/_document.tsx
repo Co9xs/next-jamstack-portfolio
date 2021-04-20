@@ -2,7 +2,6 @@ import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/do
 import { ServerStyleSheet } from 'styled-components';
 
 type Props = {};
-
 export default class MyDocument extends Document<Props> {
   static async getInitialProps(context: DocumentContext) {
     const sheet = new ServerStyleSheet();

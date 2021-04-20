@@ -1,10 +1,13 @@
+import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '../components/common/Meta';
-import { WorksList } from '../components/WorksList';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../styles/utils/common';
-import { works } from '../utils';
+import { Meta } from '@/components/common/Meta';
+import { WorksList } from '@/components/WorksList';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { works } from '@/utils';
 
-export default function Works() {
+type Props = {}
+
+const Works: NextPage<Props> = () => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -22,3 +25,5 @@ export default function Works() {
     </PageBase>
   )
 }
+
+export default Works

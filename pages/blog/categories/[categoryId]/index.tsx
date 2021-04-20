@@ -1,14 +1,13 @@
-import Twemoji from 'react-twemoji';
-import { GetStaticPaths, GetStaticProps } from "next";
-import { Meta } from '../../../../components/common/Meta';
-import { Pagination } from '../../../../components/Pagination';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../../styles/utils/common';
-import { Article, Category } from '../../../../types';
-import { getArticles, getCategories, getCategory } from '../../../../lib/api';
-import { ARTICLES_PER_PAGE } from '../../../../utils';
 import React from 'react';
-import { ArticleList } from '../../../../components/ArticleList';
-import { CategoryMappedTwemoji } from '../../../../components/CategoryMappedTwemoji';
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { Meta } from '@/components/common/Meta';
+import { ArticleList } from '@/components/ArticleList';
+import { Pagination } from '@/components/Pagination';
+import { CategoryMappedTwemoji } from '@/components/CategoryMappedTwemoji';
+import { Article, Category } from '@/types';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { getArticles, getCategories, getCategory } from '@/lib';
+import { ARTICLES_PER_PAGE } from '@/utils';
 
 type Props = {
   category: Category,
@@ -16,7 +15,7 @@ type Props = {
   totalCount: number
 }
 
-export default function CategoryId({ category, articles, totalCount }: Props) {
+const CategoryId: NextPage<Props> = ({ category, articles, totalCount }) => {
   const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
   return (
     <PageBase>
@@ -65,3 +64,5 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     },
   };
 };
+
+export default CategoryId

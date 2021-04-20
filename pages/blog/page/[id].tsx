@@ -1,12 +1,12 @@
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { GetStaticProps } from 'next';
-import { Meta } from '../../../components/common/Meta';
-import { ArticleList } from '../../../components/ArticleList';
-import { Pagination } from '../../../components/Pagination';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
-import { getArticles } from "../../../lib"
-import { Article } from '../../../types';
-import { ARTICLES_PER_PAGE, range } from '../../../utils';
+import { Meta } from '@/components/common/Meta';
+import { ArticleList } from '@/components/ArticleList';
+import { Pagination } from '@/components/Pagination';
+import { Article } from '@/types';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { getArticles } from "@/lib"
+import { ARTICLES_PER_PAGE, range } from '@/utils';
 
 type Props = {
   articles: Article[]
@@ -14,7 +14,7 @@ type Props = {
   currentPage: number
 }
 
-export default function BlogPageId({ articles, totalCount, currentPage }: Props) {
+const BlogPageId: NextPage<Props> = ({ articles, totalCount, currentPage }) => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -34,7 +34,7 @@ export default function BlogPageId({ articles, totalCount, currentPage }: Props)
   )
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getArticles()
   const paths = range(1, Math.ceil(data.totalCount / ARTICLES_PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
@@ -57,3 +57,5 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     },
   }
 }
+
+export default BlogPageId

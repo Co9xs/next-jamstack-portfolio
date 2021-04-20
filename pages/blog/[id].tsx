@@ -1,18 +1,23 @@
+import React from 'react';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
+import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import styled from 'styled-components';
-import Link from 'next/link';
-import { Meta } from '../../components/common/Meta';
-import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
-import { Article } from '../../types';
-import { getArticle, getArticles } from '../../lib/api';
-import { convertDateToString } from '../../utils';
-import { media } from '../../styles/utils/helper';
+import { Meta } from '@/components/common/Meta';
+import { Article } from '@/types';
+import { PageBase, ContentSection, ContentSectionInner } from '@/styles/utils/common';
+import { media } from '@/styles/utils/helper';
+import { getArticle, getArticles } from '@/lib/api';
+import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
-import React from 'react';
-import { CategoryMappedTwemoji } from '../../components/CategoryMappedTwemoji';
 
-export default function BlogId({ blog, highlightedBody }) {
+type Props = {
+  blog: Article,
+  highlightedBody: string
+}
+
+const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
   const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
   return (
@@ -44,7 +49,7 @@ export default function BlogId({ blog, highlightedBody }) {
   );
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const data: {
     contents: Article[],
     totalCount: number
@@ -53,8 +58,8 @@ export const getStaticPaths = async () => {
   return {paths, fallback: false};
 };
 
-export const getStaticProps = async context => {
-  const id = context.params?.id;
+export const getStaticProps: GetStaticProps<Props> = async context => {
+  const id = context.params?.id as string;
   const data = await getArticle(id);
 
   // cheerioとhighlight.jsで事前にハイライトを適用
@@ -71,6 +76,8 @@ export const getStaticProps = async context => {
     },
   };
 };
+
+export default BlogId
 
 const DetailPageHeader = styled.div`
   display: flex;

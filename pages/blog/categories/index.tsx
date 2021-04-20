@@ -1,19 +1,19 @@
-import Twemoji from 'react-twemoji';
-import { GetStaticProps } from "next";
-import { Meta } from '../../../components/common/Meta';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '../../../styles/utils/common';
-import { Article, Category } from '../../../types';
-import { getArticles, getCategories } from '../../../lib/api';
-import { CATEGORIES_PER_PAGE } from '../../../utils';
 import React from 'react';
-import { CategoryList } from '../../../components/CategoryList';
+import { GetStaticProps, NextPage } from "next";
+import Twemoji from 'react-twemoji';
+import { Meta } from '@/components/common/Meta';
+import { CategoryList } from '@/components/CategoryList';
+import { Article, Category } from '@/types';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles/utils/common';
+import { getArticles, getCategories } from '@/lib/api';
+import { CATEGORIES_PER_PAGE } from '@/utils';
 
 type Props = {
   categories: Category[],
   totalCount: number
 }
 
-export default function Categories({ categories }: Props) {
+const Categories: NextPage<Props> = ({ categories, totalCount }) => {
   const image = "https://og-image-co9xs.vercel.app/カテゴリ一覧.png"
   return (
     <PageBase>
@@ -54,3 +54,5 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     },
   };
 };
+
+export default Categories
