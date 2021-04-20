@@ -18,7 +18,7 @@ export default function Categories({ categories }: Props) {
   return (
     <PageBase>
       <Meta
-        title={'Categories'}
+        title={'カテゴリ一覧'}
         description={'カテゴリ一覧'}
         image={encodeURI(image)}
       />

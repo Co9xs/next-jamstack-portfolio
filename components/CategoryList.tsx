@@ -11,7 +11,10 @@ export const CategoryList: React.VFC<Props> = ({ categories }) => {
     <CategoryListBase>
       {categories.map(category => (
         <CustomLink href={`/blog/categories/${category.id}/page/1`} key={ category.id }>
-          <CategoryListItem key={category.id}>{category.name}{ `(${category.articleCount}) ` }</CategoryListItem>
+          <CategoryListItem key={category.id}>
+            #{category.name}
+            {`(${category.articleCount}記事) `}
+          </CategoryListItem>
         </CustomLink>
       ))}
     </CategoryListBase>
@@ -23,5 +26,8 @@ const CategoryListBase = styled.ul`
   padding: 0;
 `
 const CategoryListItem = styled.li`
+  list-style: none;
   margin-bottom: .5rem;
+  color: #60A5FA;
+  cursor: pointer;
 `

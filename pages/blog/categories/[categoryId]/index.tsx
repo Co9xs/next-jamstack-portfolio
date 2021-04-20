@@ -20,7 +20,7 @@ export default function CategoryId({ category, articles, totalCount }: Props) {
   return (
     <PageBase>
       <Meta
-        title={'Category'}
+        title={`${category.name}カテゴリの記事一覧`}
         description={`${category.name}カテゴリの記事一覧`}
         image={encodeURI(image)}
       />

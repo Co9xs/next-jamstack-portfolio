@@ -21,7 +21,7 @@ export default function CategoryPageId({ category, articles, totalCount, current
   return (
     <PageBase>
       <Meta
-        title={'Category'}
+        title={`${category.name}カテゴリの記事一覧`}
         description={`${category.name}カテゴリの記事一覧`}
         image={encodeURI(image)}
       />
