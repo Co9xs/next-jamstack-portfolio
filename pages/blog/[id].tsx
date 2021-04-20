@@ -1,6 +1,7 @@
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
 import styled from 'styled-components';
+import Link from 'next/link';
 import { Meta } from '../../components/common/Meta';
 import { PageBase, ContentSection, ContentSectionInner } from '../../styles/utils/common';
 import { Article } from '../../types';
@@ -24,7 +25,11 @@ export default function BlogId({ blog, highlightedBody }) {
           <DetailPageHeader>
             <DetailPageDate>{ publishedAt }</DetailPageDate>
             <DetailPageHeading>{blog.title}</DetailPageHeading>
-            <DetailPageCategory>{blog.category && `#${blog.category.name}`}</DetailPageCategory>
+            {blog.category &&
+              <Link href={`/blog/categories/${blog.category.id}/page/1`}>
+                <DetailPageCategory>{ `#${blog.category.name}`}</DetailPageCategory>
+              </Link>
+            }
           </DetailPageHeader>
           <DetailPageBody
             dangerouslySetInnerHTML={{
@@ -86,8 +91,9 @@ const DetailPageHeading = styled.div`
   margin: .5rem 0;
 `
 
-const DetailPageCategory = styled.div`
+const DetailPageCategory = styled.a`
   color: #60A5FA;
+  cursor: pointer;
 `
 
 const DetailPageBody= styled.div`

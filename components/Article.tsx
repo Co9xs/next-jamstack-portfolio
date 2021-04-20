@@ -21,7 +21,8 @@ export const ArticleCard: React.VFC<Props> = ({ article }) => {
       </ArticleHeader>
       <ArticleFooter>
         <ArticleDate>{ publishedAt }</ArticleDate>
-        {article.category && <ArticleCategory>#{ article.category.name }</ArticleCategory>}
+        {article.category && 
+        <ArticleCategory>#{ article.category.name }</ArticleCategory>}
       </ArticleFooter>
     </ArticleBase>
   )
