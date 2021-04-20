@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Category } from '../types'
-import { CategoryMappedTwemoji } from './CategoryMappedTwemoji'
 import { CustomLink } from './CustomLink'
+import { CategoryMappedTwemoji } from './CategoryMappedTwemoji'
+import { Category } from '@/types'
 
 type Props = {
   categories: Category[]

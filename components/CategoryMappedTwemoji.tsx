@@ -1,6 +1,6 @@
 import Twemoji from 'react-twemoji';
 import styled from 'styled-components';
-import { Category } from '../types';
+import { Category } from '@/types';
 
 type Props = {
   category: Category

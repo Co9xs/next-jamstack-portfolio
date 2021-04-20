@@ -1,4 +1,6 @@
-export const works = [
+import { Work } from "@/types";
+
+export const works: Work[] = [
   {
     title: 'Next Portfolio',
     date: '2021/3',

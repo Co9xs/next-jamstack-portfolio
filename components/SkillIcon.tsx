@@ -18,7 +18,7 @@ import {
   WebpackIcon,
   DockerIcon
 } from './icons'
-import { skills } from '../utils'
+import { skills } from '@/utils'
 
 type Props = typeof skills[number]
 

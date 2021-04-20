@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { Article } from '../types'
 import { ArticleCard } from './Article'
 import { CustomLink } from './CustomLink'
+import { Article } from '@/types'
 
 type Props = {
   articles: Article[]

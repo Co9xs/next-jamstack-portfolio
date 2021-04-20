@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Work } from '../types'
 import { WorksListItem } from './WorksListItem'
+import { Work } from '@/types'
 
 type Props = {
   works: Work[]

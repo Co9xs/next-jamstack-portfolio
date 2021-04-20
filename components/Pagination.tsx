@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { range } from '../utils';
+import { range } from '@/utils';
 
 type Props = {
   pageHref: string

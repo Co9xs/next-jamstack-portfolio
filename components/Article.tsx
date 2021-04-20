@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Article } from '../types';
+import { Article } from '@/types';
 
 type Props = {
   article: Article

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Header } from '../common/Header'
-import { DEAFULT_HEADER_HEIGHT } from '../../utils'
+import { Header } from '@/components/common/Header'
+import { DEAFULT_HEADER_HEIGHT } from '@/utils'
 
 type Props = {
   children: React.ReactNode

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CustomLink } from '../CustomLink'
-import { ToggleSwitch } from '../ToggleSwitch'
-import { LinkItems } from '../../utils'
-import { MoonIcon } from '../icons';
-import { DarkModeContext } from '../../pages/_app';
-import { media } from '../../styles/utils/helper';
+import { CustomLink } from '@/components/CustomLink'
+import { ToggleSwitch } from '@/components/ToggleSwitch'
+import { MoonIcon } from '@/components/icons';
+import { DarkModeContext } from '@/pages/_app';
+import { media } from '@/styles/utils/helper';
+import { LinkItems } from '@/utils'
 
 export const Header: React.VFC = () => {
   const value: {

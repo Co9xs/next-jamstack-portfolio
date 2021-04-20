@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Work } from '../types';
+import { Work } from '@/types';
 
 type Props = {
   work: Work

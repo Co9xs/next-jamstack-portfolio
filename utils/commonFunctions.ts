@@ -5,8 +5,8 @@ export const convertDateToString = (dt: Date): string => {
   return `${year}/${month}/${date}`;
 }
 
-export const range = (start: number, end: number) => {
+export const range = (start: number, end: number): number[] => {
   return [...Array(end - start+1)].map((_, i) => start + i)
 }
 
-// range(0, 4) -> [0,1,2,3,4]
+// ex. range(0, 4) -> [0,1,2,3,4]
