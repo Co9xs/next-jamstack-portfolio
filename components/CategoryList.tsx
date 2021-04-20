@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Category } from '../types'
+import { CategoryMappedTwemoji } from './CategoryMappedTwemoji'
 import { CustomLink } from './CustomLink'
 
 type Props = {
@@ -12,6 +13,7 @@ export const CategoryList: React.VFC<Props> = ({ categories }) => {
       {categories.map(category => (
         <CustomLink href={`/blog/categories/${category.id}/page/1`} key={ category.id }>
           <CategoryListItem key={category.id}>
+            <CategoryMappedTwemoji category={category}/>
             #{category.name}
             {`(${category.articleCount}記事) `}
           </CategoryListItem>

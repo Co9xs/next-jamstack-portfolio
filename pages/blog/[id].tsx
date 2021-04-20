@@ -9,6 +9,8 @@ import { getArticle, getArticles } from '../../lib/api';
 import { convertDateToString } from '../../utils';
 import { media } from '../../styles/utils/helper';
 import 'highlight.js/styles/night-owl.css';
+import React from 'react';
+import { CategoryMappedTwemoji } from '../../components/CategoryMappedTwemoji';
 
 export default function BlogId({ blog, highlightedBody }) {
   const publishedAt = convertDateToString(new Date(blog.publishedAt));

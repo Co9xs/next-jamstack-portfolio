@@ -8,6 +8,7 @@ import { getArticles, getCategories, getCategory } from '../../../../lib/api';
 import { ARTICLES_PER_PAGE } from '../../../../utils';
 import React from 'react';
 import { ArticleList } from '../../../../components/ArticleList';
+import { CategoryMappedTwemoji } from '../../../../components/CategoryMappedTwemoji';
 
 type Props = {
   category: Category,
@@ -26,7 +27,10 @@ export default function CategoryId({ category, articles, totalCount }: Props) {
       />
       <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
         <ContentSectionInner>
-          <SectionTitle><Twemoji tag="span">🐱</Twemoji>{ category.name }カテゴリの記事一覧</SectionTitle>
+          <SectionTitle>
+            <CategoryMappedTwemoji category={category} />
+            {category.name}カテゴリの記事一覧
+          </SectionTitle>
           <ArticleList articles={articles} />
           <Pagination pageHref={`/blog/categories/${category.id}/page/`} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1} />
         </ContentSectionInner>
