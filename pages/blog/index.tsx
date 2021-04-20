@@ -26,7 +26,7 @@ export default function Blog({ articles, totalCount }: Props) {
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
           <ArticleList articles={articles} />
-          <Pagination totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1}/>
+          <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={1}/>
         </ContentSectionInner>
       </ContentSection>
     </PageBase>
