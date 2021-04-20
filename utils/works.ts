@@ -28,7 +28,7 @@ export const works: Work[] = [
   {
     title: 'Todoist Clone',
     date: '2020/3',
-    url: 'http://task-management-spa.com/',
+    url: '(公開停止中)',
     githubUrl: 'https://github.com/Co9xs/laravel-vue-spa',
     languages: ['Vue', 'Vuex', 'vue-router', 'Laravel', 'MySQL', 'AWS EC2', 'Docker'],
     description: 'Todoistというタスク管理アプリのクローンです。インタラクティブなUIを構築する部分に力を入れました。テストログイン機能があります。※スマホ未対応'
