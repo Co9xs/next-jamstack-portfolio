@@ -1,6 +1,6 @@
 import React from 'react';
 
-type Props = {};
+type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const WebpackIcon: React.VFC<Props> = (props) => { 
   const { } = props;
