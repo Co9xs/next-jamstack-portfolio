@@ -4,6 +4,11 @@ export type Category = {
   articleCount?: number
 }
 
+export type CategoryData = {
+  contents: Category[],
+  totalCount: number
+}
+
 export type Article = {
   id: string,
   title: string,
@@ -11,6 +16,11 @@ export type Article = {
   description: string,
   publishedAt: string,
   category: Category | null
+}
+
+export type ArticleData = {
+  contents: Article[],
+  totalCount: number
 }
 
 export type Work = {

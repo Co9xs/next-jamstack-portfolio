@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta, ArticleList, Pagination } from '@/components';
 import { Article } from '@/types';
@@ -12,7 +12,12 @@ type Props = {
   currentPage: number
 }
 
-const BlogPageId: NextPage<Props> = ({ articles, totalCount, currentPage }) => {
+type Params = {
+  id: string
+}
+
+const BlogPageId: NextPage<Props> = (props: Props) => {
+  const { articles, totalCount, currentPage } = props;
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -32,7 +37,7 @@ const BlogPageId: NextPage<Props> = ({ articles, totalCount, currentPage }) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const data = await getArticles()
   const paths = range(1, Math.ceil(data.totalCount / ARTICLES_PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
@@ -40,13 +45,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false }
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const id = context.params?.id as string;
+export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
+  const { id } = context.params;
   const offset = (Number(id) - 1) * ARTICLES_PER_PAGE;
-  const data: {
-    contents: Article[]
-    totalCount: number
-  } = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
+  const data = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
   return {
     props: {
       articles: data.contents,

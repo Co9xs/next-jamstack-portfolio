@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Link from 'next/link';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
@@ -16,7 +16,12 @@ type Props = {
   highlightedBody: string
 }
 
-const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
+type Params = {
+  id: string
+}
+
+const BlogId: NextPage<Props> = (props: Props) => {
+  const { blog, highlightedBody } = props;
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
   const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
   return (
@@ -48,17 +53,14 @@ const BlogId: NextPage<Props> = ({ blog, highlightedBody }) => {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const data: {
-    contents: Article[],
-    totalCount: number
-  } = await getArticles();
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const data = await getArticles();
   const paths = data.contents.map(content => `/blog/${content.id}`);
   return {paths, fallback: false};
 };
 
-export const getStaticProps: GetStaticProps<Props> = async context => {
-  const id = context.params?.id as string;
+export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
+  const { id } = context.params
   const data = await getArticle(id);
 
   // cheerioとhighlight.jsで事前にハイライトを適用

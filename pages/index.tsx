@@ -11,7 +11,8 @@ type Props = {
   totalCount: number
 }
 
-const Home: NextPage<Props> = ({articles, totalCount}) => {
+const Home: NextPage<Props> = (props: Props) => {
+  const { articles } = props
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -23,7 +24,10 @@ const Home: NextPage<Props> = ({articles, totalCount}) => {
       <ContentSection background={'#E6F2FF'}>
         <ContentSectionInner>
           <SectionTitle><Twemoji tag="span">🙋‍♂️</Twemoji>プロフィール</SectionTitle>
-          <PlainText>Webアプリ開発を中心に学習中で、フロントエンドが得意領域です。<br/>最近はアルゴリズムやデータ構造の理解に課題を感じAtCoderに挑戦中。</PlainText>
+          <PlainText>
+            Webアプリ開発を中心に学習中で、フロントエンドが得意領域です。<br />
+            最近はアルゴリズムやデータ構造の理解に課題を感じAtCoderに挑戦中。
+          </PlainText>
           <PlainText>所属：東北大学 経済学部 経済学科 4年</PlainText>
           <PlainText>生年月日：2000/02/03</PlainText>
           <PlainText>好きな言語：JavaScript, TypeScript, etc</PlainText>
@@ -56,11 +60,8 @@ const Home: NextPage<Props> = ({articles, totalCount}) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const data: {
-    contents: Article[],
-    totalCount: number
-  } = await getArticles({ offset: 0, limit: ARTICLES_IN_TOP})
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await getArticles({ offset: 0, limit: ARTICLES_IN_TOP})
   return {
     props: {
       articles: data.contents,

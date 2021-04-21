@@ -1,17 +1,23 @@
-import { Category } from "../../types";
-import { BLOG_API_ENDPOINT } from "../../utils"
-import { CATEGORY_API_ENDPOINT } from "../../utils"
+import { Article, ArticleData, Category, CategoryData } from "@/types";
+import { BLOG_API_ENDPOINT, CATEGORY_API_ENDPOINT, KEY } from "@/utils"
 
-const key = {
-  headers: { 'X-API-KEY': process.env.API_KEY },
-};
+type ArticleArgType = {
+  offset: number
+  limit: number
+  category?: Category
+}
 
-export const getArticles = async (args?: { offset: number; limit: number, category?: Category}) => {
+type CategoryArgType = {
+  offset: number
+  limit: number
+}
+
+export const getArticles = async (args?: ArticleArgType): Promise<ArticleData> => {
   const base_params = args ? `?offset=${args.offset}&limit=${args.limit}` : ""
   const category_params = args?.category ? `&filters=category[equals]${args.category.id}` : ""
   const params = base_params + category_params
   try {
-    return await fetch(`${BLOG_API_ENDPOINT}${params}`, key)
+    return await fetch(`${BLOG_API_ENDPOINT}${params}`, KEY)
       .then((res) => res.json())
       .catch(() => null)
   } catch (error) {
@@ -19,9 +25,9 @@ export const getArticles = async (args?: { offset: number; limit: number, catego
   }
 };
 
-export const getArticle = async (id: string) => {
+export const getArticle = async (id: string): Promise<Article> => {
   try {
-    return await fetch(`${BLOG_API_ENDPOINT}/${id}`, key)
+    return await fetch(`${BLOG_API_ENDPOINT}/${id}`, KEY)
       .then((res) => res.json())
       .catch(() => null)
   } catch (error) {
@@ -29,10 +35,10 @@ export const getArticle = async (id: string) => {
   }
 };
 
-export const getCategories = async (args?: { offset: number; limit: number }) => {
+export const getCategories = async (args?: CategoryArgType): Promise<CategoryData> => {
   const params = args ? `?offset=${args.offset}&limit=${args.limit}` : ""
   try {
-    return await fetch(`${CATEGORY_API_ENDPOINT}${params}`, key)
+    return await fetch(`${CATEGORY_API_ENDPOINT}${params}`, KEY)
       .then((res) => res.json())
       .catch(() => null)
   } catch (error) {
@@ -40,9 +46,9 @@ export const getCategories = async (args?: { offset: number; limit: number }) =>
   }
 };
 
-export const getCategory = async (id: string) => {
+export const getCategory = async (id: string): Promise<Category> => {
   try {
-    return await fetch(`${CATEGORY_API_ENDPOINT}/${id}`, key)
+    return await fetch(`${CATEGORY_API_ENDPOINT}/${id}`, KEY)
       .then((res) => res.json())
       .catch(() => null)
   } catch (error) {

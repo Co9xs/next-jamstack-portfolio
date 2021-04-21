@@ -11,7 +11,8 @@ type Props = {
   totalCount: number
 }
 
-const Blog: NextPage<Props> = ({ articles, totalCount }) => {
+const Blog: NextPage<Props> = (props: Props) => {
+  const { articles, totalCount } = props
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <PageBase>
@@ -31,11 +32,8 @@ const Blog: NextPage<Props> = ({ articles, totalCount }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const data: {
-    contents: Article[],
-    totalCount: number
-  } = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE});
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE});
   return {
     props: {
       articles: data.contents,

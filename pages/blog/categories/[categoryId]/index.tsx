@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from "next";
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
@@ -12,7 +12,12 @@ type Props = {
   totalCount: number
 }
 
-const CategoryId: NextPage<Props> = ({ category, articles, totalCount }) => {
+type Params = {
+  categoryId: string
+}
+
+const CategoryId: NextPage<Props> = (props: Props) => {
+  const { category, articles, totalCount } = props
   const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
   return (
     <PageBase>
@@ -35,10 +40,10 @@ const CategoryId: NextPage<Props> = ({ category, articles, totalCount }) => {
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async (context) => {
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const categories = await getCategories();
-  const paths = categories.contents.map(content => {
-    return {params: {categoryId: content.id }}
+  const paths = categories.contents.map(category => {
+    return {params: {categoryId: category.id }}
   })
   return {
     paths,
@@ -46,9 +51,9 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   }
 };
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const id = context.params?.categoryId as string
-  const category: Category = await getCategory(id);
+export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
+  const { categoryId } = context.params
+  const category: Category = await getCategory(categoryId);
   const data: {
     contents: Article[],
     totalCount: number

@@ -12,7 +12,8 @@ type Props = {
   totalCount: number
 }
 
-const Categories: NextPage<Props> = ({ categories, totalCount }) => {
+const Categories: NextPage<Props> = (props: Props) => {
+  const { categories } = props;
   const image = "https://og-image-co9xs.vercel.app/カテゴリ一覧.png"
   return (
     <PageBase>
@@ -31,11 +32,8 @@ const Categories: NextPage<Props> = ({ categories, totalCount }) => {
   )
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const data: {
-    contents: Category[],
-    totalCount: number
-  } = await getCategories({ offset: 0, limit: CATEGORIES_PER_PAGE });
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const data = await getCategories({ offset: 0, limit: CATEGORIES_PER_PAGE });
   const categories = await Promise.all(data.contents.map(async (category) => {
     const data: {
       contents: Article[],

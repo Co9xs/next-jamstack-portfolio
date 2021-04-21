@@ -1,5 +1,5 @@
 import React from 'react';
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
@@ -7,13 +7,19 @@ import { getArticles, getCategories, getCategory } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 
 type Props = {
-  category: Category,
+  category: Category
   articles: Article[]
   totalCount: number
   currentPage: number
 }
 
-const CategoryPageId: NextPage<Props> = ({ category, articles, totalCount, currentPage }) => {
+type Params = {
+  categoryId: string
+  pageId: string
+}
+
+const CategoryPageId: NextPage<Props> = (props: Props) => {
+  const { category, articles, totalCount, currentPage } = props
   const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
   return (
     <PageBase>
@@ -36,18 +42,15 @@ const CategoryPageId: NextPage<Props> = ({ category, articles, totalCount, curre
   )
 }
 
-export const getStaticPaths = async (context) => {
-  const data: {
-    contents: Category[],
-    totalCount: number
-  } = await getCategories()
+export const getStaticPaths: GetStaticPaths<Params> = async () => {
+  const data = await getCategories()
   const categories = data.contents;
-  const paths = [];
+  const paths: (string | {
+    params: Params,
+    locale?: string
+  })[] = [];
   await Promise.all(categories.map(async (category) => {
-    const data: {
-      contents: Article[],
-      totalCount: number
-    } = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category })
+    const data = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category })
     range(1, Math.ceil(data.totalCount / ARTICLES_PER_PAGE)).forEach(repo =>
       paths.push({
         params: {
@@ -60,15 +63,11 @@ export const getStaticPaths = async (context) => {
   return { paths, fallback: false }
 }
 
-export const getStaticProps: GetStaticProps<Props> = async (context) => {
-  const categoryId = context.params?.categoryId as string;
-  const pageId = context.params?.pageId as string;
+export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
+  const { categoryId, pageId }= context.params
   const category = await getCategory(categoryId)
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
-  const data: {
-    contents: Article[]
-    totalCount: number
-  } = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category})
+  const data = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category})
   return {
     props: {
       category,
