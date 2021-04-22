@@ -38,26 +38,23 @@ export const Header: React.VFC<Props> = () => {
 
 const HeaderBase = styled.div`
   width: 100%;
-  background: #fff;
-  border-bottom: solid 2px #EFEFEF;
-
-  //DarkMode
-  color: ${({ theme }) => theme.white};
-  background-color: ${({ theme }) => theme.black};
-  border-color: ${({ theme }) => theme.woodSmoke};
+  border-bottom: solid 2px;
+  color: ${({ theme }) => theme.font.main};
+  background-color: ${({ theme }) => theme.background.main};
+  border-color: ${({ theme }) => theme.border.sub};
 `
-
 const HeaderNav = styled.nav`
   max-width: 1000px;
   margin: auto;
   a, a:visited {
     text-decoration: none;
-    color: #93A5B1;
+    color: ${({ theme }) => theme.font.sub};
     padding: .5rem 0;
     display: block;
     &[aria-current="true"] {
-      border-bottom: 2px solid #333;
-      color: #333;
+      border-bottom: 2px solid;
+      border-color: ${({ theme }) => theme.border.accent};
+      color: ${({ theme }) => theme.font.accent};
     }
   }
   ${media.desktop`
@@ -69,15 +66,6 @@ const HeaderNav = styled.nav`
   ${media.phone`
     padding: 0 1.5rem; 
   `}
-
-  //DarkMode
-  a, a:visited {
-    color: ${({ theme }) => theme.lightGray};
-    &[aria-current] {
-      border-color: ${({ theme }) => theme.yellow};
-      color: ${({ theme }) => theme.yellow};
-    }
-  }
 `
 
 const HeaderTop = styled.div`
@@ -85,20 +73,16 @@ const HeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-
 const HeaderLogo = styled.h1`
   font-size: 23px;
 `
-
 const HeaderLinkList = styled.ul`
   padding: 0;
   margin: 0; 
   display: flex;
   justify-content: flex-start;
 `
-
 const HeaderLinkItem = styled.li`
-  color: #93A5B1;
   font-weight: 600;
   font-size: 18px;
   list-style: none;

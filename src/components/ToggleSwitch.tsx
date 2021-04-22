@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 type ButtonProps = JSX.IntrinsicElements['button']
 type Props = ButtonProps & {
   isOn: boolean,
@@ -10,7 +9,7 @@ type Props = ButtonProps & {
 export const ToggleSwitch: React.VFC<Props> = (props) => {
   const { isOn, icon, ...buttonProps } = props;
   return (
-    <ToggleSwitchFrame aria-checked={isOn} {...buttonProps}>
+    <ToggleSwitchFrame {...buttonProps}>
       <ToggleSwitchButton aria-checked={isOn}>
         {icon}
       </ToggleSwitchButton>
@@ -21,19 +20,16 @@ export const ToggleSwitch: React.VFC<Props> = (props) => {
 const ToggleSwitchFrame = styled.button`
   width: 54px;
   height: 32px;
-  background-color: #FFF;
   border-radius: 20px;
-  border: 3px solid #ECECEC;
+  border: 3px solid;
+  border-color: ${({ theme }) => theme.border.sub};
+  background-color: ${({ theme }) => theme.background.sub};
   position: relative;
   transition: all .4s;
   cursor: pointer;
   user-select: none;
   &:focus {
     outline: none;
-  }
-  &[aria-checked="true"] {
-    background-color: #2A2A2A;
-    border: 3px solid #444;
   }
 `
 
@@ -54,7 +50,6 @@ const ToggleSwitchButton = styled.div`
   box-shadow: rgb(0 0 0 / 4%) 0px 4px 4px, rgb(0 0 0 / 2%) 0px 4px 8px;
   &[aria-checked="true"] {
     margin-left: 40%;
-    background-color: #444;
     box-shadow: rgb(255 255 255 / 6%) 0px 4px 4px, rgb(255 255 255 / 4%) 0px 4px 8px;
   }
 `
