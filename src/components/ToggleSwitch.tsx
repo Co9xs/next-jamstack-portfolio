@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
-type Props = {
-  toggle: ()=>void,
-  value: boolean,
+
+type ButtonProps = JSX.IntrinsicElements['button']
+type Props = ButtonProps & {
+  isOn: boolean,
   icon: React.SVGProps<SVGSVGElement>,
-  ariaLabel: string
 }
 
 export const ToggleSwitch: React.VFC<Props> = (props) => {
-  const { toggle, value, icon, ariaLabel } = props;
+  const { isOn, icon, ...buttonProps } = props;
   return (
-    <ToggleSwitchFrame onClick={toggle} role={'switch'} aria-checked={value} aria-label={ariaLabel}>
-      <ToggleSwitchButton aria-checked={value}>
+    <ToggleSwitchFrame aria-checked={isOn} {...buttonProps}>
+      <ToggleSwitchButton aria-checked={isOn}>
         {icon}
       </ToggleSwitchButton>
     </ToggleSwitchFrame>
   )
 }
 
-const ToggleSwitchFrame = styled.div`
+const ToggleSwitchFrame = styled.button`
   width: 54px;
   height: 32px;
   background-color: #FFF;
@@ -28,6 +28,9 @@ const ToggleSwitchFrame = styled.div`
   transition: all .4s;
   cursor: pointer;
   user-select: none;
+  &:focus {
+    outline: none;
+  }
   &[aria-checked="true"] {
     background-color: #2A2A2A;
     border: 3px solid #444;

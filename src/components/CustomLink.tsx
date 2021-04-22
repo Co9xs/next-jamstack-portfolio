@@ -2,12 +2,13 @@ import React from 'react'
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 
-type Props = React.PropsWithChildren<LinkProps> & {
+type Props = LinkProps & {
   label?: string,
   children?: React.ReactNode
 }
 
-export const CustomLink: React.VFC<Props> = ({ href, label, children }) => { 
+export const CustomLink: React.VFC<Props> = (props) => {
+  const { href, label, children } = props
   const router = useRouter()
   const handleAriaCurrent = (label: string): boolean => {
     if (label === 'Home') {
