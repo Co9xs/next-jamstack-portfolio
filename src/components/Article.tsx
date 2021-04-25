@@ -1,6 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Article } from '@/types';
+import { convertDateToString } from '@/utils';
 
 type Props = {
   article: Article
@@ -8,14 +8,7 @@ type Props = {
 
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
-  const convertToDate = (dt: Date) => {
-    const year = dt.getFullYear();
-    const month = ("00" + (dt.getMonth()+1)).slice(-2);
-    const date = ("00" + dt.getDate()).slice(-2);
-    const result = `${year}/${month}/${date}`
-    return result;
-  }
-  const publishedAt = convertToDate(new Date(article.publishedAt));
+  const publishedAt = convertDateToString(new Date(article.publishedAt));
   return (
     <ArticleBase>
       <ArticleHeader>
