@@ -28,7 +28,6 @@ const BlogId: NextPage<Props> = (props: Props) => {
     <PageBase>
       <Meta
         title={blog.title}
-        description={blog.description}
         image={encodeURI(image)}
       />
       <ContentSection background={'#F1F5F9'}>

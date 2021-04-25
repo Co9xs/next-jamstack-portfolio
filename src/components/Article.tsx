@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from 'styled-components'
 import { Article } from '@/types';
 
@@ -5,7 +6,8 @@ type Props = {
   article: Article
 }
 
-export const ArticleCard: React.VFC<Props> = ({ article }) => { 
+export const ArticleCard: React.VFC<Props> = (props) => {
+  const { article } = props
   const convertToDate = (dt: Date) => {
     const year = dt.getFullYear();
     const month = ("00" + (dt.getMonth()+1)).slice(-2);

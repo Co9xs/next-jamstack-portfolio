@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ArticleCard 1`] = `
+<article
+  className="sc-bdfBwQ cIcVTu"
+>
+  <div
+    className="sc-gsTCUz ywWHk"
+  >
+    <h3
+      className="sc-dlfnbm haUCCe"
+    >
+      【テスト記事】テスト記事です
+    </h3>
+  </div>
+  <div
+    className="sc-hKgILt chrFSH"
+  >
+    <span
+      className="sc-jSgupP jvTTyp"
+    >
+      2021/04/21
+    </span>
+    <span
+      className="sc-eCssSg iCSNRt"
+    >
+      #
+      Tech
+    </span>
+  </div>
+</article>
+`;
