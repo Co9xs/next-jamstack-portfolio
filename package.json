@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "test:coverage": "jest --collect-coverage"
   },
   "dependencies": {
     "@types/enzyme-adapter-react-16": "^1.0.6",
