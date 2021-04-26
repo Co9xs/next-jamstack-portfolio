@@ -1,4 +1,3 @@
-import React from 'react';
 import { GetStaticProps, NextPage } from "next";
 import Twemoji from 'react-twemoji';
 import { Meta, CategoryList } from '@/components';

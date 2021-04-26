@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { ArticleCard } from '@/components'
 import { Article } from '@/types'
-import React from 'react'
 import Link from 'next/link'
 
 type Props = {

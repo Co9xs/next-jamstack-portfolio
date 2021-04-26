@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Header } from '@/components'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils'

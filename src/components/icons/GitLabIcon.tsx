@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const GitLabIcon: React.VFC<Props> = (props) => { 

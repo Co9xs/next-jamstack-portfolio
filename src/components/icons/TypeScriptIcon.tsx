@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const TypeScriptIcon: React.VFC<Props> = (props) => { 

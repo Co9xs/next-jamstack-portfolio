@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const AngularIcon: React.VFC<Props> = (props) => { 

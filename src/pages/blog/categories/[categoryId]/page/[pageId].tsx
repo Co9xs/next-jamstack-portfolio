@@ -1,4 +1,3 @@
-import React from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji } from '@/components';
 import { Article, Category } from '@/types';
