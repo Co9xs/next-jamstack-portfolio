@@ -1,18 +1,19 @@
+import { skills } from '@/utils';
 import styled from 'styled-components'
+import { SkillIcon } from './SkillIcon';
 
 type Props = {
-  children: React.ReactNode
+  names: typeof skills[number][]
 };
 
 export const SkillIconList: React.VFC<Props> = (props) => {
-  const { children } = props;
+  const { names } = props;
   return (
     <SkillIconListBase>
-      {React.Children.map(
-        children,
-        child => (
+      {names.map(
+        (name) => (
         <SkillIconListItem>
-          {child}
+          <SkillIcon name={name}/>
         </SkillIconListItem>
       ))}
     </SkillIconListBase>

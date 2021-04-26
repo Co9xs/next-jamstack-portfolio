@@ -20,10 +20,12 @@ import {
 } from '@/components'
 import { skills } from '@/utils'
 
-type Props = typeof skills[number]
+type Props = {
+  name: typeof skills[number]
+}
 
 export const SkillIcon: React.VFC<Props> = (props) => {
-  const { name } = props;
+  const { name }= props
   switch (name) {
   case 'JavaScript':
     return <JavaScriptIcon/>

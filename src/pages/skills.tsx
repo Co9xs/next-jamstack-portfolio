@@ -16,40 +16,42 @@ const Skills: NextPage<Props> = () => {
       <ContentSection background={'#E6F2FF'} >
         <ContentSectionInner>
           <SectionTitle>言語</SectionTitle>
-          <SkillIconList>
-            <SkillIcon name={'JavaScript'}/>
-            <SkillIcon name={'TypeScript'}/>
-            <SkillIcon name={'PHP'}/>
-          </SkillIconList>
+          <SkillIconList
+            names={[
+              'JavaScript',
+              'TypeScript',
+              'PHP',
+            ]}
+          />
         </ContentSectionInner>
       </ContentSection>
       <ContentSection background={'#FFF'}>
         <ContentSectionInner>
           <SectionTitle>フレームワーク等</SectionTitle>
-          <SkillIconList>
-            <SkillIcon name={'Angular'}/>
-            <SkillIcon name={'ReactiveX'}/>
-            <SkillIcon name={'Vue'}/>
-            <SkillIcon name={'Nuxt'}/>
-            <SkillIcon name={'React'}/>
-            <SkillIcon name={'Next'}/>
-            <SkillIcon name={'jQuery'}/>
-            <SkillIcon name={'Laravel'}/>
-          </SkillIconList>
+          <SkillIconList
+            names={[
+              'ReactiveX',
+              'Vue',
+              'React',
+              'Next',
+              'Laravel'
+            ]}
+          />
         </ContentSectionInner>
       </ContentSection>
       <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
         <ContentSectionInner>
           <SectionTitle>ツール・その他</SectionTitle>
-          <SkillIconList>
-            <SkillIcon name={'Slack'}/>
-            <SkillIcon name={'Webpack'}/>
-            <SkillIcon name={'Docker'}/>
-            <SkillIcon name={'Storybook'}/>
-            <SkillIcon name={'Vercel'}/>
-            <SkillIcon name={'GitHub'}/>
-            <SkillIcon name={'GitLab'}/>
-          </SkillIconList>
+          <SkillIconList
+            names={[
+              'Slack',
+              'Webpack',
+              'Storybook',
+              'Vercel',
+              'GitHub',
+              'GitLab'
+            ]}
+          />
         </ContentSectionInner>
       </ContentSection>
     </PageBase>
