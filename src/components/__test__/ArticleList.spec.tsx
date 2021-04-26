@@ -1,6 +1,6 @@
-import { Article } from '@/types';
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { Article } from '@/types';
+import renderer,  { act } from 'react-test-renderer'
 import { ArticleList } from '../ArticleList';
 
 const mockArticles: Article[] = [
@@ -26,8 +26,17 @@ const mockArticles: Article[] = [
   }
 ]
 
-test('ArticleCard', () => {
-  const component = renderer.create(<ArticleList articles={mockArticles}/>)
-  const tree = component.toJSON()
-  expect(tree).toMatchSnapshot();
+jest.mock("next/link", () => {
+  return ({children}) => {
+    return children;
+  }
+});
+
+test('ArticleList', () => {
+  let component: renderer.ReactTestRenderer
+  act(() => {
+    component = renderer.create(<ArticleList articles={mockArticles} />)
+  })
+  let tree = component.toJSON()
+  expect(tree).toMatchSnapshot()
 })

@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ArticleCard 1`] = `
+exports[`ArticleList 1`] = `
 <ul
   className="sc-cTkwdZ dFPxgp"
 >
   <li
     className="sc-jNMdTA cEMRPw"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <article
       className="sc-bdfBwQ cIcVTu"
@@ -40,8 +38,6 @@ exports[`ArticleCard 1`] = `
   </li>
   <li
     className="sc-jNMdTA cEMRPw"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
   >
     <article
       className="sc-bdfBwQ cIcVTu"
