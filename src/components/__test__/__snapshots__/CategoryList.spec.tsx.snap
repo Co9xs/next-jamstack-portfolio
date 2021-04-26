@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryList 1`] = `
+<ul
+  className="sc-jNMdTA ccJSFx"
+>
+  <li
+    className="sc-dOSReg gvGpFn"
+  >
+    <span
+      className="sc-pFZIQ gYbQTZ"
+    >
+      💻
+    </span>
+    #
+    Tech
+    (undefined記事) 
+  </li>
+  <li
+    className="sc-dOSReg gvGpFn"
+  >
+    <span
+      className="sc-pFZIQ gYbQTZ"
+    >
+      💬
+    </span>
+    #
+    Poem
+    (undefined記事) 
+  </li>
+</ul>
+`;
