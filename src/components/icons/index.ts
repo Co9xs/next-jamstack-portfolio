@@ -17,3 +17,8 @@ export * from "./WebpackIcon";
 export * from "./StorybookIcon";
 export * from "./DockerIcon";
 export * from "./MoonIcon";
+export * from "./ClockIcon";
+export * from "./PersonIcon";
+export * from "./TwitterIcon";
+export * from "./FacebookIcon";
+
