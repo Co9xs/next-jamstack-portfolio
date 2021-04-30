@@ -12,7 +12,7 @@ export const SkillIconList: React.VFC<Props> = (props) => {
     <SkillIconListBase>
       {names.map(
         (name) => (
-        <SkillIconListItem>
+        <SkillIconListItem key={name}>
           <SkillIcon name={name}/>
         </SkillIconListItem>
       ))}
