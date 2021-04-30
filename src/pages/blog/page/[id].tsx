@@ -56,7 +56,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const articleData = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
   const categoryData = await getCategories()
   const poplarArticleData = await getPoplarArticles()
-  console.log(poplarArticleData.contents)
   return {
     props: {
       articles: articleData.contents,

@@ -11,7 +11,6 @@ type Props = {
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
   const publishedAt = convertDateToString(new Date(article.publishedAt));
-  const tags = [{ name: '', id: 1}, {name: `TypeScript`, id: 2}, {name: 'React', id: 3}]
   return (
     <ArticleBase>
       <ArticleImage>
@@ -20,9 +19,9 @@ export const ArticleCard: React.VFC<Props> = (props) => {
         <ArticleTitle>{ article.title }</ArticleTitle>
         <ArticleCategory>{article.category.name}</ArticleCategory>
         <ArticleTags>
-          <ArticleTag>#JavaScript</ArticleTag>
-          <ArticleTag>#TypeScript</ArticleTag>
-          <ArticleTag>#React</ArticleTag>
+          {article.tags.map(tag => (
+            <ArticleTag key={tag.id}>#{tag.name}</ArticleTag>
+          ))}
         </ArticleTags>
         <ArticleMetaData>
           <ArticleDate>
@@ -34,7 +33,7 @@ export const ArticleCard: React.VFC<Props> = (props) => {
           <ArticleReadTime>30 min read</ArticleReadTime>
           <ArticleAuthor>
             <PersonIcon/>
-            <ArticleAuthorText>しま</ArticleAuthorText>
+            <ArticleAuthorText>{ article.author?.displayName}</ArticleAuthorText>
           </ArticleAuthor>
         </ArticleMetaData>
       </ArticleData>

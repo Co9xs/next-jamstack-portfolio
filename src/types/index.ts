@@ -28,6 +28,7 @@ export type Author = {
 }
 
 export type Tag = {
+  id: string,
   name: string
 }
 
