@@ -59,5 +59,5 @@ const MainContentArea = styled.div`
 `
 
 const SideBarArea = styled.div`
-  min-width: 300px;
+  max-width: 300px;
 `

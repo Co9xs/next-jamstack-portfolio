@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { CategoryList } from '@/components'
+import { ArticleTitleList, CategoryList } from '@/components'
 import React from 'react'
 import { Category, Article } from '@/types'
 
@@ -16,7 +16,7 @@ export const SideBar: React.VFC<Props> = (props) => {
         <CategoryList categories={categories}/>
       </SideBarCategoryList>
       <SideBarArticleList>
-        <CategoryList categories={categories}/>
+        <ArticleTitleList articles={poplarArticles}/>
       </SideBarArticleList>
     </SideBarBase>
   )

@@ -25,7 +25,7 @@ export const getArticles = async (args?: ArticleArgType): Promise<ArticleData> =
   }
 };
 
-export const getPoplarArticles = async (): Promise<ArticleData> => {
+export const getPoplarArticles = async (): Promise<any> => {
   try {
     return await fetch(`https://shima.microcms.io/api/v1/popular-articles`, KEY)
       .then((res) => res.json())
