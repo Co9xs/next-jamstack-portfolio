@@ -17,12 +17,12 @@ export const Header: React.VFC<Props> = () => {
       <HeaderNav>
         <HeaderTop>
           <HeaderLogo>Ryo Fujishima - WebDev</HeaderLogo>
-          <ToggleSwitch
+          {/* <ToggleSwitch
             onClick={value.toggleDarkMode}
             isOn={value.isDarkMode}
             icon={<MoonIcon />}
             aria-label={'ダークモード切り替え'}
-          />
+          /> */}
         </HeaderTop>
         <HeaderLinkList>
           {LinkItems.map(item => (
