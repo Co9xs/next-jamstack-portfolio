@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Article } from '@/types';
-import { convertDateToString } from '@/utils';
+import { calcReadingTime, convertDateToString } from '@/utils';
 import React from 'react';
 import { ClockIcon, PersonIcon } from './icons';
 
@@ -11,7 +11,7 @@ type Props = {
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
   const publishedAt = convertDateToString(new Date(article.publishedAt));
-  console.log(article.body.length)
+  const readingTime = calcReadingTime(article.body.length)
   return (
     <ArticleBase>
       <ArticleImage>
@@ -31,7 +31,7 @@ export const ArticleCard: React.VFC<Props> = (props) => {
               {publishedAt}
             </ArticleDateText>
           </ArticleDate>
-          <ArticleReadTime>30 min read</ArticleReadTime>
+          <ArticleReadingTime>{readingTime} min read</ArticleReadingTime>
           <ArticleAuthor>
             <PersonIcon/>
             <ArticleAuthorText>{ article.author?.displayName}</ArticleAuthorText>
@@ -111,7 +111,7 @@ const ArticleDateText = styled.span`
   margin-left: 8px;
 `
 
-const ArticleReadTime = styled.div`
+const ArticleReadingTime = styled.div`
   margin-right: 16px;
 `
 

@@ -5,8 +5,11 @@ export const convertDateToString = (dt: Date): string => {
   return `${year}/${month}/${date}`;
 }
 
+// ex. range(0, 4) -> [0,1,2,3,4]
 export const range = (start: number, end: number): number[] => {
   return [...Array(end - start+1)].map((_, i) => start + i)
 }
 
-// ex. range(0, 4) -> [0,1,2,3,4]
+export const calcReadingTime = (wordsCount: number): number => {
+  return Math.ceil(wordsCount / 500)
+}
