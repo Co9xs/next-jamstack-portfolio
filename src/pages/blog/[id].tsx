@@ -3,15 +3,13 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import { ClockIcon, Meta, PersonIcon, SideBarLayout } from '@/components';
+import { ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPoplarArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
-import { TwitterShareButton } from '@/components/TwitterShareButton';
 import React from 'react';
-import { FacebookShareButton } from '@/components/FacebookShareButton';
 
 type Props = {
   blog: Article,
@@ -37,6 +35,10 @@ const BlogId: NextPage<Props> = (props: Props) => {
         />
         <ContentSection>
           <DetailPageImage></DetailPageImage>
+          <DetailPageArticle>
+          <DetailPageSnsShare>
+            <SnsShareButtonList articleId={blog.id}/>
+          </DetailPageSnsShare>
           <DetailPageContent>
           <DetailPageHeader>
             <DetailPageHeading>{blog.title}</DetailPageHeading>
@@ -66,8 +68,9 @@ const BlogId: NextPage<Props> = (props: Props) => {
             dangerouslySetInnerHTML={{
               __html: `${highlightedBody}`,
             }}
-            />
+              />
           </DetailPageContent>
+          </DetailPageArticle>
         </ContentSection>
       </PageBase>
     </SideBarLayout>
@@ -112,17 +115,28 @@ const DetailPageImage = styled.div`
   background-color: #EEE;
 `
 
+const DetailPageArticle = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const DetailPageSnsShare = styled.div`
+  margin: 32px;
+  & > ul {
+    position: sticky;
+    top: 120px;
+  }
+`
+
 const DetailPageContent = styled.div`
-  width: 716px;
   margin-left: auto;
-  position: relative;
 `
 
 const DetailPageHeader = styled.div`
   border-bottom: solid 1px #E4EDF4;
 `
 
-const DetailPageHeading = styled.div`
+const DetailPageHeading = styled.h1`
   font-size: 32px;
   font-weight: bold;
   margin: 32px 0 16px;
