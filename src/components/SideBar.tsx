@@ -5,18 +5,18 @@ import { Category, Article } from '@/types'
 
 type Props = {
   categories: Category[],
-  poplarArticles: Article[]
+  popularArticles: Article[]
 }
 
 export const SideBar: React.VFC<Props> = (props) => {
-  const { categories, poplarArticles } = props
+  const { categories, popularArticles } = props
   return (
     <SideBarBase>
       <SideBarCategoryList>
         <CategoryList categories={categories}/>
       </SideBarCategoryList>
       <SideBarArticleList>
-        <ArticleTitleList articles={poplarArticles}/>
+        <ArticleTitleList articles={popularArticles}/>
       </SideBarArticleList>
     </SideBarBase>
   )

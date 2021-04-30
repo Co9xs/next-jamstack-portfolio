@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
-import { getArticles, getCategories, getCategory, getPoplarArticles } from "@/lib"
+import { getArticles, getCategories, getCategory, getpopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
   totalCount: number
   currentPage: number,
   categories: Category[],
-  poplarArticles: any[]
+  popularArticles: any[]
 }
 
 type Params = {
@@ -20,10 +20,10 @@ type Params = {
 }
 
 const CategoryPageId: NextPage<Props> = (props: Props) => {
-  const { category, articles, totalCount, currentPage, categories, poplarArticles } = props
+  const { category, articles, totalCount, currentPage, categories, popularArticles } = props
   const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
   return (
-    <SideBarLayout categories={categories} poplarArticles={poplarArticles}>
+    <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={`${category.name}カテゴリの記事一覧`}
@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
   const data = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
   const categoryData = await getCategories()
-  const poplarArticleData = await getPoplarArticles()
+  const popularArticleData = await getpopularArticles()
   return {
     props: {
       category,
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
       totalCount: data.totalCount,
       currentPage: Number(pageId),
       categories: categoryData.contents,
-      poplarArticles: poplarArticleData.articles
+      popularArticles: popularArticleData.articles
     },
   }
 }

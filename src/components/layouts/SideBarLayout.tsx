@@ -7,12 +7,12 @@ import { media } from '@/styles'
 
 type Props = {
   categories: Category[],
-  poplarArticles: Article[],
+  popularArticles: Article[],
   children: React.ReactNode
 }
 
 export const SideBarLayout: React.VFC<Props> = (props) => {
-  const { children, categories, poplarArticles } = props;
+  const { children, categories, popularArticles } = props;
   return (
     <SideBarLayoutBase>
       <FixedHeader>
@@ -23,7 +23,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
           { children }
         </MainContentArea>
         <SideBarArea>
-          <SideBar categories={categories} poplarArticles={poplarArticles}/>
+          <SideBar categories={categories} popularArticles={popularArticles}/>
         </SideBarArea>
       </PageContent>
     </SideBarLayoutBase>

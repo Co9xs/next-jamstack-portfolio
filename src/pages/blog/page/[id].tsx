@@ -3,7 +3,7 @@ import Twemoji from 'react-twemoji';
 import { Meta, ArticleList, Pagination, SideBarLayout } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
-import { getArticles, getCategories, getPoplarArticles } from "@/lib"
+import { getArticles, getCategories, getpopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
   currentPage: number,
   layout: 'SideBar',
   categories: Category[],
-  poplarArticles: Article[]
+  popularArticles: Article[]
 }
 
 type Params = {
@@ -20,10 +20,10 @@ type Params = {
 }
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
-  const { articles, totalCount, currentPage, layout, categories, poplarArticles } = props;
+  const { articles, totalCount, currentPage, layout, categories, popularArticles } = props;
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
-    <SideBarLayout categories={categories} poplarArticles={poplarArticles}>
+    <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={'Blog'}
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const offset = (Number(id) - 1) * ARTICLES_PER_PAGE;
   const articleData = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
   const categoryData = await getCategories()
-  const poplarArticleData = await getPoplarArticles()
+  const popularArticleData = await getpopularArticles()
   return {
     props: {
       articles: articleData.contents,
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
       currentPage: Number(id),
       layout: 'SideBar',
       categories: categoryData.contents,
-      poplarArticles: poplarArticleData.articles
+      popularArticles: popularArticleData.articles
     },
   }
 }

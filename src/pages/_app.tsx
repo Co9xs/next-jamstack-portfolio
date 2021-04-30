@@ -11,7 +11,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)
   }
-  console.log(pageProps.layout)
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle/>
@@ -26,7 +25,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               )
             case 'SideBar':
               return (
-                // <SideBarLayout categories={categories} poplarArticles={poplarArticles}>
+                // <SideBarLayout categories={categories} popularArticles={popularArticles}>
                   <Component {...pageProps}/>
                 // </SideBarLayout>
               )

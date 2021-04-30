@@ -6,7 +6,7 @@ import hljs from 'highlight.js'
 import { ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, media } from '@/styles';
-import { getArticle, getArticles, getCategories, getPoplarArticles } from '@/lib';
+import { getArticle, getArticles, getCategories, getpopularArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 
@@ -26,7 +26,7 @@ const BlogId: NextPage<Props> = (props: Props) => {
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
   const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
   return (
-    <SideBarLayout categories={categories} poplarArticles={popularArticles}>
+    <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={blog.title}
@@ -95,13 +95,13 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   })
 
   const categoryData = await getCategories()
-  const poplarArticleData = await getPoplarArticles()
+  const popularArticleData = await getpopularArticles()
   return {
     props: {
       blog: data,
       highlightedBody: $.html(),
       categories: categoryData.contents,
-      popularArticles: poplarArticleData.articles
+      popularArticles: popularArticleData.articles
     },
   };
 };
