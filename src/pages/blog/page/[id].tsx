@@ -30,8 +30,8 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           description={'Ryo Fujishima - Web Dev'}
           image={encodeURI(image)}
         />
-        <ContentSection style={{flexGrow: '1'}}>
-          <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
+        <ContentSection>
+          <SectionTitle><Twemoji tag="span">📝</Twemoji>記事一覧</SectionTitle>
           <ArticleList articles={articles} />
           <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
         </ContentSection>

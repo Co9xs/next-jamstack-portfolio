@@ -7,17 +7,23 @@ type Props = {
 }
 export const CategoryMappedTwemoji: React.VFC<Props> = ({ category }) => {
     {
-    switch (category.name) {
-    case 'Tech':
+    switch (category.id) {
+    case 'tech':
         return (
           <CategoryMappedTwemojiBase>
             <Twemoji tag="span">💻</Twemoji>
           </CategoryMappedTwemojiBase>
         )
-    case 'Poem':
+    case 'poem':
         return (
           <CategoryMappedTwemojiBase>
             <Twemoji tag="span">💬</Twemoji>
+          </CategoryMappedTwemojiBase>
+        )
+    case 'design':
+        return (
+          <CategoryMappedTwemojiBase>
+            <Twemoji tag="span">🎨</Twemoji>
           </CategoryMappedTwemojiBase>
         )
     default:
