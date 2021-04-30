@@ -13,7 +13,8 @@ type CategoryArgType = {
 }
 
 export const getArticles = async (args?: ArticleArgType): Promise<ArticleData> => {
-  const base_params = args ? `?offset=${args.offset}&limit=${args.limit}` : ""
+  // とりあえず指定なしなら50記事取得
+  const base_params = args ? `?offset=${args.offset}&limit=${args.limit}` : `?offset=0&limit=50`
   const category_params = args?.category ? `&filters=category[equals]${args.category.id}` : ""
   const params = base_params + category_params
   try {
