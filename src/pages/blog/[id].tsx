@@ -137,7 +137,7 @@ const DetailPageHeader = styled.div`
 `
 
 const DetailPageHeading = styled.h1`
-  font-size: 32px;
+  font-size: 34px;
   font-weight: bold;
   margin: 32px 0 16px;
 `
@@ -200,7 +200,7 @@ const DetailPageBody= styled.div`
     background-color: #eee;
     border-left: 3px solid #333;
     ${media.desktop`
-      padding: 10px 20px;
+      padding: 8px 24px;
       font-size: 30px;
     `}
     ${media.tablet`
@@ -223,7 +223,7 @@ const DetailPageBody= styled.div`
     margin: 40px 0 20px;
     border-left: 3px solid #333;
     ${media.desktop`
-      padding: 10px 20px;
+      padding: 4px 16px;
       font-size: 26px;
     `}
     ${media.tablet`
