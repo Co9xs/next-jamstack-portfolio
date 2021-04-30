@@ -5,11 +5,13 @@ import cheerio from 'cheerio';
 import hljs from 'highlight.js'
 import { ClockIcon, Meta, PersonIcon, SideBarLayout } from '@/components';
 import { Article, Category } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, media } from '@/styles';
+import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPoplarArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
+import { TwitterShareButton } from '@/components/TwitterShareButton';
 import React from 'react';
+import { FacebookShareButton } from '@/components/FacebookShareButton';
 
 type Props = {
   blog: Article,
@@ -113,6 +115,7 @@ const DetailPageImage = styled.div`
 const DetailPageContent = styled.div`
   width: 716px;
   margin-left: auto;
+  position: relative;
 `
 
 const DetailPageHeader = styled.div`
@@ -120,7 +123,7 @@ const DetailPageHeader = styled.div`
 `
 
 const DetailPageHeading = styled.div`
-  font-size: 34px;
+  font-size: 32px;
   font-weight: bold;
   margin: 32px 0 16px;
 `
