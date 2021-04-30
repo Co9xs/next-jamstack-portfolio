@@ -31,11 +31,9 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           image={encodeURI(image)}
         />
         <ContentSection style={{flexGrow: '1'}}>
-          {/* <ContentSectionInner> */}
-            <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
-            <ArticleList articles={articles} />
-            <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
-          {/* </ContentSectionInner> */}
+          <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
+          <ArticleList articles={articles} />
+          <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
         </ContentSection>
       </PageBase>
     </SideBarLayout>

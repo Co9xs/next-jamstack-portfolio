@@ -36,6 +36,8 @@ const PaginationList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  justify-content: center;
+  flex-wrap: wrap;
 `
 
 const PaginationItem = styled.li`
@@ -46,9 +48,7 @@ const PaginationItem = styled.li`
   width: 40px;
   height: 40px;
   font-weight: bold;
-  +li {
-    margin-left: 10px;
-  }
+  margin: 10px;
   &[data-current="true"] {
     background: #2C5DB0;
   }
