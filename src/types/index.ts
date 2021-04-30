@@ -14,7 +14,21 @@ export type Article = {
   title: string,
   body: string,
   publishedAt: string,
-  category: Category | null
+  category: Category | null,
+  ogimage?: string,
+  tags?: Tag[],
+  author?: Author
+  relatedArticles: Article[]
+}
+
+export type Author = {
+  displayName: string,
+  description: string,
+  image: string
+}
+
+export type Tag = {
+  name: string
 }
 
 export type ArticleData = {
