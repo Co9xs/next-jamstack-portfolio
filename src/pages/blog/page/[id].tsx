@@ -1,17 +1,18 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta, ArticleList, Pagination } from '@/components';
-import { Article } from '@/types';
+import { Meta, ArticleList, Pagination, SideBarLayout } from '@/components';
+import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
-import { getArticles } from "@/lib"
+import { getArticles, getCategories, getPoplarArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
-import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 
 type Props = {
   articles: Article[]
   totalCount: number
   currentPage: number,
-  layout: 'SideBar'
+  layout: 'SideBar',
+  categories: Category[],
+  poplarArticles: Article[]
 }
 
 type Params = {
@@ -19,23 +20,22 @@ type Params = {
 }
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
-  const { articles, totalCount, currentPage, layout } = props;
+  const { articles, totalCount, currentPage, layout, categories, poplarArticles } = props;
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
-  console.log(layout)
   return (
-    <SideBarLayout>
+    <SideBarLayout categories={categories} poplarArticles={poplarArticles}>
       <PageBase>
         <Meta
           title={'Blog'}
           description={'Ryo Fujishima - Web Dev'}
           image={encodeURI(image)}
         />
-        <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
-          <ContentSectionInner>
+        <ContentSection style={{flexGrow: '1'}}>
+          {/* <ContentSectionInner> */}
             <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
             <ArticleList articles={articles} />
             <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
-          </ContentSectionInner>
+          {/* </ContentSectionInner> */}
         </ContentSection>
       </PageBase>
     </SideBarLayout>
@@ -53,13 +53,17 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
   const { id } = context.params;
   const offset = (Number(id) - 1) * ARTICLES_PER_PAGE;
-  const data = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
+  const articleData = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
+  const categoryData = await getCategories()
+  const poplarArticleData = await getPoplarArticles()
   return {
     props: {
-      articles: data.contents,
-      totalCount: data.totalCount,
+      articles: articleData.contents,
+      totalCount: articleData.totalCount,
       currentPage: Number(id),
-      layout: 'SideBar'
+      layout: 'SideBar',
+      categories: categoryData.contents,
+      poplarArticles: poplarArticleData.contents
     },
   }
 }

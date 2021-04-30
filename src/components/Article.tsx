@@ -10,12 +10,11 @@ type Props = {
 
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
-  const image = `https://og-image-co9xs.vercel.app/${article.title}.png`
   const publishedAt = convertDateToString(new Date(article.publishedAt));
   const tags = [{ name: '', id: 1}, {name: `TypeScript`, id: 2}, {name: 'React', id: 3}]
   return (
     <ArticleBase>
-      <ArticleImage style={{backgroundImage: `url(${image})`}}>
+      <ArticleImage>
       </ArticleImage>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>
@@ -47,6 +46,7 @@ const ArticleBase = styled.article`
   padding: 16px 0;
   cursor: pointer;
   display: flex;
+  justify-content: space-between;
 
   //DarkMode
   color: ${({ theme }) => theme.white};
@@ -60,7 +60,6 @@ const ArticleImage = styled.div`
   height: 175px;
   background-color: #EEE;
   border-radius: 3px;
-  margin-right: 40px;
   background-size: cover;
   background-position: center;
 `
@@ -82,6 +81,7 @@ const ArticleCategory = styled.span`
   border-radius: 3px;
   display: inline-block;
   margin-bottom: 10px;
+  font-size: 14px;
 `
 
 const ArticleTags = styled.div`

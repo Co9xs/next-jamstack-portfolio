@@ -1,13 +1,17 @@
 import styled from 'styled-components'
-import { Header } from '@/components'
+import { Header, SideBar } from '@/components'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils'
+import React from 'react'
+import { Article, Category } from '@/types'
 
 type Props = {
+  categories: Category[],
+  poplarArticles: Article[],
   children: React.ReactNode
 }
 
 export const SideBarLayout: React.VFC<Props> = (props) => {
-  const { children } = props;
+  const { children, categories, poplarArticles } = props;
   return (
     <SideBarLayoutBase>
       <FixedHeader>
@@ -18,7 +22,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
           { children }
         </MainContentArea>
         <SideBarArea>
-          aaaaaa
+          <SideBar categories={categories} poplarArticles={poplarArticles}/>
         </SideBarArea>
       </PageContent>
     </SideBarLayoutBase>
@@ -50,10 +54,10 @@ const PageContent = styled.div`
 `
 
 const MainContentArea = styled.div`
+  width: 820px;
   max-width: 820px;
 `
 
 const SideBarArea = styled.div`
   min-width: 300px;
-  background: #EEE;
 `
