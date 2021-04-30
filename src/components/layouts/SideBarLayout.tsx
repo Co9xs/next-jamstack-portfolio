@@ -63,7 +63,7 @@ const PageContent = styled.div`
 
 const MainContentArea = styled.div`
   max-width: 820px;
-  padding: 32px 0;
+  padding: 24px 0 32px;
   flex-grow: 1;
   margin-right: 32px;
   ${media.tablet`
@@ -74,7 +74,7 @@ const MainContentArea = styled.div`
 
 const SideBarArea = styled.div`
   max-width: 260px;
-  padding: 32px 0;
+  padding: 24px 0 32px;
   ${media.tablet`
     max-width: 100%;
   `}

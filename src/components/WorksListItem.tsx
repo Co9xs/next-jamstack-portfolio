@@ -29,7 +29,7 @@ const WorksListItemBase = styled.div`
   border: 2px solid #EFEFEF;
   border-radius: 5px;
   padding: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 16px;
   background: #FFF;
 
   // DarkMode

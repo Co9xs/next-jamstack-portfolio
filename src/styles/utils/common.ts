@@ -18,9 +18,6 @@ export const SectionTitle = styled.h2`
       margin-right: .5rem;
     }
   }
-  ${media.phone`
-    font-size: 22px;
-  `}
 
   // DarkMode
   color: ${({ theme }) => theme.white};
@@ -39,17 +36,17 @@ export const ContentSection = styled.section`
 `
 
 export const ContentSectionInner = styled.div`
-  max-width: 980px;
+  max-width: 1160px;
   width: 100%;
   margin: 0 auto;
   ${media.desktop`
-    padding: 1rem 5rem;
+    padding: 24px 16px;
   `}
   ${media.tablet`
-    padding: 1rem 3rem;
+    padding: 24px 16px;
   `}
   ${media.phone`
-    padding: 1.25rem 1.5rem;
+    padding: 24px 16px;
   `}
 `
 
