@@ -13,7 +13,7 @@ export const SectionTitle = styled.h2`
     text-align:center;
     display: inline-block;
     img {
-      height: 28px;
+      height: 35px;
       vertical-align: bottom;
       margin-right: .5rem;
     }
