@@ -51,5 +51,5 @@ export const ContentSectionInner = styled.div`
 `
 
 export const PlainText = styled.p`
-  margin: 8px 0;
+  margin: 12px 0;
 `
