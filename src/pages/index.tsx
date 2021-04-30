@@ -1,9 +1,7 @@
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta, BasicLayout, SkillIconList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
-import { getArticles } from '@/lib';
-import { ARTICLES_IN_TOP } from '@/utils';
 import React from 'react';
 
 type Props = {
@@ -28,7 +26,7 @@ const Home: NextPage<Props> = (props) => {
             </PlainText>
             <PlainText>所属：東北大学 経済学部 経済学科 4年</PlainText>
             <PlainText>生年月日：2000/02/03</PlainText>
-            <PlainText>好きな言語：JavaScript, TypeScript, etc</PlainText>
+            <PlainText>好きな言語：React, TypeScript, etc</PlainText>
             <PlainText>好きなモノ：e-sports観戦、猫、ガジェット、サウナ</PlainText>
             <PlainText>Twitter：<a href={"https://twitter.com/Co9xsR"} target={'_blank'} rel={'noopener'}>しま</a></PlainText>
             <PlainText>Github：<a href={"https://github.com/Co9xs"} target={'_blank'} rel={'noopener'}>Co9xs</a></PlainText>
