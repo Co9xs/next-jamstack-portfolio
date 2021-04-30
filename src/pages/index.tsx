@@ -1,18 +1,15 @@
 import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta, ArticleList, BasicLayout } from '@/components';
-import { Article } from '@/types';
+import { Meta, BasicLayout, SkillIconList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
 import { getArticles } from '@/lib';
 import { ARTICLES_IN_TOP } from '@/utils';
+import React from 'react';
 
 type Props = {
-  articles: Article[],
-  totalCount: number
 }
 
-const Home: NextPage<Props> = (props: Props) => {
-  const { articles } = props
+const Home: NextPage<Props> = (props) => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
     <BasicLayout>
@@ -40,36 +37,41 @@ const Home: NextPage<Props> = (props: Props) => {
             <PlainText>雑記ブログ：<a href={"https://shimablogs.com/"} target={'_blank'} rel={'noopener'}>しまぶろぐ</a></PlainText>
           </ContentSectionInner>
         </ContentSection>
-        <ContentSection background={'#FFF'}>
+        <ContentSection background={'#FFF'} >
+          <ContentSectionInner>
+            <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>言語・FW・ツール</SectionTitle>
+            <SkillIconList
+              names={[
+                'JavaScript',
+                'TypeScript',
+                'PHP',
+                'ReactiveX',
+                'Vue',
+                'React',
+                'Next',
+                'Laravel',
+                'Storybook',
+                'Vercel',
+                'GitHub',
+                'GitLab'
+              ]}
+            />
+          </ContentSectionInner>
+        </ContentSection>
+        <ContentSection background={'#F1F5F9'}>
           <ContentSectionInner>
             <SectionTitle><Twemoji tag="span">🏢</Twemoji>活動経歴</SectionTitle>
             <PlainText>2022/04〜 某メガベンチャーでフロントエンドエンジニアとして就業予定</PlainText>
             <PlainText>2021/02 Wantedly Webフロントエンドインターン(React)</PlainText>
             <PlainText>2020/08〜2020/03 都内企業でフロントエンド開発アルバイト(Angular, TypeScript, rxjs, storybook)</PlainText>
             <PlainText>2020/08 CyberAgent WebFrontendChanllenge(Vue, Netlify)</PlainText>
-            <PlainText>2020/03 Webアプリ開発の学習開始</PlainText>
+            <PlainText>2020/03 コーダーで受託制作&Webアプリ開発の学習開始</PlainText>
             <PlainText>2019/12 Webサイト制作の学習開始</PlainText>
-          </ContentSectionInner>
-        </ContentSection>
-        <ContentSection background={'#F1F5F9'}>
-          <ContentSectionInner>
-            <SectionTitle><Twemoji tag="span">🖊️</Twemoji>最近の投稿</SectionTitle>
-            <ArticleList articles={articles} />
           </ContentSectionInner>
         </ContentSection>
       </PageBase>
     </BasicLayout>
   )
 }
-
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const data = await getArticles({ offset: 0, limit: ARTICLES_IN_TOP})
-  return {
-    props: {
-      articles: data.contents,
-      totalCount: data.totalCount
-    },
-  };
-};
 
 export default Home

@@ -8,10 +8,6 @@ export const LinkItems = [
     href: '/works'
   },
   {
-    label: 'Skills',
-    href: '/skills'
-  },
-  {
     label: 'Blog',
     href: '/blog/page/1'
   },
