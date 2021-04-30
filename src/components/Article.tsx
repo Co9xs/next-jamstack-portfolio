@@ -3,6 +3,7 @@ import { Article } from '@/types';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import React from 'react';
 import { ClockIcon, PersonIcon } from './icons';
+import { media } from '@/styles';
 
 type Props = {
   article: Article
@@ -48,6 +49,11 @@ const ArticleBase = styled.article`
   display: flex;
   justify-content: space-between;
 
+  ${media.tablet`
+    flex-direction: column;
+  `}
+  
+
   //DarkMode
   color: ${({ theme }) => theme.white};
   background: ${({ theme }) => theme.black};
@@ -55,19 +61,35 @@ const ArticleBase = styled.article`
 `
 
 const ArticleImage = styled.div`
-  width: 350px;
+  max-width: 350px;
   min-width: 250px;
   height: 175px;
+  flex-grow: 1;
   background-color: #EEE;
   border-radius: 3px;
   background-size: cover;
   background-position: center;
+
+  ${media.tablet`
+    max-width: 100%;
+    min-width: 100%;
+    height: 230px;
+    margin-bottom: 16px; 
+  `}
 `
 
 const ArticleData = styled.div`
-  min-width: 420px;
+  min-width: 320px;
   max-width: 420px;
+  margin-left: 16px;
+  flex-grow: 1;
+  ${media.tablet`
+    max-width: 100%;
+    min-width: 100%;
+    margin: 0;
+  `}
 `
+
 const ArticleTitle = styled.h3`
   margin: 0;
   padding: 0;
@@ -88,6 +110,10 @@ const ArticleCategory = styled.span`
 const ArticleTags = styled.div`
   color: #616269;
   margin-bottom: 10px;
+  ${media.tablet`
+    display: inline-block;
+    margin-left: 16px;
+  `}
 `
 
 const ArticleTag = styled.span`
@@ -104,7 +130,9 @@ const ArticleDate = styled.span`
   margin-right: 16px;
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.smoke};
+  ${media.tablet`
+    margin-right: 8px;
+  `}
 `
 
 const ArticleDateText = styled.span`
@@ -113,6 +141,9 @@ const ArticleDateText = styled.span`
 
 const ArticleReadingTime = styled.div`
   margin-right: 16px;
+  ${media.tablet`
+    margin-right: 8px;
+  `}
 `
 
 const ArticleAuthor = styled.div`

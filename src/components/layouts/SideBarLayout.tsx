@@ -3,6 +3,7 @@ import { Header, SideBar } from '@/components'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils'
 import React from 'react'
 import { Article, Category } from '@/types'
+import { media } from '@/styles'
 
 type Props = {
   categories: Category[],
@@ -46,20 +47,35 @@ const FixedHeader = styled.div`
 
 const PageContent = styled.div`
   padding-top: ${DEAFULT_HEADER_HEIGHT}px;
+  padding-right: 16px;
+  padding-left: 16px;
   height: 100%;
   max-width: 1160px;
   margin: auto;
   display: flex;
   justify-content: space-between;
+  ${media.tablet`
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+  `}
 `
 
 const MainContentArea = styled.div`
-  width: 820px;
   max-width: 820px;
   padding: 32px 0;
+  flex-grow: 1;
+  margin-right: 32px;
+  ${media.tablet`
+    margin: 0;
+    width: 100%;
+  `}
 `
 
 const SideBarArea = styled.div`
-  max-width: 300px;
+  max-width: 260px;
   padding: 32px 0;
+  ${media.tablet`
+    max-width: 100%;
+  `}
 `

@@ -9,7 +9,6 @@ import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPoplarArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
-import React from 'react';
 
 type Props = {
   blog: Article,
@@ -118,6 +117,9 @@ const DetailPageImage = styled.div`
 const DetailPageArticle = styled.div`
   display: flex;
   justify-content: space-between;
+  ${media.tablet`
+    display: block;
+  `}
 `
 
 const DetailPageSnsShare = styled.div`
@@ -126,6 +128,9 @@ const DetailPageSnsShare = styled.div`
     position: sticky;
     top: 120px;
   }
+  ${media.tablet`
+    display: none;
+  `}
 `
 
 const DetailPageContent = styled.div`
@@ -140,6 +145,12 @@ const DetailPageHeading = styled.h1`
   font-size: 34px;
   font-weight: bold;
   margin: 32px 0 16px;
+  ${media.tablet`
+    font-size: 32px;
+  `}
+  ${media.tablet`
+    font-size: 30px;
+  `}
 `
 const DetailPageCategory = styled.span`
   color: #60A5FA;
@@ -205,11 +216,11 @@ const DetailPageBody= styled.div`
     `}
     ${media.tablet`
       padding: 10px 20px;
-      font-size: 30px;
+      font-size: 28px;
     `}
     ${media.phone`
       padding: 8px 16px;
-      font-size: 28px;
+      font-size: 26px;
     `}
 
     //DarkMode
