@@ -56,8 +56,10 @@ const PageContent = styled.div`
 const MainContentArea = styled.div`
   width: 820px;
   max-width: 820px;
+  padding: 32px 0;
 `
 
 const SideBarArea = styled.div`
   max-width: 300px;
+  padding: 32px 0;
 `

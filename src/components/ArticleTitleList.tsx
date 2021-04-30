@@ -32,7 +32,7 @@ const ArticleListBase = styled.div`
 const ArticleListHeading = styled.h4`
   padding: 0;
   margin-top: 0;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   font-size: 20px;
   font-weight: bold;
 `

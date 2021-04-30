@@ -8,7 +8,7 @@ export const PageBase = styled.div`
 `
 
 export const SectionTitle = styled.h2`
-  margin: 1rem 0;
+  margin: 0;
   span {
     text-align:center;
     display: inline-block;

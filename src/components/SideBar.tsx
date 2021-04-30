@@ -27,9 +27,9 @@ const SideBarBase = styled.div`
 `
 
 const SideBarCategoryList = styled.div`
-  margin-top: 84px;
+  margin-bottom: 40px;
 `
 
 const SideBarArticleList = styled.div`
-  margin-top: 32px;
+  margin-bottom: 40px;
 `

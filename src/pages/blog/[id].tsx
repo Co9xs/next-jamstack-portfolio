@@ -3,16 +3,19 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import { Meta } from '@/components';
-import { Article } from '@/types';
+import { ClockIcon, Meta, PersonIcon, SideBarLayout } from '@/components';
+import { Article, Category } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, media } from '@/styles';
-import { getArticle, getArticles } from '@/lib';
+import { getArticle, getArticles, getCategories, getPoplarArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
+import React from 'react';
 
 type Props = {
   blog: Article,
-  highlightedBody: string
+  highlightedBody: string,
+  categories: Category[],
+  popularArticles: Article[]
 }
 
 type Params = {
@@ -20,34 +23,52 @@ type Params = {
 }
 
 const BlogId: NextPage<Props> = (props: Props) => {
-  const { blog, highlightedBody } = props;
+  const { blog, highlightedBody, categories, popularArticles } = props;
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
   const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
   return (
-    <PageBase>
-      <Meta
-        title={blog.title}
-        image={encodeURI(image)}
-      />
-      <ContentSection background={'#F1F5F9'}>
-        <ContentSectionInner>
+    <SideBarLayout categories={categories} poplarArticles={popularArticles}>
+      <PageBase>
+        <Meta
+          title={blog.title}
+          image={encodeURI(image)}
+        />
+        <ContentSection>
+          <DetailPageImage></DetailPageImage>
+          <DetailPageContent>
           <DetailPageHeader>
-            <DetailPageDate>{ publishedAt }</DetailPageDate>
             <DetailPageHeading>{blog.title}</DetailPageHeading>
-            {blog.category &&
-              <Link href={`/blog/categories/${blog.category.id}/page/1`}>
-                <DetailPageCategory>{ `#${blog.category.name}`}</DetailPageCategory>
-              </Link>
-            }
+            <Link href={`/blog/categories/${blog.category.id}/page/1`}>
+              <DetailPageCategory>{blog.category.name}</DetailPageCategory>
+            </Link>
+            <DetailPageTags>
+              {blog.tags.map(tag => (
+                <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
+              ))}
+            </DetailPageTags>
+            <DetailPageMetaData>
+              <DetailPageDate>
+                <ClockIcon />
+                <DetailPageDateText>
+                  {publishedAt}
+                </DetailPageDateText>
+              </DetailPageDate>
+              <DetailPageReadingTime>15 min read</DetailPageReadingTime>
+              <DetailPageAuthor>
+                <PersonIcon/>
+                <DetailPageAuthorText>{ blog.author?.displayName}</DetailPageAuthorText>
+              </DetailPageAuthor>
+            </DetailPageMetaData>
           </DetailPageHeader>
           <DetailPageBody
             dangerouslySetInnerHTML={{
               __html: `${highlightedBody}`,
             }}
-          />
-        </ContentSectionInner>
-      </ContentSection>
-    </PageBase>
+            />
+          </DetailPageContent>
+        </ContentSection>
+      </PageBase>
+    </SideBarLayout>
   );
 }
 
@@ -68,40 +89,91 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     $(elm).html(result.value)
     $(elm).addClass('hljs')
   })
+
+  const categoryData = await getCategories()
+  const poplarArticleData = await getPoplarArticles()
   return {
     props: {
       blog: data,
-      highlightedBody:$.html()
+      highlightedBody: $.html(),
+      categories: categoryData.contents,
+      popularArticles: poplarArticleData.articles
     },
   };
 };
 
 export default BlogId
 
-const DetailPageHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: solid 1px #E4EDF4;
-  padding: 1rem 0;
+const DetailPageImage = styled.div`
+  width: 100%;
+  height: 410px;
+  background-color: #EEE;
 `
 
-const DetailPageDate = styled.span`
-  color: #6B7280;
+const DetailPageContent = styled.div`
+  width: 716px;
+  margin-left: auto;
+`
 
-  //DarkMode
-  color: ${({ theme }) => theme.lightGray};
+const DetailPageHeader = styled.div`
+  border-bottom: solid 1px #E4EDF4;
 `
 
 const DetailPageHeading = styled.div`
-  font-size: 32px;
+  font-size: 34px;
   font-weight: bold;
-  margin: .5rem 0;
+  margin: 32px 0 16px;
+`
+const DetailPageCategory = styled.span`
+  color: #60A5FA;
+  padding: 4px 8px;
+  border: 2px solid #60A5FA;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
 `
 
-const DetailPageCategory = styled.a`
-  color: #60A5FA;
-  cursor: pointer;
+const DetailPageTags = styled.span`
+  color: #616269;
+  margin-bottom: 10px;
+`
+
+const DetailPageTag = styled.span`
+  margin-right: 8px;
+`
+
+const DetailPageMetaData = styled.div`
+  color: #616269;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+`
+
+const DetailPageDate = styled.span`
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  color: ${({ theme }) => theme.smoke};
+`
+
+const DetailPageDateText = styled.span`
+  margin-left: 8px;
+`
+
+const DetailPageReadingTime = styled.div`
+  margin-right: 16px;
+`
+
+const DetailPageAuthor = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const DetailPageAuthorText = styled.span`
+  margin-left: 8px;
 `
 
 const DetailPageBody= styled.div`
