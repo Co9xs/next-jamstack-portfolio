@@ -44,12 +44,12 @@ const HeaderBase = styled.div`
   border-color: ${({ theme }) => theme.border.sub};
 `
 const HeaderNav = styled.nav`
-  max-width: 1000px;
+  max-width: 1160px;
   margin: auto;
   a, a:visited {
     text-decoration: none;
     color: ${({ theme }) => theme.font.sub};
-    padding: .5rem 0;
+    padding: 8px 0;
     display: block;
     &[aria-current="true"] {
       border-bottom: 2px solid;
@@ -58,13 +58,13 @@ const HeaderNav = styled.nav`
     }
   }
   ${media.desktop`
-    padding: 0 2.5rem; 
+    padding: 0 16px; 
   `}
   ${media.tablet`
-    padding: 0 2.5rem; 
+    padding: 0 16px; 
   `}
   ${media.phone`
-    padding: 0 1.5rem; 
+    padding: 0 16px; 
   `}
 `
 
