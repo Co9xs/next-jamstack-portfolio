@@ -1,16 +1,17 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta, BasicLayout, SkillIconList } from '@/components';
+import { Meta, SkillIconList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
 import React from 'react';
+import { Layout } from '@/types';
 
 type Props = {
+  layout: Layout
 }
 
 const Home: NextPage<Props> = (props) => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
-    <BasicLayout>
       <PageBase>
         <Meta
           title={'Home'}
@@ -68,8 +69,15 @@ const Home: NextPage<Props> = (props) => {
           </ContentSectionInner>
         </ContentSection>
       </PageBase>
-    </BasicLayout>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props>  = async () => {
+  return {
+    props: {
+      layout: 'Basic'
+    }
+  }
 }
 
 export default Home

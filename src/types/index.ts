@@ -49,3 +49,5 @@ export type Work = {
 export type Skill = {
   name: string
 }
+
+export type Layout = 'Basic' | 'SideBar'

@@ -1,15 +1,17 @@
-import { NextPage } from 'next';
+import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { BasicLayout, Meta, WorksList } from '@/components';
+import { Meta, WorksList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { works } from '@/utils';
+import { Layout } from '@/types';
 
-type Props = {}
+type Props = {
+  layout: Layout
+}
 
 const Works: NextPage<Props> = () => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
-  <BasicLayout>
     <PageBase>
       <Meta
         title={'Works'}
@@ -22,9 +24,16 @@ const Works: NextPage<Props> = () => {
           <WorksList works={ works }/>
         </ContentSectionInner>
       </ContentSection>
-      </PageBase>
-    </BasicLayout>
+    </PageBase>
   )
+}
+
+export const getStaticProps: GetStaticProps<Props>  = async () => {
+  return {
+    props: {
+      layout: 'Basic'
+    }
+  }
 }
 
 export default Works
