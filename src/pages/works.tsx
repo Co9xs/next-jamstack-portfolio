@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta, WorksList } from '@/components';
+import { BasicLayout, Meta, WorksList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { works } from '@/utils';
 
@@ -9,6 +9,7 @@ type Props = {}
 const Works: NextPage<Props> = () => {
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
   return (
+  <BasicLayout>
     <PageBase>
       <Meta
         title={'Works'}
@@ -21,7 +22,8 @@ const Works: NextPage<Props> = () => {
           <WorksList works={ works }/>
         </ContentSectionInner>
       </ContentSection>
-    </PageBase>
+      </PageBase>
+    </BasicLayout>
   )
 }
 

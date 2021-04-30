@@ -5,11 +5,13 @@ import { Article } from '@/types';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
 import { getArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
+import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 
 type Props = {
   articles: Article[]
   totalCount: number
-  currentPage: number
+  currentPage: number,
+  layout: 'SideBar'
 }
 
 type Params = {
@@ -17,23 +19,26 @@ type Params = {
 }
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
-  const { articles, totalCount, currentPage } = props;
+  const { articles, totalCount, currentPage, layout } = props;
   const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
+  console.log(layout)
   return (
-    <PageBase>
-      <Meta
-        title={'Blog'}
-        description={'Ryo Fujishima - Web Dev'}
-        image={encodeURI(image)}
-      />
-      <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
-        <ContentSectionInner>
-          <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
-          <ArticleList articles={articles} />
-          <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
-        </ContentSectionInner>
-      </ContentSection>
-    </PageBase>
+    <SideBarLayout>
+      <PageBase>
+        <Meta
+          title={'Blog'}
+          description={'Ryo Fujishima - Web Dev'}
+          image={encodeURI(image)}
+        />
+        <ContentSection background={'#F1F5F9'} style={{flexGrow: '1'}}>
+          <ContentSectionInner>
+            <SectionTitle><Twemoji tag="span">🧑‍💻</Twemoji>記事一覧</SectionTitle>
+            <ArticleList articles={articles} />
+            <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
+          </ContentSectionInner>
+        </ContentSection>
+      </PageBase>
+    </SideBarLayout>
   )
 }
 
@@ -54,6 +59,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
       articles: data.contents,
       totalCount: data.totalCount,
       currentPage: Number(id),
+      layout: 'SideBar'
     },
   }
 }

@@ -15,9 +15,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle/>
       <DarkModeContext.Provider value={{isDarkMode, toggleDarkMode}}>
-        <BasicLayout>
-          <Component {...pageProps} />
-        </BasicLayout>
+        <Component {...pageProps} />
       </DarkModeContext.Provider>
     </ThemeProvider>
   )
