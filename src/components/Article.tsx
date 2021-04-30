@@ -11,6 +11,7 @@ type Props = {
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
   const publishedAt = convertDateToString(new Date(article.publishedAt));
+  console.log(article.body.length)
   return (
     <ArticleBase>
       <ArticleImage>
@@ -64,6 +65,7 @@ const ArticleImage = styled.div`
 `
 
 const ArticleData = styled.div`
+  min-width: 420px;
   max-width: 420px;
 `
 const ArticleTitle = styled.h3`
