@@ -24,16 +24,17 @@ type Params = {
 const BlogId: NextPage<Props> = (props: Props) => {
   const { blog, highlightedBody, categories, popularArticles } = props;
   const publishedAt = convertDateToString(new Date(blog.publishedAt));
-  const image = `https://og-image-co9xs.vercel.app/${blog.title}.png`
+  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI(blog.title)}.png`
+  const ogImage = blog.ogimage ? blog.ogimage.url : defaultOgp
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={blog.title}
-          image={encodeURI(image)}
+          image={ogImage}
         />
         <ContentSection>
-          <DetailPageImage></DetailPageImage>
+          <DetailPageImage style={{backgroundImage: `url(${ogImage})`}}></DetailPageImage>
           <DetailPageArticle>
           <DetailPageSnsShare>
             <SnsShareButtonList articleId={blog.id}/>
@@ -111,6 +112,8 @@ export default BlogId
 const DetailPageImage = styled.div`
   width: 100%;
   height: 410px;
+  background-size: cover;
+  background-position: center;
   background-color: #EEE;
 `
 
@@ -126,7 +129,7 @@ const DetailPageSnsShare = styled.div`
   margin: 32px;
   & > ul {
     position: sticky;
-    top: 120px;
+    top: 152px;
   }
   ${media.tablet`
     display: none;

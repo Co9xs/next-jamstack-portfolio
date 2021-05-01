@@ -13,9 +13,11 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
   const publishedAt = convertDateToString(new Date(article.publishedAt));
   const readingTime = calcReadingTime(article.body.length)
+  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI(article.title)}.png`
+  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <ArticleBase>
-      <ArticleImage>
+      <ArticleImage style={{backgroundImage: `url(${ogImage})`}}>
       </ArticleImage>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>
@@ -69,6 +71,7 @@ const ArticleImage = styled.div`
   border-radius: 3px;
   background-size: cover;
   background-position: center;
+  border: 1px solid #EFEFEF;
 
   ${media.tablet`
     max-width: 100%;

@@ -15,10 +15,16 @@ export type Article = {
   body: string,
   publishedAt: string,
   category: Category | null,
-  ogimage?: string,
+  ogimage?: Image,
   tags?: Tag[],
   author?: Author
   relatedArticles: Article[]
+}
+
+export type Image = {
+  url: string,
+  width: number,
+  height: number
 }
 
 export type Author = {
