@@ -11,7 +11,7 @@ import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 
 type Props = {
-  blog: Article,
+  article: Article,
   highlightedBody: string,
   categories: Category[],
   popularArticles: Article[]
@@ -21,32 +21,32 @@ type Params = {
   id: string
 }
 
-const BlogId: NextPage<Props> = (props: Props) => {
-  const { blog, highlightedBody, categories, popularArticles } = props;
-  const publishedAt = convertDateToString(new Date(blog.publishedAt));
-  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI(blog.title)}.png`
-  const ogImage = blog.ogimage ? blog.ogimage.url : defaultOgp
+const articleId: NextPage<Props> = (props: Props) => {
+  const { article, highlightedBody, categories, popularArticles } = props;
+  const publishedAt = convertDateToString(new Date(article.publishedAt));
+  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI(article.title)}.png`
+  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
-          title={blog.title}
+          title={article.title}
           image={ogImage}
         />
         <ContentSection>
           <DetailPageImage style={{backgroundImage: `url(${ogImage})`}}></DetailPageImage>
           <DetailPageArticle>
           <DetailPageSnsShare>
-            <SnsShareButtonList articleId={blog.id}/>
+            <SnsShareButtonList articleId={article.id}/>
           </DetailPageSnsShare>
           <DetailPageContent>
           <DetailPageHeader>
-            <DetailPageHeading>{blog.title}</DetailPageHeading>
-            <Link href={`/blog/categories/${blog.category.id}/page/1`}>
-              <DetailPageCategory>{blog.category.name}</DetailPageCategory>
+            <DetailPageHeading>{article.title}</DetailPageHeading>
+            <Link href={`/blog/categories/${article.category.id}/page/1`}>
+              <DetailPageCategory>{article.category.name}</DetailPageCategory>
             </Link>
             <DetailPageTags>
-              {blog.tags.map(tag => (
+              {article.tags.map(tag => (
                 <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
               ))}
             </DetailPageTags>
@@ -60,7 +60,7 @@ const BlogId: NextPage<Props> = (props: Props) => {
               <DetailPageReadingTime>15 min read</DetailPageReadingTime>
               <DetailPageAuthor>
                 <PersonIcon/>
-                <DetailPageAuthorText>{ blog.author?.displayName}</DetailPageAuthorText>
+                <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
               </DetailPageAuthor>
             </DetailPageMetaData>
           </DetailPageHeader>
@@ -99,7 +99,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const popularArticleData = await getpopularArticles()
   return {
     props: {
-      blog: data,
+      article: data,
       highlightedBody: $.html(),
       categories: categoryData.contents,
       popularArticles: popularArticleData.articles
@@ -107,7 +107,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   };
 };
 
-export default BlogId
+export default articleId
 
 const DetailPageImage = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout } from '@/components';
 import { Article, Category } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, SectionTitleText } from '@/styles';
+import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles';
 import { getArticles, getCategories, getCategory, getpopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 
