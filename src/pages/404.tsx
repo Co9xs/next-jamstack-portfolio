@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta } from '@/components';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles';
 import { Layout } from '@/types';
 
 type Props = {
@@ -17,7 +17,10 @@ const Page404: NextPage<Props> = () => {
       />
       <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
         <ContentSectionInner>
-          <SectionTitle><Twemoji tag="span">🙇</Twemoji>404 - Not Found</SectionTitle>
+          <SectionTitle>
+            <Twemoji tag="div">🙇‍♂️</Twemoji>
+            <SectionTitleText>404 - Not Found</SectionTitleText>
+          </SectionTitle>
           <PlainText>お探しのページは見つかりませんでした</PlainText>
         </ContentSectionInner>
       </ContentSection>

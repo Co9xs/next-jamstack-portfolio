@@ -11,7 +11,7 @@ export const CategoryMappedTwemoji: React.VFC<Props> = ({ category }) => {
     case 'tech':
         return (
           <CategoryMappedTwemojiBase>
-            <Twemoji tag="span">💻</Twemoji>
+            <Twemoji tag="div">💻</Twemoji>
           </CategoryMappedTwemojiBase>
         )
     case 'poem':

@@ -2,9 +2,10 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 
 import Twemoji from 'react-twemoji';
 import { Meta, ArticleList, Pagination, SideBarLayout } from '@/components';
 import { Article, Category } from '@/types';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle } from '@/styles';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, SectionTitleText } from '@/styles';
 import { getArticles, getCategories, getpopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
+import React from 'react';
 
 type Props = {
   articles: Article[]
@@ -31,7 +32,10 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           image={encodeURI(image)}
         />
         <ContentSection>
-          <SectionTitle><Twemoji tag="span">📝</Twemoji>記事一覧</SectionTitle>
+          <SectionTitle>
+            <Twemoji tag="div">📝</Twemoji>
+            <SectionTitleText>記事一覧</SectionTitleText>
+          </SectionTitle>
           <ArticleList articles={articles} />
           <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
         </ContentSection>

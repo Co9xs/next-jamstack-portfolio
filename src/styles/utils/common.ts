@@ -8,19 +8,25 @@ export const PageBase = styled.div`
 `
 
 export const SectionTitle = styled.h2`
-  margin: 0;
-  span {
+  margin: 8px 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  div {
     text-align:center;
     display: inline-block;
     img {
-      height: 35px;
-      vertical-align: bottom;
+      height: 30px;
+      vertical-align: middle;
       margin-right: .5rem;
     }
   }
 
   // DarkMode
   color: ${({ theme }) => theme.white};
+`
+
+export const SectionTitleText = styled.span`
 `
 
 export const ContentSection = styled.section`
@@ -52,4 +58,5 @@ export const ContentSectionInner = styled.div`
 
 export const PlainText = styled.p`
   margin: 12px 0;
+  line-height: 1.5;
 `
