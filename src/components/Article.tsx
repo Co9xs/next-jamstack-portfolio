@@ -108,6 +108,7 @@ const ArticleCategory = styled.span`
   display: inline-block;
   margin-bottom: 10px;
   font-size: 14px;
+  margin-right: 16px;
 `
 
 const ArticleTags = styled.div`
@@ -115,7 +116,6 @@ const ArticleTags = styled.div`
   margin-bottom: 10px;
   ${media.tablet`
     display: inline-block;
-    margin-left: 16px;
   `}
 `
 
