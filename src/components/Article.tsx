@@ -65,7 +65,7 @@ const ArticleBase = styled.article`
 const ArticleImage = styled.div`
   max-width: 350px;
   min-width: 250px;
-  height: 175px;
+  height: 200px;
   flex-grow: 1;
   background-color: #EEE;
   border-radius: 3px;
@@ -76,8 +76,13 @@ const ArticleImage = styled.div`
   ${media.tablet`
     max-width: 100%;
     min-width: 100%;
-    height: 230px;
-    margin-bottom: 16px; 
+    width: 100%;
+    height: 324px;
+    margin-bottom: 16px;
+  `}
+
+  ${media.phone`
+    height: 220px;
   `}
 `
 

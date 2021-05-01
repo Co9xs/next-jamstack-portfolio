@@ -111,10 +111,18 @@ export default BlogId
 
 const DetailPageImage = styled.div`
   width: 100%;
-  height: 410px;
+  height: 450px;
   background-size: cover;
   background-position: center;
   background-color: #EEE;
+
+  ${media.tablet`
+    height: 324px;
+  `}
+
+  ${media.phone`
+    height: 220px;
+  `}
 `
 
 const DetailPageArticle = styled.div`
