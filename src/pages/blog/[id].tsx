@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
@@ -34,7 +35,7 @@ const articleId: NextPage<Props> = (props: Props) => {
           image={ogImage}
         />
         <ContentSection>
-          <DetailPageImage style={{backgroundImage: `url(${ogImage})`}}></DetailPageImage>
+          <Image src={ogImage} width={820} height={450} layout={"responsive"}/>
           <DetailPageArticle>
           <DetailPageSnsShare>
             <SnsShareButtonList articleId={article.id}/>
@@ -109,22 +110,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
 
 export default articleId
 
-const DetailPageImage = styled.div`
-  width: 100%;
-  height: 450px;
-  background-size: cover;
-  background-position: center;
-  background-color: #EEE;
-
-  ${media.tablet`
-    height: 324px;
-  `}
-
-  ${media.phone`
-    height: 220px;
-  `}
-`
-
 const DetailPageArticle = styled.div`
   display: flex;
   justify-content: space-between;
@@ -158,9 +143,10 @@ const DetailPageHeading = styled.h1`
   margin: 32px 0 16px;
   ${media.tablet`
     font-size: 32px;
+    margin-top: 16px;
   `}
-  ${media.tablet`
-    font-size: 30px;
+  ${media.phone`
+    font-size: 28px;
   `}
 `
 const DetailPageCategory = styled.span`

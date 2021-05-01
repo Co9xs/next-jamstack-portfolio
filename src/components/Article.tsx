@@ -1,7 +1,7 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 import { Article } from '@/types';
 import { calcReadingTime, convertDateToString } from '@/utils';
-import React from 'react';
 import { ClockIcon, PersonIcon } from './icons';
 import { media } from '@/styles';
 
@@ -17,8 +17,9 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <ArticleBase>
-      <ArticleImage style={{backgroundImage: `url(${ogImage})`}}>
-      </ArticleImage>
+      {/* <ArticleImage> */}
+      <Image src={ogImage} width={350} height={200} layout={'responsive'}/>
+      {/* </ArticleImage> */}
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>
         <ArticleCategory>{article.category.name}</ArticleCategory>
@@ -49,9 +50,9 @@ const ArticleBase = styled.article`
   padding: 16px 0;
   cursor: pointer;
   display: flex;
-  justify-content: space-between;
 
-  ${media.tablet`
+
+  ${media.tablet` 
     flex-direction: column;
   `}
   
@@ -90,11 +91,14 @@ const ArticleData = styled.div`
   min-width: 320px;
   max-width: 420px;
   margin-left: 16px;
-  flex-grow: 1;
+  flex-shrink: 1;
   ${media.tablet`
     max-width: 100%;
     min-width: 100%;
-    margin: 0;
+    margin: 16px 0 0 0;
+  `}
+  ${media.phone`
+    margin-top: 8px;
   `}
 `
 
