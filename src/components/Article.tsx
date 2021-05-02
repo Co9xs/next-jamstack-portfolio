@@ -17,9 +17,9 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <ArticleBase>
-      {/* <ArticleImage> */}
-      <Image src={ogImage} width={350} height={200} layout={'responsive'}/>
-      {/* </ArticleImage> */}
+      <ArticleImage>
+        <Image src={ogImage} width={350} height={200} layout={'responsive'}/>
+      </ArticleImage>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>
         <ArticleCategory>{article.category.name}</ArticleCategory>
@@ -50,12 +50,12 @@ const ArticleBase = styled.article`
   padding: 16px 0;
   cursor: pointer;
   display: flex;
-
+  justify-content: flex-start;
+  align-items: flex-start;
 
   ${media.tablet` 
     flex-direction: column;
   `}
-  
 
   //DarkMode
   color: ${({ theme }) => theme.white};
@@ -64,33 +64,19 @@ const ArticleBase = styled.article`
 `
 
 const ArticleImage = styled.div`
-  max-width: 350px;
-  min-width: 250px;
+  min-width: 350px;
   height: 200px;
-  flex-grow: 1;
-  background-color: #EEE;
-  border-radius: 3px;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid #EFEFEF;
 
   ${media.tablet`
-    max-width: 100%;
     min-width: 100%;
-    width: 100%;
-    height: 324px;
-    margin-bottom: 16px;
-  `}
-
-  ${media.phone`
-    height: 220px;
+    height: auto;
   `}
 `
 
 const ArticleData = styled.div`
   min-width: 320px;
   max-width: 420px;
-  margin-left: 16px;
+  margin-left: 24px;
   flex-shrink: 1;
   ${media.tablet`
     max-width: 100%;
