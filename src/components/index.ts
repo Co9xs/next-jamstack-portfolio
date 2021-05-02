@@ -17,5 +17,6 @@ export * from './SnsShareButtonList'
 export * from "./Header";
 export * from "./Meta";
 export * from "./Logo";
+export * from "./Breadcrumb";
 export * from './icons'
 export * from './layouts'

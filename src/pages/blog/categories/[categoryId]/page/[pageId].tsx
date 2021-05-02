@@ -1,5 +1,6 @@
+import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout } from '@/components';
+import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout, Breadcrumb } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles';
 import { getArticles, getCategories, getCategory, getpopularArticles } from "@/lib"
@@ -35,6 +36,9 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
             <CategoryMappedTwemoji category={category} />
             <SectionTitleText>{category.name}カテゴリの記事一覧</SectionTitleText>
           </SectionTitle>
+          <CategoryPageBreadcrumb>
+            <Breadcrumb category={category}/>
+          </CategoryPageBreadcrumb>
           <ArticleList articles={articles} />
           <Pagination
             pageHref={`/blog/categories/${category.id}/page/`}
@@ -87,5 +91,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     },
   }
 }
+
+const CategoryPageBreadcrumb = styled.div`
+  margin: 16px 0 0 0;
+`
 
 export default CategoryPageId

@@ -4,12 +4,13 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import { ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
+import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
 import { Article, Category } from '@/types';
 import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getpopularArticles } from '@/lib';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
+import React from 'react';
 
 type Props = {
   article: Article,
@@ -35,7 +36,10 @@ const articleId: NextPage<Props> = (props: Props) => {
           image={ogImage}
         />
         <ContentSection>
-          <Image src={ogImage} width={820} height={450} layout={"responsive"}/>
+          <Image src={ogImage} width={820} height={450} layout={"responsive"} />
+          <DetailPageBreadcrumb>
+            <Breadcrumb category={article.category}/>
+          </DetailPageBreadcrumb>
           <DetailPageArticle>
           <DetailPageSnsShare>
             <SnsShareButtonList articleId={article.id}/>
@@ -115,6 +119,13 @@ const DetailPageArticle = styled.div`
   justify-content: space-between;
   ${media.tablet`
     display: block;
+  `}
+`
+
+const DetailPageBreadcrumb = styled.div`
+  margin: 16px 0 0 0;
+  ${media.phone`
+    margin: 8px 0 0 0;
   `}
 `
 
