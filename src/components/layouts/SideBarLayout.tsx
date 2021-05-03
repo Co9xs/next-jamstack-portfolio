@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { Header, SideBar } from '@/components'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils'
-import React from 'react'
-import { Article, Category } from '@/types'
 import { media } from '@/styles'
 import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
