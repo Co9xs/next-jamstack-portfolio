@@ -20,7 +20,7 @@ type Props = {
 }
 
 type Params = {
-  id: string
+  articleId: string
 }
 
 const articleId: NextPage<Props> = (props: Props) => {
@@ -89,8 +89,8 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
-  const { id } = context.params
-  const article = await getArticle(id);
+  const { articleId } = context.params
+  const article = await getArticle(articleId);
   const categoryList = await getCategories()
   const popularArticleObject = await getPopularArticles()
 

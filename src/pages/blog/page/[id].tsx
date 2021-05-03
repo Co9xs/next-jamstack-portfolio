@@ -1,11 +1,9 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta, ArticleList, Pagination, SideBarLayout } from '@/components';
-import { Article, Category } from '@/types';
 import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles';
 import { getArticles, getCategories, getPopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
-import React from 'react';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 
@@ -24,14 +22,14 @@ type Params = {
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
   const { articles, totalCount, currentPage, categories, popularArticles } = props;
-  const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
+  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI('Ryo Fujishima - Web Dev')}.png`
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={'Blog'}
           description={'Ryo Fujishima - Web Dev'}
-          image={encodeURI(image)}
+          image={encodeURI(defaultOgp)}
         />
         <ContentSection>
           <SectionTitle>
@@ -47,8 +45,8 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await getArticles()
-  const paths = range(1, Math.ceil(data.totalCount / ARTICLES_PER_PAGE)).map(
+  const articleList = await getArticles()
+  const paths = range(1, Math.ceil(articleList.totalCount / ARTICLES_PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
   )
   return { paths, fallback: false }
