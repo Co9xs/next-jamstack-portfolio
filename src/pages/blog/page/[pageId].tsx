@@ -17,7 +17,7 @@ type Props = {
 }
 
 type Params = {
-  id: string
+  pageId: string
 }
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
@@ -53,8 +53,8 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
-  const { id } = context.params;
-  const offset = (Number(id) - 1) * ARTICLES_PER_PAGE;
+  const { pageId } = context.params;
+  const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
   const articleList = await getArticles({ offset, limit: ARTICLES_PER_PAGE })
   const categoryList = await getCategories()
   const popularArticleObject = await getPopularArticles()
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     props: {
       articles: articleList.contents,
       totalCount: articleList.totalCount,
-      currentPage: Number(id),
+      currentPage: Number(pageId),
       layout: 'SideBar',
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
