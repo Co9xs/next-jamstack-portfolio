@@ -280,6 +280,7 @@ const DetailPageBody= styled.div`
   ol {
     list-style-type: decimal;
     list-style-position: inside;
+    padding: 0 0 0 8px;
   }
 
   a {
@@ -288,6 +289,29 @@ const DetailPageBody= styled.div`
 
   ul {
     list-style-position: inside;
+    padding: 0 0 0 8px;
+  }
+
+  blockquote {
+    position: relative;
+    padding: 30px 15px 8px 15px;
+    box-sizing: border-box;
+    font-style: italic;
+    background: #efefef;
+    color: #555;
+    margin: 0;
+  }
+
+  blockquote:before{
+    display: inline-block;
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    content:'”';
+    color: #cfcfcf;
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 900;
   }
 `
 
