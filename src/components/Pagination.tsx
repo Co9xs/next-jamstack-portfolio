@@ -51,12 +51,6 @@ const PaginationItem = styled.li`
   &[data-current="true"] {
     background: #2C5DB0;
   }
-
-  //DarkMode
-  background: ${({ theme }) => theme.black};
-  &[data-current="true"] {
-    background: ${({ theme }) => theme.yellow};
-  }
 `
 
 const PaginationLink = styled.a`
@@ -70,11 +64,5 @@ const PaginationLink = styled.a`
   &[data-current="true"] {
     font-weight: bold;
     color: #FFFFFF;
-  }
-
-  //DarkMode
-  color: ${({ theme }) => theme.white};
-  &[data-current="true"] {
-    color: ${({ theme }) => theme.black};
   }
 `

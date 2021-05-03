@@ -31,10 +31,6 @@ const WorksListItemBase = styled.div`
   padding: 1.5rem;
   margin-top: 16px;
   background: #FFF;
-
-  // DarkMode
-  background: ${({ theme }) => theme.black};
-  border-color: ${({ theme }) => theme.smoke};
 `
 
 const WorksListItemHeader = styled.div`

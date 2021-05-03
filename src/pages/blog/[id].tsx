@@ -230,11 +230,6 @@ const DetailPageBody= styled.div`
       padding: 8px 16px;
       font-size: 26px;
     `}
-
-    //DarkMode
-    color: ${({ theme }) => theme.white};
-    background-color: ${({ theme }) => theme.black};
-    border-color: ${({ theme }) => theme.smoke};
   }
 
   h3 {

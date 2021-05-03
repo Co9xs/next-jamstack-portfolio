@@ -56,11 +56,6 @@ const ArticleBase = styled.article`
   ${media.tablet` 
     flex-direction: column;
   `}
-
-  //DarkMode
-  color: ${({ theme }) => theme.white};
-  background: ${({ theme }) => theme.black};
-  border-color: ${({ theme }) => theme.smoke};
 `
 
 const ArticleImage = styled.div`

@@ -12,10 +12,10 @@ const Page404: NextPage<Props> = () => {
   return (
     <PageBase>
       <Meta
-        title={'Page Not Found'}
-        description={'ページが見つかりませんでした'}
+        title={'404 Not Found'}
+        description={'404 Not Found'}
       />
-      <ContentSection style={{ background: '#F1F5F9', minHeight: '100%'}}>
+      <ContentSection>
         <ContentSectionInner>
           <SectionTitle>
             <Twemoji tag="div">🙇‍♂️</Twemoji>

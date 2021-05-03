@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import { BasicLayout, SideBarLayout } from '@/components'
+import { BasicLayout } from '@/components'
 import { GlobalStyle, darkTheme, lightTheme } from '@/styles';
 
 export const DarkModeContext = createContext(null);

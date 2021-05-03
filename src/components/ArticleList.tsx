@@ -29,6 +29,4 @@ const ArticleListBase = styled.ul`
 const ArticleListItem = styled.li`
   margin-bottom: .5rem;
 `
-const ArticleListLink = styled.ul`
-`
 
