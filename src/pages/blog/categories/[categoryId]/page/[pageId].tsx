@@ -55,15 +55,14 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await getCategories()
-  const categories = data.contents;
+  const categoryList = await getCategories()
   const paths: (string | {
     params: Params,
     locale?: string
   })[] = [];
-  await Promise.all(categories.map(async (category) => {
-    const data = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category })
-    range(1, Math.ceil(data.totalCount / ARTICLES_PER_PAGE)).forEach(repo =>
+  await Promise.all(categoryList.contents.map(async (category) => {
+    const articleList = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category })
+    range(1, Math.ceil(articleList.totalCount / ARTICLES_PER_PAGE)).forEach(repo =>
       paths.push({
         params: {
           categoryId: category.id,
@@ -81,7 +80,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
   const articleList: CommonList<ArticleItem> = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
   const categoryList = await getCategories()
-  const popularArticleData = await getPopularArticles()
+  const popularArticleObject = await getPopularArticles()
   return {
     props: {
       category,
@@ -89,7 +88,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
       totalCount: articleList.totalCount,
       currentPage: Number(pageId),
       categories: categoryList.contents,
-      popularArticles: popularArticleData.contents
+      popularArticles: popularArticleObject.contents
     },
   }
 }
