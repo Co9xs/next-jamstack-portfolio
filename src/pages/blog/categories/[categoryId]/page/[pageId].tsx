@@ -1,18 +1,20 @@
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout, Breadcrumb } from '@/components';
-import { Article, Category } from '@/types';
 import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles';
-import { getArticles, getCategories, getCategory, getpopularArticles } from "@/lib"
+import { getArticles, getCategories, getCategory, getPopularArticles } from "@/lib"
 import { ARTICLES_PER_PAGE, range } from '@/utils';
+import { ArticleItem } from '@/apis/blog';
+import { CategoryItem } from '@/apis/categories';
+import { CommonList } from '@/apis/common';
 
 type Props = {
-  category: Category
-  articles: Article[]
-  totalCount: number
+  category: CategoryItem,
+  articles: ArticleItem[],
+  totalCount: number,
   currentPage: number,
-  categories: Category[],
-  popularArticles: any[]
+  categories: CategoryItem[],
+  popularArticles: ArticleItem[]
 }
 
 type Params = {
@@ -39,7 +41,7 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
           <CategoryPageBreadcrumb>
             <Breadcrumb category={category}/>
           </CategoryPageBreadcrumb>
-          <ArticleList articles={articles} />
+          <ArticleList articles={articles}/>
           <Pagination
             pageHref={`/blog/categories/${category.id}/page/`}
             totalCount={totalCount}
@@ -77,17 +79,17 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const { categoryId, pageId }= context.params
   const category = await getCategory(categoryId)
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
-  const data = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
-  const categoryData = await getCategories()
-  const popularArticleData = await getpopularArticles()
+  const articleList: CommonList<ArticleItem> = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
+  const categoryList = await getCategories()
+  const popularArticleData = await getPopularArticles()
   return {
     props: {
       category,
-      articles: data.contents,
-      totalCount: data.totalCount,
+      articles: articleList.contents,
+      totalCount: articleList.totalCount,
       currentPage: Number(pageId),
-      categories: categoryData.contents,
-      popularArticles: popularArticleData.articles
+      categories: categoryList.contents,
+      popularArticles: popularArticleData.contents
     },
   }
 }

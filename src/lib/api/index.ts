@@ -1,70 +1,88 @@
-import { Article, ArticleData, Category, CategoryData } from "@/types";
-import { BLOG_API_ENDPOINT, CATEGORY_API_ENDPOINT, KEY } from "@/utils"
+import aspida from '@aspida/fetch'
+import api from '../../apis/$api'
+import { Article } from "@/types";
+import { BLOG_API_ENDPOINT, CATEGORY_API_ENDPOINT, config, KEY } from "@/utils"
+import { CommonList, CommonObject } from '@/apis/common';
+import { ArticleItem } from '@/apis/blog';
+import { CategoryItem } from '@/apis/categories';
 
 type ArticleArgType = {
-  offset: number
-  limit: number
-  category?: Category
-}
-
-type CategoryArgType = {
   offset?: number
   limit?: number
+  category?: CategoryItem
 }
 
-export const getArticles = async (args?: ArticleArgType): Promise<ArticleData> => {
-  // とりあえず指定なしなら50記事取得
-  const base_params = args ? `?offset=${args.offset}&limit=${args.limit}` : `?offset=0&limit=50`
-  const category_params = args?.category ? `&filters=category[equals]${args.category.id}` : ""
-  const params = base_params + category_params
+const url = "https://shima.microcms.io/api/v1"
+
+export const getArticles = async (args?: ArticleArgType): Promise<CommonList<ArticleItem>> => {
+  const limit = args?.limit ? args.limit : 50
+  const offset = args?.offset ? args.offset : 0
+  const filters = args?.category ? `category[equals]${args.category.id}` : ''
+  const _fetch = api(aspida(fetch, { baseURL: url, throwHttpErrors: true }))
   try {
-    return await fetch(`${BLOG_API_ENDPOINT}${params}`, KEY)
-      .then((res) => res.json())
-      .catch(() => null)
-  } catch (error) {
-    console.error(error)
+    const response = await _fetch.blog.$get(
+      {
+        config,
+        query: {
+          limit,
+          offset,
+          filters
+        }
+      })
+    return response
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+export const getPopularArticles = async (): Promise<CommonObject<ArticleItem>> => {
+  const _fetch = api(aspida(fetch, { baseURL: url, throwHttpErrors: true }))
+  try {
+    const response = await _fetch.popular_articles.$get(
+      {
+        config,
+      })
+    return response
+  } catch (e) {
+    console.error(e)
   }
 };
 
-export const getpopularArticles = async (): Promise<any> => {
+export const getArticle = async (id: string): Promise<ArticleItem> => {
+  const _fetch = api(aspida(fetch, { baseURL: url, throwHttpErrors: true }))
   try {
-    return await fetch(`https://shima.microcms.io/api/v1/popular-articles`, KEY)
-      .then((res) => res.json())
-      .catch(() => null)
-  } catch (error) {
-    console.error(error)
+    const response = await _fetch.blog._contentId(id).$get(
+      {
+        config,
+      })
+    return response
+  } catch (e) {
+    console.error(e)
   }
 };
 
-export const getArticle = async (id: string): Promise<Article> => {
+export const getCategories = async (): Promise<CommonList<CategoryItem>> => {
+  const _fetch = api(aspida(fetch, { baseURL: url, throwHttpErrors: true }))
   try {
-    return await fetch(`${BLOG_API_ENDPOINT}/${id}`, KEY)
-      .then((res) => res.json())
-      .catch(() => null)
-  } catch (error) {
-    console.error(error)
+    const response = await _fetch.categories.$get(
+      {
+        config,
+      })
+    return response
+  } catch (e) {
+    console.error(e)
   }
 };
 
-export const getCategories = async (args?: CategoryArgType): Promise<CategoryData> => {
-  const limitParams = args?.limit ? `limit=${args.limit}` : ""
-  const offsetParams = args?.offset ? `offset=${args.offset}` : ""
-  const params = '?' + [limitParams, offsetParams].join('&')
+export const getCategory = async (id: string): Promise<CategoryItem> => {
+  const _fetch = api(aspida(fetch, { baseURL: url, throwHttpErrors: true }))
   try {
-    return await fetch(`${CATEGORY_API_ENDPOINT}${params}`, KEY)
-      .then((res) => res.json())
-      .catch(() => null)
-  } catch (error) {
-    console.error(error)
-  }
-};
-
-export const getCategory = async (id: string): Promise<Category> => {
-  try {
-    return await fetch(`${CATEGORY_API_ENDPOINT}/${id}`, KEY)
-      .then((res) => res.json())
-      .catch(() => null)
-  } catch (error) {
-    console.error(error)
+    const response = await _fetch.categories._contentId(id).$get(
+      {
+        config,
+      })
+    return response
+  } catch (e) {
+    console.error(e)
   }
 };

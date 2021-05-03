@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 import { CustomLink } from '@/components'
 import { Article } from '@/types'
+import { ArticleItem } from '@/apis/blog'
 
 type Props = {
-  articles: Article[]
+  articles: ArticleItem[]
 }
 
 export const ArticleTitleList: React.VFC<Props> = (props) => {

@@ -4,9 +4,10 @@ import { Article } from '@/types';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import { ClockIcon, PersonIcon } from './icons';
 import { media } from '@/styles';
+import { ArticleItem } from '@/apis/blog';
 
 type Props = {
-  article: Article
+  article: ArticleItem
 }
 
 export const ArticleCard: React.VFC<Props> = (props) => {

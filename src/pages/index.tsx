@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta, SkillIconList } from '@/components';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles';
-import React from 'react';
 import { Layout } from '@/types';
 
 type Props = {
