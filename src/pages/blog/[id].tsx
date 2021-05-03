@@ -1,22 +1,22 @@
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
-import { Article, Category } from '@/types';
 import { PageBase, ContentSection, media } from '@/styles';
-import { getArticle, getArticles, getCategories, getpopularArticles } from '@/lib';
+import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
+import { ArticleItem } from '@/apis/blog';
+import { CategoryItem } from '@/apis/categories';
 import { convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
-import React from 'react';
 
 type Props = {
-  article: Article,
+  article: ArticleItem,
   highlightedBody: string,
-  categories: Category[],
-  popularArticles: Article[]
+  categories: CategoryItem[],
+  popularArticles: ArticleItem[]
 }
 
 type Params = {
@@ -83,31 +83,30 @@ const articleId: NextPage<Props> = (props: Props) => {
 }
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const data = await getArticles();
-  const paths = data.contents.map(content => `/blog/${content.id}`);
+  const articleList = await getArticles();
+  const paths = articleList.contents.map(article => `/blog/${article.id}`);
   return {paths, fallback: false};
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
   const { id } = context.params
-  const data = await getArticle(id);
+  const article = await getArticle(id);
+  const categoryList = await getCategories()
+  const popularArticleObject = await getPopularArticles()
 
   // cheerioとhighlight.jsで事前にハイライトを適用
-  const $ = cheerio.load(data.body);
+  const $ = cheerio.load(article.body);
   $('pre code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text())
     $(elm).html(result.value)
     $(elm).addClass('hljs')
   })
-
-  const categoryData = await getCategories()
-  const popularArticleData = await getpopularArticles()
   return {
     props: {
-      article: data,
+      article,
       highlightedBody: $.html(),
-      categories: categoryData.contents,
-      popularArticles: popularArticleData.articles
+      categories: categoryList.contents,
+      popularArticles: popularArticleObject.contents
     },
   };
 };
