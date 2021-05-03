@@ -10,6 +10,7 @@
     "test:coverage": "jest --collect-coverage"
   },
   "dependencies": {
+    "@aspida/fetch": "^1.7.0",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.22",
     "@types/react-test-renderer": "^17.0.1",
