@@ -18,7 +18,7 @@ const Home: NextPage<Props> = (props) => {
           description={'Ryo Fujishima - Web Dev'}
           image={encodeURI(image)}
         />
-        <ContentSection background={'#E6F2FF'}>
+        <ContentSection>
           <ContentSectionInner>
             <SectionTitle>
               <Twemoji tag="div">🙋‍♂️</Twemoji>
@@ -63,7 +63,7 @@ const Home: NextPage<Props> = (props) => {
             />
           </ContentSectionInner>
         </ContentSection>
-        <ContentSection background={'#F1F5F9'}>
+        <ContentSection>
           <ContentSectionInner>
             <SectionTitle>
               <Twemoji tag="div">🏫</Twemoji>
