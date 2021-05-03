@@ -9,7 +9,7 @@ import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { convertDateToString } from '@/utils';
+import { calcReadingTime, convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 
 type Props = {
@@ -26,6 +26,7 @@ type Params = {
 const articleId: NextPage<Props> = (props: Props) => {
   const { article, highlightedBody, categories, popularArticles } = props;
   const publishedAt = convertDateToString(new Date(article.publishedAt));
+  const readingTime = calcReadingTime(article.body.length)
   const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI(article.title)}.png`
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
@@ -62,7 +63,7 @@ const articleId: NextPage<Props> = (props: Props) => {
                   {publishedAt}
                 </DetailPageDateText>
               </DetailPageDate>
-              <DetailPageReadingTime>15 min read</DetailPageReadingTime>
+              <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
               <DetailPageAuthor>
                 <PersonIcon/>
                 <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
