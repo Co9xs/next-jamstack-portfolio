@@ -1,25 +1,7 @@
-import { CommonItem, CommonList } from '../common'
-
-interface TagItem extends CommonItem {
-  name: string
-}
-
-interface CategoryItem extends CommonItem {
-  name: string
-}
-
-interface AuthorItem extends CommonItem {
-  displayName: string
-  description: string
-  image: string
-}
-
-interface ImageItem {
-  url: string
-  width: number
-  height: number
-}
-
+import { CommonItem, CommonList, ImageItem } from '../common'
+import { AuthorItem } from '../authors'
+import { CategoryItem } from '../categories'
+import { TagItem } from '../tags'
 export interface ArticleItem extends CommonItem {
   title: string
   body: string

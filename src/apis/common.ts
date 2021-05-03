@@ -17,3 +17,10 @@ export type CommonItem = {
   publishedAt: string
   revisedAt: string,
 }
+
+// microCMS上にアップロードした画像の型
+export interface ImageItem {
+  url: string
+  width: number
+  height: number
+}

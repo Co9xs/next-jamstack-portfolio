@@ -1,47 +1,5 @@
-export type Category = {
-  id: string,
-  name: string,
-  articleCount?: number
-}
-
-export type CategoryData = {
-  contents: Category[],
-  totalCount: number
-}
-
-export type Article = {
-  id: string,
-  title: string,
-  body: string,
-  publishedAt: string,
-  category: Category | null,
-  ogimage?: Image,
-  tags?: Tag[],
-  author?: Author
-  relatedArticles: Article[]
-}
-
-export type Image = {
-  url: string,
-  width: number,
-  height: number
-}
-
-export type Author = {
-  displayName: string,
-  description: string,
-  image: string
-}
-
-export type Tag = {
-  id: string,
-  name: string
-}
-
-export type ArticleData = {
-  contents: Article[],
-  totalCount: number
-}
+// 以下はAPI経由で取得してくるデータ以外の型定義
+// APIからのレスポンスは./src/apis配下にinterfaceで定義してある
 
 export type Work = {
   title: string,

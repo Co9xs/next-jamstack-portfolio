@@ -6,7 +6,6 @@ import { getArticles, getCategories, getCategory, getPopularArticles } from "@/l
 import { ARTICLES_PER_PAGE, range } from '@/utils';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { CommonList } from '@/apis/common';
 
 type Props = {
   category: CategoryItem,
@@ -78,7 +77,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const { categoryId, pageId }= context.params
   const category = await getCategory(categoryId)
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
-  const articleList: CommonList<ArticleItem> = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
+  const articleList = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
   const categoryList = await getCategories()
   const popularArticleObject = await getPopularArticles()
   return {
