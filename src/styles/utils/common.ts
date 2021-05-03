@@ -46,13 +46,13 @@ export const ContentSectionInner = styled.div`
   width: 100%;
   margin: 0 auto;
   ${media.desktop`
-    padding: 24px 16px;
+    padding: 24px 16px 0;
   `}
   ${media.tablet`
-    padding: 24px 16px;
+    padding: 24px 16px 0;
   `}
   ${media.phone`
-    padding: 24px 16px;
+    padding: 24px 16px 0;
   `}
 `
 

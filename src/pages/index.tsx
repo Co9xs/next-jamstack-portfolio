@@ -22,28 +22,23 @@ const Home: NextPage<Props> = (props) => {
           <ContentSectionInner>
             <SectionTitle>
               <Twemoji tag="div">🙋‍♂️</Twemoji>
-              <SectionTitleText>プロフィール</SectionTitleText>
+              <SectionTitleText>Profile</SectionTitleText>
             </SectionTitle>
-            <PlainText>
-              Web Developerとして活動している、しま | Ryo Fujishima です<br/>
-              Webフロントエンドが得意領域で、パフォーマンス、UI/UX、アクセシビリティなど広く関心があります<br/>
-            </PlainText>
-            <PlainText>所属：東北大学 経済学部 経済学科 4年</PlainText>
-            <PlainText>生年月日：2000/02/03</PlainText>
-            <PlainText>好きな技術：React, TypeScript, etc</PlainText>
-            <PlainText>好きなもの：e-sports観戦, 猫, ガジェット, サウナ, etc</PlainText>
-            <PlainText>Twitter：<a href={"https://twitter.com/Co9xsR"} target={'_blank'} rel={'noopener'}>しま</a></PlainText>
-            <PlainText>Github：<a href={"https://github.com/Co9xs"} target={'_blank'} rel={'noopener'}>Co9xs</a></PlainText>
-            <PlainText>SpeakerDeck：<a href={"https://speakerdeck.com/co9xs"} target={'_blank'} rel={'noopener'}>発表資料一覧</a></PlainText>
-            <PlainText>Wantedly：<a href={"https://www.wantedly.com/id/ryou_fujishima_a"} target={'_blank'} rel={'noopener'}>プロフィール</a></PlainText>
-            <PlainText>雑記ブログ：<a href={"https://shimablogs.com/"} target={'_blank'} rel={'noopener'}>しまぶろぐ</a></PlainText>
+            <PlainText>Hello, I am Ryo Fujishima.</PlainText>
+            <PlainText>I am a web frontend engineer interested in Performance, Accessibility, etc.</PlainText>
+            <PlainText>I belong to the Faculty of Economics of Tohoku University.</PlainText>
+            <PlainText>My hobbies are e-sports, collecting gadgets, sauna, and so on.</PlainText>
+            <PlainText><a href={"https://twitter.com/Co9xsR"} target={'_blank'} rel={'noopener'}>Twitter</a></PlainText>
+            <PlainText><a href={"https://github.com/Co9xs"} target={'_blank'} rel={'noopener'}>GitHub</a></PlainText>
+            <PlainText><a href={"https://zenn.dev/co9xs"} target={'_blank'} rel={'noopener'}>Zenn</a></PlainText>
+            <PlainText><a href={"https://speakerdeck.com/co9xs"} target={'_blank'} rel={'noopener'}>SpeakerDeck</a></PlainText>
           </ContentSectionInner>
         </ContentSection>
-        <ContentSection background={'#FFF'} >
+        <ContentSection>
           <ContentSectionInner>
             <SectionTitle>
               <Twemoji tag="div">🧑‍💻</Twemoji>
-              <SectionTitleText>言語・フレームワーク</SectionTitleText>
+              <SectionTitleText>Language・Framework</SectionTitleText>
             </SectionTitle>
             <SkillIconList
               names={[
@@ -67,14 +62,14 @@ const Home: NextPage<Props> = (props) => {
           <ContentSectionInner>
             <SectionTitle>
               <Twemoji tag="div">🏫</Twemoji>
-              <SectionTitleText>活動経歴</SectionTitleText>
+              <SectionTitleText>Experience</SectionTitleText>
             </SectionTitle>
-            <PlainText>2022/04〜 メガベンチャーでフロントエンドエンジニアとして就業予定</PlainText>
-            <PlainText>2021/02 Wantedly Webフロントエンドインターン(React)</PlainText>
-            <PlainText>2020/08〜2020/03 都内企業でフロントエンド開発アルバイト(Angular, TypeScript, rxjs, storybook)</PlainText>
-            <PlainText>2020/08 CyberAgent WebFrontendChanllenge(Vue, Netlify)</PlainText>
-            <PlainText>2020/03 コーダーで受託制作&Webアプリ開発の学習開始</PlainText>
-            <PlainText>2019/12 Webサイト制作の学習開始</PlainText>
+            <PlainText>2022.04 | Will work at CyberAgent, as a full-time employee</PlainText>
+            <PlainText>2021.02 | Worked at Wantedly, as an intern(React, webpack)</PlainText>
+            <PlainText>2020.08 | Worked at ORO, as a part time job(Angular, rxjs, storybook)</PlainText>
+            <PlainText>2020.08 | Participated in CyberAgent Web Frontend Chanllenge(Vue, Netlify)</PlainText>
+            <PlainText>2020.03 | Started learing web development(JavaScript)</PlainText>
+            <PlainText>2019.12 | Started learing web design(HTML&CSS)</PlainText>
           </ContentSectionInner>
         </ContentSection>
       </PageBase>
