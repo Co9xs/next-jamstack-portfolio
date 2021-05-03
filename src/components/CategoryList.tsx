@@ -9,7 +9,7 @@ type Props = {
 export const CategoryList: React.VFC<Props> = ({ categories }) => {
   return (
     <CategoryListBase>
-      <CategoryListHeading>カテゴリ一覧</CategoryListHeading>
+      <CategoryListHeading>Categories</CategoryListHeading>
       <CategoryListItems>
       {categories.map(category => (
         <CustomLink href={`/blog/categories/${category.id}/page/1`} key={category.id}>

@@ -12,7 +12,7 @@ export const Breadcrumb: React.VFC<Props> = (props) => {
     <BreadcrumbList>
       <BreadcrumbItem>
         <Link href="/blog/page/1">
-          <a>記事一覧</a>
+          <a>Articles</a>
         </Link>
       </BreadcrumbItem>
       <BreadcrumbDivider>

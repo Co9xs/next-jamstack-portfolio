@@ -34,7 +34,7 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
         <ContentSection>
           <SectionTitle>
             <Twemoji tag="div">📝</Twemoji>
-            <SectionTitleText>記事一覧</SectionTitleText>
+            <SectionTitleText>Articles</SectionTitleText>
           </SectionTitle>
           <ArticleList articles={articles} />
           <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>

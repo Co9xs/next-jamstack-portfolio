@@ -34,7 +34,7 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
         <ContentSection>
           <SectionTitle>
             <CategoryMappedTwemoji category={category} />
-            <SectionTitleText>{category.name}カテゴリの記事一覧</SectionTitleText>
+            <SectionTitleText>Articles in the {category.name} category</SectionTitleText>
           </SectionTitle>
           <CategoryPageBreadcrumb>
             <Breadcrumb category={category}/>

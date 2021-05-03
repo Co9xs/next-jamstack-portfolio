@@ -10,7 +10,7 @@ export const ArticleTitleList: React.VFC<Props> = (props) => {
   const { articles } = props
   return (
     <ArticleListBase>
-      <ArticleListHeading>人気記事</ArticleListHeading>
+      <ArticleListHeading>Popular Articles</ArticleListHeading>
       <ArticleListItems>
       {articles.map(article => (
         <CustomLink href={`/blog/${article.id}`} key={article.id}>

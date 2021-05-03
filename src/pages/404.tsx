@@ -21,7 +21,7 @@ const Page404: NextPage<Props> = () => {
             <Twemoji tag="div">🙇‍♂️</Twemoji>
             <SectionTitleText>404 - Not Found</SectionTitleText>
           </SectionTitle>
-          <PlainText>お探しのページは見つかりませんでした</PlainText>
+          <PlainText>Sorry, The page you are looking for was not found.</PlainText>
         </ContentSectionInner>
       </ContentSection>
     </PageBase>
