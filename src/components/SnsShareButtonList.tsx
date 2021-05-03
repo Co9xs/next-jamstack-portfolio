@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { TwitterIcon } from './icons'
 import { TwitterShareButton } from './TwitterShareButton'
 import { FacebookShareButton } from './FacebookShareButton'
 

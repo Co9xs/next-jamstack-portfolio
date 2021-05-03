@@ -1,9 +1,9 @@
 import Twemoji from 'react-twemoji';
 import styled from 'styled-components';
-import { Category } from '@/types';
+import { CategoryItem } from '@/apis/categories';
 
 type Props = {
-  category: Category
+  category: CategoryItem
 }
 export const CategoryMappedTwemoji: React.VFC<Props> = ({ category }) => {
     {

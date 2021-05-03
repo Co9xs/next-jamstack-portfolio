@@ -1,9 +1,9 @@
-import { Category } from '@/types'
+import { CategoryItem } from '@/apis/categories'
 import Link from 'next/link'
 import styled from 'styled-components'
 
 type Props = {
-  category: Category
+  category: CategoryItem
 }
 
 export const Breadcrumb: React.VFC<Props> = (props) => {

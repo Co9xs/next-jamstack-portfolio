@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { ArticleTitleList, CategoryList } from '@/components'
-import React from 'react'
-import { Category, Article } from '@/types'
 import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
 

@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { CustomLink } from '@/components'
-import { Category } from '@/types'
 import { CategoryItem } from '@/apis/categories'
 
 type Props = {

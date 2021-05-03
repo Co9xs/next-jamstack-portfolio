@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CustomLink, ToggleSwitch, MoonIcon, } from '@/components'
+import { CustomLink } from '@/components'
 import { media } from '@/styles';
 import { LinkItems } from '@/utils'
 import { DarkModeContext } from '@/pages/_app';

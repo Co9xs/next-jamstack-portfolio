@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Article } from '@/types';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import { ClockIcon, PersonIcon } from './icons';
 import { media } from '@/styles';

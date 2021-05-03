@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { CustomLink } from '@/components'
-import { Article } from '@/types'
 import { ArticleItem } from '@/apis/blog'
 
 type Props = {
