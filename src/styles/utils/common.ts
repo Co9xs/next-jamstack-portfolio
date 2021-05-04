@@ -16,9 +16,10 @@ export const SectionTitle = styled.h2`
     text-align:center;
     display: inline-block;
     img {
-      height: 30px;
-      vertical-align: middle;
-      margin-right: .5rem;
+      height: 1em;
+      width: 1em;
+      margin-right: 8px;
+      vertical-align: -0.1em;
     }
   }
 `
