@@ -13,7 +13,7 @@ body {
 }
 
 a, a:visited {
-  color: #3399FF;
+  color: #0975e1;
 }
 
 #__next {

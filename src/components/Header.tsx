@@ -48,13 +48,12 @@ const HeaderNav = styled.nav`
   margin: auto;
   a, a:visited {
     text-decoration: none;
-    color: ${({ theme }) => theme.font.sub};
+    color: #637a88;
     padding: 8px 0;
     display: block;
     &[aria-current="true"] {
       border-bottom: 2px solid;
-      border-color: ${({ theme }) => theme.border.accent};
-      color: ${({ theme }) => theme.font.accent};
+      color: #333;
     }
   }
   ${media.desktop`
