@@ -18,7 +18,7 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   return (
     <ArticleBase>
       <ArticleImage>
-        <Image src={ogImage} width={350} height={200} layout={'responsive'}/>
+        <Image src={ogImage} width={350} height={200} layout={'responsive'} priority={true}/>
       </ArticleImage>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>

@@ -37,7 +37,7 @@ const articleId: NextPage<Props> = (props: Props) => {
           image={ogImage}
         />
         <ContentSection>
-          <Image src={ogImage} width={820} height={450} layout={"responsive"} />
+          <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/>
           <DetailPageBreadcrumb>
             <Breadcrumb category={article.category}/>
           </DetailPageBreadcrumb>
