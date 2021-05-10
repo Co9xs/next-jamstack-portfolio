@@ -23,10 +23,10 @@ const Home: NextPage<Props> = (props) => {
               <Twemoji tag="div">🙋‍♂️</Twemoji>
               <SectionTitleText>Profile</SectionTitleText>
             </SectionTitle>
-            <PlainText>Hello, I am Ryo Fujishima.</PlainText>
-            <PlainText>I am a web frontend engineer interested in Performance, Accessibility, etc.</PlainText>
-            <PlainText>I belong to the Faculty of Economics of Tohoku University.</PlainText>
-            <PlainText>My hobbies are e-sports, collecting gadgets, sauna, and so on.</PlainText>
+            <PlainText>I'm a web frontend engineer interested in Performance and Frontend Tools</PlainText>
+            <PlainText>Love React, Next, TypeScript, and so on :)</PlainText>
+            <PlainText>And, I belong to the Faculty of Economics of Tohoku University</PlainText>
+            <PlainText>My daily life interests is e-sports, collecting gadgets and sauna</PlainText>
             <PlainText><a href={"https://twitter.com/Co9xsR"} target={'_blank'} rel={'noopener'}>Twitter</a></PlainText>
             <PlainText><a href={"https://github.com/Co9xs"} target={'_blank'} rel={'noopener'}>GitHub</a></PlainText>
             <PlainText><a href={"https://zenn.dev/co9xs"} target={'_blank'} rel={'noopener'}>Zenn</a></PlainText>
