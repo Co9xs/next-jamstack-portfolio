@@ -23,14 +23,14 @@ type Params = {
 
 const CategoryPageId: NextPage<Props> = (props: Props) => {
   const { category, articles, totalCount, currentPage, categories, popularArticles } = props
-  const image = `https://og-image-co9xs.vercel.app/${category.name}カテゴリの記事一覧.png`
+  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('Category - fujishima.dev')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={`${category.name}カテゴリの記事一覧`}
           description={`${category.name}カテゴリの記事一覧`}
-          image={encodeURI(image)}
+          image={encodeURI(defaultOgp)}
         />
         <ContentSection>
           <SectionTitle>

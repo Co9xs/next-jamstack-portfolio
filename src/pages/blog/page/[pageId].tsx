@@ -22,7 +22,7 @@ type Params = {
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
   const { articles, totalCount, currentPage, categories, popularArticles } = props;
-  const defaultOgp = `https://og-image-co9xs.vercel.app/${encodeURI('Ryo Fujishima - Web Dev')}.png`
+  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('Blog - fujishima.dev')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>

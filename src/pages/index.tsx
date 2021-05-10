@@ -9,13 +9,13 @@ type Props = {
 }
 
 const Home: NextPage<Props> = (props) => {
-  const image = "https://og-image-co9xs.vercel.app/Ryo Fujishima - Web Dev.png"
+  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('Ryo Fujishima - Web Dev')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   return (
       <PageBase>
         <Meta
           title={'Home'}
           description={'Ryo Fujishima - Web Dev'}
-          image={encodeURI(image)}
+          image={encodeURI(defaultOgp)}
         />
         <ContentSection>
           <ContentSectionInner>
