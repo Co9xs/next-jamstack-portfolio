@@ -55,22 +55,18 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const categoryList = await getCategories()
-  const paths: (string | {
-    params: Params,
-    locale?: string
-  })[] = [];
-  await Promise.all(categoryList.contents.map(async (category) => {
+  const paths = await Promise.all(categoryList.contents.map(async (category) => {
     const articleList = await getArticles({ offset: 0, limit: ARTICLES_PER_PAGE, category })
-    range(1, Math.ceil(articleList.totalCount / ARTICLES_PER_PAGE)).forEach(repo =>
-      paths.push({
+    return range(1, Math.ceil(articleList.totalCount / ARTICLES_PER_PAGE)).map(repo => {
+      return {
         params: {
           categoryId: category.id,
           pageId: repo.toString()
         }
-      })
-    )
+      }
+    })
   }))
-  return { paths, fallback: false }
+  return { paths: paths.flat(), fallback: false }
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
