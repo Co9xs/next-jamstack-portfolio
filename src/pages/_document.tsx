@@ -1,3 +1,4 @@
+import { GoogleAnalyticsScript } from "@/components/GoogleAnalyticsScript";
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 import { ServerStyleSheet } from 'styled-components';
 
@@ -31,6 +32,7 @@ export default class MyDocument extends Document<Props> {
     return (
       <Html lang="ja">
         <Head>
+          <GoogleAnalyticsScript/>
           <meta charSet="utf-8" />
           <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />
         </Head>

@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import { BasicLayout } from '@/components'
 import { GlobalStyle, darkTheme, lightTheme } from '@/styles';
+import usePageView from '@/hooks/usePageView';
 
 export const DarkModeContext = createContext(null);
 
@@ -11,6 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)
   }
+  usePageView()
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle/>
