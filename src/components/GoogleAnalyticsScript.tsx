@@ -1,9 +1,9 @@
-import {existsGaId, GA_ID} from '@/lib'
+import { existsGaId, GA_ID } from '@/lib'
 
 type Props = {
-};
+}
 
-export const GoogleAnalyticsScript: React.VFC<Props> = (props) => { 
+export const GoogleAnalyticsScript: React.VFC<Props> = () => { 
   return existsGaId ? (
     <>
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
