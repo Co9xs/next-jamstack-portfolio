@@ -11,6 +11,7 @@ import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
+import { ArticleAuthor } from '@/components/ArticleAuthor';
 
 type Props = {
   article: ArticleItem,
@@ -42,40 +43,43 @@ const articleId: NextPage<Props> = (props: Props) => {
             <Breadcrumb category={article.category}/>
           </DetailPageBreadcrumb>
           <DetailPageArticle>
-          <DetailPageSnsShare>
-            <SnsShareButtonList articleId={article.id}/>
-          </DetailPageSnsShare>
-          <DetailPageContent>
-          <DetailPageHeader>
-            <DetailPageHeading>{article.title}</DetailPageHeading>
-            <Link href={`/blog/categories/${article.category.id}/page/1`}>
-              <DetailPageCategory>{article.category.name}</DetailPageCategory>
-            </Link>
-            <DetailPageTags>
-              {article.tags.map(tag => (
-                <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
-              ))}
-            </DetailPageTags>
-            <DetailPageMetaData>
-              <DetailPageDate>
-                <ClockIcon />
-                <DetailPageDateText>
-                  {publishedAt}
-                </DetailPageDateText>
-              </DetailPageDate>
-              <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
-              <DetailPageAuthor>
-                <PersonIcon/>
-                <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
-              </DetailPageAuthor>
-            </DetailPageMetaData>
-          </DetailPageHeader>
-          <DetailPageBody
-            dangerouslySetInnerHTML={{
-              __html: `${highlightedBody}`,
-            }}
+            <DetailPageSnsShare>
+              <SnsShareButtonList articleId={article.id}/>
+            </DetailPageSnsShare>
+            <DetailPageContent>
+              <DetailPageHeader>
+                <DetailPageHeading>{article.title}</DetailPageHeading>
+                <Link href={`/blog/categories/${article.category.id}/page/1`}>
+                  <DetailPageCategory>{article.category.name}</DetailPageCategory>
+                </Link>
+                <DetailPageTags>
+                  {article.tags.map(tag => (
+                    <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
+                  ))}
+                </DetailPageTags>
+                <DetailPageMetaData>
+                  <DetailPageDate>
+                    <ClockIcon />
+                    <DetailPageDateText>
+                      {publishedAt}
+                    </DetailPageDateText>
+                  </DetailPageDate>
+                  <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
+                  <DetailPageAuthor>
+                    <PersonIcon/>
+                    <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
+                  </DetailPageAuthor>
+                </DetailPageMetaData>
+              </DetailPageHeader>
+              <DetailPageBody
+                dangerouslySetInnerHTML={{
+                  __html: `${highlightedBody}`,
+                }}
               />
-          </DetailPageContent>
+              <DetailArticleAuthor>
+                <ArticleAuthor author={article.author}/>
+              </DetailArticleAuthor>
+            </DetailPageContent>
           </DetailPageArticle>
         </ContentSection>
       </PageBase>
@@ -117,6 +121,7 @@ export default articleId
 const DetailPageArticle = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-bottom: 32px;
   ${media.tablet`
     display: block;
   `}
@@ -315,3 +320,6 @@ const DetailPageBody= styled.div`
   }
 `
 
+const DetailArticleAuthor = styled.div`
+  margin-top: 32px;
+`
