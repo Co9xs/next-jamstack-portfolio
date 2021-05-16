@@ -30,20 +30,16 @@ export const getArticles = async (args?: ArticleArgType): Promise<CommonList<Art
     return response
   } catch (e) {
     console.error(e)
+    return null
   }
 }
 
 export const getDraft = async (id: string, draftKey: string): Promise<DraftItem> => {
   const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
-  const clientConfig = {
-    headers: {
-      'X-API-KEY': "72043c17-1624-43ab-b921-baca3235eceb"
-    }
-  }
   try {
     const response = await _fetch.blog._contentId(id).$get(
       {
-        config: clientConfig,
+        config,
         query: {
           draftKey
         }
@@ -51,6 +47,7 @@ export const getDraft = async (id: string, draftKey: string): Promise<DraftItem>
     return response as DraftItem
   } catch (e) {
     console.error(e)
+    return  null
   }
 }
 
@@ -65,6 +62,7 @@ export const getPopularArticles = async (): Promise<CommonObject<ArticleItem>> =
     return response
   } catch (e) {
     console.error(e)
+    return null
   }
 };
 
@@ -78,6 +76,7 @@ export const getArticle = async (id: string): Promise<ArticleItem> => {
     return response as ArticleItem
   } catch (e) {
     console.error(e)
+    return null
   }
 };
 
@@ -91,6 +90,7 @@ export const getCategories = async (): Promise<CommonList<CategoryItem>> => {
     return response
   } catch (e) {
     console.error(e)
+    return null
   }
 };
 
@@ -104,5 +104,6 @@ export const getCategory = async (id: string): Promise<CategoryItem> => {
     return response
   } catch (e) {
     console.error(e)
+    return null
   }
 };
