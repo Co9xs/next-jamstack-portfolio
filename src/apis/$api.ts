@@ -54,11 +54,12 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         const prefix1 = `${PATH1}/${val1}`
 
         return {
-          get: (option?: { config?: T }) =>
+          get: (option?: { query?: Methods3['get']['query'], config?: T }) =>
             fetch<Methods3['get']['resBody']>(prefix, prefix1, GET, option).json(),
-          $get: (option?: { config?: T }) =>
+          $get: (option?: { query?: Methods3['get']['query'], config?: T }) =>
             fetch<Methods3['get']['resBody']>(prefix, prefix1, GET, option).json().then(r => r.body),
-          $path: () => `${prefix}${prefix1}`
+          $path: (option?: { method?: 'get'; query: Methods3['get']['query'] }) =>
+            `${prefix}${prefix1}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
         }
       },
       get: (option?: { query?: Methods2['get']['query'], config?: T }) =>

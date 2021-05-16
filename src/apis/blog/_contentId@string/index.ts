@@ -1,7 +1,11 @@
 import { ArticleItem } from '../index'
 
+export type DraftItem = Omit<ArticleItem, 'publishedAt' | 'revisedAt'>
 export interface Methods {
   get: {
-    resBody: ArticleItem
+    query?: {
+      draftKey?: string 
+    }
+    resBody: ArticleItem | DraftItem
   }
 }

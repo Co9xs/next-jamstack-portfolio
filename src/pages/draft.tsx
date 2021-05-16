@@ -1,58 +1,59 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import useSWR from 'swr';
 import { NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor} from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
 import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
-import { API_ENDPOINT } from "@/utils"
 import { useRouter } from 'next/router'
-
-const clientConfig = {
-  headers: {
-    'X-API-KEY': "72043c17-1624-43ab-b921-baca3235eceb"
-  }
-}
+import { getDraft } from '@/lib';
+import { useEffect, useState } from 'react';
+import { DraftItem } from '@/apis/blog/_contentId@string';
 
 const Draft: NextPage = () => {
   const { query } = useRouter()
-  if (query.id === undefined || query.draftKey === undefined) return <div>404</div>
-  const fetcher = (url, config) => fetch(url, config).then(res => res.json())
-  const {data, error} = useSWR([`${API_ENDPOINT}/blog/${query.id}?draftKey=${query.draftKey}`, clientConfig], fetcher)
-  if (!data) return <div>loading</div>
-  if (error) return <div>an error occured !, {error}</div>
-  console.log(data)
-  const article = data
-  const highlightedBody = applyHighlight(article.body)
-  const readingTime = calcReadingTime(article.body.length)
-  const publishedAt = convertDateToString(new Date(article.updatedAt));
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
-  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
+  const [draft, setDraft] = useState<DraftItem | null>(null)
+
+  useEffect(() => {
+    async function getDraftData() {
+      const draft = await getDraft(query.id as string, query.draftKey as string);
+      setDraft(draft)
+    }
+    if (query.id && query.draftKey) getDraftData()
+  }, [query])
+
+  if (!draft) return <div>Loading...</div>
+
+  const highlightedBody = applyHighlight(draft.body)
+  const readingTime = calcReadingTime(draft.body.length)
+  const publishedAt = convertDateToString(new Date(draft.updatedAt));
+  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(draft.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
+  const ogImage = draft.ogimage ? draft.ogimage.url : defaultOgp
+
   return (
     <SideBarLayout>
     <PageBase>
       <Meta
-        title={article.title}
+        title={draft.title}
         image={ogImage}
       />
       <ContentSection>
         <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/>
         <DetailPageBreadcrumb>
-          <Breadcrumb category={article.category}/>
+          <Breadcrumb category={draft.category}/>
         </DetailPageBreadcrumb>
         <DetailPageArticle>
           <DetailPageSnsShare>
-            <SnsShareButtonList articleId={article.id}/>
+            <SnsShareButtonList articleId={draft.id}/>
           </DetailPageSnsShare>
           <DetailPageContent>
             <DetailPageHeader>
-              <DetailPageHeading>{article.title}</DetailPageHeading>
-              <Link href={`/blog/categories/${article.category.id}/page/1`}>
-                <DetailPageCategory>{article.category.name}</DetailPageCategory>
+              <DetailPageHeading>{draft.title}</DetailPageHeading>
+              <Link href={`/blog/categories/${draft.category.id}/page/1`}>
+                <DetailPageCategory>{draft.category.name}</DetailPageCategory>
               </Link>
               <DetailPageTags>
-                {article.tags.map(tag => (
+                {draft.tags.map(tag => (
                   <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
                 ))}
               </DetailPageTags>
@@ -66,7 +67,7 @@ const Draft: NextPage = () => {
                 <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
                 <DetailPageAuthor>
                   <PersonIcon/>
-                  <DetailPageAuthorText>{ data.author?.displayName}</DetailPageAuthorText>
+                  <DetailPageAuthorText>{ draft.author?.displayName}</DetailPageAuthorText>
                 </DetailPageAuthor>
               </DetailPageMetaData>
             </DetailPageHeader>
@@ -76,7 +77,7 @@ const Draft: NextPage = () => {
               }}
             />
             <DetailArticleAuthor>
-              <ArticleAuthor author={data.author}/>
+              <ArticleAuthor author={draft.author}/>
             </DetailArticleAuthor>
           </DetailPageContent>
         </DetailPageArticle>

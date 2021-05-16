@@ -3,6 +3,7 @@ import api from '../../apis/$api'
 import { API_ENDPOINT, config } from "@/utils"
 import { CommonList, CommonObject } from '@/apis/common';
 import { ArticleItem } from '@/apis/blog';
+import { DraftItem } from '@/apis/blog/_contentId@string';
 import { CategoryItem } from '@/apis/categories';
 
 type ArticleArgType = {
@@ -32,6 +33,28 @@ export const getArticles = async (args?: ArticleArgType): Promise<CommonList<Art
   }
 }
 
+export const getDraft = async (id: string, draftKey: string): Promise<DraftItem> => {
+  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
+  const clientConfig = {
+    headers: {
+      'X-API-KEY': "72043c17-1624-43ab-b921-baca3235eceb"
+    }
+  }
+  try {
+    const response = await _fetch.blog._contentId(id).$get(
+      {
+        config: clientConfig,
+        query: {
+          draftKey
+        }
+      })
+    return response as DraftItem
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+
 export const getPopularArticles = async (): Promise<CommonObject<ArticleItem>> => {
   const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
@@ -52,7 +75,7 @@ export const getArticle = async (id: string): Promise<ArticleItem> => {
       {
         config,
       })
-    return response
+    return response as ArticleItem
   } catch (e) {
     console.error(e)
   }
