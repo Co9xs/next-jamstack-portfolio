@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor } from '@/components';
+import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor, Alert } from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib';
 import { ArticleItem } from '@/apis/blog';
@@ -56,6 +56,11 @@ const articleId: NextPage<Props> = (props: Props) => {
           <DetailPageBreadcrumb>
             <Breadcrumb category={article.category}/>
           </DetailPageBreadcrumb>
+          { !isPublished(article) &&
+            <DetailPageAlert>
+              <Alert text="下書きを閲覧中です"/>
+            </DetailPageAlert>
+          }
           <DetailPageArticle>
             <DetailPageSnsShare>
               <SnsShareButtonList articleId={article.id}/>
@@ -137,6 +142,13 @@ const DetailPageArticle = styled.div`
 `
 
 const DetailPageBreadcrumb = styled.div`
+  margin: 16px 0 0 0;
+  ${media.phone`
+    margin: 8px 0 0 0;
+  `}
+`
+
+const DetailPageAlert = styled.div`
   margin: 16px 0 0 0;
   ${media.phone`
     margin: 8px 0 0 0;
