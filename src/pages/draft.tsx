@@ -12,113 +12,85 @@ import { CategoryItem } from '@/apis/categories';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 import { ArticleAuthor } from '@/components/ArticleAuthor';
+import useSWR from 'swr';
+import { API_ENDPOINT, config } from "@/utils"
+import {useRouter} from 'next/router'
+import { BasicLayout } from '@/components'
 
-type Props = {
-  article: ArticleItem,
-  highlightedBody: string,
-  categories: CategoryItem[],
-  popularArticles: ArticleItem[]
+const clientConfig = {
+  headers: {
+    'X-API-KEY': "72043c17-1624-43ab-b921-baca3235eceb"
+  }
 }
 
-type Params = {
-  articleId: string
-}
-
-const articleId: NextPage<Props> = (props: Props) => {
-  const { article, highlightedBody, categories, popularArticles } = props;
-  console.log(JSON.stringify(popularArticles))
-  console.log(JSON.stringify(categories))
-  const publishedAt = convertDateToString(new Date(article.publishedAt));
-  const readingTime = calcReadingTime(article.body.length)
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
-  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
+const Draft: NextPage = () => {
+  const { query } = useRouter()
+  if (query.id === undefined || query.draftKey === undefined) return <div>404</div>
+  const fetcher = (url, config) => fetch(url, config).then(res => res.json())
+  const {data, error} = useSWR([`${API_ENDPOINT}/blog/${query.id}?draftKey=${query.draftKey}`, clientConfig], fetcher)
+  if (!data) return <div>loading</div>
+  if (error) return <div>an error occured !, {error}</div>
+  const publishedAt = convertDateToString(new Date(data.publishedAt));
+  const readingTime = calcReadingTime(data.body.length)
+  const article = data
   return (
-    <SideBarLayout categories={categories} popularArticles={popularArticles}>
-      <PageBase>
-        <Meta
-          title={article.title}
-          image={ogImage}
-        />
-        <ContentSection>
-          <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/>
-          <DetailPageBreadcrumb>
-            <Breadcrumb category={article.category}/>
-          </DetailPageBreadcrumb>
-          <DetailPageArticle>
-            <DetailPageSnsShare>
-              <SnsShareButtonList articleId={article.id}/>
-            </DetailPageSnsShare>
-            <DetailPageContent>
-              <DetailPageHeader>
-                <DetailPageHeading>{article.title}</DetailPageHeading>
-                <Link href={`/blog/categories/${article.category.id}/page/1`}>
-                  <DetailPageCategory>{article.category.name}</DetailPageCategory>
-                </Link>
-                <DetailPageTags>
-                  {article.tags.map(tag => (
-                    <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
-                  ))}
-                </DetailPageTags>
-                <DetailPageMetaData>
-                  <DetailPageDate>
-                    <ClockIcon />
-                    <DetailPageDateText>
-                      {publishedAt}
-                    </DetailPageDateText>
-                  </DetailPageDate>
-                  <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
-                  <DetailPageAuthor>
-                    <PersonIcon/>
-                    <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
-                  </DetailPageAuthor>
-                </DetailPageMetaData>
-              </DetailPageHeader>
-              <DetailPageBody
-                dangerouslySetInnerHTML={{
-                  __html: `${highlightedBody}`,
-                }}
-              />
-              <DetailArticleAuthor>
-                <ArticleAuthor author={article.author}/>
-              </DetailArticleAuthor>
-            </DetailPageContent>
-          </DetailPageArticle>
-        </ContentSection>
-      </PageBase>
+    <SideBarLayout>
+    <PageBase>
+      <Meta
+        title={article.title}
+        // image={ogImage}
+      />
+      <ContentSection>
+        {/* <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/> */}
+        <DetailPageBreadcrumb>
+          <Breadcrumb category={article.category}/>
+        </DetailPageBreadcrumb>
+        <DetailPageArticle>
+          <DetailPageSnsShare>
+            <SnsShareButtonList articleId={article.id}/>
+          </DetailPageSnsShare>
+          <DetailPageContent>
+            <DetailPageHeader>
+              <DetailPageHeading>{article.title}</DetailPageHeading>
+              <Link href={`/blog/categories/${article.category.id}/page/1`}>
+                <DetailPageCategory>{article.category.name}</DetailPageCategory>
+              </Link>
+              <DetailPageTags>
+                {article.tags.map(tag => (
+                  <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
+                ))}
+              </DetailPageTags>
+              <DetailPageMetaData>
+                <DetailPageDate>
+                  <ClockIcon />
+                  <DetailPageDateText>
+                    {publishedAt}
+                  </DetailPageDateText>
+                </DetailPageDate>
+                <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
+                <DetailPageAuthor>
+                  <PersonIcon/>
+                  <DetailPageAuthorText>{ data.author?.displayName}</DetailPageAuthorText>
+                </DetailPageAuthor>
+              </DetailPageMetaData>
+            </DetailPageHeader>
+            {/* <DetailPageBody
+              dangerouslySetInnerHTML={{
+                __html: `${highlightedBody}`,
+              }}
+            /> */}
+            <DetailArticleAuthor>
+              <ArticleAuthor author={data.author}/>
+            </DetailArticleAuthor>
+          </DetailPageContent>
+        </DetailPageArticle>
+      </ContentSection>
+    </PageBase>
     </SideBarLayout>
-  );
+  )
 }
 
-export const getStaticPaths: GetStaticPaths<Params> = async () => {
-  const articleList = await getArticles();
-  const paths = articleList.contents.map(article => `/blog/${article.id}`);
-  return {paths, fallback: false};
-};
-
-export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
-  const { articleId } = context.params
-  const article = await getArticle(articleId);
-  const categoryList = await getCategories()
-  const popularArticleObject = await getPopularArticles()
-
-  // cheerioとhighlight.jsで事前にハイライトを適用
-  const $ = cheerio.load(article.body);
-  $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
-    $(elm).html(result.value)
-    $(elm).addClass('hljs')
-  })
-  return {
-    props: {
-      article,
-      highlightedBody: $.html(),
-      categories: categoryList.contents,
-      popularArticles: popularArticleObject.contents
-    },
-  };
-};
-
-export default articleId
+export default Draft
 
 const DetailPageArticle = styled.div`
   display: flex;

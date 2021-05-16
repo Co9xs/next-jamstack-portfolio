@@ -4,8 +4,8 @@ import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
 
 type Props = {
-  categories: CategoryItem[],
-  popularArticles: ArticleItem[]
+  categories?: CategoryItem[],
+  popularArticles?: ArticleItem[]
 }
 
 export const SideBar: React.VFC<Props> = (props) => {
@@ -13,10 +13,10 @@ export const SideBar: React.VFC<Props> = (props) => {
   return (
     <SideBarBase>
       <SideBarCategoryList>
-        <CategoryList categories={categories}/>
+        {categories && <CategoryList categories={categories}/>}
       </SideBarCategoryList>
       <SideBarArticleList>
-        <ArticleTitleList articles={popularArticles}/>
+        {popularArticles && <ArticleTitleList articles={popularArticles}/>}
       </SideBarArticleList>
     </SideBarBase>
   )

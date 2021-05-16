@@ -6,8 +6,8 @@ import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
 
 type Props = {
-  categories: CategoryItem[],
-  popularArticles: ArticleItem[],
+  categories?: CategoryItem[],
+  popularArticles?: ArticleItem[],
   children: React.ReactNode
 }
 
