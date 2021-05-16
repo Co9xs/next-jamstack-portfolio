@@ -1,8 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import cheerio from 'cheerio';
-import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor } from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
@@ -10,7 +8,6 @@ import { getArticle, getArticles, getCategories, getPopularArticles } from '@/li
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
-import 'highlight.js/styles/night-owl.css';
 
 type Props = {
   article: ArticleItem,

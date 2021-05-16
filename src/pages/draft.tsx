@@ -2,15 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import useSWR from 'swr';
-import cheerio from 'cheerio';
-import hljs from 'highlight.js'
 import { NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor} from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
 import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
 import { API_ENDPOINT } from "@/utils"
 import { useRouter } from 'next/router'
-import 'highlight.js/styles/night-owl.css';
 
 const clientConfig = {
   headers: {
