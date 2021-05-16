@@ -4,13 +4,15 @@ import styled from 'styled-components';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor } from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
-import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
+import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
+import { DraftItem } from '@/apis/blog/_contentId@string';
+import Page404 from '../404';
 
 type Props = {
-  article: ArticleItem,
+  article: ArticleItem | DraftItem,
   highlightedBody: string,
   categories: CategoryItem[],
   popularArticles: ArticleItem[]
@@ -20,9 +22,25 @@ type Params = {
   articleId: string
 }
 
+const isPublished = (article: ArticleItem | DraftItem): article is ArticleItem => {
+  return ('publishedAt' in article) ? true : false
+}
+
 const articleId: NextPage<Props> = (props: Props) => {
   const { article, highlightedBody, categories, popularArticles } = props;
-  const publishedAt = convertDateToString(new Date(article.publishedAt));
+
+  // Handling 404 here, because set fallback option "true" in this page for preview mode
+  if (!article) {
+    return (
+      <SideBarLayout categories={categories} popularArticles={popularArticles}>
+        <Page404 layout={'Basic'}/>
+      </SideBarLayout>
+    )
+  }
+
+  const dateString = isPublished(article) ? 
+    convertDateToString(new Date(article.publishedAt)) :
+    convertDateToString(new Date(article.updatedAt))
   const readingTime = calcReadingTime(article.body.length)
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
@@ -57,7 +75,7 @@ const articleId: NextPage<Props> = (props: Props) => {
                   <DetailPageDate>
                     <ClockIcon />
                     <DetailPageDateText>
-                      {publishedAt}
+                      {dateString}
                     </DetailPageDateText>
                   </DetailPageDate>
                   <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
@@ -86,18 +104,20 @@ const articleId: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const articleList = await getArticles();
   const paths = articleList.contents.map(article => `/blog/${article.id}`);
-  return {paths, fallback: false};
+  return {paths, fallback: true};
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
   const { articleId } = context.params
-  const article = await getArticle(articleId);
+  const content: DraftItem | ArticleItem = context.preview ? 
+    await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey) : 
+    await getArticle(articleId)
   const categoryList = await getCategories()
   const popularArticleObject = await getPopularArticles()
-  const highlightedBody = applyHighlight(article.body)
+  const highlightedBody = content ? applyHighlight(content.body) : null
   return {
     props: {
-      article,
+      article: content,
       highlightedBody,
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
