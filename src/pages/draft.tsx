@@ -7,7 +7,7 @@ import hljs from 'highlight.js'
 import { NextPage } from 'next';
 import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor} from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
-import { calcReadingTime, convertDateToString } from '@/utils';
+import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
 import { API_ENDPOINT } from "@/utils"
 import { useRouter } from 'next/router'
 import 'highlight.js/styles/night-owl.css';
@@ -25,26 +25,22 @@ const Draft: NextPage = () => {
   const {data, error} = useSWR([`${API_ENDPOINT}/blog/${query.id}?draftKey=${query.draftKey}`, clientConfig], fetcher)
   if (!data) return <div>loading</div>
   if (error) return <div>an error occured !, {error}</div>
+  console.log(data)
   const article = data
+  const highlightedBody = applyHighlight(article.body)
   const readingTime = calcReadingTime(article.body.length)
   const publishedAt = convertDateToString(new Date(article.updatedAt));
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
-  const $ = cheerio.load(article.body);
-  $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
-    $(elm).html(result.value)
-    $(elm).addClass('hljs')
-  })
-  const highlightedBody = $.html()
+  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <SideBarLayout>
     <PageBase>
       <Meta
         title={article.title}
-        image={defaultOgp}
+        image={ogImage}
       />
       <ContentSection>
-        <Image src={defaultOgp} width={820} height={450} layout={"responsive"} priority={true}/>
+        <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/>
         <DetailPageBreadcrumb>
           <Breadcrumb category={article.category}/>
         </DetailPageBreadcrumb>

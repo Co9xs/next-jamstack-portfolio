@@ -9,7 +9,7 @@ import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { calcReadingTime, convertDateToString } from '@/utils';
+import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
 
 type Props = {
@@ -97,18 +97,11 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const article = await getArticle(articleId);
   const categoryList = await getCategories()
   const popularArticleObject = await getPopularArticles()
-
-  // cheerioとhighlight.jsで事前にハイライトを適用
-  const $ = cheerio.load(article.body);
-  $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
-    $(elm).html(result.value)
-    $(elm).addClass('hljs')
-  })
+  const highlightedBody = applyHighlight(article.body)
   return {
     props: {
       article,
-      highlightedBody: $.html(),
+      highlightedBody,
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
     },
