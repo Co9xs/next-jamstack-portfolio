@@ -1,6 +1,7 @@
 export * from './Article'
 export * from './ArticleList'
 export * from './ArticleTitleList'
+export * from './ArticleAuthor'
 export * from './CategoryList'
 export * from './CategoryMappedTwemoji'
 export * from './CustomLink'

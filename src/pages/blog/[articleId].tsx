@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
+import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor } from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
 import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { calcReadingTime, convertDateToString } from '@/utils';
 import 'highlight.js/styles/night-owl.css';
-import { ArticleAuthor } from '@/components/ArticleAuthor';
 
 type Props = {
   article: ArticleItem,
@@ -26,8 +25,6 @@ type Params = {
 
 const articleId: NextPage<Props> = (props: Props) => {
   const { article, highlightedBody, categories, popularArticles } = props;
-  console.log(JSON.stringify(popularArticles))
-  console.log(JSON.stringify(categories))
   const publishedAt = convertDateToString(new Date(article.publishedAt));
   const readingTime = calcReadingTime(article.body.length)
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`

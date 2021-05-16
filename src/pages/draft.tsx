@@ -1,21 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
+import useSWR from 'swr';
 import cheerio from 'cheerio';
 import hljs from 'highlight.js'
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList } from '@/components';
+import { NextPage } from 'next';
+import { Breadcrumb, ClockIcon, Meta, PersonIcon, SideBarLayout, SnsShareButtonList, ArticleAuthor} from '@/components';
 import { PageBase, ContentSection, media } from '@/styles';
-import { getArticle, getArticles, getCategories, getPopularArticles } from '@/lib';
-import { ArticleItem } from '@/apis/blog';
-import { CategoryItem } from '@/apis/categories';
 import { calcReadingTime, convertDateToString } from '@/utils';
+import { API_ENDPOINT } from "@/utils"
+import { useRouter } from 'next/router'
 import 'highlight.js/styles/night-owl.css';
-import { ArticleAuthor } from '@/components/ArticleAuthor';
-import useSWR from 'swr';
-import { API_ENDPOINT, config } from "@/utils"
-import {useRouter} from 'next/router'
-import { BasicLayout } from '@/components'
 
 const clientConfig = {
   headers: {
@@ -30,18 +25,26 @@ const Draft: NextPage = () => {
   const {data, error} = useSWR([`${API_ENDPOINT}/blog/${query.id}?draftKey=${query.draftKey}`, clientConfig], fetcher)
   if (!data) return <div>loading</div>
   if (error) return <div>an error occured !, {error}</div>
-  const publishedAt = convertDateToString(new Date(data.publishedAt));
-  const readingTime = calcReadingTime(data.body.length)
   const article = data
+  const readingTime = calcReadingTime(article.body.length)
+  const publishedAt = convertDateToString(new Date(article.updatedAt));
+  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
+  const $ = cheerio.load(article.body);
+  $('pre code').each((_, elm) => {
+    const result = hljs.highlightAuto($(elm).text())
+    $(elm).html(result.value)
+    $(elm).addClass('hljs')
+  })
+  const highlightedBody = $.html()
   return (
     <SideBarLayout>
     <PageBase>
       <Meta
         title={article.title}
-        // image={ogImage}
+        image={defaultOgp}
       />
       <ContentSection>
-        {/* <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/> */}
+        <Image src={defaultOgp} width={820} height={450} layout={"responsive"} priority={true}/>
         <DetailPageBreadcrumb>
           <Breadcrumb category={article.category}/>
         </DetailPageBreadcrumb>
@@ -74,11 +77,11 @@ const Draft: NextPage = () => {
                 </DetailPageAuthor>
               </DetailPageMetaData>
             </DetailPageHeader>
-            {/* <DetailPageBody
+            <DetailPageBody
               dangerouslySetInnerHTML={{
                 __html: `${highlightedBody}`,
               }}
-            /> */}
+            />
             <DetailArticleAuthor>
               <ArticleAuthor author={data.author}/>
             </DetailArticleAuthor>
