@@ -117,8 +117,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const content: DraftItem | ArticleItem = context.preview ? 
     await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey) : 
     await getArticle(articleId)
-  const categoryList = await getCategories()
-  const popularArticleObject = await getPopularArticles()
+  const [categoryList, popularArticleObject] = await Promise.all([
+    getCategories(),
+    getPopularArticles()
+  ])
   const highlightedBody = content ? applyHighlight(content.body) : null
   return {
     props: {

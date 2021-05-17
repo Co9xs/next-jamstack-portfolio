@@ -73,9 +73,15 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const { categoryId, pageId }= context.params
   const category = await getCategory(categoryId)
   const offset = (Number(pageId) - 1) * ARTICLES_PER_PAGE;
-  const articleList = await getArticles({ offset, limit: ARTICLES_PER_PAGE, category })
-  const categoryList = await getCategories()
-  const popularArticleObject = await getPopularArticles()
+  const [
+    articleList,
+    categoryList,
+    popularArticleObject
+  ] = await Promise.all([
+    getArticles({ offset, limit: ARTICLES_PER_PAGE, category }),
+    getCategories(),
+    getPopularArticles()
+  ])
   return {
     props: {
       category,
