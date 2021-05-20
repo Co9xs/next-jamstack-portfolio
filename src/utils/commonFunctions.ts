@@ -1,3 +1,4 @@
+import marked from 'marked'
 export const convertDateToString = (dt: Date): string => {
   const year = dt.getFullYear();
   const month = ("00" + (dt.getMonth()+1)).slice(-2);
@@ -12,4 +13,12 @@ export const range = (start: number, end: number): number[] => {
 
 export const calcReadingTime = (wordsCount: number): number => {
   return Math.ceil(wordsCount / 500)
+}
+
+export const markdownToHtml = (markdown: string): string => {
+  marked.setOptions({
+    gfm: true,
+    breaks: true,
+  });
+  return marked(markdown)
 }

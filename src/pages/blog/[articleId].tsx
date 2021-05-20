@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
 import { ArticleAuthor } from '@/components/ArticleAuthor';
@@ -16,22 +16,16 @@ import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { calcReadingTime, convertDateToString } from '@/utils/commonFunctions';
+import { calcReadingTime, convertDateToString, markdownToHtml } from '@/utils/commonFunctions';
 import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
-import highlight from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import json from 'highlight.js/lib/languages/json';
-import css from 'highlight.js/lib/languages/css';
-import go from 'highlight.js/lib/languages/go';
-import python from 'highlight.js/lib/languages/python';
-import scss from 'highlight.js/lib/languages/scss';
-import 'highlight.js/styles/night-owl.css';
+import Prism from 'prismjs'
 
 type Props = {
   article: ArticleItem | DraftItem,
   categories: CategoryItem[],
-  popularArticles: ArticleItem[]
+  popularArticles: ArticleItem[],
+  markedBody: string
 }
 
 type Params = {
@@ -43,38 +37,12 @@ const isPublished = (article: ArticleItem | DraftItem): article is ArticleItem =
 }
 
 const articleId: NextPage<Props> = (props: Props) => {
-  const { article, categories, popularArticles } = props;
-  const [articleBody, setArticleBody] = useState<string | null>(null)
+  const { article, categories, popularArticles, markedBody } = props;
 
-  // Handle DOM parsing in client side to apply syntax highlight using DOMParser API
+  // highlighting
   useEffect(() => {
-    highlight.registerLanguage('javascript', javascript);
-    highlight.registerLanguage('json', json);
-    highlight.registerLanguage('css', css);
-    highlight.registerLanguage('scss', scss);
-    highlight.registerLanguage('go', go);
-    highlight.registerLanguage('python', python);
-    
-    const parse = (string: string): Document => {
-      const parser = new DOMParser()
-      const dom = parser.parseFromString(string, 'text/html')
-      return dom
-    }
-    const applyHighlight = (dom: Document): Document => {
-      // handle code blocks
-      dom.querySelectorAll('pre').forEach((pre) => {
-        const code = pre.querySelector('code')
-        code.classList.add('hljs')
-        const text = code.textContent
-        code.innerHTML = highlight.highlightAuto(text).value
-      })
-      return dom
-    }
-    const dom = parse(article.body)
-    const highlightedDom = applyHighlight(dom)
-    const body = highlightedDom.querySelector('body').innerHTML
-    setArticleBody(body)
-  }, [])
+    Prism.highlightAll()
+  },[])
 
   // Handling 404 here, because set fallback option "true" in this page for preview mode
   if (!article) {
@@ -91,7 +59,6 @@ const articleId: NextPage<Props> = (props: Props) => {
   const readingTime = calcReadingTime(article.body.length)
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
-
 
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
@@ -141,7 +108,7 @@ const articleId: NextPage<Props> = (props: Props) => {
               </DetailPageHeader>
               <DetailPageBody
                 dangerouslySetInnerHTML={{
-                  __html: articleBody,
+                  __html: markedBody,
                 }}
               />
               <DetailArticleAuthor>
@@ -166,13 +133,18 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   const content: DraftItem | ArticleItem = context.preview ? 
     await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey) : 
     await getArticle(articleId)
+
+  const markedBody = markdownToHtml(content.body)
+
   const [categoryList, popularArticleObject] = await Promise.all([
     getCategories(),
     getPopularArticles()
   ])
+
   return {
     props: {
       article: content,
+      markedBody,
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
     },
