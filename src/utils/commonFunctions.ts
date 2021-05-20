@@ -1,6 +1,19 @@
 import cheerio from 'cheerio';
-import hljs from 'highlight.js'
+import highlight from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import css from 'highlight.js/lib/languages/css';
+import go from 'highlight.js/lib/languages/go';
+import python from 'highlight.js/lib/languages/python';
+import scss from 'highlight.js/lib/languages/scss';
 import 'highlight.js/styles/night-owl.css';
+
+highlight.registerLanguage('javascript', javascript);
+highlight.registerLanguage('json', json);
+highlight.registerLanguage('css', css);
+highlight.registerLanguage('scss', scss);
+highlight.registerLanguage('go', go);
+highlight.registerLanguage('python', python);
 
 export const convertDateToString = (dt: Date): string => {
   const year = dt.getFullYear();
@@ -21,7 +34,7 @@ export const calcReadingTime = (wordsCount: number): number => {
 export const applyHighlight = (html: string | Buffer, options?: cheerio.CheerioParserOptions): string => {
   const $ = cheerio.load(html, options);
   $('pre code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text())
+    const result = highlight.highlightAuto($(elm).text())
     $(elm).html(result.value)
     $(elm).addClass('hljs')
   })
