@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
-import { ArticleAuthor } from '@/components/ArticleAuthor';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { ClockIcon } from '@/components/icons/ClockIcon';
 import { PersonIcon } from '@/components/icons/PersonIcon';
@@ -111,9 +110,6 @@ const articleId: NextPage<Props> = (props: Props) => {
                   __html: markedBody,
                 }}
               />
-              <DetailArticleAuthor>
-                <ArticleAuthor author={article.author}/>
-              </DetailArticleAuthor>
             </DetailPageContent>
           </DetailPageArticle>
         </ContentSection>
@@ -189,6 +185,10 @@ const DetailPageSnsShare = styled.div`
 
 const DetailPageContent = styled.div`
   margin-left: auto;
+  width: calc(100% - 96px);
+  ${media.tablet`
+  width: 100%;
+  `}
 `
 
 const DetailPageHeader = styled.div`
@@ -360,8 +360,9 @@ const DetailPageBody= styled.div`
     line-height: 1;
     font-weight: 900;
   }
-`
 
-const DetailArticleAuthor = styled.div`
-  margin-top: 32px;
+  pre {
+    width: 100%;
+    overflow-x: scroll;
+  }
 `
