@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import {  Alert } from '@/components/Alert';
+import { Alert } from '@/components/Alert';
 import { ArticleAuthor } from '@/components/ArticleAuthor';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { ClockIcon } from '@/components/icons/ClockIcon';
@@ -15,13 +16,20 @@ import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { applyHighlight, calcReadingTime, convertDateToString } from '@/utils/commonFunctions';
+import { calcReadingTime, convertDateToString } from '@/utils/commonFunctions';
 import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
+import highlight from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import json from 'highlight.js/lib/languages/json';
+import css from 'highlight.js/lib/languages/css';
+import go from 'highlight.js/lib/languages/go';
+import python from 'highlight.js/lib/languages/python';
+import scss from 'highlight.js/lib/languages/scss';
+import 'highlight.js/styles/night-owl.css';
 
 type Props = {
   article: ArticleItem | DraftItem,
-  highlightedBody: string,
   categories: CategoryItem[],
   popularArticles: ArticleItem[]
 }
@@ -35,7 +43,38 @@ const isPublished = (article: ArticleItem | DraftItem): article is ArticleItem =
 }
 
 const articleId: NextPage<Props> = (props: Props) => {
-  const { article, highlightedBody, categories, popularArticles } = props;
+  const { article, categories, popularArticles } = props;
+  const [articleBody, setArticleBody] = useState<string | null>(null)
+
+  // Handle DOM parsing in client side to apply syntax highlight using DOMParser API
+  useEffect(() => {
+    highlight.registerLanguage('javascript', javascript);
+    highlight.registerLanguage('json', json);
+    highlight.registerLanguage('css', css);
+    highlight.registerLanguage('scss', scss);
+    highlight.registerLanguage('go', go);
+    highlight.registerLanguage('python', python);
+    
+    const parse = (string: string): Document => {
+      const parser = new DOMParser()
+      const dom = parser.parseFromString(string, 'text/html')
+      return dom
+    }
+    const applyHighlight = (dom: Document): Document => {
+      // handle code blocks
+      dom.querySelectorAll('pre').forEach((pre) => {
+        const code = pre.querySelector('code')
+        code.classList.add('hljs')
+        const text = code.textContent
+        code.innerHTML = highlight.highlightAuto(text).value
+      })
+      return dom
+    }
+    const dom = parse(article.body)
+    const highlightedDom = applyHighlight(dom)
+    const body = highlightedDom.querySelector('body').innerHTML
+    setArticleBody(body)
+  }, [])
 
   // Handling 404 here, because set fallback option "true" in this page for preview mode
   if (!article) {
@@ -52,6 +91,8 @@ const articleId: NextPage<Props> = (props: Props) => {
   const readingTime = calcReadingTime(article.body.length)
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
+
+
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
@@ -100,7 +141,7 @@ const articleId: NextPage<Props> = (props: Props) => {
               </DetailPageHeader>
               <DetailPageBody
                 dangerouslySetInnerHTML={{
-                  __html: `${highlightedBody}`,
+                  __html: articleBody,
                 }}
               />
               <DetailArticleAuthor>
@@ -129,11 +170,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     getCategories(),
     getPopularArticles()
   ])
-  const highlightedBody = content ? applyHighlight(content.body) : null
   return {
     props: {
       article: content,
-      highlightedBody,
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
     },
