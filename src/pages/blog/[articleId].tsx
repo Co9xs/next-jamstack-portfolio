@@ -262,43 +262,42 @@ const DetailPageAuthorText = styled.span`
 const DetailPageBody= styled.div`
   h2 {
     font-weight: bold;
-    margin: 40px 0 20px;
-    background-color: #eee;
+    margin: 40px 0 0 0;
     border-left: 3px solid #333;
     ${media.desktop`
-      padding: 8px 24px;
-      font-size: 30px;
-    `}
-    ${media.tablet`
-      padding: 10px 20px;
+      padding: 8px 18px;
       font-size: 28px;
     `}
-    ${media.phone`
-      padding: 8px 16px;
+    ${media.tablet`
+      padding: 6px 16px;
       font-size: 26px;
+    `}
+    ${media.phone`
+      padding: 6px 16px;
+      font-size: 24px;
     `}
   }
 
   h3 {
     font-weight: bold;
-    margin: 40px 0 20px;
-    border-left: 3px solid #333;
+    margin: 32px 0 0 0;
     ${media.desktop`
-      padding: 4px 16px;
-      font-size: 26px;
-    `}
-    ${media.tablet`
-      padding: 10px 20px;
+      padding: 4px 0px;
       font-size: 24px;
     `}
-    ${media.phone`
-      padding: 8px 16px;
+    ${media.tablet`
+      padding: 10px 0px;
       font-size: 22px;
+    `}
+    ${media.phone`
+      margin: 24px 0 0 0;
+      padding: 8px 0px;
+      font-size: 20px;
     `}
   }
 
   h4 {
-    margin: 40px 0 20px;
+    margin: 40px 0 0px;
     border-bottom: 3px solid #E5E4E6;
     ${media.desktop`
       padding: 10px 20px;
@@ -322,6 +321,7 @@ const DetailPageBody= styled.div`
   p {
     line-height: 1.8;
     letter-spacing: 0.2px;
+    margin: 12px 0;
   }
 
   ol {
