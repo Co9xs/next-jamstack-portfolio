@@ -34,7 +34,7 @@ export default class MyDocument extends Document<Props> {
         <Head>
           <GoogleAnalyticsScript/>
           <meta charSet="utf-8" />
-          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />
+          {/* <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" /> */}
         </Head>
         <body>
           <Main />
