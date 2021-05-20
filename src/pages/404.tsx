@@ -1,8 +1,8 @@
 import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
-import { Meta } from '@/components';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles';
-import { Layout } from '@/types';
+import { Meta } from '@/components/Meta';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles/utils/common';
+import { Layout } from '@/types/index';
 
 type Props = {
   layout: Layout

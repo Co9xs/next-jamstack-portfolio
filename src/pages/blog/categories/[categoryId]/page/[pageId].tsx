@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
-import { Meta, ArticleList, Pagination, CategoryMappedTwemoji, SideBarLayout, Breadcrumb } from '@/components';
-import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles';
-import { getArticles, getCategories, getCategory, getPopularArticles } from "@/lib"
-import { ARTICLES_PER_PAGE, range } from '@/utils';
+import { Meta } from '@/components/Meta';
+import { ArticleList } from '@/components/ArticleList';
+import { Pagination } from '@/components/Pagination';
+import { CategoryMappedTwemoji } from '@/components/CategoryMappedTwemoji';
+import { SideBarLayout } from '@/components/layouts/SideBarLayout';
+import { Breadcrumb } from '@/components/Breadcrumb';
+import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles/utils/common';
+import { getArticles, getCategories, getCategory, getPopularArticles } from "@/lib/api/index"
+import { ARTICLES_PER_PAGE } from '@/utils/constans';
+import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 

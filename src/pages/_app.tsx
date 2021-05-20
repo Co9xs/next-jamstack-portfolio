@@ -1,8 +1,9 @@
 import { createContext, useState } from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
-import { BasicLayout } from '@/components'
-import { GlobalStyle, darkTheme, lightTheme } from '@/styles';
+import { BasicLayout } from '@/components/layouts/BasicLayout'
+import { darkTheme, lightTheme } from '@/styles/utils/theme';
+import { GlobalStyle } from '@/styles/globals'
 import usePageView from '@/hooks/usePageView';
 
 export const DarkModeContext = createContext(null);
