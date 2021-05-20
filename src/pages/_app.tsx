@@ -13,7 +13,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const toggleDarkMode = () => {
     setDarkMode(!isDarkMode)
   }
-  usePageView()
+  // usePageView()
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <GlobalStyle/>
