@@ -8,7 +8,8 @@
     "start": "next start",
     "test": "jest",
     "test:coverage": "jest --collect-coverage",
-    "api:build": "aspida"
+    "api:build": "aspida",
+    "bundle:analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
     "@aspida/fetch": "^1.7.0",
@@ -33,6 +34,7 @@
     "ts-jest": "^26.5.5"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^10.2.2",
     "@types/node": "^14.14.31",
     "@types/node-fetch": "^2.5.10",
     "@types/react": "^17.0.2",
