@@ -28,7 +28,7 @@ const CategoryListBase = styled.div`
   padding: 0;
 `
 
-const CategoryListHeading = styled.h4`
+const CategoryListHeading = styled.p`
   padding: 0;
   margin-top: 0;
   margin-bottom: 8px;

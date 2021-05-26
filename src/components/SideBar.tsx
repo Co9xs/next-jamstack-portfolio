@@ -20,9 +20,9 @@ export const SideBar: React.VFC<Props> = (props) => {
       <SideBarArticleList>
         {popularArticles && <ArticleTitleList articles={popularArticles}/>}
       </SideBarArticleList>
-      <SideBarArticleList>
+      <SideBarToc>
         {articleBody && <TableOfContents articleBody={articleBody}/>}
-      </SideBarArticleList>
+      </SideBarToc>
     </SideBarBase>
   )
 }
@@ -36,5 +36,9 @@ const SideBarCategoryList = styled.div`
 `
 
 const SideBarArticleList = styled.div`
+  margin-bottom: 40px;
+`
+
+const SideBarToc = styled.div`
   margin-bottom: 40px;
 `

@@ -29,7 +29,7 @@ const ArticleListBase = styled.div`
   padding: 0;
 `
 
-const ArticleListHeading = styled.h4`
+const ArticleListHeading = styled.p`
   padding: 0;
   margin-top: 0;
   margin-bottom: 8px;
