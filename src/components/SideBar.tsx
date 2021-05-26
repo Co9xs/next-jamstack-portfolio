@@ -2,14 +2,16 @@ import styled from 'styled-components'
 import { ArticleTitleList, CategoryList } from '@/components'
 import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
+import TableOfContents from './TableOfContents'
 
 type Props = {
+  articleBody?: string
   categories?: CategoryItem[],
   popularArticles?: ArticleItem[]
 }
 
 export const SideBar: React.VFC<Props> = (props) => {
-  const { categories, popularArticles } = props
+  const { articleBody, categories, popularArticles } = props
   return (
     <SideBarBase>
       <SideBarCategoryList>
@@ -17,6 +19,9 @@ export const SideBar: React.VFC<Props> = (props) => {
       </SideBarCategoryList>
       <SideBarArticleList>
         {popularArticles && <ArticleTitleList articles={popularArticles}/>}
+      </SideBarArticleList>
+      <SideBarArticleList>
+        {articleBody && <TableOfContents articleBody={articleBody}/>}
       </SideBarArticleList>
     </SideBarBase>
   )

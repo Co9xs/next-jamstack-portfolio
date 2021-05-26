@@ -60,7 +60,7 @@ const articleId: NextPage<Props> = (props: Props) => {
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
 
   return (
-    <SideBarLayout categories={categories} popularArticles={popularArticles}>
+    <SideBarLayout categories={categories} popularArticles={popularArticles} articleBody={markedBody}>
       <PageBase>
         <Meta
           title={article.title}

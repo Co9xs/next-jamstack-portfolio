@@ -8,11 +8,12 @@ import { CategoryItem } from '@/apis/categories'
 type Props = {
   categories?: CategoryItem[],
   popularArticles?: ArticleItem[],
+  articleBody?: string
   children: React.ReactNode
 }
 
 export const SideBarLayout: React.VFC<Props> = (props) => {
-  const { children, categories, popularArticles } = props;
+  const { children, categories, popularArticles, articleBody } = props;
   return (
     <SideBarLayoutBase>
       <FixedHeader>
@@ -23,7 +24,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
           { children }
         </MainContentArea>
         <SideBarArea>
-          <SideBar categories={categories} popularArticles={popularArticles}/>
+          <SideBar categories={categories} popularArticles={popularArticles} articleBody={articleBody}/>
         </SideBarArea>
       </PageContent>
     </SideBarLayoutBase>
