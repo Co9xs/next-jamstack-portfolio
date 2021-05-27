@@ -33,6 +33,7 @@ export const Header: React.VFC<Props> = () => {
 const HeaderBase = styled.div`
   width: 100%;
   background-color: var(--colors-navy);
+  border-bottom: var(--border-size-1) solid var(--colors-dark-gray);
 `
 
 const HeaderInner = styled.nav`
