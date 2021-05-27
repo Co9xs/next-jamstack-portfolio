@@ -1,15 +1,15 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
-type H2Item = {
+type ParentHeadingItem = {
   id: string,
   title: string,
-  items: H3Item[]
+  items: ChildHeadingItem[]
 }
 
-type H3Item = Omit<H2Item, 'items'>
+type ChildHeadingItem = Omit<ParentHeadingItem, 'items'>
 
-const getNestedHeadings = (headingElements: HTMLHeadingElement[]): H2Item[] => {
-  const nestedHeadings: H2Item[] = []
+const getNestedHeadings = (headingElements: HTMLHeadingElement[]): ParentHeadingItem[] => {
+  const nestedHeadings: ParentHeadingItem[] = []
   headingElements.forEach(heading => {
     const { innerText: title, id } = heading
 
@@ -26,7 +26,7 @@ const getNestedHeadings = (headingElements: HTMLHeadingElement[]): H2Item[] => {
 }
 
 export const useHeadingsData = (articleBody: string) => {
-  const [nestedHeadings, setNestedHeadings] = useState<H2Item[]>([]);
+  const [nestedHeadings, setNestedHeadings] = useState<ParentHeadingItem[]>([]);
 
   useEffect(() => {
     const parser = new DOMParser()

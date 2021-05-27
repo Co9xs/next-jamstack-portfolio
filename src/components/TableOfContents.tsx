@@ -1,14 +1,16 @@
 import { useHeadingsData } from "@/hooks/useHeadingsData";
+import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useState } from "react";
 import styled from "styled-components";
 
 type Props = {
   articleBody: string
 }
 
-const Headings = ({ headings }) => (
-  <ul>
+const Headings = ({ headings, activeId }) => (
+  <HeadingsBase>
     {headings.map((heading) => (
-      <li key={heading.id}>
+      <li key={heading.id} data-heading-active={heading.id === activeId ? true : false}>
         <a href={`#${heading.id}`}
           onClick={(e) => {
             e.preventDefault();
@@ -23,13 +25,12 @@ const Headings = ({ headings }) => (
         {heading.items.length > 0 && (
           <ul>
             {heading.items.map((child) => (
-              <li key={child.id}>
+              <li key={child.id} data-heading-active={child.id === activeId ? true : false}>
                 <a href={`#${child.id}`}
                   onClick={(e) => {
                     e.preventDefault();
                     document.querySelector(`#${heading.id}`).scrollIntoView({
-                      behavior: "smooth",
-                      block: "center"
+                      behavior: "smooth"
                     });
                   }}
                 >
@@ -41,16 +42,28 @@ const Headings = ({ headings }) => (
         )}
       </li>
     ))}
-  </ul>
+  </HeadingsBase>
 );
+
+const HeadingsBase = styled.ul`
+  & > li[data-heading-active=true] {
+    color: red!important;
+    & > ul > li[data-heading-active=true] {
+      color: red!important;
+    }
+  }
+`
 
 const TableOfContents: React.VFC<Props> = (props) => {
   const { articleBody } = props
   const { nestedHeadings } = useHeadingsData(articleBody)
+  const [activeId, setActiveId] = useState();
+  useIntersectionObserver(setActiveId);
+
   return (
     <TableOfContentsBase>
       <TableOfContentsTitle>Table of Contents</TableOfContentsTitle>
-      <Headings headings={nestedHeadings} />
+      <Headings headings={nestedHeadings} activeId={activeId}/>
     </TableOfContentsBase>
   );
 };
