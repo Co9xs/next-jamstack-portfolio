@@ -15,7 +15,9 @@ export const BasicLayout: React.VFC<Props> = (props) => {
         <Header />
       </FixedHeader>
       <PageContent>
-        {children}
+        <MainContentArea>
+          {children}
+        </MainContentArea>
       </PageContent>
     </BasicLayoutBase>
   )
@@ -46,4 +48,8 @@ const PageContent = styled.div`
   ${media.phone`
     padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-2) var(--spacing-3); 
   `}
+`
+
+const MainContentArea = styled.div`
+  padding: var(--spacing-4) 0;
 `

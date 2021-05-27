@@ -49,9 +49,9 @@ export const GlobalStyle = createGlobalStyle`
 
   // width
   --width-1-colum: 800px;
-  --width-2-colums-base: var(--width-2-colums-main) + var(--width-2-colums-sub);
-  --width-2-colums-main: 800px;
-  --width-2-colums-sub: 300px;
+  --width-2-colums-base: 1160px;
+  --width-2-colums-main: 820px;
+  --width-2-colums-sub: 260px;
 
   // animation
   --animation-duration: 0.4s;

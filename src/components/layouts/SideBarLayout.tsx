@@ -48,36 +48,38 @@ const FixedHeader = styled.div`
 `
 
 const PageContent = styled.div`
-  padding-top: ${DEAFULT_HEADER_HEIGHT}px;
-  padding-right: 16px;
-  padding-left: 16px;
+  padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-3) 0;
   height: 100%;
-  max-width: 1160px;
+  max-width: var(--width-2-colums-base);
   margin: auto;
   display: flex;
   justify-content: space-between;
   ${media.tablet`
     flex-direction: column;
     align-items: center;
-    max-width: 600px;
+    max-width: var(--width-1-colum);
   `}
 `
 
 const MainContentArea = styled.div`
-  max-width: 820px;
-  padding: 24px 0 32px;
   flex-grow: 1;
-  margin-right: 32px;
+  max-width: var(--width-2-columns-main);
+  padding: var(--spacing-4) 0;
+  margin: 0 var(--spacing-4) 0 0;
   ${media.tablet`
+    padding: var(--spacing-4) 0 0 0;
     margin: 0;
     width: 100%;
+    max-width: 100%;
   `}
 `
 
 const SideBarArea = styled.div`
-  max-width: 260px;
-  padding: 24px 0 32px;
+  max-width: var(--width-2-colums-sub);
+  padding: var(--spacing-4) 0;
   ${media.tablet`
+    padding: var(--spacing-4) 0 0 0;
+    width: 100%;
     max-width: 100%;
   `}
 `
