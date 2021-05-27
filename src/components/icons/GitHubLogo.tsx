@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 type Props = React.SVGProps<SVGSVGElement> & {};
 
-export const GitHubIcon: React.VFC<Props> = (props) => { 
+export const GitHubLogo: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
     <SvgBase>

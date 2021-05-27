@@ -1,5 +1,5 @@
 export * from "./AngularIcon";
-export * from "./GitHubIcon";
+export * from "./GitHubLogo";
 export * from "./GitLabIcon";
 export * from "./JavaScriptIcon";
 export * from "./jQueryIcon";

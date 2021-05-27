@@ -1,6 +1,6 @@
 import {
   AngularIcon,
-  GitHubIcon,
+  GitHubLogo,
   GitLabIcon,
   JavaScriptIcon,
   JQueryIcon,
@@ -50,7 +50,7 @@ export const SkillIcon: React.VFC<Props> = (props) => {
   case 'Slack':
     return <SlackIcon />
   case 'GitHub':
-    return <GitHubIcon />
+    return <GitHubLogo />
   case 'GitLab':
     return <GitLabIcon />
   case 'Next':
