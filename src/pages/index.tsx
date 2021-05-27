@@ -49,7 +49,6 @@ const Home: NextPage<Props> = (props) => {
               'Vue',
               'React',
               'Next',
-              'Vercel',
               'Webpack',
               'Storybook',
             ]}

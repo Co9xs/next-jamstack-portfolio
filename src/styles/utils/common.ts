@@ -17,17 +17,7 @@ export const SectionTitleText = styled.span`
 
 export const ContentSection = styled.section`
 color: var(--colors-white);
-span {
-  text-align:center;
-  display: inline-block;
-  height: 100%;
-  img {
-    height: 1em;
-    width: 1em;
-    margin-right: 8px;
-    vertical-align: -0.1em;
-  }
-}
+margin-bottom: var(--spacing-4);
 `
 
 export const ContentSectionInner = styled.div`

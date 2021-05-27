@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { Header } from '@/components'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils'
+import { media } from '@/styles/utils/helper'
 
 type Props = {
   children: React.ReactNode
@@ -38,8 +39,11 @@ const FixedHeader = styled.div`
 
 const PageContent = styled.div`
   height: 100%;
-  max-width: var(--width-1-colum);
-  padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-3) var(--spacing-3);
   margin-right: auto;
   margin-left: auto;
+  max-width: var(--width-1-colum);
+  padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-3) var(--spacing-3);
+  ${media.phone`
+    padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-2) var(--spacing-3); 
+  `}
 `
