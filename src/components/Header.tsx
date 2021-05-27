@@ -1,28 +1,20 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CustomLink } from '@/components'
+import { CustomLink } from '@/components/CustomLink'
 import { media } from '@/styles';
 import { LinkItems } from '@/utils'
-import { DarkModeContext } from '@/pages/_app';
 
 type Props = {}
 
 export const Header: React.VFC<Props> = () => {
-  const value: {
-    toggleDarkMode: () => void,
-    isDarkMode: boolean
-  } = useContext(DarkModeContext);
   return (
     <HeaderBase>
-      <HeaderNav>
+      <HeaderInner>
         <HeaderTop>
-          <HeaderLogo>Ryo Fujishima - WebDev</HeaderLogo>
-          {/* <ToggleSwitch
-            onClick={value.toggleDarkMode}
-            isOn={value.isDarkMode}
-            icon={<MoonIcon />}
-            aria-label={'ダークモード切り替え'}
-          /> */}
+          <HeaderLogo>
+            <HeaderLogoMain>Fujishima</HeaderLogoMain>
+            <HeaderLogoSub>.dev</HeaderLogoSub>
+          </HeaderLogo>
         </HeaderTop>
         <HeaderLinkList>
           {LinkItems.map(item => (
@@ -31,7 +23,7 @@ export const Header: React.VFC<Props> = () => {
             </HeaderLinkItem>
           ))}
         </HeaderLinkList>
-      </HeaderNav>
+      </HeaderInner>
     </HeaderBase>
   )
 }
@@ -39,13 +31,13 @@ export const Header: React.VFC<Props> = () => {
 const HeaderBase = styled.div`
   width: 100%;
   border-bottom: solid 2px;
-  color: ${({ theme }) => theme.font.main};
-  background-color: ${({ theme }) => theme.background.main};
-  border-color: ${({ theme }) => theme.border.sub};
+  background-color: var(--colors-navy);
 `
-const HeaderNav = styled.nav`
-  max-width: 1160px;
-  margin: auto;
+const HeaderInner = styled.nav`
+  max-width: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 var(--spacing-3);
   a, a:visited {
     text-decoration: none;
     color: #637a88;
@@ -56,14 +48,8 @@ const HeaderNav = styled.nav`
       color: #333;
     }
   }
-  ${media.desktop`
-    padding: 0 16px; 
-  `}
-  ${media.tablet`
-    padding: 0 16px; 
-  `}
   ${media.phone`
-    padding: 0 16px; 
+    padding: 0 var(--spacing-2); 
   `}
 `
 
@@ -72,8 +58,19 @@ const HeaderTop = styled.div`
   justify-content: space-between;
   align-items: center;
 `
+
 const HeaderLogo = styled.h1`
-  font-size: 23px;
+  font-size: 28px;
+  margin: 16px 0;
+  letter-spacing: 1px;
+  font-weight: var(--font-weight-heading);
+`
+
+const HeaderLogoMain = styled.span`
+  color: var(--colors-yellow);
+`
+const HeaderLogoSub = styled.span`
+  color: var(--colors-purple);
 `
 const HeaderLinkList = styled.ul`
   padding: 0;

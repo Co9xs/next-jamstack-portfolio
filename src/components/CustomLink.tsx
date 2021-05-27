@@ -1,5 +1,6 @@
 import Link, { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
+import styled from 'styled-components'
 
 type Props = LinkProps & {
   label?: string,
@@ -16,8 +17,13 @@ export const CustomLink: React.VFC<Props> = (props) => {
     return router.asPath.slice(1).startsWith(label.toLowerCase())
   }
   return (
-    <Link href={href}>
-      {label ? <a aria-current={handleAriaCurrent(label)}>{label}</a> : children}
+    <Link href={href} passHref>
+      {label ? <Anchor aria-current={handleAriaCurrent(label)}>{label}</Anchor> : children}
     </Link>
   )
 }
+
+const Anchor = styled.a`
+  color: inherit;
+  text-decoration: inherit;
+`
