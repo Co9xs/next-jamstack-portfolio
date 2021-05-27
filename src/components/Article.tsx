@@ -37,13 +37,6 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   )
 }
 
-const ArticleEyeCatch = styled.div`
-  width: 60px;
-  text-align: center;
-  font-size: var(--font-size-5);
-  margin-right: var(--spacing-2);
-`
-
 const ArticleBase = styled.article`
   display: flex;
   justify-content: flex-start;
@@ -56,12 +49,28 @@ const ArticleBase = styled.article`
     transition: background var(--animation-duration) var(--animation-timing);
   }
 `
+const ArticleEyeCatch = styled.div`
+  width: 10%;
+  text-align: center;
+  font-size: var(--font-size-5);
+  margin-right: var(--spacing-1);
+  ${media.phone`
+    display: none;
+  `}
+`
+
 const ArticleData = styled.div`
 `
 
 const ArticleTitle = styled.h3`
   margin: 0 0 var(--spacing-2) 0;
   font-size: var(--font-size-2);
+`
+
+const ArticleMetaData = styled.div`
+  color: var(--colors-dark-gray);
+  display: flex;
+  align-items: center;
 `
 
 const ArticleCategory = styled.span`
@@ -74,28 +83,18 @@ const ArticleCategory = styled.span`
 `
 
 const ArticleTags = styled.div`
-  color: #616269;
-  ${media.tablet`
-    display: inline-block;
-  `}
 `
 
 const ArticleTag = styled.span`
-  margin-right: 8px;
-`
-
-const ArticleMetaData = styled.div`
-  color: #616269;
-  display: flex;
-  align-items: center;
+  margin-right: var(--spacing-2);
 `
 
 const ArticleDate = styled.span`
   margin-right: var(--spacing-2);
   display: flex;
   align-items: center;
-  ${media.tablet`
-    margin-right: 8px;
+  ${media.phone`
+    display: none;
   `}
 `
 

@@ -9,42 +9,29 @@ type Props = {
 export const CategoryList: React.VFC<Props> = ({ categories }) => {
   return (
     <CategoryListBase>
-      <CategoryListHeading>Categories</CategoryListHeading>
-      <CategoryListItems>
-      {categories.map(category => (
-        <CustomLink href={`/blog/categories/${category.id}/page/1`} key={category.id}>
-          <CategoryListItem key={category.id}>
-            {category.name}
-          </CategoryListItem>
-        </CustomLink>
-      ))}
-      </CategoryListItems>
+    {categories.map(category => (
+      <CustomLink href={`/blog/categories/${category.id}/page/1`} key={category.id}>
+        <CategoryListItem key={category.id}>
+          {category.name}
+        </CategoryListItem>
+      </CustomLink>
+    ))}
     </CategoryListBase>
   )
 }
 
-const CategoryListBase = styled.div`
+const CategoryListBase = styled.ul`
   margin: 0;
   padding: 0;
-`
-
-const CategoryListHeading = styled.p`
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: bold;
-`
-
-const CategoryListItems = styled.ul`
-  margin: 0;
-  padding: 0;
+  color: var(--colors-white);
+  list-style: none;
 `
 
 const CategoryListItem = styled.li`
-  list-style: none;
   cursor: pointer;
-  padding: 8px 0;
-  border-bottom: 1px solid #EFEFEF;
-  font-size: 18px;
+  padding: var(--spacing-2) 0;
+  font-size: var(--font-size-1);
+  & + li {
+    border-top: var(--border-size-1) solid var(--colors-dark-gray);
+  }
 `

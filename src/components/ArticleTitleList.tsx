@@ -10,42 +10,29 @@ export const ArticleTitleList: React.VFC<Props> = (props) => {
   const { articles } = props
   return (
     <ArticleListBase>
-      <ArticleListHeading>Popular Articles</ArticleListHeading>
-      <ArticleListItems>
-      {articles.map(article => (
-        <CustomLink href={`/blog/${article.id}`} key={article.id}>
-          <ArticleListItem key={article.id}>
-            {article.title}
-          </ArticleListItem>
-        </CustomLink>
-      ))}
-      </ArticleListItems>
+    {articles.map(article => (
+      <CustomLink href={`/blog/${article.id}`} key={article.id}>
+        <ArticleListItem key={article.id}>
+          {article.title}
+        </ArticleListItem>
+      </CustomLink>
+    ))}
     </ArticleListBase>
   )
 }
 
-const ArticleListBase = styled.div`
+const ArticleListBase = styled.ul`
   margin: 0;
   padding: 0;
-`
-
-const ArticleListHeading = styled.p`
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: bold;
-`
-
-const ArticleListItems = styled.ul`
-  margin: 0;
-  padding: 0;
+  color: var(--colors-white);
+  list-style: none;
 `
 
 const ArticleListItem = styled.li`
-  list-style: none;
   cursor: pointer;
-  padding: 8px 0;
-  border-bottom: 1px solid #EFEFEF;
-  font-size: 18px;
+  padding: var(--spacing-2) 0;
+  font-size: var(--font-size-1);
+  & + li {
+    border-top: var(--border-size-1) solid var(--colors-dark-gray);
+  }
 `
