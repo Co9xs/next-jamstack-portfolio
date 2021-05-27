@@ -10,6 +10,7 @@ export interface ArticleItem extends CommonItem {
   tags: TagItem[]
   author: AuthorItem
   related_articles: ArticleItem[]
+  emoji: string
 }
 
 type FilterOperator = 'equals' | 'not_equals' | 'less_than' | 'greater_than' | 'contains' | 'exists' | 'not_exists' | 'begin_with'

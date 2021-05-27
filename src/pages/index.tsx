@@ -50,9 +50,6 @@ const Home: NextPage<Props> = (props) => {
             ]}
           />
         </ContentSection>
-        <ContentSection>
-          <SectionTitle>Recently Posts</SectionTitle>
-        </ContentSection>
       </BrowserWindow>
     </PageBase>
   )

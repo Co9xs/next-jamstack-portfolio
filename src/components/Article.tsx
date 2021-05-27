@@ -14,7 +14,7 @@ export const ArticleCard: React.VFC<Props> = (props) => {
   return (
     <ArticleBase>
       <ArticleEyeCatch>
-        🎨
+        {article.emoji || "🐈"}
       </ArticleEyeCatch>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>

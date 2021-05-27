@@ -29,7 +29,6 @@ export const useIntersectionObserver = (setActiveId: Dispatch<SetStateAction<str
         const sortedVisibleHeadings = visibleHeadings.sort(
           (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id) ? 1 : -1
         );
-        console.log(sortedVisibleHeadings)
         setActiveId(sortedVisibleHeadings[0].target.id);
       }
     }
