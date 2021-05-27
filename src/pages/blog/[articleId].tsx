@@ -63,6 +63,7 @@ const articleId: NextPage<Props> = (props: Props) => {
         <Meta
           title={article.title}
           image={ogImage}
+          favicon={article.emoji}
         />
         <BrowserWindow>
         <ContentSection>

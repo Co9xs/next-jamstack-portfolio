@@ -35,6 +35,7 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
           title={`${category.name}カテゴリの記事一覧`}
           description={`${category.name}カテゴリの記事一覧`}
           image={encodeURI(defaultOgp)}
+          favicon="📝"
         />
         <BrowserWindow>
         <PageTitle>Blog 📝</PageTitle>

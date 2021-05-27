@@ -18,6 +18,7 @@ const Page404: NextPage<Props> = () => {
         title={'404 Not Found'}
         description={'404 Not Found'}
         image={encodeURI(defaultOgp)}
+        favicon="🙇‍♂️"
       />
       <BrowserWindow>
         <ContentSection>

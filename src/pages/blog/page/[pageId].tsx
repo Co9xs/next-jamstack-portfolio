@@ -35,6 +35,7 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           title={'Blog'}
           description={'Ryo Fujishima - Web Dev'}
           image={encodeURI(defaultOgp)}
+          favicon="📝"
         />
         <BrowserWindow>
           <PageTitle>Blog 📝</PageTitle>

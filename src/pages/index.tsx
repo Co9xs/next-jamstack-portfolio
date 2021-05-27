@@ -18,6 +18,7 @@ const Home: NextPage<Props> = (props) => {
         title={'Home'}
         description={'Ryo Fujishima - Web Dev'}
         image={encodeURI(defaultOgp)}
+        favicon="👋"
       />
       <BrowserWindow>
         <PageTitle>Hello, World 👋</PageTitle>
