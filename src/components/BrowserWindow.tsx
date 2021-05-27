@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 type Props = {
-  children: React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[]
 }
 
 export const BrowserWindow: React.VFC<Props> = (props) => {

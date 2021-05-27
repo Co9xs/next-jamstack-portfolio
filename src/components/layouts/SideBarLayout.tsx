@@ -17,7 +17,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
   return (
     <SideBarLayoutBase>
       <FixedHeader>
-        <Header />
+        <Header/>
       </FixedHeader>
       <PageContent>
         <MainContentArea>
@@ -34,6 +34,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
 const SideBarLayoutBase = styled.div`
   height: 100%;
   position: relative;
+  background-color: var(--colors-navy);
 `
 
 const FixedHeader = styled.div`

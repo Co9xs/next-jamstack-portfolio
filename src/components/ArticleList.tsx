@@ -27,6 +27,5 @@ const ArticleListBase = styled.ul`
   padding: 0;
 `
 const ArticleListItem = styled.li`
-  margin-bottom: .5rem;
 `
 

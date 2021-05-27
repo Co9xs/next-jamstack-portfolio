@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
   --colors-red: #FF6059;
   --colors-light-green: #29CA40;
   --colors-green: #99C794;
+  --colors-blue-green: #5FB3B3;
 
   // font-weights
   --font-weight-normal: 300;
@@ -19,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
   --font-weight-bold: 700;
 
   // font-sizes
+  --font-size-min: 14px;
   --font-size-1: 16px;
   --font-size-2: 18px;
   --font-size-3: 20px;
@@ -42,6 +44,7 @@ export const GlobalStyle = createGlobalStyle`
   // border
   --border-size-1: 1px;
   --border-size-2: 2px;
+  --border-size-3: 3px;
 
   // width
   --width-1-colum: 800px;

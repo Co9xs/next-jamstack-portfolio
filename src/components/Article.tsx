@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import styled from 'styled-components'
-import { calcReadingTime, convertDateToString } from '@/utils';
-import { ClockIcon, PersonIcon } from './icons';
+import { convertDateToString } from '@/utils';
+import { ClockIcon } from './icons';
 import { media } from '@/styles';
 import { ArticleItem } from '@/apis/blog';
 
@@ -12,98 +11,70 @@ type Props = {
 export const ArticleCard: React.VFC<Props> = (props) => {
   const { article } = props
   const publishedAt = convertDateToString(new Date(article.publishedAt));
-  const readingTime = calcReadingTime(article.body.length)
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
-  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
   return (
     <ArticleBase>
-      <ArticleImage>
-        <Image src={ogImage} width={350} height={200} layout={'responsive'} priority={true}/>
-      </ArticleImage>
+      <ArticleEyeCatch>
+        🎨
+      </ArticleEyeCatch>
       <ArticleData>
         <ArticleTitle>{ article.title }</ArticleTitle>
-        <ArticleCategory>{article.category.name}</ArticleCategory>
-        <ArticleTags>
-          {article.tags.map(tag => (
-            <ArticleTag key={tag.id}>#{tag.name}</ArticleTag>
-          ))}
-        </ArticleTags>
         <ArticleMetaData>
+          <ArticleCategory>{article.category.name}</ArticleCategory>
+          <ArticleTags>
+            {article.tags.map(tag => (
+              <ArticleTag key={tag.id}>#{tag.name}</ArticleTag>
+            ))}
+          </ArticleTags>
           <ArticleDate>
             <ClockIcon />
             <ArticleDateText>
               {publishedAt}
             </ArticleDateText>
           </ArticleDate>
-          <ArticleReadingTime>{readingTime} min read</ArticleReadingTime>
-          <ArticleAuthor>
-            <PersonIcon/>
-            <ArticleAuthorText>{ article.author?.displayName}</ArticleAuthorText>
-          </ArticleAuthor>
         </ArticleMetaData>
       </ArticleData>
     </ArticleBase>
   )
 }
 
+const ArticleEyeCatch = styled.div`
+  width: 60px;
+  text-align: center;
+  font-size: var(--font-size-5);
+  margin-right: var(--spacing-2);
+`
+
 const ArticleBase = styled.article`
-  padding: 16px 0;
-  cursor: pointer;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
-
-  ${media.tablet` 
-    flex-direction: column;
-  `}
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-2);
+  border-radius: var(--border-size-3);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--colors-navy);
+    transition: background var(--animation-duration) var(--animation-timing);
+  }
 `
-
-const ArticleImage = styled.div`
-  min-width: 350px;
-  height: 200px;
-
-  ${media.tablet`
-    min-width: 100%;
-    height: auto;
-  `}
-`
-
 const ArticleData = styled.div`
-  min-width: 320px;
-  max-width: 420px;
-  margin-left: 24px;
-  flex-shrink: 1;
-  ${media.tablet`
-    max-width: 100%;
-    min-width: 100%;
-    margin: 16px 0 0 0;
-  `}
-  ${media.phone`
-    margin-top: 8px;
-  `}
 `
 
 const ArticleTitle = styled.h3`
-  margin: 0;
-  padding: 0;
-  font-size: 20px;
-  margin-bottom: 10px;
+  margin: 0 0 var(--spacing-2) 0;
+  font-size: var(--font-size-2);
 `
 
 const ArticleCategory = styled.span`
-  color: #60A5FA;
-  padding: 4px 8px;
-  border: 2px solid #60A5FA;
-  border-radius: 3px;
-  display: inline-block;
-  margin-bottom: 10px;
-  font-size: 14px;
-  margin-right: 16px;
+  color: var(--colors-blue-green);
+  padding: var(--spacing-1) var(--spacing-2);
+  border: var(--border-size-2) solid var(--colors-blue-green);
+  border-radius: var(--border-size-3);
+  font-size: var(--font-size-min);
+  margin-right: var(--spacing-3);
 `
 
 const ArticleTags = styled.div`
   color: #616269;
-  margin-bottom: 10px;
   ${media.tablet`
     display: inline-block;
   `}
@@ -120,7 +91,7 @@ const ArticleMetaData = styled.div`
 `
 
 const ArticleDate = styled.span`
-  margin-right: 16px;
+  margin-right: var(--spacing-2);
   display: flex;
   align-items: center;
   ${media.tablet`
@@ -129,21 +100,5 @@ const ArticleDate = styled.span`
 `
 
 const ArticleDateText = styled.span`
-  margin-left: 8px;
-`
-
-const ArticleReadingTime = styled.div`
-  margin-right: 16px;
-  ${media.tablet`
-    margin-right: 8px;
-  `}
-`
-
-const ArticleAuthor = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const ArticleAuthorText = styled.span`
-  margin-left: 8px;
+  margin-left: var(--spacing-1);
 `

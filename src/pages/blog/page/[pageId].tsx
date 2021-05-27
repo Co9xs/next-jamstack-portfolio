@@ -4,12 +4,13 @@ import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 import { Meta } from '@/components/Meta';
 import { ArticleList } from '@/components/ArticleList';
 import { Pagination } from '@/components/Pagination';
-import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles/utils/common';
+import { PageBase, ContentSection, SectionTitle, SectionTitleText, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getPopularArticles } from "@/lib/api/index"
 import { ARTICLES_PER_PAGE } from '@/utils/constans';
 import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
+import { BrowserWindow } from '@/components/BrowserWindow';
 
 type Props = {
   articles: ArticleItem[]
@@ -35,14 +36,14 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           description={'Ryo Fujishima - Web Dev'}
           image={encodeURI(defaultOgp)}
         />
-        <ContentSection>
-          <SectionTitle>
-            <Twemoji tag="div">📝</Twemoji>
-            <SectionTitleText>Articles</SectionTitleText>
-          </SectionTitle>
-          <ArticleList articles={articles} />
-          <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
-        </ContentSection>
+        <BrowserWindow>
+          <PageTitle>Blog 📝</PageTitle>
+          <ContentSection>
+            <SectionTitle>Articles</SectionTitle>
+            <ArticleList articles={articles} />
+            <Pagination pageHref={'/blog/page/'} totalCount={totalCount} perPage={ARTICLES_PER_PAGE} currentPage={currentPage}/>
+          </ContentSection>
+        </BrowserWindow>
       </PageBase>
     </SideBarLayout>
   )

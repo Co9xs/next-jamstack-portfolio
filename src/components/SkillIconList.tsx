@@ -28,8 +28,5 @@ const SkillIconListBase = styled.div`
 `
 
 const SkillIconListItem = styled.div`
-  margin-top: 16px;
-  margin-bottom: 16px;
-  margin-right: 24px;
-  margin-left: 0;
+  margin: var(--spacing-2) var(--spacing-4) var(--spacing-2) 0;
 `
