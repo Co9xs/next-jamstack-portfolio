@@ -47,17 +47,29 @@ const Headings: React.VFC<HeadingProps> = (props) => {
 const HeadingsBase = styled.ul`
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: var(--spacing-1) 0;
+  & > li > a {
+    text-decoration: none;
+    color: var(--colors-gray);
+    font-weight: var(--font-weight-normal);
+  }
   & > li[data-heading-active=true] > a {
-    color: red;
+    color: var(--colors-white);
+    font-weight: var(--font-weight-bold);
   }
   & > li > ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: var(--spacing-1) 0 var(--spacing-1) var(--spacing-3);
+  }
+  & > li > ul > li > a {
+    text-decoration: none;
+    color: var(--colors-gray);
+    font-weight: var(--font-weight-normal);
   }
   & > li > ul > li[data-heading-active=true] > a {
-    color: red;
+    color: var(--colors-white);
+    font-weight: var(--font-weight-bold);
   }
 `
 
