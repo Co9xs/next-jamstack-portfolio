@@ -1,8 +1,10 @@
 import { GetStaticProps, NextPage } from 'next';
-import Twemoji from 'react-twemoji';
 import { Meta } from '@/components/Meta';
 import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
+import { BrowserWindow } from '@/components/BrowserWindow';
+import React from 'react';
+import Link from 'next/link';
 
 type Props = {
   layout: Layout
@@ -17,15 +19,15 @@ const Page404: NextPage<Props> = () => {
         description={'404 Not Found'}
         image={encodeURI(defaultOgp)}
       />
-      <ContentSection>
-        <ContentSectionInner>
-          <SectionTitle>
-            <Twemoji tag="div">🙇‍♂️</Twemoji>
-            <SectionTitleText>404 - Not Found</SectionTitleText>
-          </SectionTitle>
-          <PlainText>Sorry, The page you are looking for was not found.</PlainText>
-        </ContentSectionInner>
-      </ContentSection>
+      <BrowserWindow>
+        <ContentSection>
+          <ContentSectionInner>
+            <SectionTitle>404 - Not Found</SectionTitle>
+            <PlainText>Sorry, The page you are looking for was not found.</PlainText>
+            <Link href="/">Return to top</Link>
+          </ContentSectionInner>
+        </ContentSection>
+      </BrowserWindow>
     </PageBase>
   );
 }
