@@ -8,16 +8,22 @@ export const PageBase = styled.div`
 
 export const SectionTitle = styled.h2`
   margin: var(--spacing-2) 0;
-  line-height: 1;
   color: var(--colors-green);
+  font-weight: var(--font-weight-heading);
 `
 
 export const SectionTitleText = styled.span`
 `
 
+export const PageTitle = styled.h1`
+  margin: 0 0 var(--spacing-2) 0;
+  color: var(--colors-white);
+  font-weight: var(--font-weight-heading);
+`
+
 export const ContentSection = styled.section`
 color: var(--colors-white);
-margin-bottom: var(--spacing-4);
+margin-bottom: var(--spacing-);
 `
 
 export const ContentSectionInner = styled.div`

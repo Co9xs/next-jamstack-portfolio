@@ -52,7 +52,7 @@ const HeaderTop = styled.div`
   padding: var(--spacing-3) 0;
 `
 
-const HeaderLogo = styled.h1`
+const HeaderLogo = styled.p`
   margin: 0;
   font-size: var(--font-size-7);
   letter-spacing: 1px;

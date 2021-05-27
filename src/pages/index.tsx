@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from 'next';
 import Twemoji from 'react-twemoji';
 import { Meta } from '@/components/Meta';
 import { SkillIconList } from '@/components/SkillIconList';
-import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText } from '@/styles/utils/common';
+import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText, SectionTitleText, PageTitle } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
 import styled from 'styled-components'
 import React from 'react';
@@ -22,10 +22,9 @@ const Home: NextPage<Props> = (props) => {
         image={encodeURI(defaultOgp)}
       />
       <BrowserWindow>
+        <PageTitle>Hello, World 👋</PageTitle>
         <ContentSection>
           <SectionTitle>Profile</SectionTitle>
-          <PlainText>Hi, there 👋</PlainText>
-          <PlainText>Welcome to my Portfolio ✨</PlainText>
           <PlainText> I'm Ryo Fujishima, a web frontend engineer.</PlainText>
           <PlainText>Love Frontend Development and Design.</PlainText>
           <PlainText>I belong to the Faculty of Economics of Tohoku University.</PlainText>
