@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-type ParentHeadingItem = {
+export type ParentHeadingItem = {
   id: string,
   title: string,
   items: ChildHeadingItem[]
@@ -13,6 +13,7 @@ const getNestedHeadings = (headingElements: HTMLHeadingElement[]): ParentHeading
   headingElements.forEach(heading => {
     const { innerText: title, id } = heading
 
+    // h2の時は配列に追加、h3の時は直近のh2のitemsの配列に追加
     if (heading.nodeName === "H2") {
       nestedHeadings.push({id, title, items: []})
     } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
@@ -25,6 +26,7 @@ const getNestedHeadings = (headingElements: HTMLHeadingElement[]): ParentHeading
   return nestedHeadings
 }
 
+// parse前のHTMLストリングをinputで受け取って、nestされた見出しのリストを返す
 export const useHeadingsData = (articleBody: string) => {
   const [nestedHeadings, setNestedHeadings] = useState<ParentHeadingItem[]>([]);
 

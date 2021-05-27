@@ -260,6 +260,18 @@ const DetailPageAuthorText = styled.span`
 `
 
 const DetailPageBody= styled.div`
+  h2, h3 {
+    scroll-margin-top: 120px;
+  }
+
+  /* Safari-only */
+  @supports (-webkit-hyphens:none) {
+    h2, h3 {
+        padding-top: 120px;
+        margin-top: -120px;
+    }
+  }
+
   h2 {
     font-weight: bold;
     margin: 40px 0 0 0;

@@ -41,4 +41,6 @@ const SideBarArticleList = styled.div`
 
 const SideBarToc = styled.div`
   margin-bottom: 40px;
+  position: fixed;
+  top: 500px; 
 `
