@@ -1,4 +1,4 @@
-import Link, { LinkProps } from 'next/link'
+import { LinkProps } from 'next/link'
 import { useRouter } from 'next/router'
 import { CustomLink } from '@/components/CustomLink'
 import styled from 'styled-components'
@@ -26,6 +26,7 @@ export const NavLink: React.VFC<Props> = (props) => {
 const Anchor = styled.a`
   display: block;
   text-decoration: none;
+  cursor: pointer;
   color: var(--colors-gray);
   padding: var(--spacing-2) 0;
   &[aria-current="true"] {

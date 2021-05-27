@@ -21,10 +21,10 @@ export const GlobalStyle = createGlobalStyle`
   --font-size-4: 22px;
   --font-size-5: 24px;
   --font-size-6: 26px;
-  --font-size-6: 28px;
-  --font-size-6: 30px;
-  --font-size-6: 32px;
-  --font-size-6: 34px;
+  --font-size-7: 28px;
+  --font-size-8: 30px;
+  --font-size-9: 32px;
+  --font-size-10: 34px;
 
   //sizes
   --spacing-0: 0px;
@@ -38,6 +38,12 @@ export const GlobalStyle = createGlobalStyle`
   // border
   --border-size-1: 1px;
   --border-size-2: 2px;
+
+  // width
+  --width-1-colum: 800px;
+  --width-2-colums-base: var(--width-2-colums-main) + var(--width-2-colums-sub);
+  --width-2-colums-main: 800px;
+  --width-2-colums-sub: 300px;
 }
 
 html,

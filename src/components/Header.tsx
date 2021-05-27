@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { NavLink } from '@/components/NavLink'
-import { media } from '@/styles';
-import { LinkItems } from '@/utils'
+import { media } from '@/styles/utils/helper';
+import { LinkItems } from '@/utils/links'
 
 type Props = {}
 
@@ -33,7 +33,7 @@ const HeaderBase = styled.div`
   background-color: var(--colors-navy);
 `
 const HeaderInner = styled.nav`
-  max-width: 800px;
+  max-width: var(--width-1-colum);
   margin-right: auto;
   margin-left: auto;
   padding: 0 var(--spacing-3);
@@ -49,8 +49,8 @@ const HeaderTop = styled.div`
 `
 
 const HeaderLogo = styled.h1`
-  font-size: 28px;
-  margin: 16px 0;
+  font-size: var(--font-size-7);
+  margin: var(--spacing-3) 0;
   letter-spacing: 1px;
   font-weight: var(--font-weight-heading);
 `
@@ -69,7 +69,7 @@ const HeaderNav = styled.ul`
   list-style: none;
 `
 const HeaderNavItem = styled.li`
+  font-size: var(--font-size-2);
   font-weight: var(--font-weight-heading);
-  font-size: 18px;
   margin-right: var(--spacing-3);
 `
