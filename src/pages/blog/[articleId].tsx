@@ -154,7 +154,7 @@ const DetailPageHeader = styled.div`
 const DetailPageTitle = styled.h1`
   font-size: var(--font-size-10);
   font-weight: var(--font-weight-bold);
-  margin: var(--spacing-4) 0 var(--spacing-3);
+  margin: var(--spacing-3) 0;
   color: var(--colors-green);
   ${media.tablet`
     font-size: var(--font-size-9);
@@ -171,6 +171,7 @@ const DetailPageMetaData = styled.div`
   font-size: var(--font-size-1);
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 `
 
 const DetailPageCategory = styled.span`
@@ -184,6 +185,7 @@ const DetailPageCategory = styled.span`
 
 const DetailPageTags = styled.span`
   padding: var(--spacing-1) var(--spacing-2);
+  display: block;
   margin-right: var(--spacing-1);
 `
 
@@ -206,6 +208,8 @@ const DetailPageDateText = styled.span`
 
 const DetailPageReadingTime = styled.div`
   margin-right: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-2);
+  display: block;
 `
 
 const DetailPageBody= styled.div`

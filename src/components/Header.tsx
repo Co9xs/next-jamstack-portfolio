@@ -37,7 +37,7 @@ const HeaderBase = styled.div`
 `
 
 const HeaderInner = styled.nav`
-  max-width: var(--width-1-colum);
+  max-width: var(--width-2-colums-base);
   margin-right: auto;
   margin-left: auto;
   padding: 0 var(--spacing-3);
