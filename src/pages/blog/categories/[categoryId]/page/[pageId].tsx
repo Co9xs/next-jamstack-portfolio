@@ -1,17 +1,15 @@
-import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Meta } from '@/components/Meta';
 import { ArticleList } from '@/components/ArticleList';
 import { Pagination } from '@/components/Pagination';
-import { CategoryMappedTwemoji } from '@/components/CategoryMappedTwemoji';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
-import { Breadcrumb } from '@/components/Breadcrumb';
-import { PageBase, ContentSection, SectionTitle, SectionTitleText } from '@/styles/utils/common';
+import { PageBase, ContentSection, SectionTitle, SectionTitleText, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getCategory, getPopularArticles } from "@/lib/api/index"
 import { ARTICLES_PER_PAGE } from '@/utils/constans';
 import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
+import { BrowserWindow } from '@/components/BrowserWindow';
 
 type Props = {
   category: CategoryItem,
@@ -38,22 +36,19 @@ const CategoryPageId: NextPage<Props> = (props: Props) => {
           description={`${category.name}カテゴリの記事一覧`}
           image={encodeURI(defaultOgp)}
         />
-        <ContentSection>
-          <SectionTitle>
-            <CategoryMappedTwemoji category={category} />
-            <SectionTitleText>Articles in the {category.name} category</SectionTitleText>
-          </SectionTitle>
-          <CategoryPageBreadcrumb>
-            <Breadcrumb category={category}/>
-          </CategoryPageBreadcrumb>
-          <ArticleList articles={articles}/>
-          <Pagination
-            pageHref={`/blog/categories/${category.id}/page/`}
-            totalCount={totalCount}
-            perPage={ARTICLES_PER_PAGE}
-            currentPage={currentPage}
-          />
-        </ContentSection>
+        <BrowserWindow>
+        <PageTitle>Blog 📝</PageTitle>
+          <ContentSection>
+            <SectionTitle>{category.name} category</SectionTitle>
+            <ArticleList articles={articles}/>
+            <Pagination
+              pageHref={`/blog/categories/${category.id}/page/`}
+              totalCount={totalCount}
+              perPage={ARTICLES_PER_PAGE}
+              currentPage={currentPage}
+            />
+          </ContentSection>
+        </BrowserWindow>
       </PageBase>
     </SideBarLayout>
   )
@@ -99,9 +94,5 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     },
   }
 }
-
-const CategoryPageBreadcrumb = styled.div`
-  margin: 16px 0 0 0;
-`
 
 export default CategoryPageId
