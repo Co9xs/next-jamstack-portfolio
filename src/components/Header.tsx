@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { NavLink } from '@/components/NavLink'
 import { media } from '@/styles/utils/helper';
 import { LinkItems } from '@/utils/links'
+import { SnsIconList } from './SnsIconList';
 
 type Props = {}
 
@@ -15,6 +16,7 @@ export const Header: React.VFC<Props> = () => {
             <HeaderLogoMain>Fujishima</HeaderLogoMain>
             <HeaderLogoSub>.dev</HeaderLogoSub>
           </HeaderLogo>
+          <SnsIconList/>
         </HeaderTop>
         <HeaderNav>
           {LinkItems.map(item => (
@@ -32,6 +34,7 @@ const HeaderBase = styled.div`
   width: 100%;
   background-color: var(--colors-navy);
 `
+
 const HeaderInner = styled.nav`
   max-width: var(--width-1-colum);
   margin-right: auto;
@@ -46,11 +49,12 @@ const HeaderTop = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: var(--spacing-3) 0;
 `
 
 const HeaderLogo = styled.h1`
+  margin: 0;
   font-size: var(--font-size-7);
-  margin: var(--spacing-3) 0;
   letter-spacing: 1px;
   font-weight: var(--font-weight-heading);
 `

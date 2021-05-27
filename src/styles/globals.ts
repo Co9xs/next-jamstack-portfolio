@@ -44,6 +44,10 @@ export const GlobalStyle = createGlobalStyle`
   --width-2-colums-base: var(--width-2-colums-main) + var(--width-2-colums-sub);
   --width-2-colums-main: 800px;
   --width-2-colums-sub: 300px;
+
+  // animation
+  --animation-duration: 0.4s;
+  --animation-timing: ease;
 }
 
 html,

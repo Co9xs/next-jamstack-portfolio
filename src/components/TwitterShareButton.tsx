@@ -13,7 +13,7 @@ export const TwitterShareButton: React.VFC<Props> = (props) => {
       rel="nofollow" 
       target="_blank"
     >
-      <TwitterIcon/>
+      <TwitterIcon fill="#55ACEE"/>
     </ShareButtonBase>
   )
 }
