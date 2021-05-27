@@ -6,7 +6,7 @@ import { PageBase, ContentSection, ContentSectionInner, SectionTitle, PlainText,
 import { Layout } from '@/types/index';
 import styled from 'styled-components'
 import React from 'react';
-import { PageWindow } from '@/components/PageWindow';
+import { BrowserWindow } from '@/components/BrowserWindow';
 
 type Props = {
   layout: Layout
@@ -15,10 +15,49 @@ type Props = {
 const Home: NextPage<Props> = (props) => {
   const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('Fujishima.dev')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
   return (
-    <PageWindow>
-      <div style={{height: '200%'}}>中身</div>
-      <div>中身</div>
-    </PageWindow>
+    <PageBase>
+      <Meta
+        title={'Home'}
+        description={'Ryo Fujishima - Web Dev'}
+        image={encodeURI(defaultOgp)}
+      />
+      <BrowserWindow>
+        <ContentSection>
+          <SectionTitle>Profile</SectionTitle>
+          <PlainText>Hi, there 👋</PlainText>
+          <PlainText> I'm Ryo Fujishima, a web frontend engineer.</PlainText>
+          <PlainText>Love Frontend Development and Design.</PlainText>
+          <PlainText>And, I belong to the Faculty of Economics of Tohoku University.</PlainText>
+          <PlainText>Welcome to my Portfolio ✨</PlainText>
+        </ContentSection>
+        <ContentSection>
+          <SectionTitle>Experience</SectionTitle>
+          <PlainText>2022.04〜 Will work at CyberAgent, as a full-time employee</PlainText>
+          <PlainText>2021.02〜 Worked at Wantedly, as an intern(React, webpack)</PlainText>
+          <PlainText>2020.08〜 Worked at ORO, as a part time job(Angular, rxjs, storybook)</PlainText>
+          <PlainText>2020.08〜 Participated in CyberAgent Web Frontend Chanllenge(Vue, Netlify)</PlainText>
+          <PlainText>2020.03〜 Started learing web development(JavaScript)</PlainText>
+          <PlainText>2019.12〜 Started learing web design(HTML&CSS)</PlainText>
+        </ContentSection>
+        <ContentSection>
+          <SectionTitle>Language・Tools</SectionTitle>
+          <SkillIconList
+            names={[
+              'JavaScript',
+              'TypeScript',
+              'ReactiveX',
+              'Vue',
+              'React',
+              'Next',
+              'Storybook',
+              'Vercel',
+              'GitHub',
+              'GitLab'
+            ]}
+          />
+        </ContentSection>
+      </BrowserWindow>
+    </PageBase>
   )
 }
 

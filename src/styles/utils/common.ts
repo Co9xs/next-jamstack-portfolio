@@ -3,32 +3,31 @@ import { media } from './helper';
 
 export const PageBase = styled.div`
   height: 100%;
-  display: flex;
-  flex-direction: column;
   background-color: var(--colors-navy);
 `
 
 export const SectionTitle = styled.h2`
-  margin: 8px 0;
+  margin: var(--spacing-2) 0;
   line-height: 1;
-  display: flex;
-  align-items: center;
-  div {
-    text-align:center;
-    display: inline-block;
-    img {
-      height: 1em;
-      width: 1em;
-      margin-right: 8px;
-      vertical-align: -0.1em;
-    }
-  }
+  color: var(--colors-green);
 `
 
 export const SectionTitleText = styled.span`
 `
 
 export const ContentSection = styled.section`
+color: var(--colors-white);
+span {
+  text-align:center;
+  display: inline-block;
+  height: 100%;
+  img {
+    height: 1em;
+    width: 1em;
+    margin-right: 8px;
+    vertical-align: -0.1em;
+  }
+}
 `
 
 export const ContentSectionInner = styled.div`

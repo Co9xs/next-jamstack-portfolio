@@ -4,7 +4,7 @@ type Props = {
   children: React.ReactNode[]
 }
 
-export const PageWindow: React.VFC<Props> = (props) => {
+export const BrowserWindow: React.VFC<Props> = (props) => {
   const { children } = props
   return (
     <PageWindowBase>
@@ -47,5 +47,5 @@ const TopBarDammyButton = styled.span`
 `
 
 const PageWindowContent = styled.div`
-  padding: var(--spacing-2);
+  padding: var(--spacing-3);
 `
