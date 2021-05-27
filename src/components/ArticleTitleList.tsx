@@ -30,9 +30,14 @@ const ArticleListBase = styled.ul`
 
 const ArticleListItem = styled.li`
   cursor: pointer;
-  padding: var(--spacing-2) 0;
+  padding: var(--spacing-2) var(--spacing-1);
   font-size: var(--font-size-1);
+  border-radius: var(--border-size-3);
   & + li {
     border-top: var(--border-size-1) solid var(--colors-dark-gray);
+  }
+  &:hover {
+    background-color: var(--colors-navy);
+    transition: background var(--animation-duration) var(--animation-timing);
   }
 `

@@ -60,7 +60,7 @@ export const GlobalStyle = createGlobalStyle`
 
 html,
 body {
-  // background: var(--colors-navy);
+  background: var(--colors-navy);
   height: 100%;
   padding: 0;
   margin: 0;

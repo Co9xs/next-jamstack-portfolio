@@ -33,36 +33,35 @@ export const Pagination: React.VFC<Props> = ({ pageHref, totalCount, currentPage
 const PaginationList = styled.ul`
   display: flex;
   list-style: none;
-  padding: 8px 0;
+  padding: var(--spacing-2) 0;
   margin: 0;
   justify-content: center;
   flex-wrap: wrap;
 `
 
 const PaginationItem = styled.li`
-  background: #E6F2FF;
-  color: #3161B4;
-  border-radius: 3px;
+  background-color: var(--colors-white);
+  border-radius: var(--border-size-3);
   text-align: center;
-  width: 40px;
-  height: 40px;
-  font-weight: bold;
-  margin: 10px;
+  width: var(--spacing-4);
+  height: var(--spacing-4);
+  font-weight: var(--font-weight-heading);
+  margin: var(--spacing-2);
   &[data-current="true"] {
-    background: #2C5DB0;
+    background-color: var(--colors-blue-green);
   }
 `
 
 const PaginationLink = styled.a`
   user-select: none;
-  text-decoration: none!important;
+  text-decoration: none;
   display: block;
   height: 100%;
-  color: #2C5DB0;
-  line-height: 40px;
+  color: var(--colors-black);
+  line-height: var(--spacing-4);
   cursor: pointer;
   &[data-current="true"] {
-    font-weight: bold;
-    color: #FFFFFF;
+    font-weight: var(--font-weight-heading);
+    color: var(--colors-black);
   }
 `
