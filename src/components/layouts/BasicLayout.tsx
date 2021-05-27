@@ -23,6 +23,7 @@ export const BasicLayout: React.VFC<Props> = (props) => {
 const BasicLayoutBase = styled.div`
   height: 100%;
   position: relative;
+  background-color: var(--colors-navy);
 `
 
 const FixedHeader = styled.div`
@@ -36,6 +37,9 @@ const FixedHeader = styled.div`
 `
 
 const PageContent = styled.div`
-  padding-top: ${DEAFULT_HEADER_HEIGHT}px;
   height: 100%;
+  max-width: var(--width-1-colum);
+  padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-3) var(--spacing-3);
+  margin-right: auto;
+  margin-left: auto;
 `

@@ -5,6 +5,7 @@ export const PageBase = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: var(--colors-navy);
 `
 
 export const SectionTitle = styled.h2`

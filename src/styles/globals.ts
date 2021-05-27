@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
   --colors-yellow: #FAC863;
   --colors-white: #E3E3E3;
   --colors-gray: #A6ACC9;
+  --colors-black: #161823;
+  --colors-red: #FF6059;
+  --colors-light-green: #29CA40;
 
   // font-weights
   --font-weight-normal: 300;
