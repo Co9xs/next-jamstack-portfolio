@@ -33,7 +33,7 @@ export const Pagination: React.VFC<Props> = ({ pageHref, totalCount, currentPage
 const PaginationList = styled.ul`
   display: flex;
   list-style: none;
-  padding: var(--spacing-2) 0;
+  padding: var(--spacing-1) 0;
   margin: 0;
   justify-content: center;
   flex-wrap: wrap;

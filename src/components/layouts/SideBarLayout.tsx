@@ -75,6 +75,7 @@ const MainContentArea = styled.div`
 `
 
 const SideBarArea = styled.div`
+  min-width: var(--width-2-colums-sub);
   max-width: var(--width-2-colums-sub);
   padding: var(--spacing-4) 0;
   ${media.tablet`

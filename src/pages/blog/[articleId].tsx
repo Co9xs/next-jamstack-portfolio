@@ -1,15 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
-import { Breadcrumb } from '@/components/Breadcrumb';
 import { ClockIcon } from '@/components/icons/ClockIcon';
-import { PersonIcon } from '@/components/icons/PersonIcon';
 import { Meta } from '@/components/Meta';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
-import { SnsShareButtonList } from '@/components/SnsShareButtonList';
 import { PageBase, ContentSection } from '@/styles/utils/common';
 import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
@@ -19,11 +15,13 @@ import { calcReadingTime, convertDateToString, markdownToHtml } from '@/utils/co
 import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
 import Prism from 'prismjs'
+import { BrowserWindow } from '@/components/BrowserWindow';
+import { BasicLayout } from '@/components';
 
 type Props = {
   article: ArticleItem | DraftItem,
-  categories: CategoryItem[],
   popularArticles: ArticleItem[],
+  categories: CategoryItem[],
   markedBody: string
 }
 
@@ -46,9 +44,9 @@ const articleId: NextPage<Props> = (props: Props) => {
   // Handling 404 here, because set fallback option "true" in this page for preview mode
   if (!article) {
     return (
-      <SideBarLayout categories={categories} popularArticles={popularArticles}>
+      <BasicLayout>
         <Page404 layout={'Basic'}/>
-      </SideBarLayout>
+      </BasicLayout>
     )
   }
 
@@ -60,59 +58,49 @@ const articleId: NextPage<Props> = (props: Props) => {
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
 
   return (
-    <SideBarLayout categories={categories} popularArticles={popularArticles} articleBody={markedBody}>
+    <SideBarLayout articleBody={markedBody} >
       <PageBase>
         <Meta
           title={article.title}
           image={ogImage}
         />
+        <BrowserWindow>
         <ContentSection>
-          <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/>
-          <DetailPageBreadcrumb>
-            <Breadcrumb category={article.category}/>
-          </DetailPageBreadcrumb>
+          {/* <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/> */}
           { !isPublished(article) &&
             <DetailPageAlert>
               <Alert text="下書きを閲覧中です"/>
             </DetailPageAlert>
           }
           <DetailPageArticle>
-            <DetailPageSnsShare>
-              <SnsShareButtonList articleId={article.id}/>
-            </DetailPageSnsShare>
-            <DetailPageContent>
-              <DetailPageHeader>
-                <DetailPageHeading>{article.title}</DetailPageHeading>
-                <Link href={`/blog/categories/${article.category.id}/page/1`}>
-                  <DetailPageCategory>{article.category.name}</DetailPageCategory>
-                </Link>
-                <DetailPageTags>
-                  {article.tags.map(tag => (
-                    <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
-                  ))}
-                </DetailPageTags>
-                <DetailPageMetaData>
-                  <DetailPageDate>
-                    <ClockIcon />
-                    <DetailPageDateText>
-                      {dateString}
-                    </DetailPageDateText>
-                  </DetailPageDate>
-                  <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
-                  <DetailPageAuthor>
-                    <PersonIcon/>
-                    <DetailPageAuthorText>{ article.author?.displayName}</DetailPageAuthorText>
-                  </DetailPageAuthor>
-                </DetailPageMetaData>
-              </DetailPageHeader>
-              <DetailPageBody
-                dangerouslySetInnerHTML={{
-                  __html: markedBody,
-                }}
-              />
-            </DetailPageContent>
+            <DetailPageHeader>
+              <DetailPageTitle>{article.title}</DetailPageTitle>
+              <DetailPageMetaData>
+              <Link href={`/blog/categories/${article.category.id}/page/1`}>
+                <DetailPageCategory>{article.category.name}</DetailPageCategory>
+              </Link>
+              <DetailPageTags>
+                {article.tags.map(tag => (
+                  <DetailPageTag key={tag.id}>#{tag.name}</DetailPageTag>
+                ))}
+              </DetailPageTags>
+                <DetailPageDate>
+                  <ClockIcon fill="var(--colors-gray)"/>
+                  <DetailPageDateText>
+                    {dateString}
+                  </DetailPageDateText>
+                </DetailPageDate>
+                <DetailPageReadingTime>{readingTime} min read</DetailPageReadingTime>
+              </DetailPageMetaData>
+            </DetailPageHeader>
+            <DetailPageBody
+              dangerouslySetInnerHTML={{
+                __html: markedBody,
+              }}
+            />
           </DetailPageArticle>
         </ContentSection>
+        </BrowserWindow>
       </PageBase>
     </SideBarLayout>
   );
@@ -140,9 +128,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
   return {
     props: {
       article: content,
-      markedBody,
       categories: categoryList.contents,
-      popularArticles: popularArticleObject.contents
+      popularArticles: popularArticleObject.contents,
+      markedBody,
     },
   };
 };
@@ -150,170 +138,120 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
 export default articleId
 
 const DetailPageArticle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 32px;
-  ${media.tablet`
-    display: block;
-  `}
-`
-
-const DetailPageBreadcrumb = styled.div`
-  margin: 16px 0 0 0;
-  ${media.phone`
-    margin: 8px 0 0 0;
-  `}
 `
 
 const DetailPageAlert = styled.div`
-  margin: 16px 0 0 0;
+  margin: var(--spacing-3) 0 0 0;
   ${media.phone`
-    margin: 8px 0 0 0;
-  `}
-`
-
-const DetailPageSnsShare = styled.div`
-  margin: 32px;
-  & > ul {
-    position: sticky;
-    top: 152px;
-  }
-  ${media.tablet`
-    display: none;
-  `}
-`
-
-const DetailPageContent = styled.div`
-  margin-left: auto;
-  width: calc(100% - 96px);
-  ${media.tablet`
-  width: 100%;
+    margin: var(--spacing-2) 0 0 0;
   `}
 `
 
 const DetailPageHeader = styled.div`
-  border-bottom: solid 1px #E4EDF4;
+  border-bottom: var(--border-size-1) solid var(--colors-dark-gray);
 `
 
-const DetailPageHeading = styled.h1`
-  font-size: 34px;
-  font-weight: bold;
-  margin: 32px 0 16px;
+const DetailPageTitle = styled.h1`
+  font-size: var(--font-size-10);
+  font-weight: var(--font-weight-bold);
+  margin: var(--spacing-4) 0 var(--spacing-3);
+  color: var(--colors-green);
   ${media.tablet`
-    font-size: 32px;
-    margin-top: 16px;
+    font-size: var(--font-size-9);
+    margin: var(--spacing-3) 0;
   `}
   ${media.phone`
-    font-size: 28px;
+    font-size: var(--font-size-7);
   `}
 `
+
+const DetailPageMetaData = styled.div`
+  color: var(--colors-gray);
+  margin-bottom: var(--spacing-3);
+  font-size: var(--font-size-1);
+  display: flex;
+  align-items: center;
+`
+
 const DetailPageCategory = styled.span`
-  color: #60A5FA;
-  padding: 4px 8px;
-  border: 2px solid #60A5FA;
-  border-radius: 3px;
-  display: inline-block;
-  font-size: 14px;
-  margin-right: 16px;
-  margin-bottom: 8px;
+  color: var(--colors-blue-green);
+  padding: var(--spacing-1) var(--spacing-2);
+  border: var(--border-size-2) solid var(--colors-blue-green);
+  border-radius: var(--border-size-3);
+  margin-right: var(--spacing-2);
   cursor: pointer;
 `
 
 const DetailPageTags = styled.span`
-  color: #616269;
-  margin-bottom: 10px;
+  padding: var(--spacing-1) var(--spacing-2);
+  margin-right: var(--spacing-1);
 `
 
 const DetailPageTag = styled.span`
-  margin-right: 8px;
-`
-
-const DetailPageMetaData = styled.div`
-  color: #616269;
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
+  & + span {
+    margin-left: var(--spacing-1);
+  }
 `
 
 const DetailPageDate = styled.span`
-  margin-right: 16px;
+  padding: var(--spacing-1) var(--spacing-2);
+  margin-right: var(--spacing-1);
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.smoke};
 `
 
 const DetailPageDateText = styled.span`
-  margin-left: 8px;
+  margin-left: var(--spacing-1);
 `
 
 const DetailPageReadingTime = styled.div`
-  margin-right: 16px;
-`
-
-const DetailPageAuthor = styled.div`
-  display: flex;
-  align-items: center;
-`
-
-const DetailPageAuthorText = styled.span`
-  margin-left: 8px;
+  margin-right: var(--spacing-2);
 `
 
 const DetailPageBody= styled.div`
-  h2, h3 {
-    scroll-margin-top: 120px;
-  }
-
   h2 {
-    font-weight: bold;
-    margin: 40px 0 0 0;
-    border-left: 3px solid #333;
+    margin: var(--spacing-4) 0 0 0;
+    border-left: var(--border-size-3) solid var(--colors-green);
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-1) var(--spacing-3);
     ${media.desktop`
-      padding: 8px 18px;
-      font-size: 28px;
+      font-size: var(--font-size-7);
     `}
     ${media.tablet`
-      padding: 6px 16px;
-      font-size: 26px;
+      font-size: var(--font-size-6);
     `}
     ${media.phone`
-      padding: 6px 16px;
-      font-size: 24px;
+      font-size: var(--font-size-5);
     `}
   }
 
   h3 {
-    font-weight: bold;
-    margin: 32px 0 0 0;
+    margin: var(--spacing-4) 0 0 0;
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-1) 0;
     ${media.desktop`
-      padding: 4px 0px;
-      font-size: 24px;
+      font-size: var(--font-size-5);
     `}
     ${media.tablet`
-      padding: 10px 0px;
-      font-size: 22px;
+      font-size: var(--font-size-4);
     `}
     ${media.phone`
-      margin: 24px 0 0 0;
-      padding: 8px 0px;
-      font-size: 20px;
+      font-size: var(--font-size-3);
     `}
   }
 
   h4 {
-    margin: 40px 0 0px;
-    border-bottom: 3px solid #E5E4E6;
+    margin: var(--spacing-4) 0 0 0;
+    font-weight: var(--font-weight-heading);
+    padding: var(--spacing-1) 0;
     ${media.desktop`
-      padding: 10px 20px;
-      font-size: 24px;
+      font-size: var(--font-size-4);
     `}
     ${media.tablet`
-      padding: 10px 20px;
-      font-size: 22px;
+      font-size: var(--font-size-3);
     `}
     ${media.phone`
-      padding: 8px 16px;
-      font-size: 20px;
+      font-size: var(--font-size-2);
     `}
   }
 
@@ -324,8 +262,7 @@ const DetailPageBody= styled.div`
 
   p {
     line-height: 1.8;
-    letter-spacing: 0.2px;
-    margin: 12px 0;
+    margin: var(--spacing-3) 0;
   }
 
   ol {
@@ -340,7 +277,7 @@ const DetailPageBody= styled.div`
 
   ul {
     list-style-position: inside;
-    padding: 0 0 0 8px;
+    padding: 0 0 0 var(--spacing-2);
   }
 
   blockquote {
@@ -348,21 +285,21 @@ const DetailPageBody= styled.div`
     padding: 30px 15px 8px 15px;
     box-sizing: border-box;
     font-style: italic;
-    background: #efefef;
-    color: #555;
+    background: var(--colors-dark-gray);
+    color: var(--colors-white);
     margin: 0;
   }
 
   blockquote:before{
-    display: inline-block;
     position: absolute;
-    top: 13px;
-    left: 15px;
+    top: var(--spacing-3);
+    left: var(--spacing-2);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-7);
+    color: var(--colors-white);
     content:'”';
-    color: #cfcfcf;
-    font-size: 28px;
     line-height: 1;
-    font-weight: 900;
+    display: inline-block;
   }
 
   pre {

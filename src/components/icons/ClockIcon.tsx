@@ -1,9 +1,9 @@
 type Props = React.SVGProps<SVGSVGElement> & {};
 
 export const ClockIcon: React.VFC<Props> = (props) => { 
-  const { } = props;
+  const {fill} = props;
   return (
-      <svg version="1.1" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xmlSpace="preserve" fill="#616269">
+      <svg version="1.1" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" xmlSpace="preserve" fill={fill}>
       <g>
         <path d="M256,0C114.84,0,0,114.844,0,256c0,141.164,114.84,256,256,256s256-114.836,256-256
           C512,114.844,397.16,0,256,0z M256,451.047c-107.547,0-195.047-87.492-195.047-195.047c0-107.547,87.5-195.047,195.047-195.047

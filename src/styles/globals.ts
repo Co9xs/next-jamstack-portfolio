@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
   --colors-light-green: #29CA40;
   --colors-green: #99C794;
   --colors-blue-green: #5FB3B3;
+  --colors-blue: #60A5FA;
 
   // font-weights
   --font-weight-normal: 300;

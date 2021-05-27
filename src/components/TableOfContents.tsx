@@ -45,13 +45,18 @@ const Headings: React.VFC<HeadingProps> = (props) => {
 };
 
 const HeadingsBase = styled.ul`
-  & > li[data-heading-active=true] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  & > li[data-heading-active=true] > a {
     color: red;
   }
   & > li > ul {
-    all: initial
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
-  & > li > ul > li[data-heading-active=true] {
+  & > li > ul > li[data-heading-active=true] > a {
     color: red;
   }
 `
@@ -68,7 +73,6 @@ const TableOfContents: React.VFC<TocProps> = (props) => {
 
   return (
     <TableOfContentsBase>
-      <TableOfContentsTitle>Table of Contents</TableOfContentsTitle>
       <Headings headings={nestedHeadings} activeId={activeId}/>
     </TableOfContentsBase>
   );
@@ -77,12 +81,4 @@ const TableOfContents: React.VFC<TocProps> = (props) => {
 export default TableOfContents;
 
 const TableOfContentsBase = styled.nav`
-`
-
-const TableOfContentsTitle = styled.p`
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 20px;
-  font-weight: bold;
 `

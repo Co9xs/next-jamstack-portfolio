@@ -23,7 +23,6 @@ export const PageTitle = styled.h1`
 
 export const ContentSection = styled.section`
 color: var(--colors-white);
-margin-bottom: var(--spacing-);
 `
 
 export const ContentSectionInner = styled.div`

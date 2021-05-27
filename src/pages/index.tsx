@@ -23,8 +23,7 @@ const Home: NextPage<Props> = (props) => {
         <PageTitle>Hello, World 👋</PageTitle>
         <ContentSection>
           <SectionTitle>Profile</SectionTitle>
-          <PlainText> I'm Ryo Fujishima, a web frontend engineer.</PlainText>
-          <PlainText>Love Frontend Development and Design.</PlainText>
+          <PlainText>Hi, I'm Ryo Fujishima, a junior web engineer interested in frontend development and web design.</PlainText>
           <PlainText>I belong to the Faculty of Economics of Tohoku University.</PlainText>
         </ContentSection>
         <ContentSection>

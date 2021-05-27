@@ -26,7 +26,7 @@ export const ArticleCard: React.VFC<Props> = (props) => {
             ))}
           </ArticleTags>
           <ArticleDate>
-            <ClockIcon />
+            <ClockIcon fill="var(--colors-gray)"/>
             <ArticleDateText>
               {publishedAt}
             </ArticleDateText>
@@ -65,10 +65,11 @@ const ArticleData = styled.div`
 const ArticleTitle = styled.h3`
   margin: 0 0 var(--spacing-2) 0;
   font-size: var(--font-size-2);
+  font-weight: var(--font-weight-heading);
 `
 
 const ArticleMetaData = styled.div`
-  color: var(--colors-dark-gray);
+  color: var(--colors-gray);
   display: flex;
   align-items: center;
 `
