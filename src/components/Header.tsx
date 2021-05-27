@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { CustomLink } from '@/components/CustomLink'
+import { NavLink } from '@/components/NavLink'
 import { media } from '@/styles';
 import { LinkItems } from '@/utils'
 
@@ -16,13 +16,13 @@ export const Header: React.VFC<Props> = () => {
             <HeaderLogoSub>.dev</HeaderLogoSub>
           </HeaderLogo>
         </HeaderTop>
-        <HeaderLinkList>
+        <HeaderNav>
           {LinkItems.map(item => (
-            <HeaderLinkItem key={item.label}>
-              <CustomLink href={item.href} label={item.label} />
-            </HeaderLinkItem>
+            <HeaderNavItem key={item.label}>
+              <NavLink href={item.href} label={item.label} />
+            </HeaderNavItem>
           ))}
-        </HeaderLinkList>
+        </HeaderNav>
       </HeaderInner>
     </HeaderBase>
   )
@@ -30,7 +30,6 @@ export const Header: React.VFC<Props> = () => {
 
 const HeaderBase = styled.div`
   width: 100%;
-  border-bottom: solid 2px;
   background-color: var(--colors-navy);
 `
 const HeaderInner = styled.nav`
@@ -38,16 +37,6 @@ const HeaderInner = styled.nav`
   margin-right: auto;
   margin-left: auto;
   padding: 0 var(--spacing-3);
-  a, a:visited {
-    text-decoration: none;
-    color: #637a88;
-    padding: 8px 0;
-    display: block;
-    &[aria-current="true"] {
-      border-bottom: 2px solid;
-      color: #333;
-    }
-  }
   ${media.phone`
     padding: 0 var(--spacing-2); 
   `}
@@ -72,15 +61,15 @@ const HeaderLogoMain = styled.span`
 const HeaderLogoSub = styled.span`
   color: var(--colors-purple);
 `
-const HeaderLinkList = styled.ul`
+const HeaderNav = styled.ul`
   padding: 0;
   margin: 0; 
   display: flex;
   justify-content: flex-start;
-`
-const HeaderLinkItem = styled.li`
-  font-weight: 600;
-  font-size: 18px;
   list-style: none;
-  margin-right: 1.7rem;
+`
+const HeaderNavItem = styled.li`
+  font-weight: var(--font-weight-heading);
+  font-size: 18px;
+  margin-right: var(--spacing-3);
 `

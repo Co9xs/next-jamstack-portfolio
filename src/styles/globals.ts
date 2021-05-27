@@ -6,11 +6,25 @@ export const GlobalStyle = createGlobalStyle`
   --colors-navy: #202233;
   --colors-purple: #C594C5;
   --colors-yellow: #FAC863;
+  --colors-white: #E3E3E3;
+  --colors-gray: #A6ACC9;
 
   // font-weights
   --font-weight-normal: 300;
   --font-weight-heading: 500;
   --font-weight-bold: 700;
+
+  // font-sizes
+  --font-size-1: 16px;
+  --font-size-2: 18px;
+  --font-size-3: 20px;
+  --font-size-4: 22px;
+  --font-size-5: 24px;
+  --font-size-6: 26px;
+  --font-size-6: 28px;
+  --font-size-6: 30px;
+  --font-size-6: 32px;
+  --font-size-6: 34px;
 
   //sizes
   --spacing-0: 0px;
@@ -20,6 +34,10 @@ export const GlobalStyle = createGlobalStyle`
   --spacing-4: 32px;
   --spacing-5: 64px;
   --spacing-6: 128px;
+
+  // border
+  --border-size-1: 1px;
+  --border-size-2: 2px;
 }
 
 html,
