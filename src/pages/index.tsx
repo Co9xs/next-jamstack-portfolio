@@ -25,10 +25,10 @@ const Home: NextPage<Props> = (props) => {
         <ContentSection>
           <SectionTitle>Profile</SectionTitle>
           <PlainText>Hi, there 👋</PlainText>
+          <PlainText>Welcome to my Portfolio ✨</PlainText>
           <PlainText> I'm Ryo Fujishima, a web frontend engineer.</PlainText>
           <PlainText>Love Frontend Development and Design.</PlainText>
-          <PlainText>And, I belong to the Faculty of Economics of Tohoku University.</PlainText>
-          <PlainText>Welcome to my Portfolio ✨</PlainText>
+          <PlainText>I belong to the Faculty of Economics of Tohoku University.</PlainText>
         </ContentSection>
         <ContentSection>
           <SectionTitle>Experience</SectionTitle>
@@ -49,10 +49,9 @@ const Home: NextPage<Props> = (props) => {
               'Vue',
               'React',
               'Next',
-              'Storybook',
               'Vercel',
-              'GitHub',
-              'GitLab'
+              'Webpack',
+              'Storybook',
             ]}
           />
         </ContentSection>

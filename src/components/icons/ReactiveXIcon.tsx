@@ -3,7 +3,7 @@ type Props = React.SVGProps<SVGSVGElement> & {};
 export const ReactiveXIcon: React.VFC<Props> = (props) => { 
     const { } = props;
     return (
-        <svg width="60px" height="60px" viewBox="0 0 256 253" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+        <svg width="48px" height="48px" viewBox="0 0 256 253" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
             <defs>
                 <linearGradient x1="11.9470805%" y1="90.149298%" x2="62.893221%" y2="37.1238547%" id="linearGradient-1">
                     <stop stopColor="#EC0B8E" offset="0%"></stop>

@@ -3,7 +3,7 @@ type Props = React.SVGProps<SVGSVGElement> & {};
 export const VueIcon: React.VFC<Props> = (props) => { 
   const { } = props;
   return (
-    <svg width="60px" height="60px" viewBox="0 0 256 221" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
+    <svg width="48px" height="48px" viewBox="0 0 256 221" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid">
       <g>
         <path d="M204.8,0 L256,0 L128,220.8 L0,0 L50.56,0 L97.92,0 L128,51.2 L157.44,0 L204.8,0 Z" fill="#41B883"></path>
         <path d="M0,0 L128,220.8 L256,0 L204.8,0 L128,132.48 L50.56,0 L0,0 Z" fill="#41B883"></path>

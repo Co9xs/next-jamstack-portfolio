@@ -50,17 +50,17 @@ export const SkillIcon: React.VFC<Props> = (props) => {
   case 'Slack':
     return <SlackIcon />
   case 'GitHub':
-    return <GitHubLogo />
+    return <GitHubLogo fill="var(--colors-white)"/>
   case 'GitLab':
     return <GitLabIcon />
   case 'Next':
-    return <NextIcon />
+    return <NextIcon fill="var(--colors-white)"/>
   case 'Vercel':
-    return <VercelIcon />
+    return <VercelIcon fill="var(--colors-white)"/>
   case 'Nuxt':
     return <NuxtIcon />
   case 'Storybook':
-    return <StorybookIcon />
+    return <StorybookIcon fill="var(--colors-white)"/>
   case 'Docker':
     return <DockerIcon />
   default:
