@@ -59,6 +59,9 @@ const PageContent = styled.div`
     align-items: center;
     max-width: var(--width-1-colum);
   `}
+  ${media.phone`
+    padding: ${DEAFULT_HEADER_HEIGHT}px var(--spacing-2) 0; 
+  `}
 `
 
 const MainContentArea = styled.div`
