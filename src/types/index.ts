@@ -16,7 +16,7 @@ export type ExternalPostItem = {
   link: string
   isoDate: string
   dateMiliSeconds: number
-  sourceType: "zenn" | "qiita"
+  sourceType: string
 }
 
 export type Skill = {

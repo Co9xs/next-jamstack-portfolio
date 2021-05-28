@@ -2,31 +2,30 @@ import styled from 'styled-components'
 import { media } from '@/styles';
 import { ZennIcon } from './icons/ZennIcon';
 import { ExternalPostItem } from '@/types';
+import { convertDateToString } from '@/utils/commonFunctions';
 
 type Props = {
   post: ExternalPostItem
 }
 
-export const ExternalArticle: React.VFC<Props> = (props) => {
+export const ExternalPost: React.VFC<Props> = (props) => {
   const { post } = props
   return (
-    <ArticleBase>
-      <ArticleEyeCatch>
+    <ExternalPostBase>
+      <PlatformIcon>
         <ZennIcon/>
-      </ArticleEyeCatch>
-      <ArticleData>
-        <ArticleTitle>React17のevent delegationの破壊的変更を理解する</ArticleTitle>
-        <ArticleMetaData>
-          <ArticleDate>
-            <ArticleDateText>2021/02/03</ArticleDateText>
-          </ArticleDate>
-        </ArticleMetaData>
-      </ArticleData>
-    </ArticleBase>
+      </PlatformIcon>
+      <PostData>
+        <PostTitle>{post.title}</PostTitle>
+        <PostMetaData>
+          <PostDate>{convertDateToString(new Date(post.isoDate))}</PostDate>
+        </PostMetaData>
+      </PostData>
+    </ExternalPostBase>
 )
 }
 
-const ArticleBase = styled.article`
+const ExternalPostBase = styled.article`
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -37,41 +36,40 @@ const ArticleBase = styled.article`
     background-color: var(--colors-navy);
     transition: background var(--animation-duration) var(--animation-timing);
   }
+  ${media.phone`
+    padding: var(--spacing-3) 0;
+  `}
 `
-const ArticleEyeCatch = styled.div`
+const PlatformIcon = styled.div`
   width: 10%;
   text-align: center;
   font-size: var(--font-size-5);
   margin-right: var(--spacing-1);
   ${media.phone`
-    display: none;
+    margin-right: var(--spacing-3);
   `}
 `
 
-const ArticleData = styled.div`
+const PostData = styled.div`
 `
 
-const ArticleTitle = styled.h3`
+const PostTitle = styled.h3`
   margin: 0 0 var(--spacing-2) 0;
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-heading);
 `
 
-const ArticleMetaData = styled.div`
+const PostMetaData = styled.div`
   color: var(--colors-gray);
   display: flex;
   align-items: center;
 `
 
-const ArticleDate = styled.span`
+const PostDate = styled.span`
   margin-right: var(--spacing-2);
   display: flex;
   align-items: center;
   ${media.phone`
-    display: none;
+    // display: none;
   `}
-`
-
-const ArticleDateText = styled.span`
-  margin-left: var(--spacing-1);
 `

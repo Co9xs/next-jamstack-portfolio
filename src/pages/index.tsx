@@ -2,8 +2,10 @@ import { GetStaticProps, NextPage } from 'next';
 import { Meta } from '@/components/Meta';
 import { BrowserWindow } from '@/components/BrowserWindow';
 import { SkillIconList } from '@/components/SkillIconList';
+import { ExternalPostList } from '@/components/ExternalPostList'
 import { PageBase, ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
+import posts from '../../.contents/posts.json'
 
 type Props = {
   layout: Layout
@@ -50,10 +52,10 @@ const Home: NextPage<Props> = (props) => {
             ]}
           />
         </ContentSection>
-        {/* <ContentSection>
-          <SectionTitle>Activity</SectionTitle>
-
-        </ContentSection> */}
+        <ContentSection>
+          <SectionTitle>Recent activities</SectionTitle>
+          <ExternalPostList posts={posts}/>
+        </ContentSection>
       </BrowserWindow>
     </PageBase>
   )
