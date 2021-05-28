@@ -67,7 +67,6 @@ const articleId: NextPage<Props> = (props: Props) => {
         />
         <BrowserWindow>
         <ContentSection>
-          {/* <Image src={ogImage} width={820} height={450} layout={"responsive"} priority={true}/> */}
           { !isPublished(article) &&
             <DetailPageAlert>
               <Alert text="下書きを閲覧中です"/>
@@ -101,6 +100,10 @@ const articleId: NextPage<Props> = (props: Props) => {
             />
           </DetailPageArticle>
         </ContentSection>
+        <div>
+          <div>次の記事</div>
+          <div>前の記事</div>
+        </div>
         </BrowserWindow>
       </PageBase>
     </SideBarLayout>

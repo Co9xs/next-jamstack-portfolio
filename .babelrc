@@ -30,7 +30,7 @@
         "ejs"
       ],
       "plugins": ["line-numbers"],
-      "theme": "okaidia",
+      "theme": "tomorrow",
       "css": true
     }]
   ]
