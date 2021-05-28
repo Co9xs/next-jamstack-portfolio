@@ -4,8 +4,6 @@ import { BrowserWindow } from '@/components/BrowserWindow';
 import { SkillIconList } from '@/components/SkillIconList';
 import { PageBase, ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
-import React from 'react';
-import { ZennIcon } from '@/components/icons/ZennIcon';
 
 type Props = {
   layout: Layout
@@ -22,7 +20,6 @@ const Home: NextPage<Props> = (props) => {
         favicon="👋"
       />
       <BrowserWindow>
-      <ZennIcon></ZennIcon>
         <PageTitle>Hello, World 👋</PageTitle>
         <ContentSection>
           <SectionTitle>Profile</SectionTitle>
@@ -53,6 +50,10 @@ const Home: NextPage<Props> = (props) => {
             ]}
           />
         </ContentSection>
+        {/* <ContentSection>
+          <SectionTitle>Activity</SectionTitle>
+
+        </ContentSection> */}
       </BrowserWindow>
     </PageBase>
   )

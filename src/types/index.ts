@@ -10,6 +10,15 @@ export type Work = {
   description: string
 }
 
+export type ExternalPostItem = {
+  title: string
+  contentSnippet: string
+  link: string
+  isoDate: string
+  dateMiliSeconds: number
+  sourceType: "zenn" | "qiita"
+}
+
 export type Skill = {
   name: string
 }
