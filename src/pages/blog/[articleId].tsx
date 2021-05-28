@@ -100,10 +100,6 @@ const articleId: NextPage<Props> = (props: Props) => {
             />
           </DetailPageArticle>
         </ContentSection>
-        <div>
-          <div>次の記事</div>
-          <div>前の記事</div>
-        </div>
         </BrowserWindow>
       </PageBase>
     </SideBarLayout>
