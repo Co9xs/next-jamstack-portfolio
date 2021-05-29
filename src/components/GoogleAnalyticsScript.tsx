@@ -4,6 +4,7 @@ type Props = {
 }
 
 export const GoogleAnalyticsScript: React.VFC<Props> = () => { 
+  console.log(GA_ID)
   return existsGaId ? (
     <>
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
