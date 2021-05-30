@@ -4,6 +4,7 @@ import { NavLink } from '@/components/NavLink'
 import { media } from '@/styles/utils/helper';
 import { LinkItems } from '@/utils/links'
 import { SnsIconList } from './SnsIconList';
+import Link from 'next/link';
 
 type Props = {}
 
@@ -12,10 +13,12 @@ export const Header: React.VFC<Props> = () => {
     <HeaderBase>
       <HeaderInner>
         <HeaderTop>
-          <HeaderLogo>
-            <HeaderLogoMain>Fujishima</HeaderLogoMain>
-            <HeaderLogoSub>.dev</HeaderLogoSub>
-          </HeaderLogo>
+          <Link href="/">
+            <HeaderLogo>
+              <HeaderLogoMain>Fujishima</HeaderLogoMain>
+              <HeaderLogoSub>.dev</HeaderLogoSub>
+            </HeaderLogo>
+          </Link>
           <SnsIconList/>
         </HeaderTop>
         <HeaderNav>
@@ -54,6 +57,7 @@ const HeaderTop = styled.div`
 `
 
 const HeaderLogo = styled.p`
+  cursor: pointer;
   margin: 0;
   font-size: var(--font-size-7);
   letter-spacing: 1px;
