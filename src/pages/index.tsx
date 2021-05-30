@@ -6,6 +6,7 @@ import { ExternalPostList } from '@/components/ExternalPostList'
 import { PageBase, ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
 import posts from '../../.contents/posts.json'
+import { Footer } from '@/components/Footer';
 
 type Props = {
   layout: Layout
@@ -57,6 +58,7 @@ const Home: NextPage<Props> = (props) => {
           <ExternalPostList posts={posts}/>
         </ContentSection>
       </BrowserWindow>
+      <Footer/>
     </PageBase>
   )
 }
