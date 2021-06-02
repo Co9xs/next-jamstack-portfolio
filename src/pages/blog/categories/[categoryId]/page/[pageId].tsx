@@ -27,14 +27,14 @@ type Params = {
 
 const CategoryPageId: NextPage<Props> = (props: Props) => {
   const { category, articles, totalCount, currentPage, categories, popularArticles } = props
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('Category - fujishima.dev')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
+  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(`Blog - ${category.name}の記事一覧`)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   return (
     <SideBarLayout categories={categories} popularArticles={popularArticles}>
       <PageBase>
         <Meta
           title={`${category.name}カテゴリの記事一覧`}
           description={`${category.name}カテゴリの記事一覧`}
-          image={encodeURI(defaultOgp)}
+          image={defaultOgp}
           favicon="📝"
         />
         <BrowserWindow>

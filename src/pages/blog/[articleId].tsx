@@ -54,7 +54,7 @@ const articleId: NextPage<Props> = (props: Props) => {
     convertDateToString(new Date(article.publishedAt)) :
     convertDateToString(new Date(article.updatedAt))
   const readingTime = calcReadingTime(article.body.length)
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI(article.title)},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
+  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(article.title)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
 
   return (

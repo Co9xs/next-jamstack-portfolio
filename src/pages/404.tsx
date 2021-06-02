@@ -11,13 +11,13 @@ type Props = {
 }
 
 const Page404: NextPage<Props> = () => {
-  const defaultOgp = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_45_bold:${encodeURI('404 - Page Not Found')},co_rgb:333,w_800,c_fit/v1620608065/ogp/OgpImage_a2vlnk.png`
+  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(`404 Page Not Found`)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   return (
     <PageBase>
       <Meta
         title={'404 Not Found'}
         description={'404 Not Found'}
-        image={encodeURI(defaultOgp)}
+        image={defaultOgp}
         favicon="🙇‍♂️"
       />
       <BrowserWindow>
