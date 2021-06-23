@@ -3,6 +3,7 @@ import { ArticleTitleList, CategoryList } from '@/components'
 import { ArticleItem } from '@/apis/blog'
 import { CategoryItem } from '@/apis/categories'
 import TableOfContents from './TableOfContents'
+import { media } from '@/styles/utils/helper'
 
 type Props = {
   articleBody?: string
@@ -27,10 +28,10 @@ export const SideBar: React.VFC<Props> = (props) => {
       </SideBarItem>
       }
       {articleBody && 
-      <SideBarItem>
+      <TableOfContentesItem>
         <SideBarHeading>Table of Contents</SideBarHeading>
         <TableOfContents articleBody={articleBody}/>
-      </SideBarItem>
+      </TableOfContentesItem>
       }
     </SideBarBase>
   )
@@ -45,6 +46,12 @@ const SideBarItem = styled.div`
   background-color: var(--colors-black);
   padding: var(--spacing-3);
   border-radius: var(--border-size-3);
+`
+
+const TableOfContentesItem = styled(SideBarItem)`
+  ${media.tablet`
+    display: none;
+  `}
 `
 
 const SideBarHeading = styled.p`
