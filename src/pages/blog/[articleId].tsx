@@ -179,14 +179,14 @@ const DetailPageCategory = styled.span`
   padding: var(--spacing-1) var(--spacing-2);
   border: var(--border-size-2) solid var(--colors-blue-green);
   border-radius: var(--border-size-3);
-  margin-right: var(--spacing-2);
+  margin-right: var(--spacing-3);
   cursor: pointer;
 `
 
 const DetailPageTags = styled.span`
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--spacing-2) 0;
   display: block;
-  margin-right: var(--spacing-1);
+  margin-right: var(--spacing-3);
 `
 
 const DetailPageTag = styled.span`
@@ -196,8 +196,8 @@ const DetailPageTag = styled.span`
 `
 
 const DetailPageDate = styled.span`
-  padding: var(--spacing-1) var(--spacing-2);
-  margin-right: var(--spacing-1);
+  padding: var(--spacing-2) 0;
+  margin-right: var(--spacing-3);
   display: flex;
   align-items: center;
 `
@@ -208,7 +208,7 @@ const DetailPageDateText = styled.span`
 
 const DetailPageReadingTime = styled.div`
   margin-right: var(--spacing-2);
-  padding: var(--spacing-1) var(--spacing-2);
+  padding: var(--spacing-2) 0;
   display: block;
 `
 
