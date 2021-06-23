@@ -70,7 +70,6 @@ const MainContentArea = styled.div`
   padding: var(--spacing-4) 0;
   margin: 0 var(--spacing-4) 0 0;
   ${media.tablet`
-    padding: var(--spacing-4) 0 0 0;
     margin: 0;
     width: 100%;
     max-width: 100%;
@@ -82,7 +81,7 @@ const SideBarArea = styled.div`
   max-width: var(--width-2-colums-sub);
   padding: var(--spacing-4) 0;
   ${media.tablet`
-    padding: var(--spacing-4) 0 0 0;
+    padding: 0;
     width: 100%;
     max-width: 100%;
   `}
