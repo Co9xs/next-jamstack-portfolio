@@ -22,7 +22,8 @@ export interface Methods {
     query?: {
       limit?: number,
       offset?: number,
-      filters?: ArticleFilterType<keyof ArticleItem, FilterOperator, string>
+      filters?: ArticleFilterType<keyof ArticleItem, FilterOperator, string> | string 
+      // ↑template literal types does not work?
     }
     resBody: CommonList<ArticleItem>
   }

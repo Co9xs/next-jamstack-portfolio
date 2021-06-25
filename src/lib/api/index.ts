@@ -13,8 +13,7 @@ type ArticleArgType = {
 export const getArticles = async (args?: ArticleArgType): Promise<CommonList<ArticleItem>> => {
   const limit = args?.limit ? args.limit : 50
   const offset = args?.offset ? args.offset : undefined
-  const filters: `category[equals]${string}` | undefined  
-    = args?.category ? `category[equals]${args.category.id}` : undefined
+  const filters = args?.category ? `category[equals]${args.category.id}` : undefined
   try {
     const response = await fetchClient.blog.$get({
       query: {
