@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   .then(res => {
     return res.json()
   }).catch(e => {
+    console.error(e)
     return null
   })
 
