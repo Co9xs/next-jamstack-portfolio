@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Header } from '@/components'
-import { DEAFULT_HEADER_HEIGHT } from '@/utils'
+import { DEAFULT_HEADER_HEIGHT } from '@/utils/constants'
 import { media } from '@/styles/utils/helper'
 
 type Props = {

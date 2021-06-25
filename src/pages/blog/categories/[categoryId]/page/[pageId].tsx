@@ -5,7 +5,7 @@ import { Pagination } from '@/components/Pagination';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 import { PageBase, ContentSection, SectionTitle, SectionTitleText, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getCategory, getPopularArticles } from "@/lib/api/index"
-import { ARTICLES_PER_PAGE } from '@/utils/constans';
+import { ARTICLES_PER_PAGE } from '@/utils/constants';
 import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';

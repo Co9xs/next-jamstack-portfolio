@@ -5,7 +5,7 @@ import { ArticleList } from '@/components/ArticleList';
 import { Pagination } from '@/components/Pagination';
 import { PageBase, ContentSection, SectionTitle, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getPopularArticles } from "@/lib/api/index"
-import { ARTICLES_PER_PAGE } from '@/utils/constans';
+import { ARTICLES_PER_PAGE } from '@/utils/constants';
 import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';

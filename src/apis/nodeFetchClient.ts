@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 import api from '@/apis/$api';
 import aspida, { FetchConfig } from "@aspida/node-fetch"
-import { API_ENDPOINT } from '@/utils/constans';
+import { API_ENDPOINT } from '@/utils/constants';
 
 const fetchConfig: FetchConfig = {
   baseURL: API_ENDPOINT,
