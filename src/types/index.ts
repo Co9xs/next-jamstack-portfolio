@@ -10,8 +10,4 @@ export type ExternalPostItem = {
   sourceType: string
 }
 
-export type Skill = {
-  name: string
-}
-
 export type Layout = 'Basic' | 'SideBar'
