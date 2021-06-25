@@ -15,12 +15,13 @@ type ArticleArgType = {
 export const getArticles = async (args?: ArticleArgType): Promise<CommonList<ArticleItem>> => {
   const limit = args?.limit ? args.limit : 50
   const offset = args?.offset ? args.offset : 0
-  const filters = args?.category ? `category[equals]${args.category.id}` : ''
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
+  const filters = args?.category ? `category[equals]${args.category.id}` : undefined
+  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true, headers: {
+    "X-API-KEY": "72043c17-1624-43ab-b921-baca3235eceb",
+  }, }))
   try {
     const response = await _fetch.blog.$get(
       {
-        config,
         query: {
           limit,
           offset,
