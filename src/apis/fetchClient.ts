@@ -1,5 +1,5 @@
-import aspida, { FetchConfig } from '@aspida/fetch'
 import api from './$api'
+import aspida, { FetchConfig } from '@aspida/fetch'
 import { API_ENDPOINT } from "@/utils"
 
 const fetchConfig: FetchConfig = {

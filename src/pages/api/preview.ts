@@ -1,27 +1,34 @@
 import fetch from 'node-fetch'
 import { API_ENDPOINT, config } from '@/utils'
+import { NextApiHandler } from "next";
+import { nodeFetchClient } from '@/apis/nodeFetchClient';
+import { connect } from 'node:http2';
 
-export default async function handler(req, res) {
+const handler: NextApiHandler = async (req, res) => {
   if (!req.query.id) {
     return res.status(404).end()
   }
-  const content = await fetch(`${API_ENDPOINT}/blog/${req.query.id}?draftKey=${req.query.draftKey}`, config)
-  .then(res => {
-    return res.json()
-  }).catch(e => {
+
+  try {
+    const content = await nodeFetchClient.blog._contentId(req.query.id as string).$get({
+      query: {
+        draftKey: req.query.draftKey as string
+      }
+    })
+    console.log("content", content)
+    if (!content) {
+      return res.status(401).json({message: "Given slug is invalid"})
+    } 
+    res.setPreviewData({
+      id: content.id,
+      draftKey: req.query.draftKey
+    })
+    res.writeHead(307, {Location: `/blog/${content.id}`})
+    res.end('Preview mode enabled')
+  } catch(e) {
     console.error(e)
     return null
-  })
-
-  if (!content) {
-    return res.status(401).json({message: 'Invalid slug'})
   }
-
-  res.setPreviewData({
-    id: content.id,
-    draftKey: req.query.draftKey
-  })
-
-  res.writeHead(307, {Location: `/blog/${content.id}`})
-  res.end('Preview mode enabled')
 }
+
+export default handler

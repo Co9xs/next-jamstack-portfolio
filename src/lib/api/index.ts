@@ -1,4 +1,4 @@
-import { fetchClient } from '@/apis/utils';
+import { fetchClient } from '@/apis/fetchClient';
 import { CommonList, CommonObject } from '@/apis/common';
 import { ArticleItem } from '@/apis/blog';
 import { DraftItem } from '@/apis/blog/_contentId@string';
