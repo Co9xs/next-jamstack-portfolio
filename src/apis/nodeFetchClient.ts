@@ -5,7 +5,10 @@ import { API_ENDPOINT } from '@/utils/constans';
 
 const fetchConfig: FetchConfig = {
   baseURL: API_ENDPOINT,
-  throwHttpErrors: true
+  throwHttpErrors: true,
+  headers: {
+    "X-API-KEY": process.env.API_KEY
+  }
 }
 
 export const nodeFetchClient = api(aspida(fetch, fetchConfig))

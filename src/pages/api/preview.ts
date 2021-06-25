@@ -1,8 +1,5 @@
-import fetch from 'node-fetch'
-import { API_ENDPOINT, config } from '@/utils'
 import { NextApiHandler } from "next";
 import { nodeFetchClient } from '@/apis/nodeFetchClient';
-import { connect } from 'node:http2';
 
 const handler: NextApiHandler = async (req, res) => {
   if (!req.query.id) {
