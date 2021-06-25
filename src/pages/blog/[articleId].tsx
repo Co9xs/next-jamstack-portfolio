@@ -77,11 +77,11 @@ const articleId: NextPage<Props> = (props: Props) => {
               <DetailPageTitle>{article.title}</DetailPageTitle>
               <DetailPageMetaData>
               <Link href={`/blog/categories/${article.category?.id}/page/1`}>
-                <DetailPageCategory>{article.category.name}</DetailPageCategory>
+                <DetailPageCategory>{article.category?.name}</DetailPageCategory>
               </Link>
               <DetailPageTags>
                 {article.tags.map(tag => (
-                  <DetailPageTag key={tag?.id}>#{tag.name}</DetailPageTag>
+                  <DetailPageTag key={tag?.id}>#{tag?.name}</DetailPageTag>
                 ))}
               </DetailPageTags>
                 <DetailPageDate>
