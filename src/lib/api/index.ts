@@ -1,6 +1,4 @@
-import aspida from '@aspida/fetch'
-import api from '../../apis/$api'
-import { API_ENDPOINT, config } from "@/utils"
+import { fetchClient } from '@/apis/utils';
 import { CommonList, CommonObject } from '@/apis/common';
 import { ArticleItem } from '@/apis/blog';
 import { DraftItem } from '@/apis/blog/_contentId@string';
@@ -14,20 +12,17 @@ type ArticleArgType = {
 
 export const getArticles = async (args?: ArticleArgType): Promise<CommonList<ArticleItem>> => {
   const limit = args?.limit ? args.limit : 50
-  const offset = args?.offset ? args.offset : 0
-  const filters = args?.category ? `category[equals]${args.category.id}` : undefined
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true, headers: {
-    "X-API-KEY": "72043c17-1624-43ab-b921-baca3235eceb",
-  }, }))
+  const offset = args?.offset ? args.offset : undefined
+  const filters: `category[equals]${string}` | undefined  
+    = args?.category ? `category[equals]${args.category.id}` : undefined
   try {
-    const response = await _fetch.blog.$get(
-      {
-        query: {
-          limit,
-          offset,
-          filters
-        }
-      })
+    const response = await fetchClient.blog.$get({
+      query: {
+        limit,
+        offset,
+        filters
+      }
+    })
     return response
   } catch (e) {
     console.error(e)
@@ -36,11 +31,8 @@ export const getArticles = async (args?: ArticleArgType): Promise<CommonList<Art
 }
 
 export const getDraft = async (id: string, draftKey: string): Promise<DraftItem> => {
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
-    const response = await _fetch.blog._contentId(id).$get(
-      {
-        config,
+    const response = await fetchClient.blog._contentId(id).$get({
         query: {
           draftKey
         }
@@ -54,12 +46,8 @@ export const getDraft = async (id: string, draftKey: string): Promise<DraftItem>
 
 
 export const getPopularArticles = async (): Promise<CommonObject<ArticleItem>> => {
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
-    const response = await _fetch.popular_articles.$get(
-      {
-        config,
-      })
+    const response = await fetchClient.popular_articles.$get()
     return response
   } catch (e) {
     console.error(e)
@@ -68,12 +56,8 @@ export const getPopularArticles = async (): Promise<CommonObject<ArticleItem>> =
 };
 
 export const getArticle = async (id: string): Promise<ArticleItem> => {
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
-    const response = await _fetch.blog._contentId(id).$get(
-      {
-        config,
-      })
+    const response = await fetchClient.blog._contentId(id).$get()
     return response as ArticleItem
   } catch (e) {
     console.error(e)
@@ -82,12 +66,8 @@ export const getArticle = async (id: string): Promise<ArticleItem> => {
 };
 
 export const getCategories = async (): Promise<CommonList<CategoryItem>> => {
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
-    const response = await _fetch.categories.$get(
-      {
-        config,
-      })
+    const response = await fetchClient.categories.$get()
     return response
   } catch (e) {
     console.error(e)
@@ -96,12 +76,8 @@ export const getCategories = async (): Promise<CommonList<CategoryItem>> => {
 };
 
 export const getCategory = async (id: string): Promise<CategoryItem> => {
-  const _fetch = api(aspida(fetch, { baseURL: API_ENDPOINT, throwHttpErrors: true }))
   try {
-    const response = await _fetch.categories._contentId(id).$get(
-      {
-        config,
-      })
+    const response = await fetchClient.categories._contentId(id).$get()
     return response
   } catch (e) {
     console.error(e)

@@ -1,0 +1,13 @@
+import aspida, { FetchConfig } from '@aspida/fetch'
+import api from './$api'
+import { API_ENDPOINT } from "@/utils"
+
+const fetchConfig: FetchConfig = {
+  baseURL: API_ENDPOINT,
+  throwHttpErrors: true,
+  headers: {
+    "X-API-KEY": process.env.API_KEY
+  }
+}
+
+export const fetchClient = api(aspida(fetch, fetchConfig))

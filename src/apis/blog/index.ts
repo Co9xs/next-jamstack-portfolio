@@ -22,7 +22,7 @@ export interface Methods {
     query?: {
       limit?: number,
       offset?: number,
-      filters?: ArticleFilterType<keyof ArticleItem, FilterOperator, string> | string
+      filters?: ArticleFilterType<keyof ArticleItem, FilterOperator, string>
     }
     resBody: CommonList<ArticleItem>
   }
