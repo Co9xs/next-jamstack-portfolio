@@ -6,7 +6,7 @@ import { Pagination } from '@/components/Pagination';
 import { ContentSection, SectionTitle, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getPopularArticles } from "@/lib/api/index"
 import { ARTICLES_PER_PAGE } from '@/utils/constants';
-import { range } from '@/utils/commonFunctions';
+import { createOgpUrl, range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { BrowserWindow } from '@/components/BrowserWindow';
@@ -26,13 +26,13 @@ type Params = {
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
   const { articles, totalCount, currentPage, categories, popularArticles } = props;
-  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI('Blog - 記事一覧')},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
+  const defaultOgpUrl  = createOgpUrl('Blog - 記事一覧')
   return (
     <SideBarLayout>
       <Meta
         title={'Blog'}
         description={'Ryo Fujishima - Web Dev'}
-        image={defaultOgp}
+        image={defaultOgpUrl}
         favicon="📝"
       />
       <BrowserWindow>

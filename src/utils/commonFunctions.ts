@@ -22,3 +22,7 @@ export const markdownToHtml = (markdown: string): string => {
   });
   return marked(markdown)
 }
+
+export const createOgpUrl = (title: string) => {
+  return `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(title)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
+}

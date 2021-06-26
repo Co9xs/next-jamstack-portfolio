@@ -11,7 +11,7 @@ import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
-import { calcReadingTime, convertDateToString, markdownToHtml } from '@/utils/commonFunctions';
+import { calcReadingTime, convertDateToString, createOgpUrl, markdownToHtml } from '@/utils/commonFunctions';
 import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
 import Prism from 'prismjs'
@@ -54,14 +54,14 @@ const articleId: NextPage<Props> = (props: Props) => {
     convertDateToString(new Date(article.publishedAt)) :
     convertDateToString(new Date(article.updatedAt))
   const readingTime = calcReadingTime(article.body.length)
-  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(article.title)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
-  const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
+  const defaultOgpUrl  = createOgpUrl(article.title)
+  const ogpUrl = article.ogimage ? article.ogimage.url : defaultOgpUrl
 
   return (
     <SideBarLayout>
       <Meta
         title={article.title}
-        image={ogImage}
+        image={ogpUrl}
         favicon={article.emoji}
       />
       <BrowserWindow>

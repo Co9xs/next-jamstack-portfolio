@@ -5,17 +5,18 @@ import { BrowserWindow } from '@/components/BrowserWindow';
 import React from 'react';
 import Link from 'next/link';
 import { BasicLayout } from '@/components/layouts/BasicLayout';
+import { createOgpUrl } from '@/utils';
 
 type Props = {}
 
 const Page404: NextPage<Props> = () => {
-  const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI(`404 Page Not Found`)},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
+  const defaultOgpUrl  = createOgpUrl(`404 Page Not Found`)
   return (
     <BasicLayout>
       <Meta
         title={'404 Not Found'}
         description={'404 Not Found'}
-        image={defaultOgp}
+        image={defaultOgpUrl}
         favicon="🙇‍♂️"
       />
       <BrowserWindow>
