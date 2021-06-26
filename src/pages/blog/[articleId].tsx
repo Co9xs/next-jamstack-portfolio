@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
 import { ClockIcon } from '@/components/icons/ClockIcon';
@@ -16,7 +16,7 @@ import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
 import Prism from 'prismjs'
 import { BrowserWindow } from '@/components/BrowserWindow';
-import { BasicLayout } from '@/components';
+import { BasicLayout, SideBar } from '@/components';
 
 type Props = {
   article: ArticleItem | DraftItem,
@@ -58,14 +58,13 @@ const articleId: NextPage<Props> = (props: Props) => {
   const ogImage = article.ogimage ? article.ogimage.url : defaultOgp
 
   return (
-    <SideBarLayout articleBody={markedBody} >
-      <PageBase>
-        <Meta
-          title={article.title}
-          image={ogImage}
-          favicon={article.emoji}
-        />
-        <BrowserWindow>
+    <SideBarLayout>
+      <Meta
+        title={article.title}
+        image={ogImage}
+        favicon={article.emoji}
+      />
+      <BrowserWindow>
         <ContentSection>
           { !isPublished(article) &&
             <DetailPageAlert>
@@ -100,8 +99,8 @@ const articleId: NextPage<Props> = (props: Props) => {
             />
           </DetailPageArticle>
         </ContentSection>
-        </BrowserWindow>
-      </PageBase>
+      </BrowserWindow>
+      <SideBar articleBody={markedBody}/>
     </SideBarLayout>
   );
 }

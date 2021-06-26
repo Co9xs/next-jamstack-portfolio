@@ -1,20 +1,16 @@
 import styled from 'styled-components'
 import { Header } from '@/components/Header'
-import { SideBar } from '@/components/SideBar'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils/constants'
 import { media } from '@/styles'
-import { ArticleItem } from '@/apis/blog'
-import { CategoryItem } from '@/apis/categories'
 
 type Props = {
-  categories?: CategoryItem[],
-  popularArticles?: ArticleItem[],
-  articleBody?: string
-  children: React.ReactNode
+  children: React.ReactChild[]
 }
 
 export const SideBarLayout: React.VFC<Props> = (props) => {
-  const { children, categories, popularArticles, articleBody } = props;
+  // childrenの順序に依存しているので注意(meta, main, sideの3つを子に持つ必要があるのでそれを型で表せないか？)
+  // 他の方法としては子要素にkeyをつける(hack気味)
+  const { children: [meta, main, sidebar] } = props;
   return (
     <SideBarLayoutBase>
       <FixedHeader>
@@ -22,10 +18,10 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
       </FixedHeader>
       <PageContent>
         <MainContentArea>
-          { children }
+          { main }
         </MainContentArea>
         <SideBarArea>
-          <SideBar categories={categories} popularArticles={popularArticles} articleBody={articleBody}/>
+          { sidebar }
         </SideBarArea>
       </PageContent>
     </SideBarLayoutBase>

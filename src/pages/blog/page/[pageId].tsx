@@ -10,6 +10,7 @@ import { range } from '@/utils/commonFunctions';
 import { ArticleItem } from '@/apis/blog';
 import { CategoryItem } from '@/apis/categories';
 import { BrowserWindow } from '@/components/BrowserWindow';
+import { SideBar } from '@/components/SideBar';
 
 type Props = {
   articles: ArticleItem[]
@@ -37,28 +38,27 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
   const { articles, totalCount, currentPage, categories, popularArticles } = props;
   const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI('Blog - 記事一覧')},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   return (
-    <SideBarLayout categories={categories} popularArticles={popularArticles}>
-      <PageBase>
-        <Meta
-          title={'Blog'}
-          description={'Ryo Fujishima - Web Dev'}
-          image={defaultOgp}
-          favicon="📝"
-        />
-        <BrowserWindow>
-          <PageTitle>Blog 📝</PageTitle>
-          <ContentSection>
-            <SectionTitle>Articles</SectionTitle>
-            <ArticleList articles={articles} />
-            <Pagination 
-              pageHref={'/blog/page/'} 
-              totalCount={totalCount} 
-              perPage={ARTICLES_PER_PAGE} 
-              currentPage={currentPage}
-            />
-          </ContentSection>
-        </BrowserWindow>
-      </PageBase>
+    <SideBarLayout>
+      <Meta
+        title={'Blog'}
+        description={'Ryo Fujishima - Web Dev'}
+        image={defaultOgp}
+        favicon="📝"
+      />
+      <BrowserWindow>
+        <PageTitle>Blog 📝</PageTitle>
+        <ContentSection>
+          <SectionTitle>Articles</SectionTitle>
+          <ArticleList articles={articles} />
+          <Pagination 
+            pageHref={'/blog/page/'} 
+            totalCount={totalCount} 
+            perPage={ARTICLES_PER_PAGE} 
+            currentPage={currentPage}
+          />
+        </ContentSection>
+      </BrowserWindow>
+      <SideBar categories={categories} popularArticles={popularArticles}/>
     </SideBarLayout>
   )
 }
