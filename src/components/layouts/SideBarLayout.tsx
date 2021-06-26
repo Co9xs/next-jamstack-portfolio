@@ -3,15 +3,14 @@ import { Header } from '@/components/Header'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils/constants'
 import { media } from '@/styles'
 
-// ここの型宣言でタプルにして子要素の数と型を制限したい
 type Props = {
-  children: React.ReactChild[]
+  children: [React.ReactChild, ...React.ReactChild[]]
 }
 
 export const SideBarLayout: React.VFC<Props> = (props) => {
-  // childrenの順序に依存しているので注意(meta, main, sideの3つを子に持つ必要があるのでそれを型で表せないか？)
-  // 他の方法としては子要素にkeyをつける(hack気味)
-  const { children: [meta, main, sidebar] } = props;
+  // childrenの順序に依存しているので注意(sidebarをchildrenの0番目で使うする必要がある)
+  // 他の方法としては子要素にkeyをつけて制御する(hack気味)
+  const { children: [sidebar, ...rest] } = props;
   return (
     <SideBarLayoutBase>
       <FixedHeader>
@@ -19,7 +18,7 @@ export const SideBarLayout: React.VFC<Props> = (props) => {
       </FixedHeader>
       <PageContent>
         <MainContentArea>
-          { main }
+          { rest }
         </MainContentArea>
         <SideBarArea>
           { sidebar }

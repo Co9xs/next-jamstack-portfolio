@@ -29,6 +29,7 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
   const defaultOgpUrl  = createOgpUrl('Blog - 記事一覧')
   return (
     <SideBarLayout>
+      <SideBar categories={categories} popularArticles={popularArticles}/>
       <Meta
         title={'Blog'}
         description={'Ryo Fujishima - Web Dev'}
@@ -48,7 +49,6 @@ const BlogPageId: NextPage<Props> = (props: Props) => {
           />
         </ContentSection>
       </BrowserWindow>
-      <SideBar categories={categories} popularArticles={popularArticles}/>
     </SideBarLayout>
   )
 }

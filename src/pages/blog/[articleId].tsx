@@ -56,6 +56,7 @@ const articleId: NextPage<Props> = (props: Props) => {
 
   return (
     <SideBarLayout>
+      <SideBar articleBody={articleBodyHtml}/>
       <Meta
         title={article.title}
         image={ogpUrl}
@@ -97,7 +98,6 @@ const articleId: NextPage<Props> = (props: Props) => {
           </DetailPageArticle>
         </ContentSection>
       </BrowserWindow>
-      <SideBar articleBody={articleBodyHtml}/>
     </SideBarLayout>
   );
 }
