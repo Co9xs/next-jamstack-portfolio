@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
-import Page404 from '../404';
 import Prism from 'prismjs'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
@@ -10,7 +9,6 @@ import { Meta } from '@/components/Meta';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 import { BrowserWindow } from '@/components/BrowserWindow';
 import { SideBar } from '@/components/SideBar';
-import { BasicLayout } from '@/components/layouts/BasicLayout';
 import { ContentSection } from '@/styles/utils/common';
 import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getDraft } from '@/lib/api/index';
@@ -33,19 +31,9 @@ const isPublished = (article: ArticleItem | DraftItem): article is ArticleItem =
 const articleId: NextPage<Props> = (props: Props) => {
   const { article, articleBodyHtml } = props;
 
-  // highlighting
   useEffect(() => {
     Prism.highlightAll()
   },[])
-
-  // Handling 404 here, because set fallback option "true" in this page for preview mode
-  if (!article) {
-    return (
-      <BasicLayout>
-        <Page404/>
-      </BasicLayout>
-    )
-  }
 
   const dateString = isPublished(article) ? 
     convertDateToString(new Date(article.publishedAt)) :
@@ -105,7 +93,7 @@ const articleId: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const articleList = await getArticles();
   const paths = articleList.contents.map(article => `/blog/${article.id}`);
-  return {paths, fallback: true};
+  return {paths, fallback: false};
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {

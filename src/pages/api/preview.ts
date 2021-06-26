@@ -12,7 +12,6 @@ const handler: NextApiHandler = async (req, res) => {
         draftKey: req.query.draftKey as string
       }
     })
-    console.log("content", content)
     if (!content) {
       return res.status(401).json({message: "Given slug is invalid"})
     } 
