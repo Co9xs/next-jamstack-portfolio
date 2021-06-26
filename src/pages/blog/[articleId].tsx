@@ -45,7 +45,7 @@ const articleId: NextPage<Props> = (props: Props) => {
   if (!article) {
     return (
       <BasicLayout>
-        <Page404 layout={'Basic'}/>
+        <Page404/>
       </BasicLayout>
     )
   }

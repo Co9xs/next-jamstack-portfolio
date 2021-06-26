@@ -16,7 +16,6 @@ type Props = {
   articles: ArticleItem[]
   totalCount: number
   currentPage: number,
-  layout: 'SideBar',
   categories: CategoryItem[], 
   popularArticles: ArticleItem[]
 }
@@ -79,7 +78,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
       articles: articleList.contents,
       totalCount: articleList.totalCount,
       currentPage: Number(pageId),
-      layout: 'SideBar',
       categories: categoryList.contents,
       popularArticles: popularArticleObject.contents
     },

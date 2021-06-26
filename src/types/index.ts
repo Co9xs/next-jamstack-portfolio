@@ -9,5 +9,3 @@ export type ExternalPostItem = {
   dateMiliSeconds: number
   sourceType: string
 }
-
-export type Layout = 'Basic' | 'SideBar'

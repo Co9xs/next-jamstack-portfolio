@@ -3,6 +3,7 @@ import { Header } from '@/components/Header'
 import { DEAFULT_HEADER_HEIGHT } from '@/utils/constants'
 import { media } from '@/styles'
 
+// ここの型宣言でタプルにして子要素の数と型を制限したい
 type Props = {
   children: React.ReactChild[]
 }

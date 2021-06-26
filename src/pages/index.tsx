@@ -1,21 +1,19 @@
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import { Meta } from '@/components/Meta';
 import { BrowserWindow } from '@/components/BrowserWindow';
 import { SkillIconList } from '@/components/SkillIconList';
 import { ExternalPostList } from '@/components/ExternalPostList'
 import { ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
-import { Layout } from '@/types/index';
 import posts from '../../.contents/posts.json'
 import { Footer } from '@/components/Footer';
+import { BasicLayout } from '@/components/layouts/BasicLayout';
 
-type Props = {
-  layout: Layout
-}
+type Props = {}
 
 const Home: NextPage<Props> = (props) => {
   const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI('Top - About me')},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   return (
-    <>
+    <BasicLayout>
       <Meta
         title={'Home'}
         description={'Ryo Fujishima - Web Dev'}
@@ -59,16 +57,8 @@ const Home: NextPage<Props> = (props) => {
         </ContentSection>
       </BrowserWindow>
       <Footer/>
-    </>
+    </BasicLayout>
   )
-}
-
-export const getStaticProps: GetStaticProps<Props>  = async () => {
-  return {
-    props: {
-      layout: 'Basic'
-    }
-  }
 }
 
 export default Home
