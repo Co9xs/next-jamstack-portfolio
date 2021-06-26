@@ -6,7 +6,7 @@ import { Alert } from '@/components/Alert';
 import { ClockIcon } from '@/components/icons/ClockIcon';
 import { Meta } from '@/components/Meta';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
-import { PageBase, ContentSection } from '@/styles/utils/common';
+import { ContentSection } from '@/styles/utils/common';
 import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
 import { ArticleItem } from '@/apis/blog';

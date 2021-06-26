@@ -1,18 +1,10 @@
 import styled from 'styled-components';
 import { media } from './helper';
 
-export const PageBase = styled.div`
-  height: 100%;
-  background-color: var(--colors-navy);
-`
-
 export const SectionTitle = styled.h2`
   margin: var(--spacing-2) 0;
   color: var(--colors-green);
   font-weight: var(--font-weight-heading);
-`
-
-export const SectionTitleText = styled.span`
 `
 
 export const PageTitle = styled.h1`

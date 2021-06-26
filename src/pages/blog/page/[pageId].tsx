@@ -3,7 +3,7 @@ import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 import { Meta } from '@/components/Meta';
 import { ArticleList } from '@/components/ArticleList';
 import { Pagination } from '@/components/Pagination';
-import { PageBase, ContentSection, SectionTitle, PageTitle } from '@/styles/utils/common';
+import { ContentSection, SectionTitle, PageTitle } from '@/styles/utils/common';
 import { getArticles, getCategories, getPopularArticles } from "@/lib/api/index"
 import { ARTICLES_PER_PAGE } from '@/utils/constants';
 import { range } from '@/utils/commonFunctions';
@@ -24,15 +24,6 @@ type Props = {
 type Params = {
   pageId: string
 }
-
-const filterArticles = (articles: ArticleItem[], query: string): ArticleItem[] => {
-  return query 
-    ? articles.filter((article) => {
-      const title = article.title.toLowerCase();
-      return title.includes(query.toLowerCase());
-    })
-    : articles
-};
 
 const BlogPageId: NextPage<Props> = (props: Props) => {
   const { articles, totalCount, currentPage, categories, popularArticles } = props;

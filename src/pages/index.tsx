@@ -3,7 +3,7 @@ import { Meta } from '@/components/Meta';
 import { BrowserWindow } from '@/components/BrowserWindow';
 import { SkillIconList } from '@/components/SkillIconList';
 import { ExternalPostList } from '@/components/ExternalPostList'
-import { PageBase, ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
+import { ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
 import { Layout } from '@/types/index';
 import posts from '../../.contents/posts.json'
 import { Footer } from '@/components/Footer';
@@ -15,7 +15,7 @@ type Props = {
 const Home: NextPage<Props> = (props) => {
   const defaultOgp  = `https://res.cloudinary.com/fujishima/image/upload/l_text:Sawarabi%20Gothic_90_bold:${encodeURI('Top - About me')},co_rgb:FFF,w_1200,c_fit/v1622604816/ogp/OgpImage_1_fdwdbv.png`
   return (
-    <PageBase>
+    <>
       <Meta
         title={'Home'}
         description={'Ryo Fujishima - Web Dev'}
@@ -59,7 +59,7 @@ const Home: NextPage<Props> = (props) => {
         </ContentSection>
       </BrowserWindow>
       <Footer/>
-    </PageBase>
+    </>
   )
 }
 
