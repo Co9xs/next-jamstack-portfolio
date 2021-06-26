@@ -22,9 +22,14 @@ const Page404: NextPage<Props> = () => {
       <BrowserWindow>
         <ContentSection>
           <ContentSectionInner>
-            <SectionTitle>404 - Not Found</SectionTitle>
+            <SectionTitle>404 - Not Found 🙇‍♂️</SectionTitle>
             <PlainText>Sorry, The page you are looking for was not found.</PlainText>
-            <Link href="/">Return to top</Link>
+            <PlainText>
+              <Link href="/">Return to Home</Link>
+            </PlainText>
+            <PlainText>
+              <Link href="/blog/page/1">Return to Blog</Link>
+            </PlainText>
           </ContentSectionInner>
         </ContentSection>
       </BrowserWindow>

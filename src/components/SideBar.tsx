@@ -48,9 +48,10 @@ const SideBarItem = styled.div`
   border-radius: var(--border-size-3);
 `
 
+// mobileで目次の表示をどうするか検討中
 const TableOfContentesItem = styled(SideBarItem)`
   ${media.tablet`
-    display: none;
+    // display: none;
   `}
 `
 

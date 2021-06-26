@@ -8,9 +8,8 @@ import { Meta } from '@/components/Meta';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
 import { ContentSection } from '@/styles/utils/common';
 import { media } from '@/styles/utils/helper';
-import { getArticle, getArticles, getCategories, getDraft, getPopularArticles } from '@/lib/api/index';
+import { getArticle, getArticles, getDraft } from '@/lib/api/index';
 import { ArticleItem } from '@/apis/blog';
-import { CategoryItem } from '@/apis/categories';
 import { calcReadingTime, convertDateToString, createOgpUrl, markdownToHtml } from '@/utils/commonFunctions';
 import { DraftItem } from '@/apis/blog/_contentId@string';
 import Page404 from '../404';
@@ -20,9 +19,7 @@ import { BasicLayout, SideBar } from '@/components';
 
 type Props = {
   article: ArticleItem | DraftItem,
-  popularArticles: ArticleItem[],
-  categories: CategoryItem[],
-  markedBody: string
+  articleBodyHtml: string
 }
 
 type Params = {
@@ -34,7 +31,7 @@ const isPublished = (article: ArticleItem | DraftItem): article is ArticleItem =
 }
 
 const articleId: NextPage<Props> = (props: Props) => {
-  const { article, categories, popularArticles, markedBody } = props;
+  const { article, articleBodyHtml } = props;
 
   // highlighting
   useEffect(() => {
@@ -94,13 +91,13 @@ const articleId: NextPage<Props> = (props: Props) => {
             </DetailPageHeader>
             <DetailPageBody
               dangerouslySetInnerHTML={{
-                __html: markedBody,
+                __html: articleBodyHtml,
               }}
             />
           </DetailPageArticle>
         </ContentSection>
       </BrowserWindow>
-      <SideBar articleBody={markedBody}/>
+      <SideBar articleBody={articleBodyHtml}/>
     </SideBarLayout>
   );
 }
@@ -117,19 +114,12 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (context: Get
     await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey) : 
     await getArticle(articleId)
 
-  const markedBody = markdownToHtml(content.body)
-
-  const [categoryList, popularArticleObject] = await Promise.all([
-    getCategories(),
-    getPopularArticles()
-  ])
+  const articleBodyHtml = markdownToHtml(content.body)
 
   return {
     props: {
       article: content,
-      categories: categoryList.contents,
-      popularArticles: popularArticleObject.contents,
-      markedBody,
+      articleBodyHtml,
     },
   };
 };
