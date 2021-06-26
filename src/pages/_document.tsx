@@ -1,5 +1,5 @@
-import { GoogleAnalyticsScript } from "@/components/GoogleAnalyticsScript";
 import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
+import { GoogleAnalyticsScript } from "@/components/GoogleAnalyticsScript";
 import { ServerStyleSheet } from 'styled-components';
 
 type Props = {};

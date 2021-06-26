@@ -28,3 +28,5 @@ export interface Methods {
     resBody: CommonList<ArticleItem>
   }
 }
+
+export * from "./_contentId@string"

@@ -1,13 +1,13 @@
+import posts from '../../.contents/posts.json'
 import { NextPage } from 'next';
+import { createOgpUrl } from '@/utils';
 import { Meta } from '@/components/Meta';
 import { BrowserWindow } from '@/components/BrowserWindow';
 import { SkillIconList } from '@/components/SkillIconList';
 import { ExternalPostList } from '@/components/ExternalPostList'
-import { ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
-import posts from '../../.contents/posts.json'
 import { Footer } from '@/components/Footer';
 import { BasicLayout } from '@/components/layouts/BasicLayout';
-import { createOgpUrl } from '@/utils';
+import { ContentSection, SectionTitle, PlainText, PageTitle } from '@/styles/utils/common';
 
 type Props = {}
 

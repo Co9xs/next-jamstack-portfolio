@@ -1,21 +1,21 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import React, { useEffect } from 'react';
+import Page404 from '../404';
+import Prism from 'prismjs'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import { Alert } from '@/components/Alert';
 import { ClockIcon } from '@/components/icons/ClockIcon';
 import { Meta } from '@/components/Meta';
 import { SideBarLayout } from '@/components/layouts/SideBarLayout';
+import { BrowserWindow } from '@/components/BrowserWindow';
+import { SideBar } from '@/components/SideBar';
+import { BasicLayout } from '@/components/layouts/BasicLayout';
 import { ContentSection } from '@/styles/utils/common';
 import { media } from '@/styles/utils/helper';
 import { getArticle, getArticles, getDraft } from '@/lib/api/index';
-import { ArticleItem } from '@/apis/blog';
+import { ArticleItem, DraftItem } from '@/apis/blog';
 import { calcReadingTime, convertDateToString, createOgpUrl, markdownToHtml } from '@/utils/commonFunctions';
-import { DraftItem } from '@/apis/blog/_contentId@string';
-import Page404 from '../404';
-import Prism from 'prismjs'
-import { BrowserWindow } from '@/components/BrowserWindow';
-import { BasicLayout, SideBar } from '@/components';
 
 type Props = {
   article: ArticleItem | DraftItem,

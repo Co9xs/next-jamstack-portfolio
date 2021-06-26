@@ -1,11 +1,10 @@
-import { NextPage } from 'next';
-import { Meta } from '@/components/Meta';
-import { ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles/utils/common';
-import { BrowserWindow } from '@/components/BrowserWindow';
-import React from 'react';
 import Link from 'next/link';
-import { BasicLayout } from '@/components/layouts/BasicLayout';
+import { NextPage } from 'next';
 import { createOgpUrl } from '@/utils';
+import { Meta } from '@/components/Meta';
+import { BrowserWindow } from '@/components/BrowserWindow';
+import { BasicLayout } from '@/components/layouts/BasicLayout';
+import { ContentSection, ContentSectionInner, SectionTitle, PlainText } from '@/styles/utils/common';
 
 type Props = {}
 
