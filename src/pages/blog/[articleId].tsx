@@ -93,15 +93,14 @@ const articleId: NextPage<Props> = (props: Props) => {
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const articleList = await getArticles();
   const paths = articleList.contents.map(article => `/blog/${article.id}`);
-  return {paths, fallback: false};
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (context: GetStaticPropsContext<Params>) => {
   const { articleId } = context.params
-  const content: DraftItem | ArticleItem = context.preview ? 
-    await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey) : 
-    await getArticle(articleId)
-
+  const content: DraftItem | ArticleItem = context.preview 
+    ? await getDraft(articleId, (context.previewData as {id:string, draftKey: string}).draftKey)
+    : await getArticle(articleId)
   const articleBodyHtml = markdownToHtml(content.body)
 
   return {
