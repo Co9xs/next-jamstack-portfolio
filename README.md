@@ -1,5 +1,7 @@
 This is my portfolio site made by [Next.js](https://nextjs.org/) bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+This application uses the Jamstack architecture by Nextjs, microCMS, Vercel.
+
 ## Getting Started
 
 First, fork this repository and install packages.
